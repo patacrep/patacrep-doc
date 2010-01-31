@@ -1,0 +1,658 @@
+% *******************************************************************************
+% générer la biblio: chmod +x check-biblio.pl
+% générer le pdf: make
+% suppression des fichiers temporaires: make clean
+% suppression de tous les fichiers temporaires: make cleanall 
+% *******************************************************************************
+
+\documentclass[a4paper,twoside]{article}
+\usepackage[utf8]{inputenc}
+\fontencoding{T1}
+\usepackage[pdftex]{graphicx, color}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage[english,frenchb]{babel}
+\usepackage{makeidx,fancybox, fancyheadings}
+\usepackage{url}
+
+
+%-------------------------------------------------------------------------------
+% Page de garde
+%-------------------------------------------------------------------------------
+
+\newlength{\larg}
+\setlength{\larg}{14.5cm}
+
+\title{
+{\rule{\larg}{1mm}}\vspace{7mm}
+\begin{tabular}{p{4cm} r}
+   & {\Huge {Songbook}} \\
+   & \\
+   & {\Large Manuel utilisateur}\\
+\end{tabular}\\
+\vspace{2mm}
+{\rule{\larg}{1mm}}
+\vspace{2mm} \\
+\begin{tabular}{p{11cm} r}
+   & {\large  \today}
+\end{tabular}\\
+\vspace{3.5cm}
+}
+\author{\begin{tabular}{p{13.7cm}}
+Romain Goffe.
+\end{tabular}\\
+\hline }
+\date{}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%Documentation pour le songbook
+%\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%*******************************************************************************
+\section*{Introduction}
+%*******************************************************************************
+
+Ce projet a comme objectif la réalisation de recueils de chansons
+proposant paroles et accords de guitare pour facilement jouer ses
+morceaux préférés au coin du feu.
+
+L'objectif est simple: obtenir un rendu homogène et agréable de toutes
+ses tablatures. Si vous faîtes souvent des soirées musique, je suis
+certain que vous avez déjà dû pester contre toutes ces feuilles
+volantes, les partitions mal imprimées, les fautes de frappe, un
+accord qui sonnerait mieux en le jouant d'une autre façon, etc \dots
+En tous cas, moi oui. Cela fait donc quelques années que j'essaye de
+faire des carnets de chant. Après avoir fait quelques essais mitigés
+avec les outils bureautiques classiques et propriétaires (word et
+publisher pour ne citer qu'eux), j'ai enfin découvert LaTeX qui m'a
+permis de faire à peu près ce que je voulais. J'arrête donc de
+raconter ma vie et je vous parle plutôt de tous les avantages
+qu'apporte LaTeX à l'écriture d'un carnet de chansons:
+
+\begin{itemize}
+\item typographie irréprochable de LaTeX 
+\item plusieurs documents à partir des mêmes sources
+\item position précise des accords
+\item agencement automatique des chansons sur une page
+\item intégration de partitions
+\end{itemize}
+
+%*******************************************************************************
+\section{Procédure d'installation sous Linux}
+%*******************************************************************************
+
+%------------------------------------------------------------------------------
+\subsection{Dépendances}
+%------------------------------------------------------------------------------
+
+Ce recueil de chansons a été écrit en LaTeX. Pour compiler vous-même
+vos propres chansons, vous devez disposer de make, perl, python,
+pdflatex et d'un viewer pdf. Si vous êtes sous Debian/Ubuntu:
+
+\begin{verbatim}
+$ sudo apt-get install texlive texlive-lang-french texlive-latex-extra
+build-essential perl xpdf python git
+\end{verbatim}
+
+%------------------------------------------------------------------------------
+\subsection{A partir des sources}
+%------------------------------------------------------------------------------
+
+La récupération et compilation du carnet de chant se fait de la façon suivante:
+
+\begin{verbatim}
+$ git clone git://git.lohrun.net/songbook.git
+$ cd songbook
+$ make
+\end{verbatim}
+
+Pour mettre à jour le recueil:
+
+\begin{verbatim}
+$ cd songbook
+$ git pull
+\end{verbatim}
+
+Quelques options de base du makefile:
+
+\paragraph{\$ make clean} 
+supprime tous les fichiers de logs et les fichiers générés à part les
+books finaux (pdf).
+
+\paragraph{\$ make cleanall}
+supprime tous les fichiers générés y compris les pdf.
+
+\paragraph{\$ make lilypond}
+génère les partitions dans ./lilypond
+
+%------------------------------------------------------------------------------
+\subsection{Songbook Creator}
+%------------------------------------------------------------------------------
+
+Une interface graphique est actuellement en développement pour
+faciliter la création d'un carnet de chants. Il vous faudra au
+préalable quelques dépendances supplémentaires:
+
+\begin{verbatim}
+sudo apt-get install build-essential git-core cmake qt4-qmake
+\end{verbatim}
+
+Récupération du programme:
+
+\begin{verbatim}
+$ git clone git://github.com/crep4ever/Songbook-Creator.git
+$ cd Songbook-Creator
+$ make release
+$ ./release/songbook
+\end{verbatim}
+
+%*******************************************************************************
+\section{Comment écrire une chanson}
+%*******************************************************************************
+
+%------------------------------------------------------------------------------
+\subsection{A propos de LaTeX}
+%------------------------------------------------------------------------------
+
+LaTeX est un logiciel de traitement de texte qui produit un document
+bien formatté d'après des sources (un simple fichier texte). Cela
+permet à l'utilisateur de se concentrer sur le contenu plutôt que sur
+la forme. C'est un langage de programmation basé sur un système de
+commandes et/ou de balises.
+
+Une commande commence part un antislash ``$\backslash$'' suivi du nom
+de la commande. Ensuite viennent les arguments, si il y en a, entre
+accolades (obligatoires) ou crochets (optionnels).
+
+%------------------------------------------------------------------------------
+\subsection{Elements principaux}
+%------------------------------------------------------------------------------
+
+Une chanson est un simple fichier texte ``'ma\_chanson.sg'' que l'on
+place dans le répertoire songs/Artiste. Par convention, les espaces ne
+sont pas tolérés (utiliser des underscores \_). L'entête d'un fichier
+.sg se présente de la manière suivante:
+
+\begin{verbatim}
+\beginsong{Titre}[by=Artiste,cov=album-cover]
+\end{verbatim}
+
+Les arguments \emph{Titre}, \emph{Artiste} et \emph{album-cover} sont
+à renseigner pour chaque nouvelle chanson. \emph{album-cover} désigne
+un fichier \emph{album-cover.jpg} devant se trouver dans le même
+répertoire que le fichier .sg.  La chanson se compose d'une succession
+de couplets (verse en anglais) et de refrains (chorus). Un couplet est
+donc encadré par les balises \emph{beginverse} et \emph{endverse}. De
+la même manière, un refrain se trouve entre les balises
+\emph{beginchorus} et \emph{endchorus}.  Les paroles sont écrites
+normalement entre le $\backslash begin$ et le $\backslash end$. Pour
+préciser sur qelle syllabe un accord doit être joué, on utilise une
+commande spéciale. Par exemple, la commande $\backslash [Mi]$ produira
+un Mi au dessus de la syllabe suivante. Vous pouvez utiliser n'importe
+quel texte pour désigner un accord.
+
+\begin{verbatim}
+\beginverse
+His \[Rém]steely skin is covered
+By \[Fa]centuries of dust
+\[Do]Once he was a great one
+\[Rém]Now he's dull and rust
+\endverse
+\end{verbatim}
+
+Chaque chanson se termine avec la commande \emph{endsong}.
+
+\begin{verbatim}
+\endsong
+\end{verbatim}
+
+%------------------------------------------------------------------------------
+\subsection{Notation des accords}\label{sect:about}
+%------------------------------------------------------------------------------
+
+Par défaut, l'accord est majeur (Do fait référence à l'accord de Do
+majeur). Les accords mineurs sont précisés par un m minuscule.  Le
+symbole ``bémol'' est représenté en utilisant le caractère ``\&''.  Le
+dièse est codé par le caractère ``\#''. Les autres notations sont
+simplement ajoutées comme des caractères à l'accord principal. Par
+exemple, l'accord de ``La bémol mineur'' est noté ``La\&m''.
+
+
+%------------------------------------------------------------------------------
+\subsection{Exemple complet}
+%------------------------------------------------------------------------------
+
+Voici un exemple complet pouvant être utilisé comme point de départ
+pour écrire une nouvelle chanson.
+
+\begin{verbatim}
+\songcolumns{2}
+\beginsong{Sad robot}[by=Pornophonique,cov=8-bit-lagerfeuer]
+
+\cover
+\gtab{Rém}{X00231}
+\gtab{Fa}{1:022100}
+\gtab{Do}{X32010}
+
+\beginverse
+His \[Rém]steely skin is covered
+By \[Fa]centuries of dust
+\[Do]Once he was a great one
+\[Rém]Now he's dull and rust
+\endverse
+
+\beginverse*
+An oily tear he's crying
+Can you feel the pain
+Of the sad, sad robot
+And it's driving him insane
+\endverse
+
+\beginchorus
+Sad, sad robot \rep{3}
+All alone
+\endchorus
+
+\beginchorus
+He's a sad, sad robot \rep{3}
+He's so alone
+\endchorus
+
+\endsong
+\end{verbatim}
+
+%*******************************************************************************
+\section{Mise en page avancée}
+%*******************************************************************************
+
+%------------------------------------------------------------------------------
+\subsection{Agencement en colonnes}
+%------------------------------------------------------------------------------
+
+La commande \emph{songcolumns} détermine le nombre de colonnes sur
+lequel sera présenté la chanson. Elle s'utilise juste avant la
+commande \emph{beginsong}. Vous pouvez indiquer le nombre de colonnes
+à utiliser pour écrire votre chanson (générallement 1, 2 ou 3). Par
+convention, utilisez 2 colonnes par défaut.
+
+\begin{verbatim}
+\songcolumns{2}
+\beginsong{Titre}[by=Artiste,cov=album-cover]
+\end{verbatim}
+
+%------------------------------------------------------------------------------
+\subsection{Caractères spéciaux}
+%------------------------------------------------------------------------------
+
+Quelques caractères doivent être codés différemment en utilisant des
+commandes LaTeX pour un meilleur résultat. Les deux exemples
+principaux sont les 3 points (...) et le caractère \oe{}. Pour
+représenter ces caractères, vous devez utiliser respectivement les
+commandes ${\backslash dots}$ et ${\backslash oe}$. On utilise des
+accolades autour des commandes de sorte que les commandes puissent
+être insérées où vous le désirez sans interférer avec le reste du
+texte. Voir aussi section\,\ref{sect:utilitaires}.
+
+%------------------------------------------------------------------------------
+\subsection{Ch\oe{}urs et répétitions}
+%------------------------------------------------------------------------------
+
+Pour produire un signe de répétition vous pouvez utiliser la commande
+$\backslash rep$. Pour faire répéter quatre fois une ligne utilisez la
+commande suivante à la fin de la ligne. La commande $\backslash echo$
+fait référence à des ch\oe{}urs (ou similaire).
+
+\begin{verbatim}
+Hallelujah \echo{Hallelujah} \rep{4}
+\end{verbatim}
+
+%------------------------------------------------------------------------------
+\subsection{Numérotation des couplets}
+%------------------------------------------------------------------------------
+
+La numérotation se fait automatiquement pour chaque \emph{beginverse}
+rencontré. Cependant, il est parfois plus lisible de scinder un
+couplet en deux parties, la deuxième partie ne devant pas être
+numérotée. Pour cela on utilise la commande \emph{beginverse*}.
+ 
+\begin{verbatim}
+\beginverse
+His \[Rém]steely skin is covered
+By \[Fa]centuries of dust
+\[Do]Once he was a great one
+\[Rém]Now he's dull and rust
+\endverse
+
+\beginverse*
+An oily tear he's crying
+Can you feel the pain
+Of the sad, sad robot
+And it's driving him insane
+\endverse
+\end{verbatim}
+
+%------------------------------------------------------------------------------
+\subsection{Représentation des accords}
+%------------------------------------------------------------------------------
+
+Etant donné qu'un accord de guitare peut se jouer de plusieurs façons
+différentes et qu'il est parfois judicieux de privilégier telle ou
+telle position, le songbook permet de représenter schématiquement ces
+accords en début de chanson. On utilise la commande \emph{gtab} juste
+avant le premier couplet ou refrain. Voici quelques exemples classiques:
+
+\begin{verbatim}
+\gtab{Ré}{XX0232}
+\gtab{Mi}{022100}
+\gtab{Do}{3:002220}
+\end{verbatim}
+
+\begin{itemize}
+\item les 6 chiffres correspondent aux 6 cordes de la
+guitare (Mi, La, Ré Sol, Si, Mi);
+\item la valeur du chiffre indique la fret (case) sur laquelle on
+  appuie;
+\item 0 désigne une corde jouée à vide;
+\item X indique que la corde ne doit pas être jouée;
+\item une valeur avant un ``:'' désigne un barré: \emph{3:} indique
+un barré de trois frets.
+\end{itemize}
+
+
+%*******************************************************************************
+\section{Partager votre travail}
+%*******************************************************************************
+
+Si vous ajoutez une chanson au carnet de chant, pourquoi ne pas nous
+envoyer votre fichier. Nous y jetterons un \oe{}il et serons enchantés
+de l'ajouter au carnet de chant ``officiel''. Comme toujours les
+contributeurs sont les bienvenus.
+
+\begin{itemize}
+\item envoyez directement vos remarques par mail à crep@team-on-fire.com;
+\item utilisez le forum comme bon vous semble;
+\item envoyez des patch;
+\end{itemize}
+
+Le meilleur moyen est de nous envoyer un patch. Techniquement, un
+patch est un simple fichier texte qui indique les opérations
+(ajout/suppression) qui ont été opérées sur un fichier texte. Un
+exemple tout simple a l'aspect suivant:
+
+\begin{verbatim}
+index 3fcce15..b4edcc1 100644
+--- a/songs/Cat_Stevens/The_wind.sg
++++ b/songs/Cat_Stevens/The_wind.sg
+@@ -7,7 +7,7 @@
+
+-\[Do] I listen to the \[Fa]wind,
++\[Ré] I listen to the \[Sol]wind,
+\end{verbatim}
+
+Vous voyez rapidement qu'après les premières lignes qui servent à
+identifier le fichier sur lequel on a travaillé, j'ai remplacé:
+\begin{verbatim}
+-\[Do] I listen to the \[Fa]wind,
+\end{verbatim}
+par
+\begin{verbatim}
++\[Ré] I listen to the \[Sol]wind,
+\end{verbatim}
+
+Concrètement, si vous avez suivi la procédure d'installation,
+vous devriez avoir un répertoire \~/songbook contenant toutes les
+sources du carnet de chant. Maintenant, vous avez repéré une erreur
+dans la chanson songs/artiste/chanson.sg. Ouvrez le fichier
+correspondant avec votre éditeur de texte préféré, faîtes votre
+correction, enregistrez, fermez. Puis, dans un terminal:
+
+\begin{verbatim}
+$ cd ~/songbook
+$ git diff -u songs/artiste/chanson.sg > patch
+\end{verbatim}
+
+Cela va vous créer un nouveau fichier "patch" qui contiendra
+l'ensemble des modifications que vous avez apportées à votre
+chanson. Plus qu'à nous l'envoyer !
+
+
+
+%%*******************************************************************************
+%\section{Accords usuels}
+%%*******************************************************************************
+%
+%%------------------------------------------------------------------------------
+%\subsection{Accords majeurs}
+%%------------------------------------------------------------------------------
+%
+%
+%%------------------------------------------------------------------------------
+%\subsection{Accords mineurs}
+%%------------------------------------------------------------------------------
+%
+%
+%%------------------------------------------------------------------------------
+%\subsection{Accords de 7ème}
+%%------------------------------------------------------------------------------
+
+
+%*******************************************************************************
+\section{Intégration des partitions avec Lilypond}
+%*******************************************************************************
+
+Si vous voulez rajouter une ligne mélodique dans une chanson, vous
+pouvez utiliser lilypond pour générer la partition. Créez pour cela un
+nouveau fichier ma\_partition.ly dans le répertoire songbook/lilypond.
+Copiez/collez l'en-tête suivant:
+
+\begin{verbatim}
+\version "2.12.1"
+
+\paper
+{
+  make-footer=##f
+  make-header=##f
+
+  left-margin = 0\cm
+  top-margin = 0\cm
+  bottom-margin = 0\cm
+
+  indent = 0\cm
+  between-system-padding = 1\mm
+
+  paper-width = 7.5\cm
+  line-width = 7\cm
+  paper-height = 3.3\cm
+}
+\end{verbatim}
+
+Puis écrivez votre partition entre accolades comme dans l'exemple
+suivant:
+
+\begin{verbatim}
+{
+  #(set-global-staff-size 12)
+  \relative c'{
+    \time 2/4
+    a'4~ a8 a16 b %\break
+    \repeat volta 2 {d8 c16 b~ b8 a16 b d8 c16 b~ b4 e,8 a16\trill g a8 b16 g \break d'8. c16 b8\trill a16 b }
+    \alternative { {c8 b\trill a8 b16 c} {c16 a b g a4\trill} }
+  }
+}
+\end{verbatim}
+
+Pour comprendre le sens de tous ces symboles barbares, je vous invite
+à consulter la documentation du projet lilypond:
+\url{http://lilypond.org/}. Enfin, pour insérer votre partition dans
+une chanson, insérez la ligne suivante à l'endroit désiré dans
+ma\_chanson.sg:
+
+\begin{verbatim}
+\lilypond{ma_partition}
+\end{verbatim}
+
+
+%*******************************************************************************
+\section{Utilitaires}\label{sect:utilitaires}
+%*******************************************************************************
+
+Des scripts utilitaires sont disponibles dans le répertoire
+songbook/utils. On les exécute classiquement en faisant:
+
+\begin{verbatim}
+$ cd songbook
+$ ./utils/script.sh
+\end{verbatim}
+
+\paragraph{Resize cover}
+Permet de redimmensionner automatiquement tous les fichiers .jpg du
+répertoire songbook/songs correspondant aux pochettes des albums.
+A exécuter après l'ajout d'une nouvelle chanson.
+
+\paragraph{Latex preprocessing}
+Applique un ensemble de règles automatiques pour les notations LaTeX
+de certains caractères et pour les notations d'accords.
+A exécuter après l'ajout d'une nouvelle chanson.
+
+\paragraph{New songs list}
+Permet de récupérer la liste des chansons ajoutées depuis la dernière
+version.
+
+\paragraph{Volume\,2}
+Permet de générer la liste des chansons qui ne sont pas dans le volume\,1.
+
+\paragraph{Make html}
+Génère la liste de toutes les chansons au format html.
+
+
+%*******************************************************************************
+\section{Conseils aux débutants}
+%*******************************************************************************
+
+%------------------------------------------------------------------------------
+\subsection{Les accords de base}
+%------------------------------------------------------------------------------
+
+Les accords de base sont les accords qui se jouent sans barré au
+niveau des premières frets:
+
+\begin{itemize}
+\item Accords Majeurs:\\ 
+  Do (X32010), Sol (320003), La (X02220), Ré (XX0232), Mi (022100)\\
+\item Accords Mineurs:\\
+  Mim (022000), Lam (X02210), Rém (XX0231)\\
+\item Accord Septième:\\
+  Mi7 (020100), Sol7 (320001), Ré7 (XX0212), La7 (X02020), Si7 (X21202)\\
+\end{itemize}
+
+Donc déjà, il est bon de savoir jouer et enchainer assez rapidement
+ces accords là. Le mieux c'est de chercher des morceaux avec ces
+accords et de s'entraîner dessus.  A part pour l'accord de ré, les
+cordes marquées d'un X peuvent quand même sonner.  C'est juste qu'on
+préfère généralement attaquer par la fondamentale de l'accord (ex:
+note do pour l'accord de do majeur).  A propos des différentes
+notations d'accords, il s'agit juste d'une question de sonorité ou de
+pragmatisme. On est toujours libre de jouer l'accord de la façon qui
+nous arrange le plus.
+
+%------------------------------------------------------------------------------
+\subsection{Transposer un morceau}
+%------------------------------------------------------------------------------
+
+L'idée, c'est de toujours pouvoir se ramener à un enchaînement
+d'accords que l'on maîtrise.  Pour transposer un morceau, c'est pas
+dur il suffit d'appliquer le même décalage à tous les accords.  Par
+exemple, pour la chanson du hérisson, si on décale de 2 tons 1/2: Sim,
+Sol, Fa$\sharp$7 se transposent en Mim, Do, Si7.  Et miracle, ces
+accords là ne demandent plus de barrés !
+
+%------------------------------------------------------------------------------
+\subsection{Les barrés}
+%------------------------------------------------------------------------------
+
+Bon, le coup de transposer les accords, c'est un bon exercice pour
+jongler avec les accords et leurs enchaînements mais de temps en
+temps, ça ne suffit pas, il reste toujours des barrés qui apparaissent
+et c'est quand même mieux de jouer les vrais accords. Donc attaquons
+la fameuse technique du barré. Tout bon débutant qui se respecte
+commence par le barré de mi \dots pour faire un fa. Oui, en fait,
+barré c'est se servir de son index comme capo pour transposer l'accord
+qu'on fait dessous (avec un doigt en moins).
+
+Exemple: l'accord de Fa se joue 133211. Il est cependant noté 1:022100
+dans le carnet de chant car c'est un barré de Mi (022100) sur la
+première fret.  Donc l'idée, c'est d'appuyer bien fort avec son index
+en travers de toutes les cordes et d'utiliser annulaire, ptit doigt,
+majeur pour appuyer sur les 3 cordes demandées. A savoir qu'il y a
+essentiellement 4 types de barrés.  Dans l'ordre de difficulté: barrés
+de Mi (022100), Lam (002210), Mim (022000), La (002220).
+
+%------------------------------------------------------------------------------
+\subsection{Les rythmes}
+%------------------------------------------------------------------------------
+
+Contrairement à ce que l'on pourrait croire, il est bien plus
+difficile de maîtriser la main droite que la main gauche.
+Voici quelques motifs assez passe-partout pour vos morceaux.
+
+\paragraph{Rythme ``à la Brassens''} Il s'agit d'alterner une basse (pouce)
+avec 3 aigues simultanées (index, majeur, annulaire), 2 ou 4 fois par
+accord. En général, les 3 aigues sont les 3 cordes aigues 4,5,6 (Sol,
+Si, mi) et la basse alterne entre les cordes 1,2,3 (Mi, La, Ré) mais
+souvent dans l'ordre 2,1.
+
+\paragraph{Rythme ``arpège''} Il s'agit d'un motif note-à-note qui
+accompagne très bien les chansons calmes. Chaque guitariste a le
+sien, voici l'ordre des cordes à jouer pour le mien: 2 654 654 6. En
+gros, on fait une basse avec le pouce, puis deux descentes aigues avec
+annulaire, majeur, index et on finit par la plus aigue.
+
+\paragraph{Rythme ``feu de camp''} Quand il faut gratter, le premier
+piège est de suivre le rythme du chant. Gardez un rythme constant !
+//arf, j'arrive pas à expliquer ... //
+
+
+%------------------------------------------------------------------------------
+\subsection{Les techniques du fourbe}
+%------------------------------------------------------------------------------
+
+Alors je ne sais pas trop si ça peut aider ou non mais j'ai mis au
+point mes propres techniques secrètes de débutant faignant. Elles sont
+quand même relativement déconseillées dans la mesure ou ce sont de
+mauvaises habitudes pas académiques dont on a du mal à se défaire.
+
+\paragraph{L'accord de Sol}
+Arf, voilà mon premier échec à la guitare. Après avoir enchainer des
+accords de La et de Mi pendant 3 heures je m'essaye au sol. Position
+ok, ça sonne bien. Manque de pot, impossible d'enchainer ça
+rapidement.  Du coup, remarquant qu'un Sol se jouait en 320003, je me
+suis dit qu'avec un seul doigt, j'avais déjà 4 cordes sur 6. Donc j'ai
+commencé en jouant mes Sol en XX0003 avec seulement l'annulaire et ça
+sonnait très bien. 1 an plus tard, j'ai réalisé qu'en mettant le pouce
+sur la première corde ça marchait encore mieux (3X0003) donc voilà la
+technique de la pince pour l'accord de Sol qui fait beaucoup rire les
+vrais guitaristes quand ils me voient jouer.
+
+\paragraph{L'accord de Fa}
+Après avoir contourné le problème du Sol s'est posé celui du Fa. La
+c'est pareil, impossible de tenir la position barrée plus de deux
+nanosec sans hurler de douleur.  Je me suis dit, trouvons une parade:
+le semi barré.  En fait, quand on regarde la théorie du barré, c'est
+pas bien optimisé puisque l'index appuie sur toutes les cordes donc on
+appuie 2 fois sur certaines cordes (index 111111, autres doigts 033200)
+Donc en fin de comptes, l'index sert seulement pour les cordes 1,5 et
+6. Au diable la première, mon index fera 5 et 6 et ce sera suffisant.
+Ça donne des Fa comme ça: X33211 avec l'index qui écrase seulement les
+deux dernières cordes.  Bon, autant je fais encore mes Sol avec mon
+pouce, autant j'ai appris à faire des barrés proprement.
+
+
+\end{document}
