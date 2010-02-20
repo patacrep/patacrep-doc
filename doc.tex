@@ -448,30 +448,39 @@ chanson. Plus qu'à nous l'envoyer !
 \section{Intégration des partitions avec Lilypond}
 %*******************************************************************************
 
+%------------------------------------------------------------------------------
+\subsection{Lilypond}
+%------------------------------------------------------------------------------
+
+La documentation du projet lilypond est très
+claire et se trouve sur le site \url{http://lilypond.org/}.
+Voici néanmoins quelques concepts de base:
+
+\begin{itemize}
+\item les lettres a, b, c, d, e, f, g représente les notes la, si, do,
+  ré, mi, fa, sol;
+\item un chiffre derrière une lettre en indique la durée (2=blanche, 4=noire,
+  8=croche) et le ``~'' désigne une note pointée;
+\item \emph{ais}, \emph{bes} désignent un \emph{la dièse} et un \emph{si bémol}
+\item \emph{'} et \emph{,} servent à monter/descendre d'une octave;
+\end{itemize}
+
+
+%------------------------------------------------------------------------------
+\subsection{Intégration au songbook}
+%------------------------------------------------------------------------------
+
 Si vous voulez rajouter une ligne mélodique dans une chanson, vous
 pouvez utiliser lilypond pour générer la partition. Créez pour cela un
 nouveau fichier ma\_partition.ly dans le répertoire songbook/lilypond.
-Copiez/collez l'en-tête suivant:
+Il faut inclure le fichier d'en-tête ``header'' et définir l'option
+paper-height de façon à ce que la partition produite tienne sur une
+page avec le moins de blanc possible. Une première estimation est de
+compter 1.6cm pour une ligne.
 
 \begin{verbatim}
-\version "2.12.1"
-
-\paper
-{
-  make-footer=##f
-  make-header=##f
-
-  left-margin = 0\cm
-  top-margin = 0\cm
-  bottom-margin = 0\cm
-
-  indent = 0\cm
-  between-system-padding = 1\mm
-
-  paper-width = 7.5\cm
-  line-width = 7\cm
-  paper-height = 3.3\cm
-}
+\include "header"
+\paper{paper-height = 3.2\cm}
 \end{verbatim}
 
 Puis écrivez votre partition entre accolades comme dans l'exemple
@@ -479,21 +488,18 @@ suivant:
 
 \begin{verbatim}
 {
-  #(set-global-staff-size 12)
-  \relative c'{
+  \relative c'
+  {
     \time 2/4
-    a'4~ a8 a16 b %\break
-    \repeat volta 2 {d8 c16 b~ b8 a16 b d8 c16 b~ b4 e,8 a16\trill g a8 b16 g \break d'8. c16 b8\trill a16 b }
+    a'4~ a8 a16 b
+    \repeat volta 2 {d8 c16 b~ b8 a16 b d8 c16 b~ b4 e,8 a16\trill g a8 b16 g d'8. c16 b8\trill a16 b}
     \alternative { {c8 b\trill a8 b16 c} {c16 a b g a4\trill} }
   }
 }
 \end{verbatim}
 
-Pour comprendre le sens de tous ces symboles barbares, je vous invite
-à consulter la documentation du projet lilypond:
-\url{http://lilypond.org/}. Enfin, pour insérer votre partition dans
-une chanson, insérez la ligne suivante à l'endroit désiré dans
-ma\_chanson.sg:
+Enfin, pour insérer votre partition dans une chanson, insérez la ligne
+suivante à l'endroit désiré dans ma\_chanson.sg:
 
 \begin{verbatim}
 \lilypond{ma_partition}
