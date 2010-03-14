@@ -94,12 +94,11 @@ vos propres chansons, vous devez disposer de make, perl, python,
 pdflatex et d'un viewer pdf. Si vous êtes sous Debian/Ubuntu:
 
 \begin{verbatim}
-$ sudo apt-get install texlive texlive-lang-french texlive-latex-extra
-build-essential perl xpdf python git
+$ sudo apt-get install texlive texlive-lang-french texlive-latex-extra python git-core
 \end{verbatim}
 
 %------------------------------------------------------------------------------
-\subsection{A partir des sources}
+\subsection{À partir des sources}
 %------------------------------------------------------------------------------
 
 La récupération et compilation du carnet de chant se fait de la façon suivante:
@@ -138,7 +137,7 @@ faciliter la création d'un carnet de chants. Il vous faudra au
 préalable quelques dépendances supplémentaires:
 
 \begin{verbatim}
-sudo apt-get install build-essential git-core cmake qt4-qmake
+sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools
 \end{verbatim}
 
 Récupération du programme:
@@ -155,7 +154,7 @@ $ ./release/songbook
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
-\subsection{A propos de LaTeX}
+\subsection{À propos de LaTeX}
 %------------------------------------------------------------------------------
 
 LaTeX est un logiciel de traitement de texte qui produit un document
@@ -169,7 +168,7 @@ de la commande. Ensuite viennent les arguments, si il y en a, entre
 accolades (obligatoires) ou crochets (optionnels).
 
 %------------------------------------------------------------------------------
-\subsection{Elements principaux}
+\subsection{Élements principaux}
 %------------------------------------------------------------------------------
 
 Une chanson est un simple fichier texte ``'ma\_chanson.sg'' que l'on
