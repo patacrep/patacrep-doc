@@ -37,7 +37,7 @@ ps: $(CIBLE).ps.gz
 
 pdf: LATEX = pdflatex
 pdf: $(CIBLE).pdf
-	xpdf $<
+	evince $<
 
 clean:
 	@rm -f $(AUX) $(CIBLE).toc
