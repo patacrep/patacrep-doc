@@ -10,8 +10,8 @@
 \fontencoding{T1}
 \usepackage[pdftex]{graphicx, color}
 \usepackage[english,frenchb]{babel}
-\usepackage{url}
-
+\usepackage{url, pdfpages}
+\graphicspath{ {fig/pdf/} }
 
 %-------------------------------------------------------------------------------
 % Page de garde
@@ -20,34 +20,9 @@
 \newlength{\larg}
 \setlength{\larg}{14.5cm}
 
-\title{
-{\rule{\larg}{1mm}}\vspace{7mm}
-\begin{tabular}{p{4cm} r}
-   & {\Huge {Songbook}} \\
-   & \\
-   & {\Large Manuel utilisateur}\\
-\end{tabular}\\
-\vspace{2mm}
-{\rule{\larg}{1mm}}
-\vspace{2mm} \\
-\begin{tabular}{p{11cm} r}
-   & {\large  \today}
-\end{tabular}\\
-\vspace{3.5cm}
-}
-\author{\begin{tabular}{p{13.7cm}}
-Romain Goffe.
-\end{tabular}\\
-\hline }
-\date{}
-
 \begin{document}
-\maketitle
 
-%\begin{abstract}
-%Documentation pour le songbook
-%\end{abstract}
-
+\includepdf[pages=-]{cov}
 \newpage
 \tableofcontents
 \newpage
@@ -61,25 +36,15 @@ proposant paroles et accords de guitare pour facilement jouer ses
 morceaux préférés au coin du feu.
 
 L'objectif est simple: obtenir un rendu homogène et agréable de toutes
-ses tablatures. Si vous faîtes souvent des soirées musique, je suis
+ses tablatures. Si vous faîtes souvent des soirées musicales, je suis
 certain que vous avez déjà dû pester contre toutes ces feuilles
 volantes, les partitions mal imprimées, les fautes de frappe, un
 accord qui sonnerait mieux en le jouant d'une autre façon, etc \dots
 En tous cas, moi oui. Cela fait donc quelques années que j'essaye de
 faire des carnets de chant. Après avoir fait quelques essais mitigés
 avec les outils bureautiques classiques et propriétaires (Word© et
-Publisher© pour ne citer qu'eux), j'ai enfin découvert LaTeX qui m'a
-permis de faire à peu près ce que je voulais. J'arrête donc de
-raconter ma vie et je vous parle plutôt de tous les avantages
-qu'apporte LaTeX à l'écriture d'un carnet de chansons:
-
-\begin{itemize}
-\item typographie irréprochable de LaTeX 
-\item plusieurs documents à partir des mêmes sources
-\item position précise des accords
-\item agencement automatique des chansons sur une page
-\item intégration de partitions
-\end{itemize}
+Publisher© pour ne citer qu'eux), LaTeX m'a enfin permis de faire à
+peu près ce que je voulais.
 
 %*******************************************************************************
 \section{Procédure d'installation sous Linux}
@@ -516,12 +481,12 @@ $ ./utils/script.sh
 \paragraph{Resize cover}
 Permet de redimmensionner automatiquement tous les fichiers .jpg du
 répertoire songbook/songs correspondant aux pochettes des albums.
-A exécuter après l'ajout d'une nouvelle chanson.
+À exécuter après l'ajout d'une nouvelle chanson.
 
 \paragraph{Latex preprocessing}
 Applique un ensemble de règles automatiques pour les notations LaTeX
 de certains caractères et pour les notations d'accords.
-A exécuter après l'ajout d'une nouvelle chanson.
+À exécuter après l'ajout d'une nouvelle chanson.
 
 \paragraph{New songs list}
 Permet de récupérer la liste des chansons ajoutées depuis la dernière
@@ -556,10 +521,10 @@ niveau des premières frets:
 
 Donc déjà, il est bon de savoir jouer et enchainer assez rapidement
 ces accords là. Le mieux c'est de chercher des morceaux avec ces
-accords et de s'entraîner dessus.  A part pour l'accord de ré, les
+accords et de s'entraîner dessus.  À part pour l'accord de ré, les
 cordes marquées d'un X peuvent quand même sonner.  C'est juste qu'on
 préfère généralement attaquer par la fondamentale de l'accord (ex:
-note do pour l'accord de do majeur).  A propos des différentes
+note do pour l'accord de do majeur).  À propos des différentes
 notations d'accords, il s'agit juste d'une question de sonorité ou de
 pragmatisme. On est toujours libre de jouer l'accord de la façon qui
 nous arrange le plus.
@@ -592,7 +557,7 @@ Exemple: l'accord de Fa se joue 133211. Il est cependant noté 1:022100
 dans le carnet de chant car c'est un barré de Mi (022100) sur la
 première fret.  Donc l'idée, c'est d'appuyer bien fort avec son index
 en travers de toutes les cordes et d'utiliser annulaire, ptit doigt,
-majeur pour appuyer sur les 3 cordes demandées. A savoir qu'il y a
+majeur pour appuyer sur les 3 cordes demandées. À savoir qu'il y a
 essentiellement 4 types de barrés.  Dans l'ordre de difficulté: barrés
 de Mi (022100), Lam (002210), Mim (022000), La (002220).
 
