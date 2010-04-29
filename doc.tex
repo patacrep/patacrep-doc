@@ -94,25 +94,39 @@ supprime tous les fichiers générés y compris les pdf.
 génère les partitions dans ./lilypond
 
 %------------------------------------------------------------------------------
-\subsection{Songbook Creator}
+\subsection{Songbook client}
 %------------------------------------------------------------------------------
 
-Une interface graphique est actuellement en développement pour
+Une interface graphique, réalisée en qt4/c++, est disponible pour
 faciliter la création d'un carnet de chants. Il vous faudra au
 préalable quelques dépendances supplémentaires:
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{songbook-client2}
+  \caption{Qt4 client pour la génération des songbooks.}
+  \label{fig:sb-client}
+\end{figure}
+
 \begin{verbatim}
-sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools
+sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools libqt4-sqlite
 \end{verbatim}
 
 Récupération du programme:
 
 \begin{verbatim}
-$ git clone git://github.com/crep4ever/Songbook-Creator.git
-$ cd Songbook-Creator
+$ git clone git://github.com/crep4ever/songbook-client.git
+$ cd songbook-client
 $ make release
 $ ./release/songbook
 \end{verbatim}
+
+Une fois l'application lancée, il est important:
+\begin{itemize}
+\item d'indiquer le chemin du songbook dans les préférences;
+\item de resynchroniser la base de données avec le nouveau répertoire indiqué (File/Synchronize).
+\end{itemize}
+
 
 %*******************************************************************************
 \section{Comment écrire une chanson}
