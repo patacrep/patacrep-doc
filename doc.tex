@@ -434,7 +434,7 @@ Voici néanmoins quelques concepts de base:
 \item les lettres a, b, c, d, e, f, g représente les notes la, si, do,
   ré, mi, fa, sol;
 \item un chiffre derrière une lettre en indique la durée (2=blanche, 4=noire,
-  8=croche) et le ``$\sim$'' désigne une note pointée;
+  8=croche) et un point après un chiffre désigne une note pointée;
 \item \emph{ais}, \emph{bes} désignent un \emph{la dièse} et un \emph{si bémol}
 \item \emph{'} et \emph{,} servent à monter/descendre d'une octave;
 \end{itemize}
@@ -450,33 +450,45 @@ nouveau fichier ma\_partition.ly dans le répertoire songbook/lilypond.
 Il faut inclure le fichier d'en-tête ``header'' et définir l'option
 paper-height de façon à ce que la partition produite tienne sur une
 page avec le moins de blanc possible. Une première estimation est de
-compter 1.6cm pour une ligne.
+compter 1.6cm pour une ligne. Puis, écrivez votre partition entre
+accolades comme dans l'exemple suivant (Tom Sawyer) pour obtenir le
+résultat en Fig.~\ref{fig:lilypond}:
 
 \begin{verbatim}
 \include "header"
-\paper{paper-height = 3.2\cm}
-\end{verbatim}
-
-Puis écrivez votre partition entre accolades comme dans l'exemple
-suivant:
-
-\begin{verbatim}
+\paper{paper-height = 3.3\cm}
 {
-  \relative c'
-  {
-    \time 2/4
-    a'4~ a8 a16 b
-    \repeat volta 2 {d8 c16 b~ b8 a16 b d8 c16 b~ b4 e,8 a16\trill g a8 b16 g d'8. c16 b8\trill a16 b}
-    \alternative { {c8 b\trill a8 b16 c} {c16 a b g a4\trill} }
+  \key c \major
+  \time 2/4
+  \relative c''{
+    e4 c g'2 a4 a8. a16 g8 e4 c8 a'4 a8. a16 g8 f e c d2~ d4
+    e8 f g4 g8. g16 f8 e d c a c4 a8 g4 c8 d e8 g4 g,8 e' e d d c2
   }
 }
 \end{verbatim}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{lilypond}
+  \caption{Intégration de partitions avec Lilypond.}
+  \label{fig:lilypond}
+\end{figure}
 
 Enfin, pour insérer votre partition dans une chanson, insérez la ligne
 suivante à l'endroit désiré dans ma\_chanson.sg:
 
 \begin{verbatim}
 \lilypond{ma_partition}
+\end{verbatim}
+
+Toutes les partitions lilypond présentes dans le répertoire
+songbook/lilypond sont automatiquement générées par le makefile.  Pour
+construire le songbook incluant les partitions lilypond, il suffit de
+faire:
+
+\begin{verbatim}
+$ make lilypond
+$ make lilypondbook.pdf 
 \end{verbatim}
 
 
