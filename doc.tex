@@ -27,6 +27,14 @@
 \tableofcontents
 \newpage
 
+%-------------------------------------------------------------------------------
+% Shell environment
+%-------------------------------------------------------------------------------
+%\newenvironment{shell}
+%{\rule{1ex}{1ex}\hspace{\stretch{1}}}
+%{\hspace{\stretch{1}}\rule{1ex}{1ex}}
+
+
 %*******************************************************************************
 \section*{Introduction}
 %*******************************************************************************
@@ -43,7 +51,7 @@ accord qui sonnerait mieux en le jouant d'une autre façon, etc \dots
 En tous cas, moi oui. Cela fait donc quelques années que j'essaye de
 faire des carnets de chant. Après avoir fait quelques essais mitigés
 avec les outils bureautiques classiques et propriétaires (Word© et
-Publisher© pour ne citer qu'eux), LaTeX m'a enfin permis de faire à
+Publisher© pour ne citer qu'eux), \LaTeX m'a enfin permis de faire à
 peu près ce que je voulais.
 
 %*******************************************************************************
@@ -54,31 +62,67 @@ peu près ce que je voulais.
 \subsection{Dépendances}
 %------------------------------------------------------------------------------
 
-Ce recueil de chansons a été écrit en LaTeX. Pour compiler vous-même
+Ce recueil de chansons a été écrit en \LaTeX. Pour compiler vous-même
 vos propres chansons, vous devez disposer de make, perl, python,
 pdflatex et d'un viewer pdf. Si vous êtes sous Debian/Ubuntu:
 
+\paragraph{Dépendances obligatoires}
 \begin{verbatim}
-$ sudo apt-get install texlive texlive-lang-french texlive-latex-extra python git-core
+//LaTeX
+$ sudo apt-get install texlive-base texlive-lang-french texlive-latex-extra
+//Indexes en python
+$ sudo apt-get install python
+\end{verbatim}
+
+\paragraph{Dépendances optionnelles}
+\begin{verbatim}
+//Pour la génération des partitions Lilypond
+$ sudo apt-get install lilypond
+//Pour récupérer les sources du projet via Git
+$ sudo apt-get install git-core
 \end{verbatim}
 
 %------------------------------------------------------------------------------
-\subsection{À partir des sources}
+\subsection{Récupération des sources}
 %------------------------------------------------------------------------------
 
-La récupération et compilation du carnet de chant se fait de la façon suivante:
+Il y a deux façons de récupérer les fichiers source du carnet de
+chants:
+\begin{itemize}
+\item télécharger l'archive tar.gz
+\item utiliser le gestionnaire de version Git
+\end{itemize}
 
+\paragraph{Depuis l'archive tar.gz}
+Il faut extraire le contenu de l'archive dans le répertoire de votre
+choix. De manière générale, évitez les chemins contenant des espaces
+ou des caractères spéciaux. Dans ce manuel, le répertoire de travail
+est supposé être: \$HOME/songbook pouvant être noté
+/home/user/songbook ou \~/songbook .
 \begin{verbatim}
+$ cd $HOME
+$ wget http://www.patacrep.com/files/songbook.tar.gz
+$ tar xzvf songbook.tar.gz
+\end{verbatim}
+
+\paragraph{Depuis le dépôt git}
+Il est conseillé d'utiliser la méthode utilisant le gestionnaire de
+version git pour des raisons pratiques.
+\begin{verbatim}
+$ cd $HOME
 $ git clone git://git.lohrun.net/songbook.git
-$ cd songbook
-$ make
 \end{verbatim}
 
-Pour mettre à jour le recueil:
+%------------------------------------------------------------------------------
+\subsection{Compilation}
+%------------------------------------------------------------------------------
+
+Un \emph{makefile} automatise tout le processus de compilation. La
+génération du songbook ne demande donc qu'un: 
 
 \begin{verbatim}
-$ cd songbook
-$ git pull
+$ cd $HOME/songbook
+$ make all
 \end{verbatim}
 
 Quelques options de base du makefile:
@@ -91,15 +135,51 @@ books finaux (pdf).
 supprime tous les fichiers générés y compris les pdf.
 
 \paragraph{\$ make lilypond}
-génère les partitions dans ./lilypond
+génère dans ./lilypond les pdf de chaque partition lilypond (.ly)
+trouvée dans ./lilypond. Il est nécessaire d'avoir installé
+\emph{lilypond} au préalable.
+
+\paragraph{\$ make book.pdf}
+la compilation de tous les carnets pouvant être longue, si seule une
+version précise vous intéresse, vous pouvez lancer la compilation d'un
+seul fichier pdf. À la place de \emph{book.pdf}, vous pouvez mettre:
+\begin{itemize}
+\item chordbook.pdf
+\item lyricbook.pdf
+\item lilypondbook.pdf
+\item volume-1-cb.pdf
+\item volume-1-lb.pdf
+\item volume-1-ll.pdf
+\item volume-2-cb.pdf
+\item volume-2-lb.pdf
+\item volume-2-ll.pdf
+\item naheulbeuk-cb.pdf
+\item naheulbeuk-lb.pdf
+\item naheulbeuk-ll.pdf
+\end{itemize}
 
 %------------------------------------------------------------------------------
-\subsection{Songbook client}
+\subsection{Mise à jour}
 %------------------------------------------------------------------------------
 
-Une interface graphique, réalisée en qt4/c++, est disponible pour
-faciliter la création d'un carnet de chants. Il vous faudra au
-préalable quelques dépendances supplémentaires:
+Pour maintenir à jour la version du songbook, vous pouvez télécharger
+la dernière version en mise en ligne de l'archive tar.gz ou, si vous
+avez utilisé git pour récupérer les sources:
+\begin{verbatim}
+$ cd $HOME/songbook
+$ git pull
+\end{verbatim} 
+
+%*******************************************************************************
+\section{Songbook client}
+%*******************************************************************************
+
+%------------------------------------------------------------------------------
+\subsection{Présentation et interface}
+%------------------------------------------------------------------------------
+
+Une interface graphique, réalisée en Qt4/c++, est disponible pour
+faciliter la création d'un recueil de chansons personnalisé.
 
 \begin{figure}
   \centering
@@ -108,24 +188,89 @@ préalable quelques dépendances supplémentaires:
   \label{fig:sb-client}
 \end{figure}
 
+Une présentation du projet peut se trouver sur:
+\begin{itemize}
+\item \url{http://www.ohloh.net/p/songbook-client}
+\item \url{http://github.com/crep4ever/songbook-client}
+\end{itemize}
+
+%------------------------------------------------------------------------------
+\subsection{Installation depuis les sources}
+%------------------------------------------------------------------------------
+
+\paragraph{Dépendances}
 \begin{verbatim}
-sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools libqt4-sqlite
+sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools libqt4-sql-sqlite
 \end{verbatim}
 
-Récupération du programme:
-
+\paragraph{Installation}
 \begin{verbatim}
+$cd $HOME
 $ git clone git://github.com/crep4ever/songbook-client.git
 $ cd songbook-client
-$ make release
-$ ./release/songbook
+$ make
+$ sudo make install
+\end{verbatim}
+
+%------------------------------------------------------------------------------
+\subsection{Installation depuis le paquet Debian}
+%------------------------------------------------------------------------------
+
+Un paquet Debian (.deb) est disponible pour faciliter le processus
+d'installation du songbook-client. 
+
+\begin{verbatim}
+$ cd $HOME
+$ wget http://www.patacrep.com/files/songbook-client-01_amd64.deb
+$ sudo dpkg -i songbook-client-01_amd64.deb
+\end{verbatim}
+
+Note: si le lien n'est pas à jour ou si vous êtes sur une autre
+architecture, allez dans le répertoire
+\url{http://www.patacrep.com/files/} et récupérez le fichier
+.deb adéquat.
+
+%------------------------------------------------------------------------------
+\subsection{Configuration}
+%------------------------------------------------------------------------------
+
+Pour lancer l'application, faîtes Alt+F2 songbook-client ou dans un
+terminal:
+\begin{verbatim}
+$ songbook-client
 \end{verbatim}
 
 Une fois l'application lancée, il est important:
 \begin{itemize}
-\item d'indiquer le chemin du songbook dans les préférences;
-\item de resynchroniser la base de données avec le nouveau répertoire indiqué (File/Synchronize).
+\item d'indiquer le chemin du songbook dans les préférences (par
+  exemple /home/user/songbook). Ce répertoire devant impérativement
+  contenir le makefile et le répertooire songs/ contenant les chansons
+  disponibles;
+\item de resynchroniser la base de données avec le nouveau répertoire
+  indiqué (Fichier/Synchroniser).
 \end{itemize}
+
+%------------------------------------------------------------------------------
+\subsection{Problèmes divers}
+%------------------------------------------------------------------------------
+
+N'hésitez pas à faire remonter les bugs que vous pouvez rencontrer sur
+le forum ou par mail directement. 
+
+\paragraph{Sqlite} Si vous voyez une boîte de dialogue
+d'avertissement se lancer au démarrage de l'application indiquant que
+le support de sqlite est nécessaire, vous ne pourrez pas utiliser
+l'interface. Vérifiez que votre sytème dispose bien du support qt de sqlite.
+
+\paragraph{Pas de partitions}
+Si la compilation de votre recueil de chansons n'intègre pas les
+partitions lilypond malgré l'option \emph{Lilypond} correctement cochée dans les
+préférences, vérifiez que Lilypond est bien installé sur votre système. 
+
+\paragraph{Liste des chansons vide} Vérifiez que le chemin d'accès au
+patacrep songbook est correctement renseigné dans Edition/Préférences.
+Le chemin indiqué doit contenir impérativement le makefile et le
+répertoire songs/
 
 
 %*******************************************************************************
@@ -133,10 +278,10 @@ Une fois l'application lancée, il est important:
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
-\subsection{À propos de LaTeX}
+\subsection{À propos de \LaTeX}
 %------------------------------------------------------------------------------
 
-LaTeX est un logiciel de traitement de texte qui produit un document
+\LaTeX est un logiciel de traitement de texte qui produit un document
 bien formaté d'après des sources (un simple fichier texte). Cela
 permet à l'utilisateur de se concentrer sur le contenu plutôt que sur
 la forme. C'est un langage de programmation basé sur un système de
@@ -267,7 +412,7 @@ convention, utilisez 2 colonnes par défaut.
 %------------------------------------------------------------------------------
 
 Quelques caractères doivent être codés différemment en utilisant des
-commandes LaTeX pour un meilleur résultat. Les deux exemples
+commandes \LaTeX pour un meilleur résultat. Les deux exemples
 principaux sont les 3 points (...) et le caractère \oe{}. Pour
 représenter ces caractères, vous devez utiliser respectivement les
 commandes ${\backslash dots}$ et ${\backslash oe}$. On utilise des
@@ -351,10 +496,15 @@ de l'ajouter au carnet de chant ``officiel''. Comme toujours les
 contributeurs sont les bienvenus.
 
 \begin{itemize}
-\item envoyez directement vos remarques par mail à crep@team-on-fire.com;
+\item envoyez directement vos remarques par mail à
+  \url{crep@team-on-fire.com};
 \item utilisez le forum comme bon vous semble;
 \item envoyez des patch;
 \end{itemize}
+
+%-------------------------------------------------------------------------------
+\subsection{Création d'un patch}
+%-------------------------------------------------------------------------------
 
 Le meilleur moyen est de nous envoyer un patch. Techniquement, un
 patch est un simple fichier texte qui indique les opérations
@@ -382,20 +532,40 @@ par
 \end{verbatim}
 
 Concrètement, si vous avez suivi la procédure d'installation,
-vous devriez avoir un répertoire $\sim$/songbook contenant toutes les
+vous devriez avoir un répertoire \$HOME/songbook/ contenant toutes les
 sources du carnet de chant. Maintenant, vous avez repéré une erreur
 dans la chanson songs/artiste/chanson.sg. Ouvrez le fichier
 correspondant avec votre éditeur de texte préféré, faîtes votre
 correction, enregistrez, fermez. Puis, dans un terminal:
 
 \begin{verbatim}
-$ cd ~/songbook
+$ cd $HOME/songbook
 $ git diff -u songs/artiste/chanson.sg > patch
 \end{verbatim}
 
 Cela va vous créer un nouveau fichier "patch" qui contiendra
 l'ensemble des modifications que vous avez apportées à votre
 chanson. Plus qu'à nous l'envoyer !
+
+%-------------------------------------------------------------------------------
+\subsection{Création de votre version du songbook}
+%-------------------------------------------------------------------------------
+
+Si vous prévoyez de faire beacoup de modifications ou de rejoindre
+activement le développement du songbook, le sytème de patch n'est pas
+forcément adapté et il vaut mieux dans ce cas partir sur votre propre
+version du songbook. La meilleure solution consiste à faire un
+\emph{fork} du projet git et de l'héberger sur le web si vous comptez
+la partager. Des solutions web gratuites permettent d'héberger de tels
+projets. Par exemple:
+\begin{itemize}
+\item \url{http://github.com}
+\item \url{http://gitorious.org}
+\end{itemize}
+
+Il suffit alors de nous communiquer l'adresse de votre dépôt git de
+façon à ce que nous puissions récupérer vos changements que l'on
+trouvera intéressants.
 
 
 
@@ -438,6 +608,14 @@ Voici néanmoins quelques concepts de base:
 \item \emph{ais}, \emph{bes} désignent un \emph{la dièse} et un \emph{si bémol}
 \item \emph{'} et \emph{,} servent à monter/descendre d'une octave;
 \end{itemize}
+
+Lilypond est généralement packagé pour les distributions
+GNU/Linux. Pour des distributions basées Debian/Ubuntu, l'installation
+se fait par:
+
+\begin{verbatim}
+$ sudo apt-get install lilypond
+\end{verbatim}
 
 
 %------------------------------------------------------------------------------
@@ -482,7 +660,7 @@ suivante à l'endroit désiré dans ma\_chanson.sg:
 \end{verbatim}
 
 Toutes les partitions lilypond présentes dans le répertoire
-songbook/lilypond sont automatiquement générées par le makefile.  Pour
+songbook/lilypond sont automatiquement générées par le makefile. Pour
 construire le songbook incluant les partitions lilypond, il suffit de
 faire:
 
@@ -500,19 +678,21 @@ Des scripts utilitaires sont disponibles dans le répertoire
 songbook/utils. On les exécute classiquement en faisant:
 
 \begin{verbatim}
-$ cd songbook
+$ cd $HOME/songbook
 $ ./utils/script.sh
 \end{verbatim}
 
 \paragraph{Resize cover}
 Permet de redimmensionner automatiquement tous les fichiers .jpg du
-répertoire songbook/songs correspondant aux pochettes des albums.
-À exécuter après l'ajout d'une nouvelle chanson.
+répertoire songbook/songs correspondant aux pochettes des albums.  À
+exécuter après l'ajout d'une nouvelle pochette (jpg recommandé, png
+supporté).
 
 \paragraph{Latex preprocessing}
-Applique un ensemble de règles automatiques pour les notations LaTeX
+Applique un ensemble de règles automatiques pour les notations \LaTeX
 de certains caractères et pour les notations d'accords.
-À exécuter après l'ajout d'une nouvelle chanson.
+À exécuter après l'ajout d'une nouvelle chanson pour être sûr de
+respecter les standards du songbook.
 
 \paragraph{New songs list}
 Permet de récupérer la liste des chansons ajoutées depuis la dernière
