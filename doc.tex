@@ -74,7 +74,7 @@ $ sudo apt-get install texlive-base texlive-lang-french texlive-latex-extra
 $ sudo apt-get install python
 \end{verbatim}
 
-\paragraph{Dépendances optionnelles}
+\paragraph{Dépendances recommandées}
 \begin{verbatim}
 //Pour la génération des partitions Lilypond
 $ sudo apt-get install lilypond
@@ -105,9 +105,9 @@ $ wget http://www.patacrep.com/files/songbook.tar.gz
 $ tar xzvf songbook.tar.gz
 \end{verbatim}
 
-\paragraph{Depuis le dépôt git}
+\paragraph{Depuis le dépôt Git}
 Il est conseillé d'utiliser la méthode utilisant le gestionnaire de
-version git pour des raisons pratiques.
+version Git pour des raisons pratiques.
 \begin{verbatim}
 $ cd $HOME
 $ git clone git://git.lohrun.net/songbook.git
@@ -142,7 +142,7 @@ trouvée dans ./lilypond. Il est nécessaire d'avoir installé
 \paragraph{\$ make book.pdf}
 la compilation de tous les carnets pouvant être longue, si seule une
 version précise vous intéresse, vous pouvez lancer la compilation d'un
-seul fichier pdf. À la place de \emph{book.pdf}, vous pouvez mettre:
+seul fichier pdf. Notez que la commande ``make'' sans option correspond à un ``make chordbook.pdf''. À la place de \emph{book.pdf}, vous pouvez mettre:
 \begin{itemize}
 \item chordbook.pdf
 \item lyricbook.pdf
@@ -164,7 +164,7 @@ seul fichier pdf. À la place de \emph{book.pdf}, vous pouvez mettre:
 
 Pour maintenir à jour la version du songbook, vous pouvez télécharger
 la dernière version en mise en ligne de l'archive tar.gz ou, si vous
-avez utilisé git pour récupérer les sources:
+avez utilisé Git pour récupérer les sources:
 \begin{verbatim}
 $ cd $HOME/songbook
 $ git pull
@@ -178,7 +178,7 @@ $ git pull
 \subsection{Présentation et interface}
 %------------------------------------------------------------------------------
 
-Une interface graphique, réalisée en Qt4/c++, est disponible pour
+Une interface graphique, réalisée en Qt4/C++, est disponible pour
 faciliter la création d'un recueil de chansons personnalisé.
 
 \begin{figure}
@@ -205,7 +205,7 @@ sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools libqt4-sql-sq
 
 \paragraph{Installation}
 \begin{verbatim}
-$cd $HOME
+$ cd $HOME
 $ git clone git://github.com/crep4ever/songbook-client.git
 $ cd songbook-client
 $ make
@@ -244,7 +244,7 @@ Une fois l'application lancée, il est important:
 \begin{itemize}
 \item d'indiquer le chemin du songbook dans les préférences (par
   exemple /home/user/songbook). Ce répertoire devant impérativement
-  contenir le makefile et le répertooire songs/ contenant les chansons
+  contenir le makefile et le répertoire songs/ contenant les chansons
   disponibles;
 \item de resynchroniser la base de données avec le nouveau répertoire
   indiqué (Fichier/Synchroniser).
@@ -260,15 +260,15 @@ le forum ou par mail directement.
 \paragraph{Sqlite} Si vous voyez une boîte de dialogue
 d'avertissement se lancer au démarrage de l'application indiquant que
 le support de sqlite est nécessaire, vous ne pourrez pas utiliser
-l'interface. Vérifiez que votre sytème dispose bien du support qt de sqlite.
+l'interface. Vérifiez que votre système dispose bien du support Qt de sqlite.
 
 \paragraph{Pas de partitions}
 Si la compilation de votre recueil de chansons n'intègre pas les
-partitions lilypond malgré l'option \emph{Lilypond} correctement cochée dans les
+partitions malgré l'option \emph{Lilypond} correctement cochée dans les
 préférences, vérifiez que Lilypond est bien installé sur votre système. 
 
 \paragraph{Liste des chansons vide} Vérifiez que le chemin d'accès au
-patacrep songbook est correctement renseigné dans Edition/Préférences.
+patacrep songbook est correctement renseigné dans Édition/Préférences.
 Le chemin indiqué doit contenir impérativement le makefile et le
 répertoire songs/
 
@@ -292,12 +292,12 @@ de la commande. Ensuite viennent les arguments, si il y en a, entre
 accolades (obligatoires) ou crochets (optionnels).
 
 %------------------------------------------------------------------------------
-\subsection{Élements principaux}
+\subsection{Éléments principaux}
 %------------------------------------------------------------------------------
 
 Une chanson est un simple fichier texte ``'ma\_chanson.sg'' que l'on
-place dans le répertoire songs/Artiste. Par convention, les espaces ne
-sont pas tolérés (utiliser des underscores \_). L'entête d'un fichier
+place dans le répertoire songs/Artiste. Les espaces n'étant
+pas tolérés, veillez à utiliser des underscores \_. L'entête d'un fichier
 .sg se présente de la manière suivante:
 
 \begin{verbatim}
@@ -312,12 +312,13 @@ de couplets (verse en anglais) et de refrains (chorus). Un couplet est
 donc encadré par les balises \emph{beginverse} et \emph{endverse}. De
 la même manière, un refrain se trouve entre les balises
 \emph{beginchorus} et \emph{endchorus}.  Les paroles sont écrites
-normalement entre le $\backslash begin$ et le $\backslash end$. Pour
-préciser sur qelle syllabe un accord doit être joué, on utilise une
-commande spéciale. Par exemple, la commande $\backslash [Mi]$ produira
+normalement entre le $\backslash$begin et le $\backslash$end. Pour
+préciser sur quelle syllabe un accord doit être joué, on utilise une
+commande spéciale. Par exemple, la commande $\backslash$[Mi] produira
 un Mi au dessus de la syllabe suivante. Vous pouvez utiliser n'importe
 quel texte pour désigner un accord.
 
+\begin{center}
 \begin{verbatim}
 \beginverse
 His \[Rém]steely skin is covered
@@ -326,6 +327,7 @@ By \[Fa]centuries of dust
 \[Rém]Now he's dull and rust
 \endverse
 \end{verbatim}
+\end{center}
 
 Chaque chanson se termine avec la commande \emph{endsong}.
 
@@ -338,9 +340,9 @@ Chaque chanson se termine avec la commande \emph{endsong}.
 %------------------------------------------------------------------------------
 
 Par défaut, l'accord est majeur (Do fait référence à l'accord de Do
-majeur). Les accords mineurs sont précisés par un m minuscule.  Le
-symbole ``bémol'' est représenté en utilisant le caractère ``\&''.  Le
-dièse est codé par le caractère ``\#''. Les autres notations sont
+majeur). Les accords mineurs sont précisés par un ``m'' minuscule.  Le
+symbole bémol ($\flat$) est représenté en utilisant le caractère ``\&''.  Le
+dièse ($\sharp$) est codé par le caractère ``\#''. Les autres notations sont
 simplement ajoutées comme des caractères à l'accord principal. Par
 exemple, l'accord de ``La bémol mineur'' est noté ``La\&m''.
 
@@ -415,18 +417,19 @@ Quelques caractères doivent être codés différemment en utilisant des
 commandes \LaTeX pour un meilleur résultat. Les deux exemples
 principaux sont les 3 points (...) et le caractère \oe{}. Pour
 représenter ces caractères, vous devez utiliser respectivement les
-commandes ${\backslash dots}$ et ${\backslash oe}$. On utilise des
-accolades autour des commandes de sorte que les commandes puissent
-être insérées où vous le désirez sans interférer avec le reste du
-texte. Voir aussi section\,\ref{sect:utilitaires}.
+commandes ${\backslash dots}$ et ${\backslash oe}$ (ou utiliser le
+caractère utf8 ``œ''). On utilise des accolades autour des commandes de
+sorte que les commandes puissent être insérées où vous le désirez sans
+interférer avec le reste du texte. Voir aussi
+section\,\ref{sect:utilitaires}.
 
 %------------------------------------------------------------------------------
 \subsection{Ch\oe{}urs et répétitions}
 %------------------------------------------------------------------------------
 
 Pour produire un signe de répétition vous pouvez utiliser la commande
-$\backslash rep$. Pour faire répéter quatre fois une ligne utilisez la
-commande suivante à la fin de la ligne. La commande $\backslash echo$
+$\backslash$rep. Pour faire répéter quatre fois une ligne utilisez la
+commande suivante à la fin de la ligne. La commande $\backslash$echo
 fait référence à des ch\oe{}urs (ou similaire).
 
 \begin{verbatim}
@@ -551,21 +554,20 @@ chanson. Plus qu'à nous l'envoyer !
 \subsection{Création de votre version du songbook}
 %-------------------------------------------------------------------------------
 
-Si vous prévoyez de faire beacoup de modifications ou de rejoindre
-activement le développement du songbook, le sytème de patch n'est pas
+Si vous prévoyez de faire beaucoup de modifications ou de rejoindre
+activement le développement du songbook, le système de patch n'est pas
 forcément adapté et il vaut mieux dans ce cas partir sur votre propre
 version du songbook. La meilleure solution consiste à faire un
-\emph{fork} du projet git et de l'héberger sur le web si vous comptez
-la partager. Des solutions web gratuites permettent d'héberger de tels
+\emph{fork} du projet Git et de l'héberger sur le web si vous comptez
+le partager. Des solutions web gratuites permettent d'héberger de tels
 projets. Par exemple:
 \begin{itemize}
 \item \url{http://github.com}
 \item \url{http://gitorious.org}
 \end{itemize}
 
-Il suffit alors de nous communiquer l'adresse de votre dépôt git de
-façon à ce que nous puissions récupérer vos changements que l'on
-trouvera intéressants.
+Il suffit alors de nous communiquer l'adresse de votre dépôt Git de
+façon à ce que nous puissions récupérer vos changements.
 
 
 
@@ -596,7 +598,7 @@ trouvera intéressants.
 \subsection{Lilypond}
 %------------------------------------------------------------------------------
 
-La documentation du projet lilypond est très
+La documentation du projet Lilypond est très
 claire et se trouve sur le site \url{http://lilypond.org/}.
 Voici néanmoins quelques concepts de base:
 
@@ -609,7 +611,7 @@ Voici néanmoins quelques concepts de base:
 \item \emph{'} et \emph{,} servent à monter/descendre d'une octave;
 \end{itemize}
 
-Lilypond est généralement packagé pour les distributions
+Lilypond est généralement empaqueté pour les distributions
 GNU/Linux. Pour des distributions basées Debian/Ubuntu, l'installation
 se fait par:
 
@@ -683,8 +685,8 @@ $ ./utils/script.sh
 \end{verbatim}
 
 \paragraph{Resize cover}
-Permet de redimmensionner automatiquement tous les fichiers .jpg du
-répertoire songbook/songs correspondant aux pochettes des albums.  À
+Permet de redimensionner automatiquement tous les fichiers .jpg du
+répertoire songbook/songs correspondant aux pochettes des albums. À
 exécuter après l'ajout d'une nouvelle pochette (jpg recommandé, png
 supporté).
 
@@ -776,7 +778,7 @@ difficile de maîtriser la main droite que la main gauche.
 Voici quelques motifs assez passe-partout pour vos morceaux.
 
 \paragraph{Rythme ``à la Brassens''} Il s'agit d'alterner une basse (pouce)
-avec 3 aigues simultanées (index, majeur, annulaire), 2 ou 4 fois par
+avec 3 aiguës simultanées (index, majeur, annulaire), 2 ou 4 fois par
 accord. En général, les 3 aiguës sont les 3 cordes aiguës 4,5,6 (Sol,
 Si, mi) et la basse alterne entre les cordes 1,2,3 (Mi, La, Ré) mais
 souvent dans l'ordre 2,1.
