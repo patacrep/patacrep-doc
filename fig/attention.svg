@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="137.522"
+   id="Layer_1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="attention.svg"
+   sodipodi:version="0.32"
+   space="preserve"
+   style="overflow:visible;enable-background:new 0 0 137.561 137.522;"
+   version="1.1"
+   viewBox="0 0 137.561 137.522"
+   width="137.561">
+  <metadata
+     id="metadata3">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Tasto 10</dc:title>
+        <dc:description />
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>unsorted</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://www.openclipart.org/">
+            <dc:title>Open Clip Art Library</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Architetto Francesco Rollandin</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Architetto Francesco Rollandin</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:date />
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:language>en</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs27">
+    <linearGradient
+       id="linearGradient3610">
+      <stop
+         style="stop-color:#73d216;stop-opacity:1;"
+         offset="0"
+         id="stop3612" />
+      <stop
+         style="stop-color:#73d216;stop-opacity:0;"
+         offset="1"
+         id="stop3614" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 68.761002 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="137.561 : 68.761002 : 1"
+       inkscape:persp3d-origin="68.780502 : 45.840668 : 1"
+       id="perspective19" />
+    <radialGradient
+       r="63.9294"
+       id="XMLID_2_"
+       gradientUnits="userSpaceOnUse"
+       cy="68.7383"
+       cx="68.7954">
+      <stop
+         style="stop-color:#F28888"
+         offset="0"
+         id="stop8" />
+      <stop
+         style="stop-color:#D82A2A"
+         offset="1"
+         id="stop10" />
+    </radialGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3610"
+       id="radialGradient3616"
+       cx="68.795"
+       cy="68.738"
+       fx="68.795"
+       fy="68.738"
+       r="63.929"
+       gradientTransform="matrix(1,0,0,1.0000156,0,-0.00107522)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     bordercolor="#666666"
+     borderopacity="1.0"
+     id="base"
+     inkscape:current-layer="Layer_1"
+     inkscape:cx="-18.841716"
+     inkscape:cy="98.960835"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:window-height="975"
+     inkscape:window-width="1680"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:zoom="1.8510379"
+     pagecolor="#ffffff"
+     showgrid="false"
+     inkscape:window-maximized="1" />
+  <path
+     style="fill:#4e9a06;stroke:#2e3436"
+     id="path5"
+     d="m 0,68.736 c 0,35.047 27.489,65.293 62.416,68.504 34.939,3.211 67.633,-21.357 74.024,-55.91 C 142.831,46.784 121.27,11.987 87.414,2.493 53.547,-7.005 16.951,11.434 4.462,44.311 1.504,52.097 0,60.408 0,68.736" />
+  <path
+     style="fill:url(#radialGradient3616);fill-opacity:1"
+     id="path12"
+     d="m 4.866,68.736 c 0,34.84 29.089,63.932 63.929,63.932 34.839,0 63.929,-29.092 63.929,-63.932 0,-34.838 -29.09,-63.928 -63.929,-63.928 C 33.956,4.809 4.866,33.898 4.866,68.736" />
+  <path
+     style="fill:#4e9a06"
+     id="path14"
+     d="m 11.031,43.889 c -5.166,30.106 12.817,60.349 41.733,70.201 30.669,10.451 65.179,-4.994 78.005,-34.7 -6.163,35.951 -43.128,59.583 -78.349,50.078 C 16.055,119.655 -3.957,78.563 11.031,43.889" />
+  <path
+     style="fill:#8ae234;fill-opacity:1;opacity:0.62081784"
+     id="path16"
+     d="m 28.866,40.359 c 8.843,1.829 19.021,-10.696 26.687,-13.884 14.322,-5.952 32.211,-3.188 45.186,4.917 13.725,8.577 23.487,25.046 24.988,41.214 0.005,0.046 0.005,0.055 10e-4,0.024 C 124.714,62.84 125.399,53.636 121.67,44.172 115.492,28.486 102.132,16.202 86.024,11.265 69.369,6.163 51.156,9.411 36.808,19.135 32.378,22.137 15.325,37.556 28.866,40.359" />
+  <path
+     style="fill:#2e3436;fill-rule:evenodd"
+     id="path18"
+     d="m 56.402,29.004 c 0,12.468 2.023,25.46 3.989,37.73 0.611,3.81 6.289,34.225 12.748,19.444 6.113,-13.989 6.633,-31.416 7.934,-46.428 0.374,-4.312 1.738,-10.094 0.152,-14.32 -4.347,-11.588 -24.823,-9.531 -24.823,3.574 m 2.83,0 c 0,-9.723 15.119,-11.221 19.028,-3.301 2.143,4.336 0.3,11.619 -0.168,16.177 -1.413,13.733 -2.669,28.264 -6.791,41.504 -0.96,3.083 -2.245,6.081 -3.875,1.675 C 65.383,79.538 64.527,73.475 63.579,67.695 61.503,55.065 59.232,41.844 59.232,29.004" />
+  <path
+     style="fill:#2e3436;fill-rule:evenodd"
+     id="path20"
+     d="m 55.695,107.186 c 0,16.873 26.18,16.873 26.18,0 0,-16.877 -26.18,-16.879 -26.18,0 m 2.833,0 c 0,-13.229 20.511,-13.229 20.511,0 0,13.226 -20.511,13.226 -20.511,0" />
+  <path
+     style="fill:#d3d7cf;fill-rule:evenodd"
+     id="path22"
+     d="m 80.459,29.004 c 0,12.923 -2.271,26.35 -4.382,39.055 C 75.566,71.125 70.98,97.798 66.181,85.205 60.975,71.549 60.151,55.453 58.739,41.032 58.296,36.513 56.66,29.928 58.526,25.548 c 4.151,-9.753 21.933,-7.942 21.933,3.456" />
+  <path
+     style="fill:#d3d7cf;fill-rule:evenodd"
+     id="path24"
+     d="m 80.459,107.186 c 0,15.054 -23.347,15.054 -23.347,0 0,-15.057 23.347,-15.057 23.347,0" />
+</svg>

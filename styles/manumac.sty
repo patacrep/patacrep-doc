@@ -1,0 +1,402 @@
+\RequirePackage{fancyvrb,texcode}
+\RequirePackage{ifthen,calc,fancybox}
+
+\newcommand{\WYS}{Wysiwyg\protect\index{wysiwyg@Wysiwyg}}
+\newcommand{\dvi}{\texttt{dvi}}
+\newcommand{\cpp}{\textsf{C\kern-.1em\raise0.35ex\hbox{+\kern-0.1em+}}}
+
+\newcommand{\postscript}{%
+  PostScript%
+  \protect\index{PostScript}}
+
+%
+% jargon anglais
+%
+\newcommand{\anglaiswi}[1]{{\itshape#1}}
+\newcommand{\anglais}[1]{%
+  \anglaiswi{#1}%
+  \protect\index{#1}%
+}
+
+% 
+% problème des « »
+%
+\catcode`\«=\active
+\catcode`\»=\active
+\newcommand{\fermerguillemets}{\unskip\kern.15em\symbol{20}}
+\newcommand{\ouvrerguillemets}{\symbol{19}\ignorespaces\kern.15em}
+\let»=\fermerguillemets
+\let«=\ouvrerguillemets
+
+%»
+
+\newcommand{\uns@ft}[1]{{\mdseries\sffamily\upshape#1}}
+
+\ifx\unix\@undefined
+\newcommand{\unix}{{\rmfamily\scshape Unix}%
+  \protect\index{unix@\textsc{Unix}}}
+\newcommand{\unixwi}{{\rmfamily\scshape Unix}}
+\fi
+
+
+\newcommand{\soft}[1]{%
+  \uns@ft{#1}%
+  \protect\index{#1@\textsf{#1}}%
+  \protect\index{logiciels connexes!#1@\textsf{#1}}}
+
+\newcommand{\softwi}[1]{%
+  \uns@ft{#1}}
+
+
+% ---------------------argument de commande ou de fonction...-------
+\newcommand{\bwarg}[2][]{%
+  {\normalfont\textsl{$\langle$#2%
+      \ifthenelse{\equal{#1}{}}{}{$_\mathit{#1}$}$\rangle$}}}
+
+\newcommand{\colarg}[2][]{{\normalfont\color{tango-red-3}#2%
+  \ifthenelse{\equal{#1}{}}{}{$_\mathit{#1}$}}}
+
+\ifframabookversion%
+   \ifversionenligne\let\marg\colarg\else\let\marg\bwarg\fi
+\else
+  \ifpdf\let\marg\colarg\else\let\marg\bwarg\fi%
+\fi
+
+% les images
+\newif\ifdraft
+\draftfalse
+
+%
+% Inclusion de code avec psfrag
+%
+\newcommand{\includepsfraggraphics}[2][]{%
+  \ifpdf
+  \includegraphics[#1]{#2}
+  \else
+  \input{texs/#2}
+  \fi}
+
+\newcommand{\includepstricksgraphics}[1]{%
+  \ifpdf\includegraphics{#1}\else\input{../texs/#1}\fi}
+
+
+\newcommand{\touche}[1]{\Ovalbox{\rule[-1pt]{0pt}{8pt}{\sffamily
+      \footnotesize#1}}}
+
+
+\newcommand{\testefonte}[4]{%
+    \fontencoding{#1}%
+    \fontfamily{#2}%
+    \fontseries{#3}%
+    \fontshape{#4}%
+    \selectfont}
+
+\newcommand{\phrasetest}{machin Bidule Chouette chose}
+
+\newenvironment{decritfonte}[3][\encodingdefault]{%
+  \begin{center}
+    \setlength{\extrarowheight}{2pt}
+%    \begin{tabular}{|l|l@{\,}l@{\,}l@{\,}l|c|}\hline}%
+    \begin{tabular}{|l|c|c|c|}\hline%
+      \multicolumn{1}{|c|}{#2 (#3)}&
+      \multicolumn{3}{c|}{Codage #1}\\
+      \hline
+    }%
+    {\hline%
+    \end{tabular}
+  \end{center}}
+
+\newcommand{\descriptionfonte}[5][\encodingdefault]{%
+  {\testefonte{#1}{#2}{#3}{#4}\phrasetest}&#3&#4&#5\\\hline}
+
+%
+% la liste des fichiers auxiliaires
+%
+\newenvironment{ficaux}{%
+  \begin{list}{}{%
+      \setlength{\labelsep}{8pt}%
+      \setlength{\labelwidth}{1cm}%
+      \setlength{\leftmargin}{\labelwidth+\labelsep}%
+      \renewcommand{\makelabel}[1]{%
+        \framebox[\labelwidth][c]{\texttt{##1}}}}}{\end{list}}
+
+
+\newcommand{\etiquettequestion}[1]{%
+  \makebox[\labelwidth]{\Pisymbol{pzd}{47}$_\thecptquestion$}%
+}
+
+\newcounter{cptquestion}
+\newenvironment{question}{\begin{list}{}{%
+      \usecounter{cptquestion}%
+      \setlength{\labelwidth}{2em}%
+      \setlength{\labelsep}{1em}
+      \setlength{\itemindent}{9pt}%
+      \setlength{\leftmargin}{.8cm}
+      \setlength{\rightmargin}{10pt}
+      \renewcommand{\makelabel}[1]{\etiquettequestion{##1}}
+    }
+  }
+{\end{list}}
+
+
+\newenvironment{madescription}{\begin{list}{}{%
+      \setlength{\labelwidth}{.5\textwidth}%
+      \setlength{\labelsep}{-.8\labelwidth}%
+      \setlength{\itemindent}{\parindent}%
+      \setlength{\leftmargin}{25pt}%
+      \setlength{\rightmargin}{0pt}%
+      \renewcommand{\makelabel}[1]{\boiteentreeglossaire{##1}}
+    }
+  }
+{\end{list}}
+
+%
+% Un jolie listounette pour les packages en annexes
+%
+\newenvironment{packages}{\begin{list}{}{%
+      \setlength{\labelwidth}{2.5cm}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\leftmargin}{\labelwidth+\labelsep}%
+      \renewcommand{\makelabel}[1]{%
+        $\blacktriangle$ \ltxpack{##1} \hfil:}}}{\end{list}}
+
+
+%
+% listes des symboles
+%
+
+
+\newcounter{clig}
+\newcounter{csym}
+\newcounter{cligmax}
+\newcounter{ccol}
+\newcounter{ccolmax}
+
+\newcommand{\affsymb}[2]{%
+  \framebox{%
+    \parbox[][16pt][b]{1.1em}{%
+      \centering%
+      \Pisymbol{#1}{#2}\\
+      \tiny#2}}}
+
+\newcommand{\symboles}[4][0]{%
+  \setcounter{clig}{0}\setcounter{cligmax}{#3}%
+  \setcounter{ccol}{0}\setcounter{ccolmax}{#4}%
+  \whiledo{\value{clig}<\value{cligmax}}{%
+    \setcounter{ccol}{0}%
+    \whiledo{\value{ccol}<\value{ccolmax}}{%
+      \setcounter{csym}{\value{clig}*\value{ccolmax}+\value{ccol}+#1}
+      \ifthenelse{\value{csym}<256}{\affsymb{#2}{\thecsym}}{\mbox{}}%
+      \stepcounter{ccol}}
+    \stepcounter{clig}%
+    \ifthenelse{\value{clig}<\value{cligmax}}{\\}{}}}
+
+\let\symcenter\center
+\let\endsymcenter\endcenter
+
+
+
+
+%
+% pour le chapitre wizard
+%
+\newlength{\tmplength}
+
+\newcommand{\tracelongueur}[1]{%
+   \rule{0.6pt}{0.5\baselineskip}%
+   \rule{#1}{0.6pt}%
+   \rule{0.6pt}{0.5\baselineskip}}
+
+\newlength{\longespace}
+\newcommand{\espace}[1]{%
+   \settowidth{\longespace}{#1}%
+   \tracelongueur{\longespace}%
+}
+\newcommand{\longueur}[1]{%
+   \tracelongueur{#1}}
+
+\newsavebox{\boitecar}%                % boite pour la lettre
+\newlength{\interletter}%              %espace entre deux lettres
+\newlength{\letterwidth}%              %largeur d'une lettre
+\newcommand{\refpoint}{\raisebox{-0.5\height}{\tiny$\circ$}}
+
+\newcommand{\letterbox}[1]{%
+   \setlength{\fboxsep}{0pt}%            
+   \setlength{\fboxrule}{0.2pt}%            
+   \sbox{\boitecar}{\framebox{\Huge#1}}%  
+   \settowidth{\letterwidth}{\usebox{\boitecar}}%
+   \settowidth{\interletter}{\Huge#1}%
+   \makebox[0pt]{\refpoint}%
+   \usebox{\boitecar}%
+   \kern-\fboxrule%
+}
+
+%
+% pour l'exemple du wysiwyg
+%
+\def\Toutelettre#1{\expandafter\@Toutelettre\csname c@#1\endcsname}
+\def\@Toutelettre#1{%
+  \ifcase#1\or Un\or Deux\or Trois\or Quatre\or Cinq\or Six\or Sept\or Huit\or
+  Neuf\or Dix\else\@ctrerr\fi}
+
+
+%---------------------------------------------------------------------
+%
+% pour changer les marges localement (merci Marie Paul ;-)
+%
+%----------------------------------------------------------------------
+
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+\newenvironment{agrandirmarges}[2]{%
+  \begin{list}{}{%
+      \setlength{\topsep}{0pt}%
+      \setlength{\listparindent}{\parindent}%
+      \setlength{\itemindent}{\parindent}%
+      \setlength{\parsep}{0pt plus 1pt}%
+      \checkoddpage%
+      \ifcpoddpage
+        \setlength{\leftmargin}{-#1}\setlength{\rightmargin}{-#2}
+      \else
+        \setlength{\leftmargin}{-#2}\setlength{\rightmargin}{-#1}
+      \fi}\item }%
+  {\end{list}}
+
+
+\newcommand{\mafraction}[2]{%
+  \raisebox{0.5ex}{#1}%
+  \slash\raisebox{-0.5ex}{#2}}
+
+
+\newcommand{\contenu}[1]{%
+  \ifthenelse{\equal{#1}{b}}{\raisebox{-5pt}[0pt]}{\raisebox{5pt}[0pt]}}
+
+\newlength{\tempdimdemobox}
+
+\newcommand{\point}[2]{% #1 (r ou l) #2 ($\bullet$ par ex.)
+  \ifthenelse{\equal{#1}{r}}{%
+      \setlength{\tempdimdemobox}{\fboxsep+.5\fboxrule}}{%
+      \setlength{\tempdimdemobox}{-\fboxsep-.5\fboxrule}}%
+  \makebox[0pt][l]{%
+    \hspace{\tempdimdemobox}\makebox[0pt]{#2}}}
+  
+\newcommand{\boxdemo}[6][-5pt]{%
+  \fbox{%
+    \rule[#1]{0pt}{#2}%
+    \ifthenelse{\equal{#3}{r}}{% point à droite
+      \contenu{#5}{\footnotesize#6}%
+      \point{r}{#4}}{% sinon
+      \ifthenelse{\equal{#3}{l}}{% point à gauche
+        \point{l}{#4}%
+        \contenu{#5}{\footnotesize#6}}{% sinon
+        \settowidth{\tempdimdemobox}{\footnotesize#6}%
+        \makebox[0pt][l]{%
+          \hspace{.5\tempdimdemobox}\makebox[0pt]{#4}}%
+        \contenu{#5}{\footnotesize#6}%        
+        }}}}
+
+\newcommand{\chaine}{{\ttfamily chaîne}}
+\newcommand{\ekouation}{\marg{équation}}
+
+
+\newsavebox{\b@iteb@xedminipage}
+
+\newenvironment{boxedminipage}[2][c]{%
+  \begin{lrbox}{\b@iteb@xedminipage}%
+    \begin{minipage}[#1]{#2}}{%
+    \end{minipage}\end{lrbox}%
+  \fbox{\usebox{\b@iteb@xedminipage}}}
+
+
+\newcounter{cptfact}
+\newcounter{car}
+
+\newcommand{\jeblague}{{\ttfamily%
+    :\kern-2pt-\kern-2pt\raisebox{-1pt}{)}}}
+
+\newcommand{\marquedeposee}{%
+  \raisebox{1ex}{%
+    {\rmfamily\scriptsize\textregistered}}}
+
+% un nom propre
+\newcommand{\nom}[1]{%
+  \textsc{#1}}
+%  \protect\index[aut]{#1,@\textsc{#1}|textrm}}
+
+% operateur moyenne
+\makeatletter
+\def\moy{\mathop{\operator@font moy}}
+\makeatother
+
+%
+% référence à une sous figure dans la légende
+%
+\makeatletter
+\def\caprefsubfig #1{%
+    \edef\nimporte{\HyPsd@ref{#1}}%
+    \@expandtwoargs\in@{(}\nimporte
+    \ifin@
+      \expandafter\@getsubfig\nimporte
+    \else
+      (??)
+    \fi
+}
+\def\@getsubfig #1(#2){(#2)}
+\makeatother
+
+\DeclareMathOperator*{\vlunch}{vlunch}
+\DeclareMathOperator{\zirgl}{Zirgl}
+
+
+\lstnewenvironment{makefile}[1][]{%
+  \lstset{language=make,
+    frame=single,
+    basicstyle=\ttfamily,
+    commentstyle=\rmfamily\itshape,
+    extendedchars=true,
+    flexiblecolumns=true,
+    escapechar=ø,
+    xrightmargin=10pt,
+    xleftmargin=10pt,
+    #1
+  }}{}
+
+
+%
+% environnements basés sur fancyvrb
+%
+\DefineVerbatimEnvironment{monverbatim}{Verbatim}{%
+  commandchars=¢«»,
+  frame=lines,
+  framerule=0pt,
+  framesep=-2mm,
+  gobble=2,
+  xleftmargin=15pt}
+
+\DefineVerbatimEnvironment{unixcom}{Verbatim}{%
+  commandchars=¢«»,
+  frame=leftline,
+  framerule=1mm,
+  framesep=2mm,
+  fontfamily=ccr,
+  gobble=2,
+  xleftmargin=15pt}
+
+\DefineVerbatimEnvironment{emacscom}{Verbatim}{%
+  commandchars=¢«»,
+  frame=leftline,
+  framerule=1mm,
+  framesep=2mm,
+  gobble=2,
+  fontfamily=helvetica,
+  fontsize=\small,
+  xleftmargin=15pt}
+
+\endinput

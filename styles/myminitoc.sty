@@ -1,0 +1,75 @@
+%---------------------------------------------------------------------------
+%
+% mini table des matières
+% reprise du code de minitoc avec ajout de titlebox
+%
+%---------------------------------------------------------------------------
+\nomtcrule
+\nomtcpagenumbers
+\setcounter{minitocdepth}{1}
+\let\mtcorig\mtctitle
+\renewcommand{\mtctitle}{\sffamily\small\mtcorig}
+\renewcommand{\mtcfont}{\sffamily\small}
+\renewcommand{\mtcSfont}{\sffamily\bfseries\small}
+\setlength{\mtcindent}{0pt}
+
+\newlength{\mymtcwidth}
+\newlength{\mymtcbottomskip}
+
+\setlength{\mymtcwidth}{0.6\textwidth}
+\setlength{\mymtcbottomskip}{3\baselineskip}
+
+\dominitoc
+\let\minisommaire\minitoc
+\let\mtcSfont\sectionfont
+\def\@BBR{\unpenalty\nopagebreak[4]}
+\def\The@chapter{\arabic{mtc}} %23
+
+\makeatletter
+\def\minitoc@[#1]{%
+  \relax\begin{samepage}% we begin a local group here, using samepage
+    \if #1e\let\do@mtitc\e@mti
+    \else\if #1n\let\do@mtitc\n@mti
+    \else\if #1c\let\do@mtitc\c@mti
+    \else\if #1l\let\do@mtitc\l@mti
+    \else\if #1r\let\do@mtitc\r@mti
+    \else\if #1d\let\do@mtitc\df@mtitc
+    \fi\fi\fi\fi\fi\fi
+    \raggedright % added #14
+    \parskip=\z@%
+    \reset@font\mtcfont%
+    \parindent=\z@%
+    \nopagebreak[4]%
+    \kern-0.8\baselineskip\nopagebreak[4]%
+    \par\noindent %%
+    \nopagebreak[4]\null\leavevmode\vrule width \z@
+    height \z@ depth \z@\\\@BBR%
+    \titlebox{\reset@font\mtifont\mtctitle}{%
+      \begin{minipage}{\mymtcwidth}
+        \vspace{0.7\baselineskip}
+        \leftmargin\mtcindent \rightmargin\mtcindent
+        \itemindent=\z@\labelwidth=\z@%
+        \labelsep=\z@\listparindent=\z@%
+        \begin{mtc@verse}\c@tocdepth=\c@minitocdepth%
+          \leavevmode\\\@BBR% this blank line is necessary to avoid
+                                % a wild negative indentation
+          \vskip -.5\baselineskip \begingroup \makeatletter
+          \@ifundefined{mtc@pgno}%
+          {\let\@dottedtocline\@undottedtocline}{}
+          \@ifundefined{SHORTEXT}%
+          {\def\@tocfile{mtc\The@chapter}}%  % UNIX
+          {\def\@tocfile{M\The@chapter}}%    % MS-DOS
+          \@input{\jobname.\@tocfile}\if@filesw
+          \fi%
+          \global\@nobreakfalse\endgroup
+        \end{mtc@verse}%
+        \vspace{0.4\baselineskip}
+      \end{minipage}}
+    \kern0.\baselineskip%
+    \nopagebreak[4]\mtc@rule\null\leavevmode\\%
+    \vskip-1.0\baselineskip
+    \vrule width \z@ height \z@
+    depth \z@\end{samepage}% 
+  \par\vspace*{\mymtcbottomskip}}%
+        % some space under the minitoc
+\makeatother

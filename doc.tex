@@ -4,36 +4,23 @@
 % suppression des fichiers temporaires: make clean
 % suppression de tous les fichiers temporaires: make cleanall 
 % *******************************************************************************
-
-\documentclass[a4paper]{article}
+\input{dirs}
+\documentclass[versionenligne]{framabook}
 \usepackage[utf8]{inputenc}
 \fontencoding{T1}
-\usepackage[pdftex]{graphicx, color}
 \usepackage[english,frenchb]{babel}
-\usepackage{url, pdfpages}
-\graphicspath{ {fig/pdf/} }
+\usepackage{pdfpages}
+\usepackage{url}
 
-%-------------------------------------------------------------------------------
-% Page de garde
-%-------------------------------------------------------------------------------
+\newcommand{\Touche}[1]{\Ovalbox{#1}}
 
-\newlength{\larg}
-\setlength{\larg}{14.5cm}
-
+%*******************************************************************************
+%*******************************************************************************
 \begin{document}
 
 \includepdf[pages=-]{cov}
-\newpage
-\tableofcontents
-\newpage
-
-%-------------------------------------------------------------------------------
-% Shell environment
-%-------------------------------------------------------------------------------
-%\newenvironment{shell}
-%{\rule{1ex}{1ex}\hspace{\stretch{1}}}
-%{\hspace{\stretch{1}}\rule{1ex}{1ex}}
-
+\thispagestyle{empty}
+\tableofcontents \newpage
 
 %*******************************************************************************
 \section*{Introduction}
@@ -51,7 +38,7 @@ accord qui sonnerait mieux en le jouant d'une autre façon, etc \dots
 En tous cas, moi oui. Cela fait donc quelques années que j'essaye de
 faire des carnets de chant. Après avoir fait quelques essais mitigés
 avec les outils bureautiques classiques et propriétaires (Word© et
-Publisher© pour ne citer qu'eux), \LaTeX m'a enfin permis de faire à
+Publisher© pour ne citer qu'eux), \LaTeX\, m'a enfin permis de faire à
 peu près ce que je voulais.
 
 %*******************************************************************************
@@ -62,25 +49,25 @@ peu près ce que je voulais.
 \subsection{Dépendances}
 %------------------------------------------------------------------------------
 
-Ce recueil de chansons a été écrit en \LaTeX. Pour compiler vous-même
-vos propres chansons, vous devez disposer de make, perl, python,
-pdflatex et d'un viewer pdf. Si vous êtes sous Debian/Ubuntu:
+Le songbook utilise \LaTeX\, pour la mise en page des chansons et Python
+pour la génération des tables des matières (dépendances obligatoires).
+Il est également possible d'inclure en option des partitions générées
+avec Lilypond. Enfin, le projet est distribué via un dépôt git donc il
+est recommandé d'installer l'outil pour des raisons de simplicité
+(dépendances recommandées). Enfin, vous aurez besoin d'un logiciel
+pour lire les fichiers pdf produits. Si vous êtes sous Debian/Ubuntu:
 
 \paragraph{Dépendances obligatoires}
-\begin{verbatim}
-//LaTeX
-$ sudo apt-get install texlive-base texlive-lang-french texlive-latex-extra
-//Indexes en python
-$ sudo apt-get install python
-\end{verbatim}
+\begin{unixcom}
+  sudo apt-get install texlive-base texlive-lang-french texlive-latex-extra
+  sudo apt-get install python
+\end{unixcom}
 
 \paragraph{Dépendances recommandées}
-\begin{verbatim}
-//Pour la génération des partitions Lilypond
-$ sudo apt-get install lilypond
-//Pour récupérer les sources du projet via Git
-$ sudo apt-get install git-core
-\end{verbatim}
+\begin{unixcom}
+  sudo apt-get install lilypond
+  sudo apt-get install git-core
+\end{unixcom}
 
 %------------------------------------------------------------------------------
 \subsection{Récupération des sources}
@@ -97,22 +84,23 @@ chants:
 Il faut extraire le contenu de l'archive dans le répertoire de votre
 choix. De manière générale, évitez les chemins contenant des espaces
 ou des caractères spéciaux. Dans ce manuel, le répertoire de travail
-est supposé être: \$HOME/songbook pouvant être noté
-/home/user/songbook ou \~/songbook .
-\begin{verbatim}
-$ cd $HOME
-$ wget http://www.patacrep.com/files/songbook.tar.gz
-$ tar xzvf songbook.tar.gz
-\end{verbatim}
+est supposé être: \colarg{\$HOME/songbook} pouvant être noté
+\colarg{/home/user/songbook} ou \colarg{$\sim$/songbook}.
+\begin{unixcom}
+  cd $HOME
+  wget http://www.patacrep.com/files/songbook.tar.gz
+  tar xzvf songbook.tar.gz
+\end{unixcom}
+%$
 
 \paragraph{Depuis le dépôt Git}
 Il est conseillé d'utiliser la méthode utilisant le gestionnaire de
 version Git pour des raisons pratiques.
-\begin{verbatim}
-$ cd $HOME
-$ git clone git://git.lohrun.net/songbook.git
-\end{verbatim}
-
+\begin{unixcom}
+  cd $HOME
+  git clone git://git.lohrun.net/songbook.git
+\end{unixcom}
+%$
 %------------------------------------------------------------------------------
 \subsection{Compilation}
 %------------------------------------------------------------------------------
@@ -120,98 +108,122 @@ $ git clone git://git.lohrun.net/songbook.git
 Un \emph{makefile} automatise tout le processus de compilation. La
 génération du songbook ne demande donc qu'un: 
 
-\begin{verbatim}
-$ cd $HOME/songbook
-$ make all
-\end{verbatim}
-
+\begin{unixcom}
+  cd $HOME/songbook
+  make all
+\end{unixcom}
+%$
 Quelques options de base du makefile:
 
 \paragraph{\$ make clean} 
 supprime tous les fichiers de logs et les fichiers générés à part les
-books finaux (pdf).
+recueils finaux (pdf).
 
 \paragraph{\$ make cleanall}
 supprime tous les fichiers générés y compris les pdf.
 
 \paragraph{\$ make lilypond}
-génère dans ./lilypond les pdf de chaque partition lilypond (.ly)
-trouvée dans ./lilypond. Il est nécessaire d'avoir installé
+génère dans \colarg{./lilypond} les pdf de chaque partition lilypond (.ly)
+trouvée dans \colarg{./lilypond}. Il est nécessaire d'avoir installé
 \emph{lilypond} au préalable.
 
 \paragraph{\$ make book.pdf}
 la compilation de tous les carnets pouvant être longue, si seule une
 version précise vous intéresse, vous pouvez lancer la compilation d'un
-seul fichier pdf. Notez que la commande ``make'' sans option correspond à un ``make chordbook.pdf''. À la place de \emph{book.pdf}, vous pouvez mettre:
-\begin{itemize}
-\item chordbook.pdf
-\item lyricbook.pdf
-\item lilypondbook.pdf
-\item volume-1-cb.pdf
-\item volume-1-lb.pdf
-\item volume-1-ll.pdf
-\item volume-2-cb.pdf
-\item volume-2-lb.pdf
-\item volume-2-ll.pdf
-\item naheulbeuk-cb.pdf
-\item naheulbeuk-lb.pdf
-\item naheulbeuk-ll.pdf
-\end{itemize}
+seul fichier pdf. À la place de
+\colarg{book.pdf}, vous pouvez mettre:
+
+\begin{center}
+  \begin{tabular}{l l}
+    \hline
+    \command{make} & description \\
+    \hline
+    \colarg{lyricbook.pdf} &: version limitée aux paroles seules \\
+    \colarg{chordbook.pdf} &: lyricbook + accords de guitare\\
+    \colarg{lilypondbook.pdf} &: version complète avec partitions\\
+    \colarg{volume-1-cb.pdf} &: chordbook volume 1\\
+    \colarg{volume-1-lb.pdf} &: lyricbook volume 1\\
+    \colarg{volume-1-ll.pdf} &: lilypondbook volume 1\\
+    \colarg{volume-2-cb.pdf} &: chordbook volume 2\\
+    \colarg{volume-2-lb.pdf} &: lyricbook volume 2\\
+    \colarg{volume-2-ll.pdf} &: lilypondbook volume 2\\
+    \colarg{naheulbeuk-cb.pdf} &: chordbook naheulbeuk\\
+    \colarg{naheulbeuk-lb.pdf} &: lyricbook naheulbeuk\\
+    \colarg{naheulbeuk-ll.pdf} &: lilypondbook naheulbeuk\\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{nota}
+  La commande \command{make} sans option correspond à un \command{make
+    \colarg{chordbook.pdf}}.
+\end{nota}
 
 %------------------------------------------------------------------------------
-\subsection{Mise à jour}
+\subsection{Mises à jour}
 %------------------------------------------------------------------------------
 
 Pour maintenir à jour la version du songbook, vous pouvez télécharger
 la dernière version en mise en ligne de l'archive tar.gz ou, si vous
 avez utilisé Git pour récupérer les sources:
-\begin{verbatim}
-$ cd $HOME/songbook
-$ git pull
-\end{verbatim} 
-
+\begin{unixcom}
+  cd $HOME/songbook
+  git pull
+\end{unixcom} 
+%$
 %*******************************************************************************
 \section{Songbook client}
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
-\subsection{Présentation et interface}
+\subsection{Présentation}
 %------------------------------------------------------------------------------
 
 Une interface graphique, réalisée en Qt4/C++, est disponible pour
 faciliter la création d'un recueil de chansons personnalisé.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{songbook-client2}
-  \caption{Qt4 client pour la génération des songbooks.}
-  \label{fig:sb-client}
-\end{figure}
-
 Une présentation du projet peut se trouver sur:
 \begin{itemize}
 \item \url{http://www.ohloh.net/p/songbook-client}
 \item \url{http://github.com/crep4ever/songbook-client}
 \end{itemize}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{songbook-client2}
+  \caption{Patacrep Songbook Client: interface pour la génération de recueils de chansons.}
+  \label{fig:sb-client}
+\end{figure}
+
+L'utilisation est relativement simple: cliquez sur les chansons que
+vous souhaitez voir apparaitre dans votre recueil.  Les chansons
+sélectionnées sont en surbrillance. Utilisez le bouton
+\Touche{Générer} pour générer le pdf. Il est possible de sauvegarder
+la liste des chansons sélectionnées (Fichier/Enregistrer) pour la
+reprendre/compléter plus tard (Fichier/Ouvrir). La sauvegarde se fait
+dans un fichier .sgl à placer dans le répertoire
+\colarg{songbook/}. Quelques paramètres de la page de garde peuvent
+être modifiés: n'oubliez de cliquer sur \Touche{Appliquer} pour qu'ils
+soient pris en compte.
+
 %------------------------------------------------------------------------------
 \subsection{Installation depuis les sources}
 %------------------------------------------------------------------------------
 
 \paragraph{Dépendances}
-\begin{verbatim}
-sudo apt-get install build-essential cmake qt4-qmake qt4-dev-tools libqt4-sql-sqlite
-\end{verbatim}
+\begin{unixcom}
+  sudo apt-get install build-essential cmake
+  sudo apt-get install qt4-qmake qt4-dev-tools libqt4-sql-sqlite
+\end{unixcom}
 
 \paragraph{Installation}
-\begin{verbatim}
-$ cd $HOME
-$ git clone git://github.com/crep4ever/songbook-client.git
-$ cd songbook-client
-$ make
-$ sudo make install
-\end{verbatim}
-
+\begin{unixcom}
+  cd $HOME
+  git clone git://github.com/crep4ever/songbook-client.git
+  cd songbook-client
+  make
+  sudo make install
+\end{unixcom}
+%$
 %------------------------------------------------------------------------------
 \subsection{Installation depuis le paquet Debian}
 %------------------------------------------------------------------------------
@@ -219,36 +231,47 @@ $ sudo make install
 Un paquet Debian (.deb) est disponible pour faciliter le processus
 d'installation du songbook-client. 
 
-\begin{verbatim}
-$ cd $HOME
-$ wget http://www.patacrep.com/files/songbook-client-01_amd64.deb
-$ sudo dpkg -i songbook-client-01_amd64.deb
-\end{verbatim}
+\begin{unixcom}
+  cd $HOME
+  wget http://www.patacrep.com/files/songbook-client-01_amd64.deb
+  sudo dpkg -i songbook-client-01_amd64.deb
+\end{unixcom}
+%$
 
-Note: si le lien n'est pas à jour ou si vous êtes sur une autre
-architecture, allez dans le répertoire
-\url{http://www.patacrep.com/files/} et récupérez le fichier
-.deb adéquat.
+\begin{nota}
+  Note: si le lien n'est pas à jour ou si vous êtes sur une autre
+  architecture, allez dans le répertoire
+  \url{http://www.patacrep.com/files/} et récupérez le fichier
+  .deb adéquat.
+\end{nota}
 
 %------------------------------------------------------------------------------
 \subsection{Configuration}
 %------------------------------------------------------------------------------
 
-Pour lancer l'application, faîtes Alt+F2 songbook-client ou dans un
+Pour lancer l'application, faîtes \Touche{Alt}+\Touche{F2} songbook-client ou dans un
 terminal:
-\begin{verbatim}
-$ songbook-client
-\end{verbatim}
+\begin{unixcom}
+  songbook-client
+\end{unixcom}
 
 Une fois l'application lancée, il est important:
 \begin{itemize}
 \item d'indiquer le chemin du songbook dans les préférences (par
-  exemple /home/user/songbook). Ce répertoire devant impérativement
-  contenir le makefile et le répertoire songs/ contenant les chansons
+  exemple \colarg{/home/user/songbook}). Ce répertoire devant impérativement
+  contenir le makefile et le répertoire \colarg{songs/} avec les chansons
   disponibles;
 \item de resynchroniser la base de données avec le nouveau répertoire
   indiqué (Fichier/Synchroniser).
 \end{itemize}
+
+\begin{nota}
+  La synchronisation est à utiliser dès lors que vous modifiez le
+  contenu du répertoire \colarg{songs/} lorsque vous rajoutez un nouveau
+  fichier (chanson, image) ou lorsque vous déplacez le répertoire
+  \colarg{songbook/}.  Il n'est pas nécessaire de synchroniser si vous
+  avez simplement édité un fichier (correction etc \dots).
+\end{nota}
 
 %------------------------------------------------------------------------------
 \subsection{Problèmes divers}
@@ -270,7 +293,7 @@ préférences, vérifiez que Lilypond est bien installé sur votre système.
 \paragraph{Liste des chansons vide} Vérifiez que le chemin d'accès au
 patacrep songbook est correctement renseigné dans Édition/Préférences.
 Le chemin indiqué doit contenir impérativement le makefile et le
-répertoire songs/
+répertoire \colarg{songs/}.
 
 
 %*******************************************************************************
@@ -278,16 +301,16 @@ répertoire songs/
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
-\subsection{À propos de \LaTeX}
+\subsection{À propos de \LaTeX\,}
 %------------------------------------------------------------------------------
 
-\LaTeX est un logiciel de traitement de texte qui produit un document
+\LaTeX\, est un logiciel de traitement de texte qui produit un document
 bien formaté d'après des sources (un simple fichier texte). Cela
 permet à l'utilisateur de se concentrer sur le contenu plutôt que sur
 la forme. C'est un langage de programmation basé sur un système de
 commandes et/ou de balises.
 
-Une commande commence part un antislash ``$\backslash$'' suivi du nom
+Une commande commence part un antislash ($\backslash$) suivi du nom
 de la commande. Ensuite viennent les arguments, si il y en a, entre
 accolades (obligatoires) ou crochets (optionnels).
 
@@ -295,27 +318,27 @@ accolades (obligatoires) ou crochets (optionnels).
 \subsection{Éléments principaux}
 %------------------------------------------------------------------------------
 
-Une chanson est un simple fichier texte ``'ma\_chanson.sg'' que l'on
-place dans le répertoire songs/Artiste. Les espaces n'étant
-pas tolérés, veillez à utiliser des underscores \_. L'entête d'un fichier
+Une chanson est un simple fichier texte \colarg{chanson.sg} que l'on
+place dans le répertoire \colarg{songs/Artiste}. Les espaces n'étant
+pas tolérés, veillez à utiliser des underscores. L'entête d'un fichier
 .sg se présente de la manière suivante:
 
 \begin{verbatim}
 \beginsong{Titre}[by=Artiste,cov=album-cover]
 \end{verbatim}
 
-Les arguments \emph{Titre}, \emph{Artiste} et \emph{album-cover} sont
-à renseigner pour chaque nouvelle chanson. \emph{album-cover} désigne
-un fichier \emph{album-cover.jpg} devant se trouver dans le même
+Les arguments \command{Titre}, \command{Artiste} et \command{album-cover} sont
+à renseigner pour chaque nouvelle chanson. \command{album-cover} désigne
+un fichier \colarg{album-cover.jpg} devant se trouver dans le même
 répertoire que le fichier .sg.  La chanson se compose d'une succession
 de couplets (verse en anglais) et de refrains (chorus). Un couplet est
-donc encadré par les balises \emph{beginverse} et \emph{endverse}. De
+donc encadré par les balises \latexcom{beginverse} et \latexcom{endverse}. De
 la même manière, un refrain se trouve entre les balises
-\emph{beginchorus} et \emph{endchorus}.  Les paroles sont écrites
-normalement entre le $\backslash$begin et le $\backslash$end. Pour
+\latexcom{beginchorus} et \latexcom{endchorus}.  Les paroles sont écrites
+normalement entre le \latexcom{begin} et le \latexcom{end}. Pour
 préciser sur quelle syllabe un accord doit être joué, on utilise une
-commande spéciale. Par exemple, la commande $\backslash$[Mi] produira
-un Mi au dessus de la syllabe suivante. Vous pouvez utiliser n'importe
+commande spéciale. Par exemple, la commande \latexcom{[Mi]} produira
+un \command{Mi} au dessus de la syllabe suivante. Vous pouvez utiliser n'importe
 quel texte pour désigner un accord.
 
 \begin{center}
@@ -329,22 +352,18 @@ By \[Fa]centuries of dust
 \end{verbatim}
 \end{center}
 
-Chaque chanson se termine avec la commande \emph{endsong}.
-
-\begin{verbatim}
-\endsong
-\end{verbatim}
+Chaque chanson se termine avec la commande \latexcom{endsong}.
 
 %------------------------------------------------------------------------------
 \subsection{Notation des accords}\label{sect:about}
 %------------------------------------------------------------------------------
 
 Par défaut, l'accord est majeur (Do fait référence à l'accord de Do
-majeur). Les accords mineurs sont précisés par un ``m'' minuscule.  Le
-symbole bémol ($\flat$) est représenté en utilisant le caractère ``\&''.  Le
-dièse ($\sharp$) est codé par le caractère ``\#''. Les autres notations sont
+majeur). Les accords mineurs sont précisés par un \command{m} minuscule.  Le
+symbole bémol ($\flat$) est représenté en utilisant le caractère \command{\&}.  Le
+dièse ($\sharp$) est codé par le caractère \command{\#}. Les autres notations sont
 simplement ajoutées comme des caractères à l'accord principal. Par
-exemple, l'accord de ``La bémol mineur'' est noté ``La\&m''.
+exemple, l'accord de \command{La bémol mineur} est noté \latexcom{[La\&m]}.
 
 
 %------------------------------------------------------------------------------
@@ -398,9 +417,9 @@ He's so alone
 \subsection{Agencement en colonnes}
 %------------------------------------------------------------------------------
 
-La commande \emph{songcolumns} détermine le nombre de colonnes sur
+La commande \latexcom{songcolumns} détermine le nombre de colonnes sur
 lequel sera présenté la chanson. Elle s'utilise juste avant la
-commande \emph{beginsong}. Vous pouvez indiquer le nombre de colonnes
+commande \latexcom{beginsong}. Vous pouvez indiquer le nombre de colonnes
 à utiliser pour écrire votre chanson (généralement 1, 2 ou 3). Par
 convention, utilisez 2 colonnes par défaut.
 
@@ -414,23 +433,23 @@ convention, utilisez 2 colonnes par défaut.
 %------------------------------------------------------------------------------
 
 Quelques caractères doivent être codés différemment en utilisant des
-commandes \LaTeX pour un meilleur résultat. Les deux exemples
+commandes \LaTeX\, pour un meilleur résultat. Les deux exemples
 principaux sont les 3 points (...) et le caractère \oe{}. Pour
 représenter ces caractères, vous devez utiliser respectivement les
-commandes ${\backslash dots}$ et ${\backslash oe}$ (ou utiliser le
-caractère utf8 ``œ''). On utilise des accolades autour des commandes de
+commandes \latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le
+caractère utf-8 \command{œ}). On utilise des accolades autour des commandes de
 sorte que les commandes puissent être insérées où vous le désirez sans
 interférer avec le reste du texte. Voir aussi
-section\,\ref{sect:utilitaires}.
+la section \voir{sect:utilitaires}{utilitaires}.
 
 %------------------------------------------------------------------------------
 \subsection{Ch\oe{}urs et répétitions}
 %------------------------------------------------------------------------------
 
 Pour produire un signe de répétition vous pouvez utiliser la commande
-$\backslash$rep. Pour faire répéter quatre fois une ligne utilisez la
-commande suivante à la fin de la ligne. La commande $\backslash$echo
-fait référence à des ch\oe{}urs (ou similaire).
+\latexcom{rep}. Pour faire répéter quatre fois une ligne utilisez la
+commande suivante à la fin de la ligne. La commande \latexcom{echo}
+fait référence à des chœurs (ou similaire).
 
 \begin{verbatim}
 Hallelujah \echo{Hallelujah} \rep{4}
@@ -440,11 +459,11 @@ Hallelujah \echo{Hallelujah} \rep{4}
 \subsection{Numérotation des couplets}
 %------------------------------------------------------------------------------
 
-La numérotation se fait automatiquement pour chaque \emph{beginverse}
+La numérotation se fait automatiquement pour chaque \latexcom{beginverse}
 rencontré. Cependant, il est parfois plus lisible de scinder un
 couplet en deux parties, la deuxième partie ne devant pas être
-numérotée. Pour cela on utilise la commande \emph{beginverse*}.
- 
+numérotée. Pour cela on utilise la commande \latexcom{beginverse*}.
+
 \begin{verbatim}
 \beginverse
 His \[Rém]steely skin is covered
@@ -468,7 +487,7 @@ And it's driving him insane
 Étant donné qu'un accord de guitare peut se jouer de plusieurs façons
 différentes et qu'il est parfois judicieux de privilégier telle ou
 telle position, le songbook permet de représenter schématiquement ces
-accords en début de chanson. On utilise la commande \emph{gtab} juste
+accords en début de chanson. On utilise la commande \latexcom{gtab} juste
 avant le premier couplet ou refrain. Voici quelques exemples classiques:
 
 \begin{verbatim}
@@ -479,13 +498,13 @@ avant le premier couplet ou refrain. Voici quelques exemples classiques:
 
 \begin{itemize}
 \item les 6 chiffres correspondent aux 6 cordes de la
-guitare (Mi, La, Ré Sol, Si, Mi);
+  guitare (\command{Mi}, \command{La}, \command{Ré}, \command{Sol}, \command{Si}, \command{Mi});
 \item la valeur du chiffre indique la fret (case) sur laquelle on
   appuie;
 \item 0 désigne une corde jouée à vide;
 \item X indique que la corde ne doit pas être jouée;
 \item une valeur avant un ``:'' désigne un barré: \emph{3:} indique
-un barré de trois frets.
+  un barré de trois frets.
 \end{itemize}
 
 
@@ -525,7 +544,7 @@ index 3fcce15..b4edcc1 100644
 \end{verbatim}
 
 Vous voyez rapidement qu'après les premières lignes qui servent à
-identifier le fichier sur lequel on a travaillé, j'ai remplacé:
+identifier le fichier sur lequel on a travaillé, on a remplacé:
 \begin{verbatim}
 -\[Do] I listen to the \[Fa]wind,
 \end{verbatim}
@@ -535,18 +554,19 @@ par
 \end{verbatim}
 
 Concrètement, si vous avez suivi la procédure d'installation,
-vous devriez avoir un répertoire \$HOME/songbook/ contenant toutes les
+vous devriez avoir un répertoire \colarg{\$HOME/songbook/} contenant toutes les
 sources du carnet de chant. Maintenant, vous avez repéré une erreur
-dans la chanson songs/artiste/chanson.sg. Ouvrez le fichier
+dans la chanson \colarg{songs/artiste/chanson.sg}. Ouvrez le fichier
 correspondant avec votre éditeur de texte préféré, faîtes votre
 correction, enregistrez, fermez. Puis, dans un terminal:
 
-\begin{verbatim}
-$ cd $HOME/songbook
-$ git diff -u songs/artiste/chanson.sg > patch
-\end{verbatim}
+\begin{unixcom}
+  cd $HOME/songbook
+  git diff -u songs/artiste/chanson.sg > patch
+\end{unixcom} 
+%$
 
-Cela va vous créer un nouveau fichier "patch" qui contiendra
+Cela va vous créer un nouveau fichier \colarg{patch} qui contiendra
 l'ensemble des modifications que vous avez apportées à votre
 chanson. Plus qu'à nous l'envoyer !
 
@@ -591,7 +611,7 @@ façon à ce que nous puissions récupérer vos changements.
 
 
 %*******************************************************************************
-\section{Intégration des partitions avec Lilypond}
+\section{Partitions avec Lilypond}
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
@@ -615,9 +635,9 @@ Lilypond est généralement empaqueté pour les distributions
 GNU/Linux. Pour des distributions basées Debian/Ubuntu, l'installation
 se fait par:
 
-\begin{verbatim}
-$ sudo apt-get install lilypond
-\end{verbatim}
+\begin{unixcom}
+  sudo apt-get install lilypond
+\end{unixcom}
 
 
 %------------------------------------------------------------------------------
@@ -626,8 +646,8 @@ $ sudo apt-get install lilypond
 
 Si vous voulez rajouter une ligne mélodique dans une chanson, vous
 pouvez utiliser lilypond pour générer la partition. Créez pour cela un
-nouveau fichier ma\_partition.ly dans le répertoire songbook/lilypond.
-Il faut inclure le fichier d'en-tête ``header'' et définir l'option
+nouveau fichier \colarg{partition.ly} dans le répertoire \colarg{songbook/lilypond}.
+Il faut inclure le fichier d'en-tête \colarg{header} et définir l'option
 paper-height de façon à ce que la partition produite tienne sur une
 page avec le moins de blanc possible. Une première estimation est de
 compter 1.6cm pour une ligne. Puis, écrivez votre partition entre
@@ -655,21 +675,21 @@ résultat en Fig.~\ref{fig:lilypond}:
 \end{figure}
 
 Enfin, pour insérer votre partition dans une chanson, insérez la ligne
-suivante à l'endroit désiré dans ma\_chanson.sg:
+suivante à l'endroit désiré dans \colarg{chanson.sg}:
 
 \begin{verbatim}
-\lilypond{ma_partition}
+\lilypond{partition}
 \end{verbatim}
 
 Toutes les partitions lilypond présentes dans le répertoire
-songbook/lilypond sont automatiquement générées par le makefile. Pour
-construire le songbook incluant les partitions lilypond, il suffit de
-faire:
+\colarg{songbook/lilypond} sont automatiquement générées par le
+makefile. Pour construire le songbook incluant les partitions
+lilypond, il suffit de faire:
 
-\begin{verbatim}
-$ make lilypond
-$ make lilypondbook.pdf 
-\end{verbatim}
+\begin{unixcom}
+  make lilypond
+  make lilypondbook.pdf 
+\end{unixcom}
 
 
 %*******************************************************************************
@@ -677,21 +697,21 @@ $ make lilypondbook.pdf
 %*******************************************************************************
 
 Des scripts utilitaires sont disponibles dans le répertoire
-songbook/utils. On les exécute classiquement en faisant:
+\colarg{songbook/utils}. On les exécute classiquement en faisant:
 
-\begin{verbatim}
-$ cd $HOME/songbook
-$ ./utils/script.sh
-\end{verbatim}
+\begin{unixcom}
+  cd $HOME/songbook
+  ./utils/script.sh
+\end{unixcom}
+%$
 
 \paragraph{Resize cover}
 Permet de redimensionner automatiquement tous les fichiers .jpg du
-répertoire songbook/songs correspondant aux pochettes des albums. À
-exécuter après l'ajout d'une nouvelle pochette (jpg recommandé, png
-supporté).
+répertoire \colarg{songbook/songs} correspondant aux pochettes des albums. À
+exécuter après l'ajout d'une nouvelle pochette jpg.
 
 \paragraph{Latex preprocessing}
-Applique un ensemble de règles automatiques pour les notations \LaTeX
+Applique un ensemble de règles automatiques pour les notations \LaTeX\,
 de certains caractères et pour les notations d'accords.
 À exécuter après l'ajout d'une nouvelle chanson pour être sûr de
 respecter les standards du songbook.
@@ -719,23 +739,25 @@ Les accords de base sont les accords qui se jouent sans barré au
 niveau des premières frets:
 
 \begin{itemize}
-\item Accords Majeurs:\\ 
-  Do (X32010), Sol (320003), La (X02220), Ré (XX0232), Mi (022100)\\
+\item Accords Majeurs:\\ \command{Do} (X32010), \command{Sol}
+  (320003), \command{La} (X02220), \command{Ré} (XX0232), \command{Mi}
+  (022100)\\
 \item Accords Mineurs:\\
-  Mim (022000), Lam (X02210), Rém (XX0231)\\
-\item Accord Septième:\\
-  Mi7 (020100), Sol7 (320001), Ré7 (XX0212), La7 (X02020), Si7 (X21202)\\
+  \command{Mim} (022000), \command{Lam} (X02210), \command{Rém} (XX0231)\\
+\item Accord Septième:\\ \command{Mi7} (020100), \command{Sol7}
+  (320001), \command{Ré}7 (XX0212), \command{La7} (X02020),
+  \command{Si7} (X21202)\\
 \end{itemize}
 
 Donc déjà, il est bon de savoir jouer et enchainer assez rapidement
 ces accords là. Le mieux c'est de chercher des morceaux avec ces
-accords et de s'entraîner dessus.  À part pour l'accord de ré, les
-cordes marquées d'un X peuvent quand même sonner.  C'est juste qu'on
-préfère généralement attaquer par la fondamentale de l'accord (ex:
-note do pour l'accord de do majeur).  À propos des différentes
-notations d'accords, il s'agit juste d'une question de sonorité ou de
-pragmatisme. On est toujours libre de jouer l'accord de la façon qui
-nous arrange le plus.
+accords et de s'entraîner dessus.  À part dans certains cas comme pour
+l'accord de \command{Ré}, les cordes marquées d'un X peuvent quand
+même sonner.  C'est juste qu'on préfère généralement attaquer par la
+fondamentale de l'accord (ex: note \command{Do} pour l'accord de
+\command{Do majeur}).  À propos des différentes notations d'accords,
+il s'agit juste d'une question de sonorité ou de pragmatisme. On est
+toujours libre de jouer l'accord de la façon qui nous arrange le plus.
 
 %------------------------------------------------------------------------------
 \subsection{Transposer un morceau}
@@ -744,9 +766,10 @@ nous arrange le plus.
 L'idée, c'est de toujours pouvoir se ramener à un enchaînement
 d'accords que l'on maîtrise.  Pour transposer un morceau, c'est pas
 dur il suffit d'appliquer le même décalage à tous les accords.  Par
-exemple, pour la chanson du hérisson, si on décale de 2 tons 1/2: Sim,
-Sol, Fa$\sharp$7 se transposent en Mim, Do, Si7.  Et miracle, ces
-accords là ne demandent plus de barrés !
+exemple, pour la chanson du hérisson, si on décale de 2 tons 1/2:
+\command{Sim}, \command{Sol}, \command{Fa$\sharp$7} se transposent en
+\command{Mim}, \command{Do}, \command{Si7}.  Et miracle, ces accords
+là ne demandent plus de barrés !
 
 %------------------------------------------------------------------------------
 \subsection{Les barrés}
@@ -757,17 +780,19 @@ jongler avec les accords et leurs enchaînements mais de temps en
 temps, ça ne suffit pas, il reste toujours des barrés qui apparaissent
 et c'est quand même mieux de jouer les vrais accords. Donc attaquons
 la fameuse technique du barré. Tout bon débutant qui se respecte
-commence par le barré de mi \dots pour faire un fa. Oui, en fait,
-barré c'est se servir de son index comme capo pour transposer l'accord
-qu'on fait dessous (avec un doigt en moins).
+commence par le barré de \command{Mi} \dots pour faire un
+\command{Fa}. Oui, en fait, barré c'est se servir de son index comme
+capo pour transposer l'accord qu'on fait dessous (avec un doigt en
+moins).
 
-Exemple: l'accord de Fa se joue 133211. Il est cependant noté 1:022100
-dans le carnet de chant car c'est un barré de Mi (022100) sur la
-première fret.  Donc l'idée, c'est d'appuyer bien fort avec son index
-en travers de toutes les cordes et d'utiliser annulaire, ptit doigt,
-majeur pour appuyer sur les 3 cordes demandées. À savoir qu'il y a
-essentiellement 4 types de barrés.  Dans l'ordre de difficulté: barrés
-de Mi (022100), Lam (002210), Mim (022000), La (002220).
+Exemple: l'accord de \command{Fa} se joue 133211. Il est cependant
+noté 1:022100 dans le carnet de chant car c'est un barré de
+\command{Mi} (022100) sur la première fret.  Donc l'idée, c'est
+d'appuyer bien fort avec son index en travers de toutes les cordes et
+d'utiliser annulaire, ptit doigt, majeur pour appuyer sur les 3 cordes
+demandées. À savoir qu'il y a essentiellement 4 types de barrés.  Dans
+l'ordre de difficulté: barrés de \command{Mi} (022100), \command{Lam}
+(002210), \command{Mim} (022000), \command{La} (002220).
 
 %------------------------------------------------------------------------------
 \subsection{Les rythmes}
@@ -779,13 +804,14 @@ Voici quelques motifs assez passe-partout pour vos morceaux.
 
 \paragraph{Rythme ``à la Brassens''} Il s'agit d'alterner une basse (pouce)
 avec 3 aiguës simultanées (index, majeur, annulaire), 2 ou 4 fois par
-accord. En général, les 3 aiguës sont les 3 cordes aiguës 4,5,6 (Sol,
-Si, mi) et la basse alterne entre les cordes 1,2,3 (Mi, La, Ré) mais
+accord. En général, les 3 aiguës sont les 3 cordes aiguës 4,5,6
+(\command{Sol}, \command{Si}, \command{Mi}) et la basse alterne entre
+les cordes 1,2,3 (\command{Mi}, \command{La}, \command{Ré}) mais
 souvent dans l'ordre 2,1.
 
 \paragraph{Rythme ``arpège''} Il s'agit d'un motif note-à-note qui
 accompagne très bien les chansons calmes. Chaque guitariste a le
-sien, voici l'ordre des cordes à jouer pour le mien: 2 654 654 6. En
+sien, voici l'ordre des cordes à jouer pour le mien: 2~654~654~6. En
 gros, on fait une basse avec le pouce, puis deux descentes aiguës avec
 annulaire, majeur, index et on finit par la plus aiguë.
 
@@ -803,30 +829,32 @@ point mes propres techniques secrètes de débutant faignant. Elles sont
 quand même relativement déconseillées dans la mesure ou ce sont de
 mauvaises habitudes pas académiques dont on a du mal à se défaire.
 
-\paragraph{L'accord de Sol}
+\paragraph{L'accord de \command{Sol}}
 Arf, voilà mon premier échec à la guitare. Après avoir enchainé des
-accords de La et de Mi pendant 3 heures je m'essaye au sol. Position
-ok, ça sonne bien. Manque de pot, impossible d'enchainer ça
-rapidement.  Du coup, remarquant qu'un Sol se jouait en 320003, je me
-suis dit qu'avec un seul doigt, j'avais déjà 4 cordes sur 6. Donc j'ai
-commencé en jouant mes Sol en XX0003 avec seulement l'annulaire et ça
-sonnait très bien. 1 an plus tard, j'ai réalisé qu'en mettant le pouce
-sur la première corde ça marchait encore mieux (3X0003) donc voilà la
+accords de \command{La} et de \command{Mi} pendant 3 heures je
+m'essaye au \command{Sol}. Position ok, ça sonne bien. Manque de pot,
+impossible d'enchainer ça rapidement.  Du coup, remarquant qu'un
+\command{Sol} se jouait en 320003, je me suis dit qu'avec un seul
+doigt, j'avais déjà 4 cordes sur 6. Donc j'ai commencé en jouant mes
+\command{Sol} en XX0003 avec seulement l'annulaire et ça sonnait très
+bien. Un an plus tard, j'ai réalisé qu'en mettant le pouce sur la
+première corde, ça marchait encore mieux (3X0003) donc voilà la
 technique de la pince pour l'accord de Sol qui fait beaucoup rire les
 vrais guitaristes quand ils me voient jouer.
 
 \paragraph{L'accord de Fa}
-Après avoir contourné le problème du Sol s'est posé celui du Fa. La
-c'est pareil, impossible de tenir la position barrée plus de deux
-nanosecondes sans hurler de douleur.  Je me suis dit, trouvons une parade:
-le semi barré.  En fait, quand on regarde la théorie du barré, c'est
-pas bien optimisé puisque l'index appuie sur toutes les cordes donc on
-appuie 2 fois sur certaines cordes (index 111111, autres doigts 033200)
-Donc en fin de comptes, l'index sert seulement pour les cordes 1,5 et
-6. Au diable la première, mon index fera 5 et 6 et ce sera suffisant.
-Ça donne des Fa comme ça: X33211 avec l'index qui écrase seulement les
-deux dernières cordes. Bon, autant je fais encore mes Sol avec mon
-pouce, autant j'ai appris à faire des barrés proprement.
+Après avoir contourné le problème du \command{Sol} s'est posé celui du
+\command{Fa}. Là c'est pareil, impossible de tenir la position barrée
+plus de deux nanosecondes sans hurler de douleur.  Je me suis dit,
+trouvons une parade: le semi barré.  En fait, quand on regarde la
+théorie du barré, c'est pas bien optimisé puisque l'index appuie sur
+toutes les cordes donc on appuie 2 fois sur certaines cordes (index
+111111, autres doigts 033200). Donc en fin de comptes, l'index sert
+seulement pour les cordes 1,5 et 6. Au diable la première, mon index
+fera 5 et 6 et ce sera suffisant.  Ça donne des \command{Fa} comme ça: X33211
+avec l'index qui écrase seulement les deux dernières cordes. Bon,
+autant je fais encore mes \command{Sol} avec mon pouce, autant j'ai appris à
+faire des barrés proprement.
 
 
 \end{document}
