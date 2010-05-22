@@ -46,7 +46,7 @@ peu près ce que je voulais.
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
-\subsection{Dépendances}
+\subsection{Dépendances}\label{sec:songbook-dep}
 %------------------------------------------------------------------------------
 
 Le songbook utilise \LaTeX\, pour la mise en page des chansons et Python
@@ -164,7 +164,7 @@ seul fichier pdf. À la place de
 %------------------------------------------------------------------------------
 
 Pour maintenir à jour la version du songbook, vous pouvez télécharger
-la dernière version en mise en ligne de l'archive tar.gz ou, si vous
+la dernière version mise en ligne de l'archive tar.gz ou, si vous
 avez utilisé Git pour récupérer les sources:
 \begin{unixcom}
   cd $HOME/songbook
@@ -209,6 +209,13 @@ soient pris en compte.
 \subsection{Installation depuis les sources}
 %------------------------------------------------------------------------------
 
+\begin{nota}
+Il est nécessaire d'avoir installé au préalable les dépendances du
+songbook lui-même (voir la section \voir{sec:songbook-dep}{correspnodante}). Pour que tous les éléments de l'interface
+fonctionnent, les dépendances recommandées sont \emph{fortement}
+recommandées.
+\end{nota}
+
 \paragraph{Dépendances}
 \begin{unixcom}
   sudo apt-get install build-essential cmake
@@ -249,7 +256,8 @@ d'installation du songbook-client.
 \subsection{Configuration}
 %------------------------------------------------------------------------------
 
-Pour lancer l'application, faîtes \Touche{Alt}+\Touche{F2} songbook-client ou dans un
+Pour lancer l'application,
+faîtes \Touche{Alt}+\Touche{F2} \command{songbook-client} ou dans un
 terminal:
 \begin{unixcom}
   songbook-client
