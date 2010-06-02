@@ -42,6 +42,81 @@ Publisher© pour ne citer qu'eux), \LaTeX\, m'a enfin permis de faire à
 peu près ce que je voulais.
 
 %*******************************************************************************
+\section{Procédure d'installation sous Windows}
+%*******************************************************************************
+
+%------------------------------------------------------------------------------
+\subsection{Dépendances}\label{sec:songbook-dep-win}
+%------------------------------------------------------------------------------
+
+Le songbook utilise \LaTeX\, pour la mise en page des chansons et Python
+pour la génération des tables des matières (dépendances obligatoires).
+Il est également possible d'inclure en option des partitions générées
+avec Lilypond. Enfin, le projet est distribué via un dépôt git donc il
+est recommandé d'installer l'outil pour des raisons de simplicité
+(dépendances recommandées). Enfin, vous aurez besoin d'un logiciel
+pour lire les fichiers pdf produits.
+
+\paragraph{Dépendances obligatoires}
+\begin{itemize}
+ \item Miktex: \url{http://miktex.org/2.8/setup}
+ \item Python: \url{http://www.python.org/download/}
+ \item Java \url{http://www.java.com/fr/download/}
+\end{itemize}
+
+\paragraph{Dépendances recommandées}
+\begin{itemize} 
+  \item Lilypond: \url{http://lilypond.org/install/}
+  \item MsysGit: \url{http://code.google.com/p/msysgit/downloads/list}
+\end{itemize}
+
+\subsection{Installation}\label{sec:install-win}
+
+\paragraph{Modifier la variable \command{Path}}
+Après avoir installé tous les logiciels obligatoires et/ou recommandés
+vous devez rédémarrer votre machine.  Après le redémarrage, il faut
+modifier la variable \command{Path} de votre système.
+\begin{itemize}
+\item Clic-droit sur Poste de travail (XP) ou sur Ordinateur (Vista, Seven) puis Propriétés. 
+\item Dans Paramètres Système Avancés, cliquez sur Variables d'environnement. 
+\end{itemize}
+
+Dans la partie basse (Variables système) faîtes dérouler la liste
+jusqu'à trouver \command{Path}. La variable est modifiable en
+double-cliquant dessus. Le \command{Path} contient un ensemble de
+chemins séparés par des \emph{points-virgules}.  Veuillez vous assurer
+qu'elle contient bien les chemins vers:
+\begin{itemize}
+ \item Java: \verb#C:\Program Files\Java\jre6\bin#
+ \item Phyton: \verb#C:\textbackslash Python31#
+ \item Miktex: \verb# C:\Program Files\MiKTeX 2.8\miktex\bin#
+ \item Lilypond: \verb#C:\Program Files\LilyPond\usr\bin#
+\end{itemize}                     
+
+Si certains chemins viennent à manquer, ajoutez les vous-même. Si la
+variable a été modifiée, vous devrez encore rédémarrer (sic) votre
+ordinateur.
+
+\paragraph{Exécution du programme}
+Placez-vous dans votre répertoire \colarg{songbook/}.
+\begin{itemize}
+\item Copiez les deux fichiers \colarg{make.bat} et \colarg{make.jar}
+\item Exécutez le \colarg{make.jar}
+\end{itemize}
+
+ Une interface graphique vous permet de:
+\begin{itemize}
+\item \Touche{Clean}: supprimer les fichiers temporaires
+\item \Touche{Clean All}: supprimer les fichiers temporaires et les pdf. 
+\item \Touche{Make Lilypond}: générer les partitions Lilypond du dossier \colarg{lilypond/}.
+\item cliquer sur une version particulière du songbook pour le compiler.
+\end{itemize}
+
+\begin{nota}
+  Les fichiers \colarg{make.bat} et \colarg{make.jar} sont actuellement disponibles sur le forum. Ils seront prochainement disponibles sur le site web ou directement intégrés aus sources du songbook.
+\end{nota}
+
+%*******************************************************************************
 \section{Procédure d'installation sous Linux}
 %*******************************************************************************
 
