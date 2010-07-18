@@ -26,6 +26,14 @@ PDF += $(foreach file, $(IMG_PNG), $(PDF_DIR)/$(basename $(notdir $(file))).png)
 
 TEX  = $(foreach file, $(XFIGS), $(TEX_DIR)/$(basename $(notdir $(file))).tex)
 
+UNAME = $(shell uname)
+ifeq ($(UNAME), Darwin)
+	INKSCAPE = /Applications/Inkscape.app/Contents/Resources/bin/inkscape
+	PDFREADER = open
+else
+	INKSCAPE = inkscape
+	PDFREADER = evince
+endif
 ############################################################
 ### Cibles
 
@@ -37,7 +45,7 @@ ps: $(CIBLE).ps.gz
 
 pdf: LATEX = pdflatex
 pdf: $(CIBLE).pdf
-	evince $<
+	$(PDFREADER) $<
 
 clean:
 	@rm -f $(AUX) $(CIBLE).toc
@@ -81,7 +89,7 @@ $(EPS_DIR)/%.eps: $(FIG_DIR)/%.eps
 	cp $< $@
 
 $(EPS_DIR)/%.eps: $(FIG_DIR)/%.svg
-	inkscape $< --export-eps=$@
+	$(INKSCAPE) $< --export-eps=$@
 
 $(PDF_DIR)/%.pdf: $(FIG_DIR)/%.fig
 	fig2dev -L pdftex $< $@
@@ -96,7 +104,7 @@ $(PDF_DIR)/%.pdf: $(FIG_DIR)/%.pdf
 	cp $< $@
 
 $(PDF_DIR)/%.pdf: $(FIG_DIR)/%.svg
-	inkscape $< --export-pdf=$@
+	$(INKSCAPE) $< --export-pdf=$@
 
 $(PDF_DIR)/%.png: $(FIG_DIR)/%.png
 	cp $< $@
