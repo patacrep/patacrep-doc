@@ -4,7 +4,7 @@
 % suppression des fichiers temporaires: make clean
 % suppression de tous les fichiers temporaires: make cleanall 
 % *******************************************************************************
-\input{dirs}
+\makeatletter\def\input@path{{styles/}}\makeatother
 \documentclass[versionenligne]{patacrep}
 \usepackage[utf8]{inputenc}
 \fontencoding{T1}
@@ -283,7 +283,7 @@ Une interface graphique vous permet de:
 \end{itemize}
 
 \begin{nota}
-  Les fichiers \collarg{make.bat} et \colarg{make.jar} sont
+  Les fichiers \colarg{make.bat} et \colarg{make.jar} sont
   disponibles dans l'archive songbook-winds.zip:
   \url{http://www.patacrep.com/data/documents/songbook-windows.zip}.
 \end{nota}
