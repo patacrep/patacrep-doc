@@ -3,20 +3,16 @@
 % suppression des fichiers temporaires : make clean
 % suppression des fichiers temporaires et des pdf : make cleanall 
 % *******************************************************************************
-\makeatletter\def\input@path{{styles/}}\makeatother
-\documentclass[versionenligne]{patacrep}
-\usepackage[english,frenchb]{babel}
-\usepackage[utf8]{inputenc}
-\fontencoding{T1}
-\usepackage{lmodern}
-\usepackage{pdfpages}
-\usepackage{url}
-
+\makeatletter\def\input@path{ {style/} {tex/} }\makeatother
+\documentclass[online]{patacrep}
 %*******************************************************************************
 %*******************************************************************************
 \begin{document}
 
-\includepdf[pages=-]{cov}
+\AddToShipoutPicture{\BackgroundPic{cover-footer}}
+\input{cover}
+\ClearShipoutPicture
+
 \thispagestyle{empty}
 \tableofcontents \newpage
 
