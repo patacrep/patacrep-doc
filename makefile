@@ -12,7 +12,7 @@
 
 ######################## Dépendances #################################
 #
-# latex, xelatex, inkscape, xfig, imagemagick(convert)
+# latex, inkscape, xfig, imagemagick(convert)
 #
 ######################################################################
 
@@ -66,7 +66,7 @@ ps: LATEX = latex
 ps: $(CIBLE).ps.gz
 #	gv $<
 
-pdf: LATEX = xelatex
+pdf: LATEX = pdflatex
 pdf: $(CIBLE).pdf
 	evince $<
 

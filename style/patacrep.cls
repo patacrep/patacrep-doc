@@ -10,6 +10,16 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions
 \LoadClass[a4paper]{article}
+
+%-----------------------------------------------------------------------
+%Font Ubuntu
+\RequirePackage{eso-pic}
+%-----------------------------------------------------------------------
+%Normal Font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\RequirePackage[frenchb]{babel}
 %%-----------------------------------------------------------------------
 % Paquets
 \RequirePackage{ifpdf}
@@ -17,25 +27,25 @@
 \RequirePackage{calc,index}
 \RequirePackage{fancybox}
 \RequirePackage{textcomp,amsmath}
-\RequirePackage[final]{graphicx}
-\RequirePackage{xcolor}
+\RequirePackage{xcolor, graphicx}
 \RequirePackage{nota}
 \RequirePackage{commands}
-\RequirePackage[frenchb]{babel}
 \RequirePackage{url}
-\RequirePackage{xltxtra}
-\RequirePackage{eso-pic}
-\setmainfont[Mapping=tex-text]{Ubuntu}
 %-----------------------------------------------------------------------
 \definecolor{tango-green-1}{HTML}{8ae234}
 \definecolor{tango-green-3}{HTML}{4e9a06}
 \definecolor{tango-blue-3}{HTML}{204a87}
 \definecolor{tango-red-3}{HTML}{a40000}
+%\definecolor{tango-orange-1}{HTML}{fcaf3e}
+%\definecolor{tango-orange-3}{HTML}{ce5c00}
 \RequirePackage[bookmarks,
   bookmarksopen,
   colorlinks=true,
   linkcolor=tango-green-3,
-  urlcolor=tango-blue-3]{hyperref}
+  urlcolor=tango-blue-3
+]{hyperref}
+%\hypersetup{linkcolor=tango-orange-1,urlcolor=tango-orange-3}
+
 %-----------------------------------------------------------------------
 % emplacements des images
 \graphicspath{ {fig/} {fig/pdf/} }
