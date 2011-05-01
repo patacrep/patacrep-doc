@@ -1,0 +1,54 @@
+%-----------------------------------------------------------------------
+% cover
+\graphicspath{ {fig/} {fig/pdf/} }
+\newcommand{\BackgroundPic}[1]{
+  \put(0,0){
+    \parbox[b][5cm]{\paperwidth}{%
+      \vfill \centering
+      \includegraphics[width=22cm]{#1}%
+    }
+  }
+}
+%-----------------------------------------------------------------------
+% nota environment
+\newcommand{\ficnota}{attention}
+\setlength{\largeurnota}{.8cm}
+\newenvironment{nota}{%
+  \begin{pictonote}{\ficnota}}{\end{pictonote}}
+%-----------------------------------------------------------------------
+%file names
+\newcommand{\colarg}[2][]{{\normalfont\color{tango-red-3}#2%
+  \ifthenelse{\equal{#1}{}}{}{$_\mathit{#1}$}}}
+\let\marg\colarg
+\let\fmbArg\colarg
+%-----------------------------------------------------------------------
+% code environment
+\DefineVerbatimEnvironment{unixcom}{Verbatim}{%
+  frame=leftline,
+  framerule=1mm,
+  framesep=2mm,
+  xleftmargin=15pt}
+%-----------------------------------------------------------------------
+%Additional toc entries
+\newcommand{\addentry}[3]{
+  \cleardoublepage%
+  \phantomsection%
+  \addcontentsline{#1}{#2}{#3}%
+}
+%-----------------------------------------------------------------------
+% references
+\newcommand{\refsec}[1]{Section~\ref{#1}}
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\refchap}[1]{Chapitre~\ref{#1}}
+\newcommand{\reftab}[1]{Tableau~\ref{#1}}
+%-----------------------------------------------------------------------
+\newcommand{\todo}[1]{\textbf{TODO:~}#1}
+\newcommand{\latexcom}[1]{{\mdseries\ttfamily\upshape\symbol{92}#1}}
+\newcommand{\command}[1]{{\mdseries\ttfamily\upshape#1}}
+\newcommand{\Key}[1]{\Ovalbox{#1}}
+\newcommand{\cf}[1]{(voir~\refsec{#1})}
+\newcommand{\git}{Git\xspace}
+\newcommand{\lilypond}{Lilypond\xspace}
+\newcommand{\windows}{Windows\xspace}
+\newcommand{\linux}{Linux\xspace}
+%-----------------------------------------------------------------------

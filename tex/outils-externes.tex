@@ -1,0 +1,66 @@
+%*******************************************************************************
+%*******************************************************************************
+\chapter{Outils externes}
+\setcounter{chapter}{3}
+\label{chap:outils-externes}
+\minitoc
+%*******************************************************************************
+%*******************************************************************************
+
+%*******************************************************************************
+\section{\LaTeX{}}
+%*******************************************************************************
+
+\LaTeX{} est un logiciel de traitement de texte qui va générer un
+document pdf depuis un fichier source (un simple fichier texte). Cela
+permet à l'utilisateur de se concentrer sur le contenu plutôt que sur
+la forme. Pour que \LaTeX{} puisse produire un rendu correct, la
+rédaction d'un fichier source doit respecter certaines contraintes
+basées sur l'utilisation de commandes.
+
+Une commande commence par un antislash ($\backslash$) suivi du nom de
+la commande. Ensuite viennent les arguments, s'il y en a, entre
+accolades (obligatoires) ou crochets (optionnels).
+
+
+%*******************************************************************************
+\section{Git}
+%*******************************************************************************
+
+%commandes de base
+%git clone add/rm commit push/pull status
+
+%récupérer un dépôt
+
+%mettre à jour
+
+%modifier
+
+%command avancées
+%git branch amend checkout rebase
+%github
+
+%*******************************************************************************
+\section{Lilypond}
+%*******************************************************************************
+
+La documentation du projet Lilypond est très
+claire et se trouve sur le site \url{http://lilypond.org/}.
+Voici néanmoins quelques concepts de base~:
+
+\begin{itemize}
+\item les lettres a, b, c, d, e, f, g représente les notes la, si, do,
+  ré, mi, fa, sol~;
+\item un chiffre derrière une lettre en indique la durée (2=blanche, 4=noire,
+  8=croche) et un point après un chiffre désigne une note pointée~;
+\item \emph{ais}, \emph{bes} désignent un \emph{la dièse} et un \emph{si bémol}
+\item \emph{'} et \emph{,} servent à monter/descendre d'une octave.
+\end{itemize}
+
+Lilypond est généralement empaqueté pour les distributions
+GNU/Linux. Pour des distributions basées Debian/Ubuntu, l'installation
+se fait par~:
+
+\begin{unixcom}
+  sudo apt-get install lilypond
+\end{unixcom}

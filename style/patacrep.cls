@@ -1,10 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{patacrep}
-\LoadClass[a4paper]{article}
+\LoadClass[a4paper,twoside,12pt]{book}
 
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc}
 \RequirePackage[frenchb]{babel}
+\RequirePackage{type1cm}
+\RequirePackage{lmodern}
+\RequirePackage[francais]{minitoc}
 
 \RequirePackage{eso-pic}
 \RequirePackage{fancyhdr,fancybox,fancyvrb}
@@ -13,7 +16,9 @@
 \RequirePackage{nota}
 \RequirePackage{url}
 \RequirePackage{ifthen}
+\RequirePackage{xspace}
 %-----------------------------------------------------------------------
+% hyperref setup
 \definecolor{tango-green-1}{HTML}{8ae234}
 \definecolor{tango-green-3}{HTML}{4e9a06}
 \definecolor{tango-blue-3}{HTML}{204a87}
@@ -25,63 +30,60 @@
   urlcolor=tango-blue-3
 ]{hyperref}
 
-%-----------------------------------------------------------------------
-% emplacements des images
-\graphicspath{ {fig/} {fig/pdf/} }
-%-----------------------------------------------------------------------
-\newcommand{\BackgroundPic}[1]{
-  \put(0,0){
-    \parbox[b][5cm]{\paperwidth}{%
-      \vfill \centering
-      \includegraphics[width=22cm]{#1}%
-    }
-  }
-}
-%-----------------------------------------------------------------------
-% suppression des warning hyperref
+\hypersetup{
+pdfauthor = {Romain Goffe},%
+pdftitle = {Patacrep! Songbook Documentation},%
+pdfkeywords = {},%
+pdfcreator = {PDFLaTeX},%
+pdfproducer = {PDFLaTeX}}
+
 \def\Hy@WarningNoLine#1{}
 \def\Hy@Warning#1{}
-%-----------------------------------------------------------------------
-% configuration de l'environnement nota
-\newcommand{\ficnota}{attention}
-\setlength{\largeurnota}{.8cm}
-\newenvironment{nota}{%
-  \begin{pictonote}{\ficnota}}{\end{pictonote}}
-%-----------------------------------------------------------------------
-%file names
-\newcommand{\colarg}[2][]{{\normalfont\color{tango-red-3}#2%
-  \ifthenelse{\equal{#1}{}}{}{$_\mathit{#1}$}}}
 
-   \let\marg\colarg
-
-\let\fmbArg\colarg
 %-----------------------------------------------------------------------
-%renvois
-\newcommand{\voir}[2]{%
-  #2{\tiny$\blacktriangleleft$}%
-  \marginpar{%
-    \parbox[t]{.9\marginparwidth}{%
-      {\small$\blacktriangleright$}{\footnotesize\sffamily\S\,\ref{#1}\,p.\,\pageref{#1}}
-  }}
+% figures
+\graphicspath{ {fig/} {fig/pdf/} }
+
+%-----------------------------------------------------------------------
+% Set equal margins on book style
+\setlength{\oddsidemargin}{30pt}
+\setlength{\evensidemargin}{30pt}
+\setlength{\marginparwidth}{45pt}
+\setlength{\footskip}{30pt}
+\setlength{\textwidth}{400pt}
+%-----------------------------------------------------------------------
+% Redefine plain page style
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[LE,RO]{\thepage}
 }
 %-----------------------------------------------------------------------
-\newcommand{\Touche}[1]{\Ovalbox{#1}}
+% Code for creating empty pages
+% No headers on empty pages before new chapter
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}
+  \thispagestyle{plain}
+  \newpage
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother \clearpage{\pagestyle{plain}\cleardoublepage}
 %-----------------------------------------------------------------------
-
-\DefineVerbatimEnvironment{unixcom}{Verbatim}{%
-%  commandchars=¢«»,
-  frame=leftline,
-  framerule=1mm,
-  framesep=2mm,
-%  fontfamily=ccr,
-%  gobble=2,
-  xleftmargin=15pt}
-
-\newcommand{\todo}[1]{\textbf{TODO:~}#1}
-
-\newcommand{\latexcom}[1]{{\mdseries\ttfamily\upshape\symbol{92}#1}}
-\newcommand{\command}[1]{{\mdseries\ttfamily\upshape#1}}
-
+% Define pagestyle
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+ 
+\fancyhf{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[LO]{\textit{\nouppercase{\rightmark}}}
+ 
+\fancypagestyle{plain}{ %
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+%-----------------------------------------------------------------------
 
 \endinput
 
