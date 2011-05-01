@@ -9,13 +9,18 @@
 %*******************************************************************************
 %*******************************************************************************
 
+
 %*******************************************************************************
-\section{Procédure d'installation sous Linux}
+\section{Installation}
 %*******************************************************************************
 
+De manière générale, évitez les chemins contenant des espaces
+ou des caractères spéciaux. Dans ce manuel, le répertoire de travail
+est supposé être~: \colarg{\$HOME/songbook} pouvant être noté
+\colarg{/home/user/songbook} ou \colarg{$\sim$/songbook}.
+
 %------------------------------------------------------------------------------
-\subsection{Dépendances}
-\label{sec:songbook-dep}
+\subsection{\linux}
 %------------------------------------------------------------------------------
 
 Le songbook utilise \LaTeX{} pour la mise en page des chansons et
@@ -27,82 +32,61 @@ raisons de simplicité (dépendances recommandées). Enfin, vous aurez
 besoin d'un logiciel pour lire les fichiers pdf produits. Si vous êtes
 sous Debian/Ubuntu~:
 
-\paragraph{Dépendances obligatoires}
+\subsubsection{Dépendances}
+
+Installation des dépendances obligatoires.
 \begin{unixcom}
   sudo apt-get install texlive-base texlive-lang-french texlive-latex-extra
   sudo apt-get install python
 \end{unixcom}
 
-\paragraph{Dépendances recommandées}
+Installation des dépendances recommandées.
 \begin{unixcom}
   sudo apt-get install texlive-fonts-recommended
   sudo apt-get install lilypond
   sudo apt-get install git-core
 \end{unixcom}
 
-%------------------------------------------------------------------------------
-\subsection{Récupération des sources}
-%------------------------------------------------------------------------------
+\subsubsection{Téléchargement des sources}
 
-Il y a deux façons de récupérer les fichiers source du carnet de
-chants~:
-\begin{itemize}
-\item télécharger l'archive tar.gz
-\item utiliser le gestionnaire de version Git
-\end{itemize}
+Les sources peuvent être récupérées sous la forme d'une archive tar.gz
 
-\paragraph{Depuis l'archive tar.gz}
-Il faut extraire le contenu de l'archive dans le répertoire de votre
-choix. De manière générale, évitez les chemins contenant des espaces
-ou des caractères spéciaux. Dans ce manuel, le répertoire de travail
-est supposé être~: \colarg{\$HOME/songbook} pouvant être noté
-\colarg{/home/user/songbook} ou \colarg{$\sim$/songbook}.
 \begin{unixcom}
-  cd $HOME
   wget http://www.patacrep.com/data/documents/songbook.tar.gz
   tar xzvf songbook.tar.gz
 \end{unixcom}
-%$
 
-\paragraph{Depuis le dépôt Git}
-Il est conseillé d'utiliser la méthode utilisant le gestionnaire de
-version Git pour des raisons pratiques.
+ou sous la forme d'un dépôt \git
+
 \begin{unixcom}
-  cd $HOME
   git clone git://git.lohrun.net/songbook.git
 \end{unixcom}
-%$
-%------------------------------------------------------------------------------
-\subsection{Compilation}
-%------------------------------------------------------------------------------
 
-Un \emph{makefile} automatise tout le processus de compilation. La
-génération du songbook ne demande donc qu'un~: 
+
+\paragraph{Exécution}
+
+Un \emph{makefile} automatise tout le processus de compilation. 
+Dans le répertoire du songbook~:
 
 \begin{unixcom}
-  cd \$HOME/songbook
   make all
 \end{unixcom}
 
 Quelques options de base du makefile~:
-
-\paragraph{\$ make clean} 
-supprime tous les fichiers de logs et les fichiers générés à part les
-recueils finaux (pdf).
-
-\paragraph{\$ make cleanall}
-supprime tous les fichiers générés y compris les pdf.
-
-\paragraph{\$ make lilypond}
-génère dans \colarg{./lilypond} les pdf de toutes les  partitions lilypond (.ly)
-trouvées dans \colarg{./lilypond}. Il est nécessaire d'avoir installé
-\emph{lilypond} au préalable.
-
-\paragraph{\$ make book.pdf}
-la compilation de tous les carnets pouvant être longue, si seule une
-version précise vous intéresse, vous pouvez lancer la compilation d'un
-seul fichier pdf. À la place de
-\colarg{book.pdf}, vous pouvez mettre~:
+\begin{itemize}
+\item \command{\$ make clean}~: supprime tous les fichiers de logs et
+  les fichiers générés à part les recueils finaux (pdf).
+\item \command{\$ make cleanall}~: supprime tous les fichiers générés,
+  y compris les pdf.
+\item \command{\$ make lilypond}~: génère dans \colarg{./lilypond} les
+  pdf de toutes les partitions lilypond (.ly) trouvées dans
+  \colarg{./lilypond}. Il est nécessaire d'avoir installé
+  \emph{lilypond} au préalable.
+\item \command{\$ make book.pdf}~: la compilation de tous les carnets
+  pouvant être longue, si seule une version précise vous intéresse,
+  vous pouvez lancer la compilation d'un seul fichier pdf. À la place
+  de \colarg{book.pdf}, vous pouvez mettre~:
+\end{itemize}
 
 \begin{center}
   \begin{tabular}{l l}
@@ -123,77 +107,27 @@ seul fichier pdf. À la place de
     \colarg{songbook.pdf}}.
 \end{nota}
 
-%------------------------------------------------------------------------------
-\subsection{Mises à jour}
-%------------------------------------------------------------------------------
 
-Pour maintenir à jour la version du songbook avec les dernières
-chansons rajoutées, vous pouvez télécharger la dernière version mise
-en ligne de l'archive tar.gz ou, si vous avez utilisé Git pour
-récupérer les sources~:
-\begin{unixcom}
-  cd $HOME/songbook
-  git pull
-\end{unixcom} 
-%$
+\subsection{\windows}
 
-%------------------------------------------------------------------------------
-\subsection{Recueils et templates}
-%------------------------------------------------------------------------------
 
-\paragraph{Fichiers songbook}
-Les fichiers songbook (.sb) contiennent un ensemble d'options pour la
-personnalisation du recueil ainsi qu'une liste de chansons. Pour
-compiler votre recueil personnalisé mybook.sb~:
+\subsubsection{Dépendances}
 
-\begin{unixcom}
-  make mybook.pdf
-\end{unixcom}
-
-\paragraph{Fichiers template}
-Les fichiers templates (.tmpl) définissent un style de document à
-appliquer à un recueil. Pour l'instant, deux templates sont disponibles~:
-\begin{itemize}
-\item patacrep.tmpl~: template par défaut correspondant à la mise en page classique.
-\item minimal.tmpl~: une version plus compacte sans page de garde ni table des matières.
-\end{itemize}
-
-%*******************************************************************************
-\section{Procédure d'installation sous Windows}
-%*******************************************************************************
-
-%------------------------------------------------------------------------------
-\subsection{Dépendances}
-\label{sec:songbook-dep-win}
-%------------------------------------------------------------------------------
-
-Le songbook utilise \LaTeX{} pour la mise en page des chansons et
-Python pour la génération des tables des matières (dépendances
-obligatoires).  Il est également possible d'inclure en option des
-partitions générées avec Lilypond. Enfin, le projet est distribué via
-un dépôt git donc il est recommandé d'installer l'outil pour des
-raisons de simplicité (dépendances recommandées). Enfin, vous aurez
-besoin d'un logiciel pour lire les fichiers pdf produits.
-
-\paragraph{Dépendances obligatoires}
+Installation des dépendances obligatoires.
 \begin{itemize}
 \item Miktex~: \url{http://miktex.org/2.8/setup}
 \item Python~: \url{http://www.python.org/download/}
 \item Java \url{http://www.java.com/fr/download/}
 \end{itemize}
 
-\paragraph{Dépendances recommandées}
+Installation des dépendances recommandées.
 \begin{itemize} 
 \item Lilypond~: \url{http://lilypond.org/install/}
 \item MsysGit~: \url{http://code.google.com/p/msysgit/downloads/list}
 \end{itemize}
 
-%------------------------------------------------------------------------------
-\subsection{Installation}
-\label{sec:install-win}
-%------------------------------------------------------------------------------
+\subsubsection{Modification de la variable \command{Path}}
 
-\paragraph{Modifier la variable \command{Path}}
 Après avoir installé tous les logiciels obligatoires et/ou recommandés
 vous devez rédémarrer votre machine.  Après le redémarrage, il faut
 modifier la variable \command{Path} de votre système.
@@ -217,10 +151,9 @@ qu'elle contient bien les chemins vers~:
 \end{itemize}                     
 
 Si certains chemins viennent à manquer, ajoutez les vous-même. Si la
-variable a été modifiée, vous devrez encore rédémarrer (sic) votre
-ordinateur.
+variable a été modifiée, vous devrez rédémarrer votre ordinateur.
 
-\paragraph{Exécution du programme}
+\paragraph{Exécution}
 Placez-vous dans votre répertoire \colarg{songbook/}.
 \begin{itemize}
 \item Copiez les deux fichiers \colarg{make.bat} et \colarg{make.jar}
@@ -245,8 +178,68 @@ Une interface graphique vous permet de~:
 \end{nota}
 
 
+
 %*******************************************************************************
-\section{Comment écrire une chanson}
+\section{Description du contenu}
+%*******************************************************************************
+
+\paragraph{\command{./utils}}
+Contient un ensemble de scripts utilitaires. Un script s'exécute par la commande~:
+
+\begin{unixcom}
+  ./utils/script.sh
+\end{unixcom}
+
+\begin{itemize}
+\item \command{resize-cover.sh}~: permet de redimensionner
+  automatiquement tous les fichiers .jpg du répertoire
+  \colarg{songbook/songs} correspondant aux pochettes des albums. À
+  exécuter après l'ajout d'une nouvelle pochette jpg.
+
+\item \command{latex-preprocessing.py}~: applique un ensemble de
+  règles automatiques pour les notations \LaTeX{} de certains
+  caractères et pour les notations d'accords.  À exécuter après
+  l'ajout d'une nouvelle chanson pour être sûr de respecter les
+  standards du songbook.
+
+\item \command{typo.sh}~: applique un ensemble de règles
+  typographiques comme la suppression des espaces doubles ou la
+  gestion des guillemets.
+
+\item \command{new-songs-list.sh}~: permet de récupérer la liste des
+  chansons ajoutées depuis la dernière version.
+
+\item \command{make-html.sh}~: génère la liste de toutes les chansons
+  au format html.
+\end{itemize}
+
+
+
+%*******************************************************************************
+\section{Créer un recueil}
+%*******************************************************************************
+
+\paragraph{Fichiers songbook}
+Les fichiers songbook (.sb) contiennent un ensemble d'options pour la
+personnalisation du recueil ainsi qu'une liste de chansons. Pour
+compiler votre recueil personnalisé mybook.sb~:
+
+\begin{unixcom}
+  make mybook.pdf
+\end{unixcom}
+
+\paragraph{Fichiers template}
+Les fichiers templates (.tmpl) définissent un style de document à
+appliquer à un recueil. Pour l'instant, deux templates sont disponibles~:
+\begin{itemize}
+\item patacrep.tmpl~: template par défaut correspondant à la mise en page classique.
+\item minimal.tmpl~: une version plus compacte sans page de garde ni table des matières.
+\end{itemize}
+
+
+
+%*******************************************************************************
+\section{Écrire une chanson}
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
@@ -410,6 +403,64 @@ classiques~:
 \end{itemize}
 
 %------------------------------------------------------------------------------
+\subsection{Intégration de partitions \lilypond}
+%------------------------------------------------------------------------------
+
+Si vous voulez rajouter une ligne mélodique dans une chanson, vous
+pouvez utiliser lilypond pour générer la partition. Créez pour cela un
+nouveau fichier \colarg{partition.ly} dans le répertoire
+\colarg{songbook/lilypond}.  Il faut inclure le fichier d'en-tête
+\colarg{header} et définir l'option paper-height de façon à ce que la
+partition produite tienne sur une page avec le moins de blanc
+possible. Une première estimation est de compter 1.6cm pour une
+ligne. Puis, écrivez votre partition entre accolades comme dans
+l'exemple suivant (Tom Sawyer) pour obtenir le résultat en
+Fig.~\ref{fig:lilypond}~:
+
+\begin{verbatim}
+\include "header"
+\paper{paper-height = 3.3\cm}
+ {
+   \key c \major
+   \time 2/4
+   \relative c''{
+     e4 c g'2 a4 a8. a16 g8 e4 c8 a'4 a8. a16 g8 f e c d2~ d4
+     e8 f g4 g8. g16 f8 e d c a c4 a8 g4 c8 d e8 g4 g,8 e' e d d c2
+   }
+ }
+\end{verbatim}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{lilypond}
+  \caption{Intégration de partitions avec Lilypond.}
+  \label{fig:lilypond}
+\end{figure}
+
+Enfin, pour insérer votre partition dans une chanson, insérez la ligne
+suivante à l'endroit désiré dans \colarg{chanson.sg}~:
+
+\begin{verbatim}
+\lilypond{partition}
+\end{verbatim}
+
+Toutes les partitions lilypond présentes dans le répertoire
+\colarg{songbook/lilypond} sont automatiquement générées par le
+makefile. Pour construire le songbook incluant les partitions
+lilypond, il suffit de faire~:
+
+\begin{unixcom}
+  make lilypondbook.pdf 
+\end{unixcom}
+
+\begin{nota}
+  Auparavant, il était nécessaire de générer au préalable les
+  partitions lilypond avec la commande ``make lilypond''. Cette étape
+  n'est désormais plus nécessaire, le makefile génèrera
+  automatiquement les paritions lilypond nécessaires.
+\end{nota}
+
+%------------------------------------------------------------------------------
 \subsection{Exemple}
 %------------------------------------------------------------------------------
 
@@ -496,198 +547,5 @@ pour écrire une nouvelle chanson.
 \endsong
 \end{verbatim}
 
-%*******************************************************************************
-\section{Contribuer au projet}
-%*******************************************************************************
-
-Il est facile de contribuer au projet~:
-
-\begin{itemize}
-\item signalisation des fautes d'orthographe, de musique~;
-\item proposition sur le forum des chansons que vous aimeriez voir transcrites~;
-\item transcription complète d'une chanson~;
-\item transcription partielle d'une chanson avec uniquement les paroles~;
-\item transcription Lilypond de certains solos~;
-\item correction de bugs, amélioration du code.
-\end{itemize}
-
-Si vous rajoutez une chanson, n'oubliez pas de nous l'envoyer et nous
-serons ravis de l'intégrer. Comme toujours les contributeurs sont plus
-que bienvenus. Pour nous contacter~:
-
-\begin{itemize}
-\item envoyez directement vos remarques par mail à
-  \url{crep@team-on-fire.com}~;
-\item utilisez le forum comme bon vous semble.
-\end{itemize}
 
 
-%-------------------------------------------------------------------------------
-\subsection{Création d'un patch}
-%-------------------------------------------------------------------------------
-
-Une bonne façon de nous faire remonter vos corrections/modifications
-est de nous les envoyer sous forme de patch. Techniquement, un patch
-est un simple fichier qui indique les opérations (ajout/suppression)
-qui ont été opérées sur un fichier texte. Un exemple tout simple a
-l'aspect suivant~:
-
-\begin{verbatim}
-index 3fcce15..b4edcc1 100644
---- a/songs/Cat_Stevens/The_wind.sg
-+++ b/songs/Cat_Stevens/The_wind.sg
-@@ -7,7 +7,7 @@
-
--\[Do] I listen to the \[Fa]wind,
-    +\[Ré] I listen to the \[Sol]wind,
-\end{verbatim}
-
-Vous voyez rapidement qu'après les premières lignes qui servent à
-identifier le fichier sur lequel on a travaillé, on a remplacé~:
-\begin{verbatim}
--\[Do] I listen to the \[Fa]wind,
-\end{verbatim}
-par
-\begin{verbatim}
-+\[Ré] I listen to the \[Sol]wind,
-\end{verbatim}
-
-Concrètement, si vous avez suivi la procédure d'installation, vous
-devriez avoir un répertoire \colarg{\$HOME/songbook/} contenant toutes
-les sources du carnet de chant. Maintenant, vous avez repéré une
-erreur dans la chanson \colarg{songs/artiste/chanson.sg}. Ouvrez le
-fichier correspondant avec votre éditeur de texte préféré, faîtes
-votre correction, enregistrez, fermez. Puis, dans un terminal~:
-
-\begin{unixcom}
-  cd $HOME/songbook
-  git diff -u songs/artiste/chanson.sg > patch
-\end{unixcom} 
-%$
-
-Cela va vous créer un nouveau fichier \colarg{patch} qui contiendra
-l'ensemble des modifications que vous avez apportées à votre
-chanson. Plus qu'à nous l'envoyer !
-
-%-------------------------------------------------------------------------------
-\subsection{Création de votre version du songbook}
-%-------------------------------------------------------------------------------
-
-Si vous prévoyez de faire beaucoup de modifications ou de rejoindre
-activement le développement du songbook, le système de patch n'est pas
-forcément adapté et il vaut mieux dans ce cas partir sur votre propre
-version du songbook. La meilleure solution consiste à faire un
-\emph{fork} du projet Git et de l'héberger sur le web si vous comptez
-le partager. Des solutions web gratuites permettent d'héberger de tels
-projets. Par exemple~:
-
-\begin{itemize}
-\item \url{http://github.com}
-\item \url{http://gitorious.org}
-\end{itemize}
-
-Il suffit alors de nous communiquer l'adresse de votre dépôt Git de
-façon à ce que nous puissions récupérer vos changements.
-
-
-%*******************************************************************************
-\section{Partitions avec Lilypond}
-%*******************************************************************************
-
-%------------------------------------------------------------------------------
-\subsection{Lilypond}
-%------------------------------------------------------------------------------
-
-%------------------------------------------------------------------------------
-\subsection{Intégration au songbook}
-%------------------------------------------------------------------------------
-
-Si vous voulez rajouter une ligne mélodique dans une chanson, vous
-pouvez utiliser lilypond pour générer la partition. Créez pour cela un
-nouveau fichier \colarg{partition.ly} dans le répertoire
-\colarg{songbook/lilypond}.  Il faut inclure le fichier d'en-tête
-\colarg{header} et définir l'option paper-height de façon à ce que la
-partition produite tienne sur une page avec le moins de blanc
-possible. Une première estimation est de compter 1.6cm pour une
-ligne. Puis, écrivez votre partition entre accolades comme dans
-l'exemple suivant (Tom Sawyer) pour obtenir le résultat en
-Fig.~\ref{fig:lilypond}~:
-
-\begin{verbatim}
-\include "header"
-\paper{paper-height = 3.3\cm}
- {
-   \key c \major
-   \time 2/4
-   \relative c''{
-     e4 c g'2 a4 a8. a16 g8 e4 c8 a'4 a8. a16 g8 f e c d2~ d4
-     e8 f g4 g8. g16 f8 e d c a c4 a8 g4 c8 d e8 g4 g,8 e' e d d c2
-   }
- }
-\end{verbatim}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{lilypond}
-  \caption{Intégration de partitions avec Lilypond.}
-  \label{fig:lilypond}
-\end{figure}
-
-Enfin, pour insérer votre partition dans une chanson, insérez la ligne
-suivante à l'endroit désiré dans \colarg{chanson.sg}~:
-
-\begin{verbatim}
-\lilypond{partition}
-\end{verbatim}
-
-Toutes les partitions lilypond présentes dans le répertoire
-\colarg{songbook/lilypond} sont automatiquement générées par le
-makefile. Pour construire le songbook incluant les partitions
-lilypond, il suffit de faire~:
-
-\begin{unixcom}
-  make lilypondbook.pdf 
-\end{unixcom}
-
-\begin{nota}
-  Auparavant, il était nécessaire de générer au préalable les
-  partitions lilypond avec la commande ``make lilypond''. Cette étape
-  n'est désormais plus nécessaire, le makefile génèrera
-  automatiquement les paritions lilypond nécessaires.
-\end{nota}
-
-%*******************************************************************************
-\section{Utilitaires}
-\label{sec:utilitaires}
-%*******************************************************************************
-
-Des scripts utilitaires sont disponibles dans le répertoire
-\colarg{songbook/utils}. On les exécute classiquement en faisant~:
-
-\begin{unixcom}
-  cd $HOME/songbook
-  ./utils/script.sh
-\end{unixcom}
-%$
-
-\paragraph{Resize cover}
-Permet de redimensionner automatiquement tous les fichiers .jpg du
-répertoire \colarg{songbook/songs} correspondant aux pochettes des
-albums. À exécuter après l'ajout d'une nouvelle pochette jpg.
-
-\paragraph{Latex preprocessing}
-Applique un ensemble de règles automatiques pour les notations
-\LaTeX{} de certains caractères et pour les notations d'accords.  À
-exécuter après l'ajout d'une nouvelle chanson pour être sûr de
-respecter les standards du songbook.
-
-\paragraph{New songs list}
-Permet de récupérer la liste des chansons ajoutées depuis la dernière
-version.
-
-\paragraph{Volume\,2}
-Permet de générer la liste des chansons qui ne sont pas dans le
-volume\,1.
-
-\paragraph{Make html}
-Génère la liste de toutes les chansons au format html.

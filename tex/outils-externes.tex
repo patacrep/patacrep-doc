@@ -27,6 +27,18 @@ accolades (obligatoires) ou crochets (optionnels).
 \section{Git}
 %*******************************************************************************
 
+%-------------------------------------------------------------------------------
+\subsection{Mise à jour du dépôt}
+%-------------------------------------------------------------------------------
+
+Pour maintenir à jour la version du songbook avec les dernières
+chansons rajoutées, vous pouvez télécharger la dernière version mise
+en ligne de l'archive tar.gz ou, si vous avez utilisé Git pour
+récupérer les sources~:
+\begin{unixcom}
+  git pull
+\end{unixcom} 
+
 %commandes de base
 %git clone add/rm commit push/pull status
 
@@ -39,6 +51,72 @@ accolades (obligatoires) ou crochets (optionnels).
 %command avancées
 %git branch amend checkout rebase
 %github
+
+%-------------------------------------------------------------------------------
+\subsection{Création d'un patch}
+%-------------------------------------------------------------------------------
+
+Une bonne façon de nous faire remonter vos corrections/modifications
+est de nous les envoyer sous forme de patch. Techniquement, un patch
+est un simple fichier qui indique les opérations (ajout/suppression)
+qui ont été opérées sur un fichier texte. Un exemple tout simple a
+l'aspect suivant~:
+
+\begin{verbatim}
+index 3fcce15..b4edcc1 100644
+--- a/songs/Cat_Stevens/The_wind.sg
++++ b/songs/Cat_Stevens/The_wind.sg
+@@ -7,7 +7,7 @@
+
+-\[Do] I listen to the \[Fa]wind,
+    +\[Ré] I listen to the \[Sol]wind,
+\end{verbatim}
+
+Vous voyez rapidement qu'après les premières lignes qui servent à
+identifier le fichier sur lequel on a travaillé, on a remplacé~:
+\begin{verbatim}
+-\[Do] I listen to the \[Fa]wind,
+\end{verbatim}
+par
+\begin{verbatim}
++\[Ré] I listen to the \[Sol]wind,
+\end{verbatim}
+
+Concrètement, si vous avez suivi la procédure d'installation, vous
+devriez avoir un répertoire \colarg{\$HOME/songbook/} contenant toutes
+les sources du carnet de chant. Maintenant, vous avez repéré une
+erreur dans la chanson \colarg{songs/artiste/chanson.sg}. Ouvrez le
+fichier correspondant avec votre éditeur de texte préféré, faîtes
+votre correction, enregistrez, fermez. Puis, dans un terminal~:
+
+\begin{unixcom}
+  git diff -u songs/artiste/chanson.sg > patch
+\end{unixcom} 
+
+Cela va vous créer un nouveau fichier \colarg{patch} qui contiendra
+l'ensemble des modifications que vous avez apportées à votre
+chanson. Plus qu'à nous l'envoyer !
+
+
+%-------------------------------------------------------------------------------
+\subsection{Forker un projet}
+%-------------------------------------------------------------------------------
+
+Si vous prévoyez de faire beaucoup de modifications ou de rejoindre
+activement le développement du songbook, le système de patch n'est pas
+forcément adapté et il vaut mieux dans ce cas partir sur votre propre
+version du songbook. La meilleure solution consiste à faire un
+\emph{fork} du projet Git et de l'héberger sur le web si vous comptez
+le partager. Des solutions web gratuites permettent d'héberger de tels
+projets. Par exemple~:
+
+\begin{itemize}
+\item \url{http://github.com}
+\item \url{http://gitorious.org}
+\end{itemize}
+
+Il suffit alors de nous communiquer l'adresse de votre dépôt Git de
+façon à ce que nous puissions récupérer vos changements.
 
 %*******************************************************************************
 \section{Lilypond}
