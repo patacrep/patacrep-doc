@@ -22,7 +22,8 @@
 
 Dans ce document, nous expliquons comment utiliser et tirer pleinement
 partie des outils proposés sur Patacrep! pour réaliser des carnets de
-chansons. Tout d'abord, une présentation rapide des différents projets~:
+chansons. Tout d'abord, une présentation rapide des différents
+projets~:
 
 \paragraph{Songbook}
 La base du projet en lui-même. Il s'agit d'un ensemble de chansons
@@ -40,8 +41,8 @@ recueil personnalisé.
 \paragraph{Technologies} 
 Différents langages et outils sont utilisés par ces projets.  Nous
 utilisons particulièrement le projet \emph{Songs LaTeX
-  Package}\footnote{\url{http://songs.sourceforge.net/}} pour le
-  rendu des chansons.
+Package}\footnote{\url{http://songs.sourceforge.net/}} pour le rendu
+des chansons.
 
 \begin{itemize}
 \item \LaTeX~: les chansons sont écrites en respectant une syntaxe
@@ -119,7 +120,7 @@ est supposé être~: \colarg{\$HOME/songbook} pouvant être noté
 \colarg{/home/user/songbook} ou \colarg{$\sim$/songbook}.
 \begin{unixcom}
   cd $HOME
-  wget http://www.patacrep.com/files/songbook.tar.gz
+  wget http://www.patacrep.com/data/documents/songbook.tar.gz
   tar xzvf songbook.tar.gz
 \end{unixcom}
 %$
@@ -393,19 +394,24 @@ personnalisés du recueil lui-même.
 Un paquet Debian (.deb) est disponible pour faciliter le processus
 d'installation du songbook-client. 
 
+Pour les architectures 32bits :
+
 \begin{unixcom}
   cd $HOME
-  wget http://www.patacrep.com/files/songbook-client-0.3-1_amd64.deb
-  sudo dpkg -i songbook-client-0.3-1_amd64.deb
+  wget http://www.patacrep.com/data/documents/songbook-client_0.3.2-1_i386.deb
+  sudo dpkg -i songbook-client_0.3.2-1_i386.deb
 \end{unixcom}
 %$
 
-\begin{nota}
-  Si le lien n'est pas à jour ou si vous êtes sur une architecture
-  32bits, allez dans le répertoire
-  \url{http://www.patacrep.com/files/} et récupérez le fichier .deb
-  adéquat.
-\end{nota}
+Pour les architectures 64bits :
+
+\begin{unixcom}
+  cd $HOME
+  wget http://www.patacrep.com/data/documents/songbook-client_0.3.2-1_amd64.deb
+  sudo dpkg -i songbook-client_0.3.2-1_amd64.deb
+\end{unixcom}
+%$
+
 
 %------------------------------------------------------------------------------
 \subsection{Configuration}
@@ -481,7 +487,7 @@ la forme. Pour que \LaTeX\, puisse produire un rendu correct, la
 rédaction d'un fichier source doit respecter certaines contraintes
 basées sur l'utilisation de commandes.
 
-Une commande commence part un antislash ($\backslash$) suivi du nom de
+Une commande commence par un antislash ($\backslash$) suivi du nom de
 la commande. Ensuite viennent les arguments, s'il y en a, entre
 accolades (obligatoires) ou crochets (optionnels).
 
