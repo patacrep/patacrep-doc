@@ -84,6 +84,14 @@ pdfproducer = {PDFLaTeX}}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}}
 %-----------------------------------------------------------------------
+%Paragraphs
+\setlength{\parskip}{0.5ex plus .2ex minus .2ex}
+\renewcommand{\paragraph}[1]{\subsubsection*{#1}}
 
+%Disable single lines at the start of a paragraph 
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+%-----------------------------------------------------------------------
 \endinput
 
