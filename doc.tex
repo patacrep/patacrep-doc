@@ -1,20 +1,14 @@
-% *******************************************************************************
-% générer le pdf : make
-% suppression des fichiers temporaires : make clean
-% suppression des fichiers temporaires et des pdf : make cleanall 
-% *******************************************************************************
-\makeatletter\def\input@path{ {style/} {tex/} }\makeatother
-\documentclass[online]{patacrep}
 %*******************************************************************************
+\makeatletter\def\input@path{ {style/} {tex/} }\makeatother
+\documentclass{patacrep}
 %*******************************************************************************
 \begin{document}
-
 \AddToShipoutPicture{\BackgroundPic{cover-footer}}
 \input{cover}
 \ClearShipoutPicture
-
 \thispagestyle{empty}
-\tableofcontents \newpage
+\tableofcontents 
+\newpage
 
 %*******************************************************************************
 \section*{Introduction}
@@ -957,137 +951,5 @@ volume\,1.
 \paragraph{Make html}
 Génère la liste de toutes les chansons au format html.
 
-
-%*******************************************************************************
-\section{Conseils aux débutants}
-%*******************************************************************************
-
-%------------------------------------------------------------------------------
-\subsection{Les accords de base}
-%------------------------------------------------------------------------------
-
-Les accords de base sont les accords qui se jouent sans barré au
-niveau des premières frets~:
-
-\begin{itemize}
-\item Accords Majeurs~:\\ \command{Do} (X32010), \command{Sol}
-  (320003), \command{La} (X02220), \command{Ré} (XX0232), \command{Mi}
-  (022100)\\
-\item Accords Mineurs~:\\
-  \command{Mim} (022000), \command{Lam} (X02210), \command{Rém} (XX0231)\\
-\item Accords Septième~:\\ \command{Mi7} (020100), \command{Sol7}
-  (320001), \command{Ré}7 (XX0212), \command{La7} (X02020),
-  \command{Si7} (X21202)\\
-\end{itemize}
-
-Donc déjà, il est bon de savoir jouer et enchainer assez rapidement
-ces accords là. Le mieux c'est de chercher des morceaux avec ces
-accords et de s'entraîner dessus.  À part dans certains cas comme pour
-l'accord de \command{Ré}, les cordes marquées d'un X peuvent quand
-même sonner.  C'est juste qu'on préfère généralement attaquer par la
-fondamentale de l'accord (ex: note \command{Do} pour l'accord de
-\command{Do majeur}). À propos des différentes notations d'accords,
-il s'agit juste d'une question de sonorité ou de pragmatisme. On est
-toujours libre de jouer l'accord de la façon qui nous arrange le plus.
-
-%------------------------------------------------------------------------------
-\subsection{Transposer un morceau}
-%------------------------------------------------------------------------------
-
-L'idée, c'est de toujours pouvoir se ramener à un enchaînement
-d'accords que l'on maîtrise.  Pour transposer un morceau, c'est pas
-dur il suffit d'appliquer le même décalage à tous les accords.  Par
-exemple, pour la chanson du hérisson, si on décale de 2 tons 1/2~:
-\command{Sim}, \command{Sol}, \command{Fa$\sharp$7} se transposent en
-\command{Mim}, \command{Do}, \command{Si7}.  Et miracle, ces
-accords-là ne demandent plus de barrés !
-
-%------------------------------------------------------------------------------
-\subsection{Les barrés}
-%------------------------------------------------------------------------------
-
-Bon, le coup de transposer les accords, c'est un bon exercice pour
-jongler avec les accords et leurs enchaînements mais de temps en
-temps, ça ne suffit pas, il reste toujours des barrés qui apparaissent
-et c'est quand même mieux de jouer les vrais accords. Donc attaquons
-la fameuse technique du barré. Tout bon débutant qui se respecte
-commence par le barré de \command{Mi} \dots\, pour faire un
-\command{Fa}. Oui, en fait, un barré, c'est se servir de son index comme
-capo pour transposer l'accord qu'on fait dessous (avec un doigt en
-moins).
-
-Exemple~: l'accord de \command{Fa} se joue 133211. Il est cependant
-noté 1:022100 dans le carnet de chant car c'est un barré de
-\command{Mi} (022100) sur la première fret.  Donc l'idée, c'est
-d'appuyer bien fort avec son index en travers de toutes les cordes et
-d'utiliser annulaire, ptit doigt, majeur pour appuyer sur les 3 cordes
-demandées. À savoir qu'il y a essentiellement 4 types de barrés.  Dans
-l'ordre de difficulté~: barrés de \command{Mi} (022100), \command{Lam}
-(002210), \command{Mim} (022000), \command{La} (002220).
-
-%------------------------------------------------------------------------------
-\subsection{Les rythmes}
-%------------------------------------------------------------------------------
-
-Contrairement à ce que l'on pourrait croire, il est bien plus
-difficile de maîtriser la main droite que la main gauche.
-Voici quelques motifs assez passe-partout pour vos morceaux.
-
-\paragraph{Rythme ``à la Brassens''} 
-Il s'agit d'alterner une basse (pouce) avec 3 aiguës simultanées
-(index, majeur, annulaire), 2 ou 4 fois par accord. En général, les 3
-aiguës sont les 3 cordes aiguës 4,5,6
-(\command{Sol}, \command{Si}, \command{Mi}) et la basse alterne entre
-les cordes 1,2,3 (\command{Mi}, \command{La}, \command{Ré}) mais
-souvent dans l'ordre 2,1.
-
-\paragraph{Rythme ``arpège''} 
-Il s'agit d'un motif note-à-note qui accompagne très bien les chansons
-calmes. Chaque guitariste a le sien, voici l'ordre des cordes à jouer
-pour le mien~: 2~654~654~6. En gros, on fait une basse avec le pouce,
-puis deux descentes aiguës avec annulaire, majeur, index et on finit
-par la plus aiguë.
-
-\paragraph{Rythme ``feu de camp''} 
-Quand il faut gratter, le premier piège est de suivre le rythme du
-chant. Gardez un rythme constant !  //arf, j'arrive pas à expliquer
-... //
-
-
-%------------------------------------------------------------------------------
-\subsection{Les techniques du fourbe}
-%------------------------------------------------------------------------------
-
-Alors je ne sais pas trop si ça peut aider ou non mais j'ai mis au
-point mes propres techniques secrètes de débutant feignant. Elles sont
-quand même relativement déconseillées dans la mesure où ce sont de
-mauvaises habitudes pas académiques dont on a du mal à se défaire.
-
-\paragraph{L'accord de \command{Sol}}
-Arf, voilà mon premier échec à la guitare. Après avoir enchainé des
-accords de \command{La} et de \command{Mi} pendant 3 heures je
-m'essaye au \command{Sol}. Position ok, ça sonne bien. Manque de pot,
-impossible d'enchainer ça rapidement.  Du coup, remarquant qu'un
-\command{Sol} se jouait en 320003, je me suis dit qu'avec un seul
-doigt, j'avais déjà 4 cordes sur 6. Donc j'ai commencé en jouant mes
-\command{Sol} en XX0003 avec seulement l'annulaire et ça sonnait très
-bien. Un an plus tard, j'ai réalisé qu'en mettant le pouce sur la
-première corde, ça marchait encore mieux (3X0003) donc voilà la
-technique de la pince pour l'accord de Sol qui fait beaucoup rire les
-vrais guitaristes quand ils me voient jouer.
-
-\paragraph{L'accord de \command{Fa}}
-Après avoir contourné le problème du \command{Sol} s'est posé celui du
-\command{Fa}. Là c'est pareil, impossible de tenir la position barrée
-plus de deux nanosecondes sans hurler de douleur.  Je me suis dit,
-trouvons une parade~: le semi barré.  En fait, quand on regarde la
-théorie du barré, c'est pas bien optimisé puisque l'index appuie sur
-toutes les cordes donc on appuie 2 fois sur certaines cordes (index
-111111, autres doigts 033200). Donc en fin de comptes, l'index sert
-seulement pour les cordes 1,5 et 6. Au diable la première, mon index
-fera 5 et 6 et ce sera suffisant.  Ça donne des \command{Fa} comme ça~:
-X33211 avec l'index qui écrase seulement les deux dernières
-cordes. Bon, autant je fais encore mes \command{Sol} avec mon pouce,
-autant j'ai appris à faire des barrés proprement.
 
 \end{document}
