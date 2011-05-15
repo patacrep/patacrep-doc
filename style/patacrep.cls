@@ -12,7 +12,8 @@
 \RequirePackage{eso-pic}
 \RequirePackage{fancyhdr,fancybox,fancyvrb}
 \RequirePackage{amssymb,amsmath}
-\RequirePackage{xcolor, graphicx}
+\RequirePackage{xcolor, graphicx, subfigure}
+\RequirePackage{multicol}
 \RequirePackage{nota}
 \RequirePackage{url}
 \RequirePackage{ifthen}
