@@ -20,6 +20,15 @@ SOURCES	:= $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex)
 CIBLE = $(SOURCES:%.tex=%)
 AUX = $(SOURCES:%.tex=%.aux)
 
+UNAME = $(shell uname)
+ifeq ($(UNAME), Darwin)
+	INKSCAPE = /Applications/Inkscape.app/Contents/Resources/bin/inkscape
+	PDFREADER = open
+else
+	INKSCAPE = inkscape
+	PDFREADER = evince
+endif
+
 # Figures directory
 FIG_DIR = fig
 
@@ -68,7 +77,7 @@ ps: $(CIBLE).ps.gz
 
 pdf: LATEX = pdflatex
 pdf: $(CIBLE).pdf
-	evince $<
+	$(PDFREADER) $<
 
 clean:
 	@rm -f $(AUX) $(CIBLE).toc
@@ -117,7 +126,7 @@ $(EPS_DIR)/%.eps: $(FIGSRC_DIR)/%.eps
 	cp $< $@
 
 $(EPS_DIR)/%.eps: $(FIGSRC_DIR)/%.svg
-	inkscape $< --export-eps=$@
+	$(INKSCAPE) $< --export-eps=$@
 
 $(PDF_DIR)/%.pdf: $(FIGSRC_DIR)/%.fig
 	fig2dev -L pdftex $< $@
@@ -132,10 +141,10 @@ $(PDF_DIR)/%.pdf: $(FIGSRC_DIR)/%.pdf
 	cp $< $@
 
 $(PDF_DIR)/%.pdf: $(FIGSRC_DIR)/%.svg
-	inkscape $< --export-pdf=$@
+	$(INKSCAPE) $< --export-pdf=$@
 
 $(GREY_DIR)/%.pdf: $(GREYSRC_DIR)/%.svg
-	inkscape $< --export-pdf=$@
+	$(INKSCAPE) $< --export-pdf=$@
 
 $(PDF_DIR)/%.png: $(FIGSRC_DIR)/%.png
 	cp $< $@
