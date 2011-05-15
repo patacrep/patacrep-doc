@@ -52,3 +52,9 @@
 \newcommand{\windows}{Windows\xspace}
 \newcommand{\linux}{Linux\xspace}
 %-----------------------------------------------------------------------
+
+\let\oldverbatim\verbatim
+\let\endoldverbatim\endverbatim
+\renewenvironment{verbatim}
+{\begin{samepage}\begin{small}\begin{oldverbatim}}
+{\end{oldverbatim}\end{small}\end{samepage}}
