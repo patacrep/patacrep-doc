@@ -12,6 +12,7 @@
 
 %*******************************************************************************
 \section{Installation}
+\label{sb:install}
 %*******************************************************************************
 
 De manière générale, évitez les chemins contenant des espaces
@@ -181,6 +182,7 @@ Une interface graphique vous permet de~:
 
 %*******************************************************************************
 \section{Description du contenu}
+\label{sb:contents}
 %*******************************************************************************
 
 \paragraph{\command{./utils}}
@@ -213,47 +215,118 @@ Contient un ensemble de scripts utilitaires. Un script s'exécute par la command
   au format html.
 \end{itemize}
 
+\paragraph{\command{./templates}}
+Contient les fichiers de style du songbook et permet de modifier des
+paramètres comme la police utilisée, les différentes couleurs
+utilisées etc.
 
+\begin{itemize}
+\item \command{patacrep.tmpl}~: template par défaut correspondant à la
+  mise en page classique.
+\item \command{patacrep-en.tmpl}~: version traduite en anglais du
+  template par défaut.
+\item \command{minimal.tmpl}~: une version plus compacte sans page de
+  garde ni table des matières.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+  %% -- subfigures --
+  \subfigure[]{
+    \label{fig:templates-a}
+    \includegraphics[width=0.8\textwidth]{templates-a}%
+  }%
+  \hspace{0.1cm}%
+  \subfigure[]{%
+    \label{fig:templates-b}%
+    \includegraphics[width=0.8\textwidth]{templates-b}%
+  }%
+  %% -- subfigures --
+  \caption[Templates]{% 
+    Templates.
+    \subref{fig:templates-a}~\command{patacrep.tmpl}; % 
+    \subref{fig:templates-b}~\command{minimal.tmpl}~. %
+  }%
+  \label{fig:fenetre-pointel-2}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{\command{./songs}}
+Contient l'ensemble des chansons disponibles sous la forme de fichiers
+\command{.sg}. Chaque chanson se trouve dans un sous-répertoire du nom
+de l'artiste. Par exemple~:
+\command{songs/Pornophonique/Sad\_robot.sg}.
+
+\paragraph{\command{./lilypond}}
+Contient les partitions \lilypond sous la forme de fichiers
+\command{.ly}.
+
+\paragraph{\command{./tex}}
+Contient différents fichiers \LaTeX{} (licences etc.).
+
+\paragraph{\command{./img}}
+Contient les images utilisées dans les songbooks (exceptés les
+pochettes des albums). Pour rajouter \command{my\_image.jpg} dans une
+chanson, utilisez la macro \latexcom{image} dans un fichier
+\command{.sg}. Cette macro se comporte comme la commande \LaTeX{}
+\latexcom{includegraphics}.
+
+\begin{unixcom}
+  \image[width=4cm]{mon\_image}
+\end{unixcom}
 
 %*******************************************************************************
 \section{Créer un recueil}
+\label{sb:create-songbook}
 %*******************************************************************************
 
 \paragraph{Fichiers songbook}
-Les fichiers songbook (.sb) contiennent un ensemble d'options pour la
-personnalisation du recueil ainsi qu'une liste de chansons. Pour
-compiler votre recueil personnalisé mybook.sb~:
+Les fichiers songbook \command{.sb} contiennent un ensemble d'options
+pour la personnalisation du recueil ainsi qu'une liste de
+chansons. 
 
+\begin{center}
+\begin{verbatim}
+{
+"template" : "minimal.tmpl",
+"bookoptions" : [
+    "diagram",
+    "lilypond",
+    "pictures"
+  ],
+"songs" : [
+    "Le_Donjon_de_Naheulbeuk/10_sous_dans_ma_poche.sg",
+    "Le_Donjon_de_Naheulbeuk/Bugger_off.sg"
+  ]
+}
+\end{verbatim}
+\end{center}
+
+Pour compiler votre recueil  \command{mybook.sb}~:
 \begin{unixcom}
   make mybook.pdf
 \end{unixcom}
 
-\paragraph{Fichiers template}
-Les fichiers templates (.tmpl) définissent un style de document à
-appliquer à un recueil. Pour l'instant, deux templates sont disponibles~:
-\begin{itemize}
-\item patacrep.tmpl~: template par défaut correspondant à la mise en page classique.
-\item minimal.tmpl~: une version plus compacte sans page de garde ni table des matières.
-\end{itemize}
-
-
 
 %*******************************************************************************
 \section{Écrire une chanson}
+\label{sb:write-song}
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
 \subsection{Éléments principaux}
 %------------------------------------------------------------------------------
 
-Une chanson est un simple fichier texte \colarg{chanson.sg} que l'on
-place dans le répertoire \colarg{songs/Artiste}. Les espaces n'étant
-pas tolérés, veillez à utiliser des underscores. L'entête d'un fichier
-.sg se présente de la manière suivante~:
+Une chanson est un simple fichier texte \colarg{chanson.sg} placé dans
+le répertoire \colarg{songs/Artiste}. Les espaces n'étant pas
+tolérées, veillez à utiliser des underscores. L'en-tête d'un fichier
+\command{.sg} se présente de la manière suivante~:
 
 \begin{verbatim}
-\beginsong{Titre}
-  [by=Artiste,cov=album-cover]
+    \beginsong{Titre}
+              [by=Artiste,cov=album-cover]
 \end{verbatim}
 
 Les paramètres \command{Titre}, \command{Artiste} et
@@ -276,10 +349,10 @@ accord.
 \begin{verbatim}
 \beginverse
 His \[Rém]steely skin is covered
-By \[Fa]centuries of dust
-\[Do]Once he was a great one
-\[Rém]Now he's dull and rust
-\endverse
+  By \[Fa]centuries of dust
+    \[Do]Once he was a great one
+      \[Rém]Now he's dull and rust
+        \endverse
 \end{verbatim}
 \end{center}
 
@@ -327,17 +400,17 @@ suivant.
 
 \begin{verbatim}
 \beginverse
-His \[Rém]steely skin is covered
-By \[Fa]centuries of dust
-\[Do]Once he was a great one
-\[Rém]Now he's dull and rust
+  His \[Rém]steely skin is covered
+  By \[Fa]centuries of dust
+  \[Do]Once he was a great one
+  \[Rém]Now he's dull and rust
 \endverse
 
 \beginverse*
-An oily tear he's crying
-Can you feel the pain
-Of the sad, sad robot
-And it's driving him insane
+  An oily tear he's crying
+  Can you feel the pain
+  Of the sad, sad robot
+  And it's driving him insane
 \endverse
 \end{verbatim}
 
@@ -346,7 +419,7 @@ La commande \latexcom{songcolumns} détermine le nombre de colonnes sur
 lequel sera présentée la chanson. Elle s'utilise juste avant la
 commande \latexcom{beginsong}. Vous pouvez indiquer le nombre de
 colonnes à utiliser pour écrire votre chanson (généralement 1, 2 ou
-3). Par convention, utilisez 2 colonnes par défaut.
+3). Par convention, utilisez deux colonnes par défaut.
 
 \begin{verbatim}
 \songcolumns{2}
@@ -413,64 +486,64 @@ nouveau fichier \colarg{partition.ly} dans le répertoire
 \colarg{header} et définir l'option paper-height de façon à ce que la
 partition produite tienne sur une page avec le moins de blanc
 possible. Une première estimation est de compter 1.6cm pour une
-ligne. Puis, écrivez votre partition entre accolades comme dans
-l'exemple suivant (Tom Sawyer) pour obtenir le résultat en
-Fig.~\ref{fig:lilypond}~:
+ligne. Puis, écrivez votre partition entre accolades
+(voir~\reffig{fig:lilypond}).
 
-\begin{verbatim}
-\include "header"
-\paper{paper-height = 3.3\cm}
- {
-   \key c \major
-   \time 2/4
-   \relative c''{
-     e4 c g'2 a4 a8. a16 g8 e4 c8 a'4 a8. a16 g8 f e c d2~ d4
-     e8 f g4 g8. g16 f8 e d c a c4 a8 g4 c8 d e8 g4 g,8 e' e d d c2
-   }
- }
-\end{verbatim}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{lilypond}
-  \caption{Intégration de partitions avec Lilypond.}
-  \label{fig:lilypond}
-\end{figure}
+  \begin{minipage}[b]{\linewidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{lilypond}
+    \vspace{0.5cm}
+  \end{minipage}
 
-Enfin, pour insérer votre partition dans une chanson, insérez la ligne
-suivante à l'endroit désiré dans \colarg{chanson.sg}~:
+  \begin{minipage}[b]{\linewidth}
+\begin{verbatim}
+\include "header" 
+\paper{paper-height = 3.3\cm} 
+{
+  \key c \major 
+  \time 2/4 
+  \relative c''
+    {
+      e4 c g'2 a4 a8. a16 g8 e4 c8 
+      a'4 a8. a16 g8 f e c d2~ d4 
+      e8 f g4 g8. g16 f8 e d c a c4 a8 g4 
+      c8 d e8 g4 g,8 e' e d d c2
+    } 
+}
+\end{verbatim}
+  \end{minipage}
+  \caption{Intégration de partitions avec \lilypond.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Enfin, pour insérer votre partition \command{sheet.ly} dans une
+chanson, utilisez la commande \latexcom{lilypond} le fichier
+\command{.sg} adéquat~:
 
 \begin{verbatim}
-\lilypond{partition}
+\lilypond{sheet}
 \end{verbatim}
 
-Toutes les partitions lilypond présentes dans le répertoire
-\colarg{songbook/lilypond} sont automatiquement générées par le
-makefile. Pour construire le songbook incluant les partitions
-lilypond, il suffit de faire~:
-
-\begin{unixcom}
-  make lilypondbook.pdf 
-\end{unixcom}
-
-\begin{nota}
-  Auparavant, il était nécessaire de générer au préalable les
-  partitions lilypond avec la commande ``make lilypond''. Cette étape
-  n'est désormais plus nécessaire, le makefile génèrera
-  automatiquement les paritions lilypond nécessaires.
-\end{nota}
 
 %------------------------------------------------------------------------------
 \subsection{Exemple}
 %------------------------------------------------------------------------------
 
-Voici un exemple complet pouvant être utilisé comme point de départ
-pour écrire une nouvelle chanson.
+Voici l'exemple complet de la chanson \textit{Sad robot} par
+\textit{Pornophonique} pouvant être utilisé comme point de départ pour
+écrire une nouvelle chanson.
 
+%*\newpage
+%\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} *{2} m{5cm}}
+\begin{multicols}{2}
 \begin{verbatim}
+\selectlanguage{english}
 \songcolumns{2}
 \beginsong{Sad robot}
-  [by=Pornophonique,cov=8-bit-lagerfeuer]
+  [by=Pornophonique,
+      cov=8-bit-lagerfeuer]
 
   \cover
   \gtab{Rém}{XX0231}
@@ -506,7 +579,11 @@ pour écrire une nouvelle chanson.
     Sad, sad robot
     All alone
   \endchorus
+\end{verbatim}
 
+\columnbreak
+
+\begin{verbatim}
   \beginchorus
     He's a sad, sad robot \rep{3}
     He's so alone
@@ -543,9 +620,12 @@ pour écrire une nouvelle chanson.
     I'm a red, red robot \rep{3}
     So I shall return
   \endchorus
-
 \endsong
 \end{verbatim}
-
+\end{multicols}
+%\\
+%\multirow{2}{*}{\colarg{songs/Pornophonique/Sad\_robot.sg}}
+%\\
+%\end{tabular*}
 
 
