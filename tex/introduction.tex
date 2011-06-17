@@ -9,27 +9,24 @@
 %*******************************************************************************
 
 Dans ce document, nous expliquons comment utiliser et tirer pleinement
-partie des outils proposés sur Patacrep! pour réaliser des carnets de
-chansons. Tout d'abord, une présentation rapide des différents
-projets~:
+partie des outils et resources proposés sur \url{http://www.patacrep.com} pour
+réaliser des recueils de chansons. Tout d'abord, une présentation
+rapide des deux différents projets~:
 
 \paragraph{Songbook}
-La base du projet en lui-même. Il s'agit d'un ensemble de chansons
-écrites en respectant quelques conventions (simples) et des outils qui
-permettent de produire le pdf correctement mis en forme. Vous pouvez
-par exemple télécharger le pdf complet sur
-\url{http://www.patacrep.com/data/documents/songbook.pdf} pour
-vous faire une idée du rendu final.
+Ce projet correspond à un ensemble de scripts facilitant la production
+de recueils de chansons. Il contient également l'ensemble des
+tablatures des chansons. Vous pouvez par exemple télécharger le pdf
+complet sur \url{http://www.patacrep.com/data/documents/songbook.pdf}
+pour vous faire une idée du rendu final.
 
 \paragraph{Songbook-client} 
-Il s'agit d'une interface graphique permettant essentiellement de
-sélectionner facilement une sous-liste de chansons afin de produire un
-recueil personnalisé.
+Il s'agit d'une interface graphique au songbook facilitant la création
+de recueils personnalisés.
 
-\paragraph{Technologies} 
-Différents langages et outils sont utilisés par ces projets. Nous
-utilisons particulièrement le projet \emph{Songs LaTeX
-Package}\footnote{\url{http://songs.sourceforge.net/}} pour le rendu
+\paragraph{Technologies utilisées} 
+Le songbook réutilise le projet \emph{Songs LaTeX
+  Package}\footnote{\url{http://songs.sourceforge.net/}} pour le rendu
 des chansons.
 
 \begin{itemize}
@@ -38,16 +35,16 @@ des chansons.
   permet d'utiliser \LaTeX pour le rendu du texte avec tous les
   avantages qui en découlent~;
 \item Lilypond~: outil utilisé pour l'écriture des partitions~;
-\item Makefile~: le mécanisme de compilation des fichiers est
-  automatisé par makefile.  La génération d'un recueil ne demande donc
-  qu'un simple ``make'' dans un terminal.
-\item Python~: certains éléments comme les indexes par titre/auteur
+\item Makefile~: le pdf est généré automatiquement à partir des sources. Tout le processus
+  de compilation est automatisé par makefile. Ainsi, la production d'un pdf s'effectue
+  via la commande \emph{make} dans un terminal.
+\item Python~: certains éléments comme les index par titre/auteur
   sont générés avec Python.
-\item C++/Qt4~: langage retenu pour la réalisation du songbook-client.
+\item C++/Qt4~: langage/toolkit retenu pour la réalisation du songbook-client.
 \end{itemize}
 
 \paragraph{Licences}
 Tout le code est distribué sous licence GPLv2
 (\url{http://www.gnu.org/licenses/gpl.html}). Tous les documents et
 autres resources sont distribués sous une licence Creative Commons
-CC-By-Sa (\url{http://creativecommons.org/}).
+CC-By-Sa\footnote{\bysa~\url{http://creativecommons.org/}}.

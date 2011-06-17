@@ -1,29 +1,39 @@
+%=======================================================================
+% File      : patacrep.cls
+%=======================================================================
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{patacrep}
 \LoadClass[a4paper,twoside,12pt]{book}
 
-\usepackage[utf8]{inputenc}
+%font
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[english,frenchb]{babel}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[frenchb]{babel}
 \RequirePackage{type1cm}
 \RequirePackage{lmodern}
+\RequirePackage{inconsolata}
 \RequirePackage[francais]{minitoc}
 
 \RequirePackage{eso-pic}
 \RequirePackage{fancyhdr,fancybox,fancyvrb}
 \RequirePackage{amssymb,amsmath}
-\RequirePackage{xcolor, graphicx, subfigure}
+\RequirePackage{xcolor, wrapfig, graphicx, subfigure}
 \RequirePackage{multicol}
 \RequirePackage{nota}
 \RequirePackage{url}
 \RequirePackage{ifthen}
 \RequirePackage{xspace}
+\RequirePackage{listings}
 %-----------------------------------------------------------------------
 % hyperref setup
 \definecolor{tango-green-1}{HTML}{8ae234}
 \definecolor{tango-green-3}{HTML}{4e9a06}
 \definecolor{tango-blue-3}{HTML}{204a87}
 \definecolor{tango-red-3}{HTML}{a40000}
+\definecolor{tango-grey-1}{HTML}{eeeeee}
+\definecolor{tango-purple-3}{HTML}{5c3566}
+\definecolor{tango-grey-4}{HTML}{888a85}
+\definecolor{tango-orange-3}{HTML}{ce5c00}
 \RequirePackage[bookmarks,
   bookmarksopen,
   colorlinks=true,
@@ -93,6 +103,58 @@ pdfproducer = {PDFLaTeX}}
 \clubpenalty = 10000
 \widowpenalty = 10000
 \displaywidowpenalty = 10000
+%-----------------------------------------------------------------------
+% syntax highlighting with listings
+
+% style sheet
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  literate={é}{{\'e}}1 {à}{{\`a}}1 {è}{{\`e}}1,
+  frame=leftline,
+  framerule=1mm,
+  framesep=2mm,
+  xleftmargin=15pt,
+  backgroundcolor=\color{tango-grey-1},
+  keywordstyle=[1]\color{tango-green-3}\bfseries,
+  keywordstyle=[2]\color{tango-orange-3}\bfseries,
+  keywordstyle=[3]\color{tango-red-3}\bfseries,
+  commentstyle=\color{tango-purple-3},
+  stringstyle=\color{tango-purple-3}
+}
+
+% language definition
+\lstdefinelanguage{songbook}{
+  keywords=[1]{
+    beginsong,beginverse,beginchorus,
+    endsong,endverse,endchorus
+  },
+  morekeywords=[2]{
+    selectlanguage,songcolumns,gtab,
+    cover, rep, echo, lilypond, image
+  },
+  morecomment=[l]{\%},
+  morecomment=[s]{[}{]},
+}
+
+% language definition
+\lstdefinelanguage{lilypond}{
+  keywords=[1]{
+    include,paper
+  },
+  morekeywords=[2]{
+    key,major,minor,time,
+    relative, trill,times
+  },
+  morecomment=[l]{\%},
+  morestring=[b]",
+}
+
+% language definition
+\lstdefinelanguage{unix}{
+    morekeywords=[3]{
+      sudo
+    }
+}
 %-----------------------------------------------------------------------
 \endinput
 

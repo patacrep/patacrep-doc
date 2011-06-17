@@ -16,18 +16,25 @@
 \newenvironment{nota}{%
   \begin{pictonote}{\ficnota}}{\end{pictonote}}
 %-----------------------------------------------------------------------
-%file names
-\newcommand{\colarg}[2][]{{\normalfont\color{tango-red-3}#2%
-  \ifthenelse{\equal{#1}{}}{}{$_\mathit{#1}$}}}
-\let\marg\colarg
-\let\fmbArg\colarg
+%songbook environment
+\lstnewenvironment{songbook}
+{\lstset{language=songbook}}
+{}
 %-----------------------------------------------------------------------
-% code environment
-\DefineVerbatimEnvironment{unixcom}{Verbatim}{%
-  frame=leftline,
-  framerule=1mm,
-  framesep=2mm,
-  xleftmargin=15pt}
+%unix environment
+\lstnewenvironment{unix}
+{\lstset{language=unix}}
+{}
+%-----------------------------------------------------------------------
+%lilypond environment
+\lstnewenvironment{lilypond}
+{\lstset{language=lilypond}}
+{}
+%-----------------------------------------------------------------------
+%plain code environment
+\lstnewenvironment{code}
+{}
+{}
 %-----------------------------------------------------------------------
 %Additional toc entries
 \newcommand{\addentry}[3]{
@@ -42,19 +49,22 @@
 \newcommand{\refchap}[1]{Chapitre~\ref{#1}}
 \newcommand{\reftab}[1]{Tableau~\ref{#1}}
 %-----------------------------------------------------------------------
+%Filesystem macros
+\newcommand{\file}[1]{\colorbox{tango-grey-1}{\texttt{#1}}\xspace}
+\newcommand{\directory}[1]{\colorbox{tango-grey-1}{\texttt{#1}}\xspace}
+\newcommand{\ext}[1]{\colorbox{tango-grey-1}{\texttt{.#1}}\xspace}
+%-----------------------------------------------------------------------
+%Creative Common Licences
+\newcommand{\byncnd}{\includegraphics[width=2cm]{by-nc-nd}}
+\newcommand{\bysa}{\includegraphics[width=2cm]{by-sa}}
+%-----------------------------------------------------------------------
 \newcommand{\todo}[1]{\textbf{TODO:~}#1}
-\newcommand{\latexcom}[1]{{\mdseries\ttfamily\upshape\symbol{92}#1}}
-\newcommand{\command}[1]{{\mdseries\ttfamily\upshape#1}}
+\newcommand{\latexcom}[1]{\texttt{\symbol{92}#1}}
+\newcommand{\command}[1]{\texttt{#1}}
 \newcommand{\Key}[1]{\Ovalbox{#1}}
 \newcommand{\cf}[1]{(voir~\refsec{#1})}
 \newcommand{\git}{Git\xspace}
-\newcommand{\lilypond}{Lilypond\xspace}
 \newcommand{\windows}{Windows\xspace}
 \newcommand{\linux}{Linux\xspace}
-%-----------------------------------------------------------------------
+\newcommand{\chord}[1]{\texttt{#1}\xspace}
 
-\let\oldverbatim\verbatim
-\let\endoldverbatim\endverbatim
-\renewenvironment{verbatim}
-{\begin{samepage}\begin{small}\begin{oldverbatim}}
-{\end{oldverbatim}\end{small}\end{samepage}}

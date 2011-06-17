@@ -4,12 +4,13 @@
 \setcounter{chapter}{2}
 \label{chap:songbook-client}
 \minitoc
+\newpage
 %*******************************************************************************
 %*******************************************************************************
 
 Une interface graphique, réalisée en Qt4/C++, est disponible pour
 faciliter la création d'un recueil de chansons personnalisé. Une
-présentation du projet peut se trouver sur~:
+présentation du projet est disponible sur~:
 \begin{itemize}
 \item \url{http://www.ohloh.net/p/songbook-client}
 \item \url{http://github.com/crep4ever/songbook-client}
@@ -30,31 +31,31 @@ d'installation du songbook-client.
 
 Pour les architectures 32bits :
 
-\begin{unixcom}
+\begin{unix}
   wget http://www.patacrep.com/data/documents/songbook-client_0.4.1-1_i386.deb
   sudo dpkg -i songbook-client_0.4.1-1_i386.deb
-\end{unixcom}
+\end{unix}
 
 Pour les architectures 64bits :
 
-\begin{unixcom}
+\begin{unix}
   wget http://www.patacrep.com/data/documents/songbook-client_0.4.1-1_amd64.deb
   sudo dpkg -i songbook-client_0.4.1-1_amd64.deb
-\end{unixcom}
+\end{unix}
 
 
 \subsection{Compilation depuis les sources}
 
-\begin{unixcom}
+\begin{unix}
   sudo apt-get install build-essential cmake
   sudo apt-get install qt4-qmake qt4-dev-tools libqt4-sql-sqlite
-\end{unixcom}
+\end{unix}
 
-\begin{unixcom}
+\begin{unix}
   git clone git://github.com/crep4ever/songbook-client.git
   cd songbook-client
   make && sudo make install
-\end{unixcom}
+\end{unix}
 
 \subsection{Récupérer la liste des chansons}
 
@@ -81,15 +82,15 @@ avec les fichiers .sg.
 
 Pour lancer l'application, faites \Key{Alt}+\Key{F2}
 \command{songbook-client} ou dans un terminal~:
-\begin{unixcom}
+\begin{unix}
   songbook-client
-\end{unixcom}
+\end{unix}
 
 Une fois l'application lancée, il est important~:
 \begin{itemize}
 \item d'indiquer le chemin du songbook dans les préférences (par
-  exemple \colarg{/home/user/songbook}). Ce répertoire devant impérativement
-  contenir le makefile et le répertoire \colarg{songs/} avec les chansons
+  exemple \directory{/home/user/songbook}). Ce répertoire devant impérativement
+  contenir le makefile et le répertoire \directory{songs/} avec les chansons
   disponibles~;
 \item de resynchroniser la base de données avec le nouveau répertoire
   indiqué (Fichier/Synchroniser).
@@ -97,9 +98,9 @@ Une fois l'application lancée, il est important~:
 
 \begin{nota}
   La synchronisation est à utiliser dès lors que vous modifiez le
-  contenu du répertoire \colarg{songs/} lorsque vous rajoutez un nouveau
+  contenu du répertoire \directory{songs/} lorsque vous rajoutez un nouveau
   fichier (chanson, image) ou lorsque vous déplacez le répertoire
-  \colarg{songbook/}.  Il n'est pas nécessaire de synchroniser si vous
+  \directory{songbook/}.  Il n'est pas nécessaire de synchroniser si vous
   avez simplement édité un fichier (correction, \dots\,).
 \end{nota}
 
@@ -152,11 +153,11 @@ préférences, vérifiez que Lilypond est bien installé sur votre système.
 \paragraph{La bibliothèque des chansons est vide} 
 Vérifiez que le chemin d'accès au patacrep songbook est correctement
 renseigné dans Édition/Préférences.  Le chemin indiqué doit contenir
-impérativement le makefile et le répertoire \colarg{songs/}.
+impérativement le makefile et le répertoire \directory{songs/}.
 
 \paragraph{Erreurs après renommage/suppression d'une chanson} 
 Un ``make clean'' ou, depuis l'interface, Recueil/Nettoyer devrait
 régler le problème. S'il persiste encore, une solution radicale
-consiste à supprimer manuellement tous les fichiers ``.d'' présents
-dans $\sim$/songbook.
+consiste à supprimer manuellement tous les fichiers \ext{.d} présents
+dans \directory{$\sim$/songbook}.
 

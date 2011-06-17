@@ -4,6 +4,7 @@
 \setcounter{chapter}{3}
 \label{chap:outils-externes}
 \minitoc
+\newpage
 %*******************************************************************************
 %*******************************************************************************
 
@@ -35,9 +36,9 @@ Pour maintenir à jour la version du songbook avec les dernières
 chansons rajoutées, vous pouvez télécharger la dernière version mise
 en ligne de l'archive tar.gz ou, si vous avez utilisé Git pour
 récupérer les sources~:
-\begin{unixcom}
+\begin{unix}
   git pull
-\end{unixcom} 
+\end{unix} 
 
 %commandes de base
 %git clone add/rm commit push/pull status
@@ -62,38 +63,38 @@ est un simple fichier qui indique les opérations (ajout/suppression)
 qui ont été opérées sur un fichier texte. Un exemple tout simple a
 l'aspect suivant~:
 
-\begin{verbatim}
+\begin{code}
 index 3fcce15..b4edcc1 100644
 --- a/songs/Cat_Stevens/The_wind.sg
 +++ b/songs/Cat_Stevens/The_wind.sg
 @@ -7,7 +7,7 @@
 
 -\[Do] I listen to the \[Fa]wind,
-    +\[Ré] I listen to the \[Sol]wind,
-\end{verbatim}
++\[Ré] I listen to the \[Sol]wind,
+\end{code}
 
 Vous voyez rapidement qu'après les premières lignes qui servent à
 identifier le fichier sur lequel on a travaillé, on a remplacé~:
-\begin{verbatim}
+\begin{code}
 -\[Do] I listen to the \[Fa]wind,
-\end{verbatim}
+\end{code}
 par
-\begin{verbatim}
+\begin{code}
 +\[Ré] I listen to the \[Sol]wind,
-\end{verbatim}
+\end{code}
 
 Concrètement, si vous avez suivi la procédure d'installation, vous
-devriez avoir un répertoire \colarg{\$HOME/songbook/} contenant toutes
+devriez avoir un répertoire \directory{\$HOME/songbook/} contenant toutes
 les sources du carnet de chant. Maintenant, vous avez repéré une
-erreur dans la chanson \colarg{songs/artiste/chanson.sg}. Ouvrez le
+erreur dans la chanson \file{songs/artiste/chanson.sg}. Ouvrez le
 fichier correspondant avec votre éditeur de texte préféré, faîtes
 votre correction, enregistrez, fermez. Puis, dans un terminal~:
 
-\begin{unixcom}
+\begin{unix}
   git diff -u songs/artiste/chanson.sg > patch
-\end{unixcom} 
+\end{unix} 
 
-Cela va vous créer un nouveau fichier \colarg{patch} qui contiendra
+Cela va vous créer un nouveau fichier \file{patch} qui contiendra
 l'ensemble des modifications que vous avez apportées à votre
 chanson. Plus qu'à nous l'envoyer !
 
@@ -139,6 +140,6 @@ Lilypond est généralement empaqueté pour les distributions
 GNU/Linux. Pour des distributions basées Debian/Ubuntu, l'installation
 se fait par~:
 
-\begin{unixcom}
+\begin{unix}
   sudo apt-get install lilypond
-\end{unixcom}
+\end{unix}
