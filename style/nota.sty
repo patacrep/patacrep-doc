@@ -9,20 +9,13 @@
 \setlength{\paddingnota}{5pt}
 
 
-\newcommand{\notafont}{%
-  \fontencoding{T1}%
-  \fontfamily{cmss}%
-  \fontshape{n}%
-  \fontseries{m}%
-  \selectfont}
-
 \newenvironment{pictonote}[1]{%
   \begin{list}{}{%
       \setlength{\labelsep}{5pt}%
       \setlength{\leftmargin}{10pt}%
       \setlength{\rightmargin}{15pt}}
   \item%
-    \notafont\small%
+    \footnotesize\ttfamily%
     \setlength{\indentationnota}{\@totalleftmargin+\largeurnota+\paddingnota}%
     \setlength{\largeurlignenota}{\linewidth-\largeurnota-\paddingnota}%
     \parshape=3%

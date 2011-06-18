@@ -17,7 +17,8 @@
 \RequirePackage{eso-pic}
 \RequirePackage{fancyhdr,fancybox,fancyvrb}
 \RequirePackage{amssymb,amsmath}
-\RequirePackage{xcolor, wrapfig, graphicx, subfigure}
+\RequirePackage[table]{xcolor}
+\RequirePackage{graphicx, subfigure}
 \RequirePackage{multicol}
 \RequirePackage{nota}
 \RequirePackage{url}

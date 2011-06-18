@@ -102,7 +102,7 @@ Quelques options de base du makefile~:
 \end{center}
 
 \begin{nota}
-  La commande \command{make} sans option correspond à un \command{make
+  La commande \command{make} sans option correspond à \command{make
     \file{songbook.pdf}}.
 \end{nota}
 
@@ -114,22 +114,26 @@ Quelques options de base du makefile~:
 
 Installation des dépendances obligatoires.
 \begin{itemize}
-\item Miktex~: \url{http://miktex.org/2.8/setup}
-\item Python~: \url{http://www.python.org/download/}
-\item Java~: \url{http://www.java.com/fr/download/}
+\item Miktex~: \url{http://miktex.org/}
+\item Python~: \url{http://www.python.org/download/releases/2.7.2/}
 \end{itemize}
+
+\begin{nota}
+La compilation sous \windows a uniquement été testée avec~: MikTeX~2.9
+et Python~2.7.2.
+\end{nota}
 
 Installation des dépendances recommandées.
 \begin{itemize} 
 \item Lilypond~: \url{http://lilypond.org/install/}
-\item MsysGit~: \url{http://code.google.com/p/msysgit/downloads/list}
 \end{itemize}
 
-\subsubsection{Modification de la variable \command{Path}}
 
-Après avoir installé tous les logiciels obligatoires et/ou recommandés
-vous devez rédémarrer votre machine. Après le redémarrage, il faut
-modifier la variable \command{Path} de votre système.
+\paragraph{Modification de la variable \command{Path}}
+
+Redémarrez votre machine après l'installation des logiciels. 
+Il faut maintenant modifier la variable \command{Path} de votre
+système.
 \begin{itemize}
 \item Clic-droit sur Poste de travail (XP) ou sur Ordinateur (Vista,
   Seven) puis Propriétés.
@@ -137,46 +141,69 @@ modifier la variable \command{Path} de votre système.
   d'environnement.
 \end{itemize}
 
-Dans la partie basse (Variables système) faîtes dérouler la liste
+Dans la partie basse (Variables système), faîtes dérouler la liste
 jusqu'à trouver \command{Path}. La variable est modifiable en
 double-cliquant dessus. Le \command{Path} contient un ensemble de
-chemins séparés par des \emph{points-virgules}.  Veuillez vous assurer
-qu'elle contient bien les chemins vers~:
+chemins séparés par des \emph{points-virgules}. Assurez-vous qu'elle
+contient les chemins suivants. Dans le cas contraire, ajoutez-les~:
 \begin{itemize}
-\item Java~: \verb#C:\Program Files\Java\jre6\bin#
-\item Phyton~: \verb#C:\textbackslash Python31#
-\item Miktex~: \verb# C:\Program Files\MiKTeX 2.8\miktex\bin#
+\item Python~: \verb#C:\textbackslash Python27#
+\item Miktex~: \verb# C:\Program Files\MiKTeX 2.9\miktex\bin#
 \item Lilypond~: \verb#C:\Program Files\LilyPond\usr\bin#
 \end{itemize}                     
 
-Si certains chemins viennent à manquer, ajoutez les vous-même. Si la
-variable a été modifiée, vous devrez rédémarrer votre ordinateur.
-
-\paragraph{Exécution}
-Placez-vous dans votre répertoire \directory{songbook/}.
-\begin{itemize}
-\item Copiez les deux fichiers \file{make.bat} et \file{make.jar}
-\item Exécutez le \file{make.jar}
-\end{itemize}
-
-Une interface graphique vous permet de~:
-\begin{itemize}
-\item \Key{Clean}~: supprimer les fichiers temporaires
-\item \Key{Clean All}~: supprimer les fichiers temporaires et les
-  pdf.
-\item \Key{Make Lilypond}~: générer les partitions Lilypond du
-  dossier \directory{lilypond/}.
-\item cliquer sur une version particulière du songbook pour le
-  compiler.
-\end{itemize}
-
 \begin{nota}
-  Les fichiers \file{make.bat} et \file{make.jar} sont disponibles
-  dans l'archive songbook-windows.zip~:
-  \url{http://www.patacrep.com/data/documents/songbook-windows.zip}.
+Attention aux numéros de version. Ces répertoires sont donnés à titre
+indicatifs et peuvent être légèrement différents suivant la version
+que vous aurez téléchargée.
 \end{nota}
 
+Redémarrez votre ordinateur après avoir modifié la variable
+\command{Path}.
 
+
+\paragraph{Téléchargement des sources}
+
+Les sources peuvent être récupérées sous la forme d'une archive
+\ext{tar.gz} à l'adresse~:
+\url{http://www.patacrep.com/data/documents/songbook.tar.gz}. Vous
+pouvez en extraire le contenu à l'aide de logiciels comme
+7zip\footnote{\url{http://www.7-zip.org/}} ou
+Winrar\footnote{\url{http://www.win-rar.com/}}.
+
+Alternativement, si vous avez installé un client
+Git\footnote{\url{http://git-scm.com/}} sur votre machine, par exemple
+Mysysgit\footnote{\url{http://code.google.com/p/msysgit/}}, vous
+pouvez utiliser l'adresse suivante pour récupérer les sources~:
+
+\begin{unix}
+  git clone git://git.lohrun.net/songbook.git
+\end{unix}
+
+\paragraph{Exécution}
+
+\begin{enumerate}
+\item Ouvrez l'invite de commandes \windows~: \Key{Windows}+\Key{r}, entrez
+  \command{cmd} et validez par \Key{Entrée}
+  (\reffig{sbc:terminal-windows}).
+\item Allez dans le répertoire du songbook en utilisant la commande \command{cd}.
+Par exemple,
+  \begin{unix}
+    cd C:\
+    cd songbook
+  \end{unix}
+\item Utilisez l'exécutable \file{make.bat} en donnant en paramètre un fichier \ext{sb}.
+  Par exemple,
+  \begin{unix}
+    make.bat songbook.sb
+  \end{unix}
+\end{enumerate}
+
+\begin{nota}
+MikTeX est une distribution \LaTeX{} qui permet d'installer {\og}à la
+volée{\fg} les \emph{paquets} manquants. Intallez les paquets requis
+(\reffig{sbc:paquets-miktex}).
+\end{nota}
 
 %*******************************************************************************
 \section{Description du contenu}
@@ -234,12 +261,12 @@ utilisées etc.
   %% -- subfigures --
   \subfigure[]{
     \label{fig:templates-a}
-    \includegraphics[width=0.8\textwidth]{templates-a}%
+    \includegraphics[width=0.35\textwidth]{templates-a}%
   }%
   \hspace{0.1cm}%
   \subfigure[]{%
     \label{fig:templates-b}%
-    \includegraphics[width=0.8\textwidth]{templates-b}%
+    \includegraphics[width=0.35\textwidth]{templates-b}%
   }%
   %% -- subfigures --
   \caption[Templates]{% 
@@ -302,9 +329,43 @@ Ces recueils doivent être enregistrés à la racine du projet.
 }
 \end{code}
 
+Les options disponibles sont présentes dans le fichier \ext{tmpl}
+utilisé. Dans le cas du template \file{patacrep.tmpl}, les options
+disponibles sont les suivantes~:
+
+\begin{center}
+  \rowcolors{1}{white}{tango-grey-1}
+  \begin{tabular}{l l l}
+    \hline\noalign{\smallskip}
+    Option & Description  & Type \\
+    \noalign{\smallskip}
+    \hline
+    \noalign{\smallskip} 
+    title & le titre du recueil & chaîne de caractères \\
+    author & l'auteur du recueil & chaîne de caractères \\
+    booktype & avec ou sans accords & \command{chorded} ou \command{lyric}\\
+    bookoptions & affichage des éléments & \command{diagram}, \command{lilypond},\\
+    & & \command{pictures}, \command{tabs}\\
+    version & la version actuelle du pdf & chaîne de caractères \\
+    subtitle & sous-titre du recueil & chaîne de caractères \\
+    web & adresse de votre site & chaîne de caractères \\
+    mail & votre adresse email & chaîne de caractères \\
+    picture & l'image de la page de garde & chemin vers image\\
+    & & \ext{png}, \ext{jpg} ou \ext{pdf}\\
+    picturecopyright & copyright de l'image & chaîne de caractères \\
+    footer & pied de page & chaîne de caractères \\
+    license & licence du document & chaîne de caractères \\
+    mainfontsize & taille de la police & 10, 11 ou 12\\
+    songnumberbgcolor & couleur des numéros des chansons & code hexadécimal \\
+    notebgcolor & couleur des notes dans les chansons & code hexadécimal \\
+    indexbgcolor & couleur des liens dans l'index & code hexadécimal \\
+    \hline
+  \end{tabular}
+\end{center}
+
 Pour compiler votre recueil \file{mybook.sb}~:
 \begin{unix}
-  make mybook.pdf
+make mybook.pdf
 \end{unix}
 
 
