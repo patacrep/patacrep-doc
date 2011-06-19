@@ -1,6 +1,6 @@
 %*******************************************************************************
 \makeatletter\def\input@path{ {style/} {tex/} }\makeatother
-\documentclass{patacrep}
+\documentclass[fr]{patacrep}
 \input{macros}
 %*******************************************************************************
 \begin{document}
@@ -13,9 +13,20 @@
 \tableofcontents 
 \newpage
 
-\include{introduction}
-\include{songbook}
-\include{songbook-client}
-\include{outils-externes}
+\iffr
+\selectlanguage{french}
+\include{intro-fr}
+\include{songbook-fr}
+\include{client-fr}
+\include{tools-fr}
+\else
+\selectlanguage{english}
+\include{intro-en}
+\include{songbook-en}
+\include{client-en}
+\include{tools-en}
+\fi
+
+
 
 \end{document}

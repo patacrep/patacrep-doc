@@ -42,6 +42,12 @@
   urlcolor=tango-blue-3
 ]{hyperref}
 
+\newif{\iffr}
+\DeclareOption{fr}{\frtrue}
+\ProcessOptions
+
+%-----------------------------------------------------------------------
+% metadata
 \hypersetup{
 pdfauthor = {Romain Goffe},%
 pdftitle = {Patacrep! Songbook Documentation},%
