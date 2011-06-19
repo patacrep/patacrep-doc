@@ -29,9 +29,9 @@ Le songbook utilise \LaTeX{} pour la mise en page des chansons et
 Python pour la génération des tables des matières (dépendances
 obligatoires). Il est également possible d'inclure en option des
 partitions générées avec Lilypond. Enfin, le projet est distribué via
-un dépôt git donc il est recommandé d'installer l'outil pour des
+un dépôt \git donc il est recommandé d'installer l'outil pour des
 raisons de simplicité (dépendances recommandées). Enfin, vous aurez
-besoin d'un logiciel pour lire les fichiers pdf produits. Si vous êtes
+besoin d'un logiciel pour lire les fichiers \ext{pdf} produits. Si vous êtes
 sous Debian/Ubuntu~:
 
 \paragraph{Dépendances}
@@ -50,7 +50,7 @@ Installation des dépendances recommandées.
 
 \paragraph{Téléchargement des sources}
 
-Les sources peuvent être récupérées sous la forme d'une archive tar.gz
+Les sources peuvent être récupérées sous la forme d'une archive \ext{tar.gz}
 \begin{unix}
   wget http://www.patacrep.com/data/documents/songbook.tar.gz
   tar xzvf songbook.tar.gz
@@ -74,7 +74,7 @@ Dans le répertoire du songbook~:
 Quelques options de base du makefile~:
 \begin{itemize}
 \item \command{\$ make clean}~: supprime tous les fichiers de logs et
-  les fichiers générés à part les recueils finaux (pdf).
+  les fichiers générés à part les recueils finaux \ext{pdf}.
 \item \command{\$ make cleanall}~: supprime tous les fichiers générés,
   y compris les pdf.
 \item \command{\$ make lilypond}~: génère dans \directory{./lilypond} les
@@ -83,8 +83,8 @@ Quelques options de base du makefile~:
   \emph{lilypond} au préalable.
 \item \command{\$ make book.pdf}~: la compilation de tous les carnets
   pouvant être longue, si seule une version précise vous intéresse,
-  vous pouvez lancer la compilation d'un seul fichier pdf. À la place
-  de \file{book.pdf}, vous pouvez mettre~:
+  vous pouvez lancer la compilation d'un seul fichier \ext{pdf}. À la place
+  de \file{book.pdf}, vous pouvez utiliser~:
 \end{itemize}
 
 \begin{center}
@@ -201,7 +201,7 @@ Par exemple,
 
 \begin{nota}
 MikTeX est une distribution \LaTeX{} qui permet d'installer {\og}à la
-volée{\fg} les \emph{paquets} manquants. Intallez les paquets requis
+volée{\fg} les \emph{paquets} manquants. Installez les paquets requis
 (\reffig{sbc:paquets-miktex}).
 \end{nota}
 
@@ -434,7 +434,7 @@ caractères à l'accord principal. Par exemple, l'accord de \command{La
 \paragraph{Répétition des accords}
 De façon à avoir un document lisible et relativement compact, les
 accords des couplets et des refrains ne sont renseignés qu'une seule
-fois à leur première occurence. En effet, même si jouer les morceaux
+fois à leur première occurrence. En effet, même si jouer les morceaux
 du premier couplet en chantant les paroles du second peut demander un
 peu de gymnastique, cela fera travailler votre mémoire tout en offrant
 un texte bien moins surchargé et (beaucoup) moins de pages à imprimer.
@@ -453,7 +453,7 @@ un texte bien moins surchargé et (beaucoup) moins de pages à imprimer.
 La numérotation se fait automatiquement pour chaque
 \latexcom{beginverse} rencontré. Cependant, il est parfois plus
 lisible de scinder un couplet en deux parties, la deuxième partie ne
-devant pas être numérotée. Pour cela on utilise la commande
+devant pas être numérotée. Pour cela, nous utilisons la commande
 \latexcom{beginverse*}. Par exemple, un couplet en huit strophes se
 décompose souvent en $2 \times 4$ strophes comme dans l'exemple
 suivant.
@@ -501,7 +501,7 @@ désirez sans interférer avec le reste du texte. Voir aussi la
 Lorsqu'une phrase ou un couplet est répété plusieurs fois d'affilée,
 utiliser la commande \latexcom{rep} plutôt que d'écrire \emph{bis} ou
 d'indiquer directement (x4). Par exemple, si le mot \emph{Hallelujah}
-est répété qutre fois, nous écrirons~:
+est répété quatre fois, nous écrirons~:
 
 \begin{songbook}
 Hallelujah \rep{4}
@@ -549,7 +549,7 @@ Si vous souhaitez rajouter une ligne mélodique dans une chanson, vous
 pouvez utiliser Lilypond pour générer la partition. Créez pour cela
 un nouveau fichier \file{partition.ly} dans le répertoire
 \directory{songbook/lilypond}. Il faut inclure le fichier d'en-tête
-\file{header} et définir l'option paper-height de façon à ce que la
+\file{header} et définir l'option \command{paper-height} de façon à ce que la
 partition produite tienne sur une page avec le moins de blanc
 possible. Une première estimation est de compter 1.6\,cm pour une
 ligne. Puis, écrivez votre partition entre accolades
