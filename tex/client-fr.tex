@@ -8,14 +8,14 @@
 %*******************************************************************************
 %*******************************************************************************
 
-Le Songbook-Client est interface graphique facilitant la création de
+Le \client est interface graphique facilitant la création de
 recueils de chansons
 personnalisés\footnote{\url{http://www.ohloh.net/p/songbook-client},
   \url{http://github.com/crep4ever/songbook-client}}.
 
 \begin{nota}
-Quelle que soit votre plateforme, il est nécessaire d'avoir installé
-au préalable les dépendances du songbook lui-même
+Quelle que soit votre système d'exploitation, il est nécessaire d'avoir installé
+au préalable les dépendances du \recueil lui-même
 (\refsec{sec:install}) afin de pouvoir produire un recueil \ext{pdf}.
 \end{nota}
 
@@ -39,7 +39,7 @@ sont proposés sur \url{http://www.patacrep.com/static1/downloads}.
 \end{figure}
 
 Par défaut, l'interface est vide (\reffig{fig:start}). Le
-songbook-client doit être lié à un \emph{songbook} existant. Vous avez
+\client doit être lié à un \recueil existant. Vous avez
 deux solutions~:
 
 \begin{enumerate}
@@ -64,8 +64,8 @@ deux solutions~:
     \includegraphics[width=0.45\textwidth]{download}%
   }%
   %% -- subfigures --
-  \caption[Lier]{% 
-    Deux solutions permettent de lier l'application à un \emph{songbook}.
+  \caption{% 
+    Deux solutions permettent de lier le \client à un \recueil.
     \subref{fig:solution-a}~Indiquer le chemin d'un répertoire existant~;%
     \subref{fig:solution-b}~Télécharger depuis internet.%
   }%
@@ -97,7 +97,7 @@ seules les colonnes \command{Titre}, \command{Artiste} et
 
 Les chansons de la bibliothèque sont sélectionnables par simple clic.
 Une chanson sélectionnée est affichée en surbrillance. Cliquez sur une
-chanson sélectionnée pour la désélectionner.
+chanson sélectionnée pour la dé-sélectionner.
 
 %*******************************************************************************
 \section{Ajouter une chanson}
@@ -219,8 +219,8 @@ partitions malgré l'option \emph{Lilypond} correctement cochée dans les
 préférences, vérifiez que Lilypond est bien installé sur votre système. 
 
 \paragraph{La bibliothèque des chansons est vide} 
-Vérifiez que le chemin d'accès au patacrep songbook est correctement
-renseigné dans Édition/Préférences.  Le chemin indiqué doit contenir
+Vérifiez que le chemin d'accès au \recueil est correctement
+renseigné dans Édition/Préférences. Le chemin indiqué doit contenir
 impérativement le makefile et le répertoire \directory{songs/}.
 
 \paragraph{Erreurs après renommage/suppression d'une chanson} 
