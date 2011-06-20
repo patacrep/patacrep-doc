@@ -8,14 +8,14 @@
 %*******************************************************************************
 %*******************************************************************************
 
-Le \client est interface graphique facilitant la création de
+Le \client{} est interface graphique facilitant la création de
 recueils de chansons
 personnalisés\footnote{\url{http://www.ohloh.net/p/songbook-client},
   \url{http://github.com/crep4ever/songbook-client}}.
 
 \begin{nota}
 Quelle que soit votre système d'exploitation, il est nécessaire d'avoir installé
-au préalable les dépendances du \recueil lui-même
+au préalable les dépendances du \recueil{} lui-même
 (\refsec{sec:install}) afin de pouvoir produire un recueil \ext{pdf}.
 \end{nota}
 
@@ -33,22 +33,28 @@ sont proposés sur \url{http://www.patacrep.com/static1/downloads}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=.7\textwidth]{start}
-  \caption{Premier lancement de l'application \client.}
+  \includegraphics[width=.9\textwidth]{start}
+  \caption{Premier lancement de l'application.}
   \label{fig:start}
 \end{figure}
 
 Par défaut, l'interface est vide (\reffig{fig:start}). Le
-\client doit être lié à un \recueil existant. Vous avez
+\client{} doit être lié à un \recueil{} existant. Vous avez
 deux solutions~:
 
 \begin{enumerate}
-\item indiquer le chemin d'un répertoire \directory{songbook} existant
-  depuis le menu \menu{Édition}{Préférences}
-  (\reffig{fig:solution-a})~;
-\item télécharger la dernière version depuis internet depuis le menu
-  \menu{Bibliothèque}{Télécharger} (\reffig{fig:solution-b}).
+\item Vous pouvez indiquer le chemin d'un répertoire
+  \directory{songbook} existant depuis le menu
+  \menu{Édition}{Préférences} (\reffig{fig:solution-a}).
+\item Vous pouvez télécharger la dernière version depuis internet
+  depuis le menu \menu{Bibliothèque}{Télécharger}
+  (\reffig{fig:solution-b}).
 \end{enumerate}
+
+Après avoir indiqué ou téléchargé un \recueil{}, le \client{} génère la
+\emph{bibliothèque des chansons} trouvées dans le sous-répertoire
+\directory{songs} du \recueil{}.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
@@ -65,7 +71,7 @@ deux solutions~:
   }%
   %% -- subfigures --
   \caption{% 
-    Deux solutions permettent de lier le \client à un \recueil.
+    Deux solutions permettent de lier le \emph{Songbook-Client} à un \recueil{}.
     \subref{fig:solution-a}~Indiquer le chemin d'un répertoire existant~;%
     \subref{fig:solution-b}~Télécharger depuis internet.%
   }%
@@ -73,9 +79,6 @@ deux solutions~:
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Après avoir indiqué ou téléchargé un \recueil, le \client génère la
-\emph{bibliothèque des chansons} trouvées dans le sous-répertoire
-\directory{songs} du \recueil.
 
 %-------------------------------------------------------------------------------
 \subsection{La bibliothèque des chansons}
@@ -91,7 +94,7 @@ Après avoir indiqué ou téléchargé un \recueil, le \client génère la
 L'ensemble des chansons \ext{sg} trouvées dans le sous-répertoire
 \directory{songs} est présenté sous la forme d'une liste. Les
 différentes colonnes peuvent être affichées/masquées dans l'onglet
-\menu{Affichage} du menu \menu{Édition}{Préférences}. Par défaut,
+\command{Affichage} du menu \menu{Édition}{Préférences}. Par défaut,
 seules les colonnes \command{Titre}, \command{Artiste} et
 \command{Album} sont visibles.
 
@@ -219,7 +222,7 @@ partitions malgré l'option \emph{Lilypond} correctement cochée dans les
 préférences, vérifiez que Lilypond est bien installé sur votre système. 
 
 \paragraph{La bibliothèque des chansons est vide} 
-Vérifiez que le chemin d'accès au \recueil est correctement
+Vérifiez que le chemin d'accès au \recueil{} est correctement
 renseigné dans Édition/Préférences. Le chemin indiqué doit contenir
 impérativement le makefile et le répertoire \directory{songs/}.
 
