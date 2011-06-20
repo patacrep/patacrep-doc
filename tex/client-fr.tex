@@ -13,8 +13,11 @@ recueils de chansons
 personnalisés\footnote{\url{http://www.ohloh.net/p/songbook-client},
   \url{http://github.com/crep4ever/songbook-client}}.
 
-Il est nécessaire d'avoir installé au préalable les dépendances du
-songbook lui-même (\refsec{sb:install}). 
+\begin{nota}
+Quelle que soit votre plateforme, il est nécessaire d'avoir installé
+au préalable les dépendances du songbook lui-même
+(\refsec{sec:install}) afin de pouvoir produire un recueil \ext{pdf}.
+\end{nota}
 
 Les téléchargements suivant les différents systèmes d'exploitation
 sont proposés sur \url{http://www.patacrep.com/static1/downloads}.
@@ -25,51 +28,148 @@ sont proposés sur \url{http://www.patacrep.com/static1/downloads}.
 %*******************************************************************************
 
 %-------------------------------------------------------------------------------
-\subsection{Éléments principaux}
+\subsection{Premier lancement}
 %-------------------------------------------------------------------------------
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{sbc-v0-3-01}
-  \caption{Patacrep Songbook Client~: interface pour la génération de
-    recueils de chansons.}
-  \label{fig:sb-client}
+  \includegraphics[width=.7\textwidth]{start}
+  \caption{Premier lancement de l'application \client.}
+  \label{fig:start}
 \end{figure}
 
+Par défaut, l'interface est vide (\reffig{fig:start}). Le
+songbook-client doit être lié à un \emph{songbook} existant. Vous avez
+deux solutions~:
+
+\begin{enumerate}
+\item indiquer le chemin d'un répertoire \directory{songbook} existant
+  depuis le menu \menu{Édition}{Préférences}
+  (\reffig{fig:solution-a})~;
+\item télécharger la dernière version depuis internet depuis le menu
+  \menu{Bibliothèque}{Télécharger} (\reffig{fig:solution-b}).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+  %% -- subfigures --
+  \subfigure[]{
+    \label{fig:solution-a}
+    \includegraphics[width=0.45\textwidth]{preferences}%
+  }%
+  \hspace{0.1cm}%
+  \subfigure[]{%
+    \label{fig:solution-b}%
+    \includegraphics[width=0.45\textwidth]{download}%
+  }%
+  %% -- subfigures --
+  \caption[Lier]{% 
+    Deux solutions permettent de lier l'application à un \emph{songbook}.
+    \subref{fig:solution-a}~Indiquer le chemin d'un répertoire existant~;%
+    \subref{fig:solution-b}~Télécharger depuis internet.%
+  }%
+  \label{fig:solutions}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Après avoir indiqué ou téléchargé un \recueil, le \client génère la
+\emph{bibliothèque des chansons} trouvées dans le sous-répertoire
+\directory{songs} du \recueil.
 
 %-------------------------------------------------------------------------------
 \subsection{La bibliothèque des chansons}
 %-------------------------------------------------------------------------------
 
+\begin{figure}
+  \centering
+  \includegraphics[width=.7\textwidth]{library}
+  \caption{La bibliothèque des chansons.}
+  \label{fig:library}
+\end{figure}
 
-%-------------------------------------------------------------------------------
-\subsection{L'éditeur de chansons}
-%-------------------------------------------------------------------------------
+L'ensemble des chansons \ext{sg} trouvées dans le sous-répertoire
+\directory{songs} est présenté sous la forme d'une liste. Les
+différentes colonnes peuvent être affichées/masquées dans l'onglet
+\menu{Affichage} du menu \menu{Édition}{Préférences}. Par défaut,
+seules les colonnes \command{Titre}, \command{Artiste} et
+\command{Album} sont visibles.
 
-
-%*******************************************************************************
-\section{Générer un recueil}
-%*******************************************************************************
-
-\paragraph{Sélection des chansons}
-Cliquez sur les chansons que vous souhaitez voir apparaître dans votre
-recueil. Les chansons sélectionnées sont en surbrillance. Utilisez
-l'action \Key{Générer PDF} pour générer le fichier \ext{pdf} disponible depuis le
-menu Recueil/Générer ou depuis le bouton à droite dans la barre
-d'outils.
-
-\paragraph{Enregistrez votre recueil}
-Un recueil est un fichier \ext{sb} dans lequel sera enregistré la liste des
-chansons sélectionnées ainsi que les options et les champs
-personnalisés du recueil lui-même.
-
-
+Les chansons de la bibliothèque sont sélectionnables par simple clic.
+Une chanson sélectionnée est affichée en surbrillance. Cliquez sur une
+chanson sélectionnée pour la désélectionner.
 
 %*******************************************************************************
 \section{Ajouter une chanson}
 %*******************************************************************************
 
+Le menu \menu{Bibliothèque}{Nouvelle chanson} permet d'ajouter une
+nouvelle chanson à la bibliothèque (\reffig{fig:new-song-a}). La boîte
+de dialogue permet de renseigner les méta-données de la chanson comme
+son titre, son compositeur etc. Ces différents champs permettent de
+générer le squelette du nouveau fichier \ext{sg} correspondant à la
+chanson (\reffig{fig:new-song-b}). La troisième étape
+(\reffig{fig:new-song-c}) consiste à écrire la tablature. Enfin, la
+chanson peut être sélectionnée dans la bibliothèque pour en obtenir le
+rendu au format pdf depuis le menu \menu{Recueil}{Générer PDF}
+(\reffig{fig:new-song-d}).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+  %% -- subfigures --
+  \subfigure[]{
+    \label{fig:new-song-a}
+    \includegraphics[width=0.35\textwidth]{new-song}%
+  }%
+  \hspace{0.1cm}%
+  \subfigure[]{%
+    \label{fig:new-song-b}%
+    \includegraphics[width=0.6\textwidth]{song-editor-1}%
+  }%
+  \hspace{0.1cm}%
+  \subfigure[]{%
+    \label{fig:new-song-c}%
+    \includegraphics[width=0.6\textwidth]{song-editor-2}%
+  }%
+  \hspace{0.1cm}%
+  \subfigure[]{%
+    \label{fig:new-song-d}%
+    \includegraphics[width=0.35\textwidth]{result}%
+  }%
+  %% -- subfigures --
+  \caption{%
+    Ajout d'une nouvelle chanson.
+    \subref{fig:new-song-a}~Renseignement des méta-données~; %
+    \subref{fig:new-song-b}~Génération automatique du squelette \ext{sg}~; %
+    \subref{fig:new-song-c}~Écriture de la tablature~; %
+    \subref{fig:new-song-d}~Génération du pdf.%
+  }%
+  \label{fig:new-song}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%*******************************************************************************
+\section{Création d'un recueil personnalisé}
+%*******************************************************************************
+
+\paragraph{Enregistrement/Ouverture}
+Le format de fichier \ext{sb} enregistre la liste des chansons
+sélectionnées ainsi que son style et ses options
+(voir~\refsec{sec:create-songbook}).
+
+\paragraph{Style et options d'un recueil}
+Une boîte de dialogue permet de rapidement sélectionner le style du
+recueil pdf ainsi que les différentes éléments à afficher
+(\reffig{fig:new-songbook}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{new-songbook}
+  \caption{Personnalisation d'un recueil.}
+  \label{fig:new-songbook}
+\end{figure}
 
 %*******************************************************************************
 \section{Compilation depuis les sources}
@@ -126,6 +226,5 @@ impérativement le makefile et le répertoire \directory{songs/}.
 \paragraph{Erreurs après renommage/suppression d'une chanson} 
 Un \command{make clean} ou, depuis l'interface, Recueil/Nettoyer devrait
 régler le problème. S'il persiste encore, une solution radicale
-consiste à supprimer manuellement tous les fichiers \ext{.d} présents
+consiste à supprimer manuellement tous les fichiers \ext{d} présents
 dans \directory{$\sim$/songbook}.
-
