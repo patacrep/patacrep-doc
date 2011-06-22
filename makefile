@@ -63,6 +63,7 @@ PDF += $(foreach file, $(IMG_PNG), $(PDF_DIR)/$(basename $(notdir $(file))).png)
 
 TEX  = $(foreach file, $(XFIGS), $(TEX_DIR)/$(basename $(notdir $(file))).tex) 
 TEX += $(wildcard /*.tex)
+TEX += $(wildcard /tex/*.tex)
 
 GREY = $(foreach file, $(IMG_GREY), $(GREY_DIR)/$(basename $(notdir $(file))).pdf) 
 
