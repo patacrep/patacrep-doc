@@ -25,21 +25,44 @@
 \RequirePackage{ifthen}
 \RequirePackage{xspace}
 \RequirePackage{listings}
+
+%-----------------------------------------------------------------------
+% Tango colors
+\definecolor{LightButter}{rgb}{0.98,0.91,0.31}
+\definecolor{LightOrange}{rgb}{0.98,0.68,0.24}
+\definecolor{LightChocolate}{rgb}{0.91,0.72,0.43}
+\definecolor{LightChameleon}{rgb}{0.54,0.88,0.20}
+\definecolor{LightSkyBlue}{rgb}{0.45,0.62,0.81}
+\definecolor{LightPlum}{rgb}{0.68,0.50,0.66}
+\definecolor{LightScarletRed}{rgb}{0.93,0.16,0.16}
+\definecolor{Butter}{rgb}{0.93,0.86,0.25}
+\definecolor{Orange}{rgb}{0.96,0.47,0.00}
+\definecolor{Chocolate}{rgb}{0.75,0.49,0.07}
+\definecolor{Chameleon}{rgb}{0.45,0.82,0.09}
+\definecolor{SkyBlue}{rgb}{0.20,0.39,0.64}
+\definecolor{Plum}{rgb}{0.46,0.31,0.48}
+\definecolor{ScarletRed}{rgb}{0.80,0.00,0.00}
+\definecolor{DarkButter}{rgb}{0.77,0.62,0.00}
+\definecolor{DarkOrange}{rgb}{0.80,0.36,0.00}
+\definecolor{DarkChocolate}{rgb}{0.56,0.35,0.01}
+\definecolor{DarkChameleon}{rgb}{0.30,0.60,0.02}
+\definecolor{DarkSkyBlue}{rgb}{0.12,0.29,0.53}
+\definecolor{DarkPlum}{rgb}{0.36,0.21,0.40}
+\definecolor{DarkScarletRed}{rgb}{0.64,0.00,0.00}
+\definecolor{Aluminium1}{rgb}{0.93,0.93,0.92}
+\definecolor{Aluminium2}{rgb}{0.82,0.84,0.81}
+\definecolor{Aluminium3}{rgb}{0.73,0.74,0.71}
+\definecolor{Aluminium4}{rgb}{0.53,0.54,0.52}
+\definecolor{Aluminium5}{rgb}{0.33,0.34,0.32}
+\definecolor{Aluminium6}{rgb}{0.18,0.20,0.21}
+
 %-----------------------------------------------------------------------
 % hyperref setup
-\definecolor{tango-green-1}{HTML}{8ae234}
-\definecolor{tango-green-3}{HTML}{4e9a06}
-\definecolor{tango-blue-3}{HTML}{204a87}
-\definecolor{tango-red-3}{HTML}{a40000}
-\definecolor{tango-grey-1}{HTML}{eeeeee}
-\definecolor{tango-purple-3}{HTML}{5c3566}
-\definecolor{tango-grey-4}{HTML}{888a85}
-\definecolor{tango-orange-3}{HTML}{ce5c00}
 \RequirePackage[bookmarks,
   bookmarksopen,
   colorlinks=true,
-  linkcolor=tango-green-3,
-  urlcolor=tango-blue-3
+  linkcolor=DarkChameleon,
+  urlcolor=DarkSkyBlue
 ]{hyperref}
 
 \newif{\iffr}
@@ -121,12 +144,12 @@ pdfproducer = {PDFLaTeX}}
   framerule=1mm,
   framesep=2mm,
   xleftmargin=15pt,
-  backgroundcolor=\color{tango-grey-1},
-  keywordstyle=[1]\color{tango-green-3}\bfseries,
-  keywordstyle=[2]\color{tango-orange-3}\bfseries,
-  keywordstyle=[3]\color{tango-red-3}\bfseries,
-  commentstyle=\color{tango-purple-3},
-  stringstyle=\color{tango-purple-3}
+  backgroundcolor=\color{Aluminium1},
+  keywordstyle=[1]\color{DarkChameleon}\bfseries,
+  keywordstyle=[2]\color{DarkOrange}\bfseries,
+  keywordstyle=[3]\color{DarkScarletRed}\bfseries,
+  commentstyle=\color{DarkPlum},
+  stringstyle=\color{DarkPlum}
 }
 
 % language definition
