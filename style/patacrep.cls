@@ -14,6 +14,7 @@
 \RequirePackage{inconsolata}
 \RequirePackage[francais]{minitoc}
 
+\RequirePackage[explicit]{titlesec}
 \RequirePackage{eso-pic}
 \RequirePackage{fancyhdr,fancybox,fancyvrb}
 \RequirePackage{amssymb,amsmath}
@@ -185,6 +186,17 @@ pdfproducer = {PDFLaTeX}}
       sudo
     }
 }
+%-----------------------------------------------------------------------
+%Custom chapter titles
+\titleformat{\chapter}[block]
+  {\bfseries\Huge}
+  {\colorbox{Aluminium6}{\parbox[c][25pt][c]{25pt}{%
+        \hfil\color{Aluminium1}\Huge\bfseries\thechapter\hfil}}}
+  {0pt}
+  {\raisebox{-.3cm}{\hspace{.5cm}\Huge\bfseries#1}}
+\titlespacing*{\chapter}
+  {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
 %-----------------------------------------------------------------------
 \endinput
 
