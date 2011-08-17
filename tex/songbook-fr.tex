@@ -92,10 +92,11 @@ Quelques options de base du makefile~:
     \command{make} & description \\
     \hline
     \file{songbook.pdf} &~: version complète avec toutes les chansons \\
-    \file{volume-1.pdf} &~: volume 1 (171 premières chansons)\\
-    \file{volume-2.pdf} &~: volume 2\\
+    \file{volume-1.pdf} &~: volume 1 (171 chansons, 152 pages)\\
+    \file{volume-2.pdf} &~: volume 2 (180 chansons, 157 pages)\\
     \file{naheulbeuk.pdf} &~: version spéciale Donjon de Naheulbeuk\\
     \file{english.pdf} &~: chansons en anglais uniquement\\
+    \file{english.pdf} &~: chansons en français uniquement\\
     \hline
   \end{tabular}
 \end{center}
@@ -390,7 +391,7 @@ Les paramètres \command{Titre}, \command{Artiste},
 nouvelle chanson. Le paramètre \command{album-cover} désigne un fichier
 \file{album-cover.jpg} devant se trouver dans le même répertoire que
 le fichier \ext{sg}. La chanson se compose d'une succession de couplets
-(verse en anglais) et de refrains (chorus). Un couplet est alors
+\anglais{verse} et de refrains \anglais{chorus}. Un couplet est alors
 encapsulé par les balises \latexcom{beginverse} et
 \latexcom{endverse}. De la même manière, un refrain est placé entre
 les balises \latexcom{beginchorus} et \latexcom{endchorus}. Les
