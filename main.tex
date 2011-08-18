@@ -1,6 +1,6 @@
 %*******************************************************************************
 \makeatletter\def\input@path{ {style/} {tex/} }\makeatother
-\documentclass{patacrep}
+\documentclass[fr]{patacrep}
 \input{macros}
 %*******************************************************************************
 \begin{document}
@@ -13,12 +13,17 @@
 \ClearShipoutPicture
 \thispagestyle{empty}
 
+\iffr
+\selectlanguage{french}
+\else
+\selectlanguage{english}
+\fi
+
 \dominitoc
 \tableofcontents 
 \newpage
 
 \iffr
-\selectlanguage{french}
 \include{intro-fr}
 \include{songbook-fr}
 \include{client-fr}

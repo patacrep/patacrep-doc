@@ -126,7 +126,7 @@ Install recommended dependencies.
 
 \paragraph{Modify the \command{Path} variable}
 
-Restart your computer after installing Miktex and Python. The
+Restart your computer after installing MikTeX and Python. The
 \command{Path} variable now needs to be modified.
 \begin{itemize}
 \item Right-click on My Computer, then Properties.
@@ -195,53 +195,51 @@ additional packages (\reffig{fig:paquets-miktex}).
 \end{nota}
 
 %*******************************************************************************
-\section{Description du contenu}
+\section{Content description}
 \label{sec:contents}
 %*******************************************************************************
 
 \paragraph{\directory{./utils}}
 \label{sec:utils}
-Contient un ensemble de scripts utilitaires. Un script s'exécute par la commande~:
+Contains a set of scripts. To run a script, enter the following command in a terminal:
 
 \begin{unix}
   ./utils/script.sh
 \end{unix}
 
 \begin{itemize}
-\item \file{resize-cover.sh}~: permet de redimensionner
-  automatiquement tous les fichiers .jpg du répertoire
-  \directory{songbook/songs} correspondant aux pochettes des albums. À
-  exécuter après l'ajout d'une nouvelle pochette jpg.
+\item \file{resize-cover.sh}~: automatically resize \ext{jpg} files of
+  the \directory{songbook/songs} directory. Those files correspond to
+  songs' covers. Run this script after introducing a new jpg cover.
 
-\item \file{latex-preprocessing.py}~: applique un ensemble de règles
-  automatiques pour les notations \LaTeX{} de certains caractères et
-  pour les notations d'accords.  À exécuter après l'ajout d'une
-  nouvelle chanson pour être sûr de respecter les standards du
-  songbook.
+\item \file{rules.py}~: apply a set of rules for \LaTeX{} specific
+  notations or chords. Run this script after adding a new song or
+  after modifying an existing one in order to preserve global songbook
+  standards.
 
-\item \file{typo.sh}~: applique un ensemble de règles typographiques
-  comme la suppression des espaces doubles ou la gestion des
-  guillemets.
+\item \file{typo.sh}~: apply a set of typographical rules such as the
+  removal of double/trailing spaces or language specific rules. Run
+  this script after adding a new song or after modifying an existing
+  one in order to preserve global songbook standards.
 
-\item \file{new-songs-list.sh}~: permet de récupérer la liste des
-  chansons ajoutées depuis la dernière version.
+\item \file{new-songs-list.sh}~: allows to retrieve the list of songs
+  that have been added since the last release.
 
-\item \file{make-html.sh}~: génère la liste de toutes les chansons au
-  format html.
+\item \file{make-html.sh}~: builds an html index for the whole set of
+  songs.
 \end{itemize}
 
 \paragraph{\directory{./templates}}
-Contient les fichiers de style du songbook et permet de modifier des
-paramètres comme la police utilisée, les différentes couleurs
-utilisées etc.
+Contains some files corresponding to different songbook styles.  A
+template contains some parameters such as the font size, color
+settings etc.
 
 \begin{itemize}
-\item \file{patacrep.tmpl}~: template par défaut correspondant à la
-  mise en page classique.
-\item \file{patacrep-en.tmpl}~: version traduite en anglais du
-  template par défaut.
-\item \file{minimal.tmpl}~: une version plus compacte sans page de
-  garde ni table des matières.
+\item \file{patacrep.tmpl}~: default template.
+\item \file{patacrep-en.tmpl}~: english version of the default
+  template.
+\item \file{minimal.tmpl}~: a more compact version without front page
+  nor indexes.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -259,7 +257,7 @@ utilisées etc.
   }%
   %% -- subfigures --
   \caption[Templates]{% 
-    Différents modèles de document peuvent être utilisés.
+    Different templates may be used for a same songbook.
     \subref{fig:templates-a}~Template \file{patacrep.tmpl}; % 
     \subref{fig:templates-b}~Template \file{minimal.tmpl}.%
   }%
@@ -269,39 +267,38 @@ utilisées etc.
 
 
 \paragraph{\directory{./songs}}
-Contient l'ensemble des chansons disponibles sous la forme de fichiers
-\ext{sg}. Chaque chanson se trouve dans un sous-répertoire du nom
-de l'artiste. Par exemple~:
+Contains the set of available songs. Each song is a text file with the
+\ext{sg} extension. A song is found in a sub-directory named by the
+corresponding artist. For instance:
 \file{songs/Pornophonique/Sad\_robot.sg}.
 
 \paragraph{\directory{./lilypond}}
-Contient les sources des partitions Lilypond sous la forme de fichiers
-\ext{ly}.
+Contains the Lilypond music sheet sources as \ext{ly} files.
 
 \paragraph{\directory{./tex}}
-Contient différents fichiers \LaTeX{} (licences etc.).
+Contains a few additional \LaTeX{} files such as packages, licenses etc.
 
 \paragraph{\directory{./img}}
-Contient les images utilisées dans les songbooks (exceptés les
-pochettes des albums). Pour rajouter \file{my\_image.jpg} dans une
-chanson, utilisez la macro \latexcom{image} dans un fichier
-\ext{sg}. Cette macro se comporte comme la commande \LaTeX{}
-\latexcom{includegraphics}.
+Contains the images that may be inserted in a songbook (except album
+covers). To add the image \file{my\_image.jpg} in a song, use the
+\latexcom{image} macro inside a \ext{sg} file. This macro behaves like
+the \LaTeX{} macro \latexcom{includegraphics}. For example:
 
 \begin{songbook}
-  \image[width=4cm]{mon\_image}
+  \image[width=4cm]{my\_image}
 \end{songbook}
 
 %*******************************************************************************
-\section{Créer un recueil}
+\section{Start a new songbook}
 \label{sec:create-songbook}
 %*******************************************************************************
 
-Pour produire un recueil, vous devez créer un fichier \ext{sb}
-dont le contenu est précisé ci-après. Les fichiers songbook
-\ext{sb} contiennent un ensemble d'options pour la
-personnalisation du recueil ainsi qu'une liste de chansons.
-Ces recueils doivent être enregistrés à la racine du projet.
+In order to build a songbook, a \ext{sb} file is required whose
+content is detailed in the following. A songbook file (\ext{sb})
+contains a set of values for the options that are provided by a
+template and a list of songs.  A \ext{sb} file must be saved at the
+root of the project. Following is an example of a songbook file based
+on the minimal template and containing two songs.
 
 \begin{code}
 {
@@ -318,9 +315,10 @@ Ces recueils doivent être enregistrés à la racine du projet.
 }
 \end{code}
 
-Les options disponibles sont présentes dans le fichier \ext{tmpl}
-utilisé. Dans le cas du template \file{patacrep.tmpl}, les options
-disponibles sont les suivantes~:
+Available options are defined in the template file. In this case, the
+value \emph{["diagram", "lilypond", "pictures"]} has been set for the
+option \emph{bookoptions} of the \file{minimal.tmpl} template.
+Using the \file{patacrep.tmpl} template, the following options are available:
 
 \begin{center}
   \rowcolors{1}{white}{Aluminium1}
@@ -330,130 +328,120 @@ disponibles sont les suivantes~:
     \noalign{\smallskip}
     \hline
     \noalign{\smallskip} 
-    title & le titre du recueil & chaîne de caractères \\
-    author & l'auteur du recueil & chaîne de caractères \\
-    booktype & avec ou sans accords & \command{chorded} ou \command{lyric}\\
-    bookoptions & affichage des éléments & \command{diagram}, \command{lilypond},\\
+    title & songbook title & character string \\
+    author & songbook authors & character string \\
+    booktype & whith/without chords & \command{chorded} or \command{lyric}\\
+    bookoptions & display elements & \command{diagram}, \command{lilypond},\\
     & & \command{pictures}, \command{tabs}\\
-    version & la version actuelle du pdf & chaîne de caractères \\
-    subtitle & sous-titre du recueil & chaîne de caractères \\
-    web & adresse de votre site & chaîne de caractères \\
-    mail & votre adresse email & chaîne de caractères \\
-    picture & l'image de la page de garde & chemin vers image\\
-    & & \ext{png}, \ext{jpg} ou \ext{pdf}\\
-    picturecopyright & copyright de l'image & chaîne de caractères \\
-    footer & pied de page & chaîne de caractères \\
-    license & licence du document & chaîne de caractères \\
-    mainfontsize & taille de la police & 10, 11 ou 12\\
-    songnumberbgcolor & couleur des numéros des chansons & code hexadécimal \\
-    notebgcolor & couleur des notes dans les chansons & code hexadécimal \\
-    indexbgcolor & couleur des liens dans l'index & code hexadécimal \\
+    version & current pdf version & character string \\
+    subtitle & songbook subtitle & character string \\
+    web & Internet website & character string \\
+    mail & contact email & character string \\
+    picture & front page picture & path to image file\\
+    & & \ext{png}, \ext{jpg} or \ext{pdf}\\
+    picturecopyright & picture copyright & character string \\
+    footer & front page footer & character string \\
+    license & document license & character string \\
+    mainfontsize & document font size & 10, 11 or 12 pt\\
+    songnumberbgcolor & songs number background color & hexadecimal color code \\
+    notebgcolor & textnote background color & hexadecimal color code \\
+    indexbgcolor & color of indexes' links & hexadecimal color code \\
     \hline
   \end{tabular}
 \end{center}
 
-Pour compiler votre recueil \file{mybook.sb}~:
+Once your songbook \file{mybook.sb} is written, produce the corresponding pdf with:
 \begin{unix}
 make mybook.pdf
 \end{unix}
 
 
 %*******************************************************************************
-\section{Écrire une chanson}
+\section{Writing a song}
 \label{sec:write-song}
 %*******************************************************************************
 
 %------------------------------------------------------------------------------
-\subsection{Éléments principaux}
+\subsection{Main elements}
 %------------------------------------------------------------------------------
 
-Une chanson est un fichier texte \file{chanson.sg} placé dans
-le répertoire \directory{songs/Artiste}. Les espaces n'étant pas
-tolérées, veillez à utiliser des underscores. L'en-tête d'un fichier
-\ext{sg} se présente de la manière suivante~:
+A song is a plain text file \file{song.sg} that is saved in a
+\directory{songs/Artist} directory. Remember that filenames do not
+accept spaces (replace them with underscores). A \ext{sg} file header
+is composed of the following elements~:
 
 \begin{songbook}
-\beginsong{Titre}
-  [by=<Artiste>,cov=<album-cover>,album=<Album>]
+\beginsong{Title}
+  [by=<Artist>,cov=<album-cover>,album=<Album>]
 \end{songbook}
 
-Les paramètres \command{Titre}, \command{Artiste},
-\command{album-cover} et \command{Album} sont à renseigner pour chaque
-nouvelle chanson. Le paramètre \command{album-cover} désigne un fichier
-\file{album-cover.jpg} devant se trouver dans le même répertoire que
-le fichier \ext{sg}. La chanson se compose d'une succession de couplets
-\anglais{verse} et de refrains \anglais{chorus}. Un couplet est alors
-encapsulé par les balises \latexcom{beginverse} et
-\latexcom{endverse}. De la même manière, un refrain est placé entre
-les balises \latexcom{beginchorus} et \latexcom{endchorus}. Les
-paroles sont écrites normalement entre le \latexcom{begin} et le
-\latexcom{end}. Pour préciser sur quelle syllabe un accord doit être
-joué, on utilise une commande spéciale. Par exemple, la commande
-\latexcom{[Mi]} produira un \command{Mi} au dessus de la syllabe
-suivante. Vous pouvez utiliser n'importe quel texte pour désigner un
-accord.
+The \command{Title}, \command{Artist}, \command{album-cover} and
+\command{Album} parameters must be set for each new song. The field
+\command{album-cover} denotes a file \file{album-cover.jpg} that is in
+the same directory of the corresponding \ext{sg} song. 
+
+A song is a sequence of verses and chorus. Use the macros
+\latexcom{beginverse} and \latexcom{endverse} to determine the text of
+a same verse. Similarly, use the macros \latexcom{beginchorus} and
+\latexcom{endchorus} for the text of a same chorus.
+
+To insert a guitar chord in the text, a special command is used. For
+instance, the \latexcom{[E]} command will print the chord \command{E}
+above the following syllable in the pdf.
 
 \begin{songbook}
 \beginverse
-  His \[Rém]steely skin is covered
-  By \[Fa]centuries of dust
-  \[Do]Once he was a great one
-  \[Rém]Now he's dull and rust
+  His \[Dm]steely skin is covered
+  By \[F]centuries of dust
+  \[C]Once he was a great one
+  \[Dm]Now he's dull and rust
 \endverse
 \end{songbook}
 
-Chaque chanson se termine avec la commande \latexcom{endsong}.
+A song ends with the macro \latexcom{endsong}.
 
 %------------------------------------------------------------------------------
-\subsection{Règles de style}
+\subsection{Style guidelines}
 %------------------------------------------------------------------------------
 
-\paragraph{Notation des accords}
-La convention de nommage des accords du recueil n'est \emph{pas} la
-convention anglo-saxone désignation des accords par (A, B, C, D, E, F,
-G) mais la notation latine (La, Si, Do, Ré, Mi, Fa, Sol). Par défaut,
-l'accord est majeur (Do fait référence à l'accord de Do majeur). Les
-accords mineurs sont précisés par un \command{m} minuscule.  Le
-symbole bémol ($\flat$) est représenté en utilisant le caractère
-\command{\&}. Le dièse ($\sharp$) est codé par le caractère
-\command{\#}. Les autres notations sont simplement ajoutées comme des
-caractères à l'accord principal. Par exemple, l'accord de \command{La
-  bémol mineur} est noté \latexcom{[La\&m]}.
+\paragraph{Chords notation}
+Chords follow the British/American notation (A, B, C, D, E, F, G). By
+default, the chord is major (C refers to C major). Minor chords are
+written with a lower-case \command{m}. The flat symbol ($\flat$) is
+obtained with the symbol \command{\&}. The sharp symbol ($\sharp$) is
+obtained with the character \command{\#}. For example, the
+\command{A flat minor} chord is written \latexcom{[A\&m]}.
 
-\paragraph{Répétition des accords}
-De façon à avoir un document lisible et relativement compact, les
-accords des couplets et des refrains ne sont renseignés qu'une seule
-fois à leur première occurrence. En effet, même si jouer les morceaux
-du premier couplet en chantant les paroles du second peut demander un
-peu de gymnastique, cela fera travailler votre mémoire tout en offrant
-un texte bien moins surchargé et (beaucoup) moins de pages à imprimer.
+\paragraph{Repeating chords}
+In order to maintain an easy to read and compact document, chords in
+verse and chorus are only specified once. This may be harder to
+decipher the first time but in the end, the text is much more easier
+to read and that's a lot less of pages to print.
 
-\paragraph{Typographie}
+\paragraph{Typography}
 \begin{itemize}
-  \item Chaque ligne commence par une majuscule~;
-  \item Pas de ponctuation en fin de ligne~;
-  \item Les signes composés de deux symboles {\og}; : ! ?{\fg}
-    prennent une espace insécable avant en français, mais pas en
-    anglais~;
-  \item Les majuscules s'accentuent (par exemple {\og}À bientôt{\fg}
-    et non pas {\og}A bientôt{\fg}).
+  \item Each line begins with a capital letter;
+  \item No punctuation (except ``! or ?'' at the end of lines;
+  \item Symbols such as {\og}; : ! ?{\fg} require an unbreakable space
+    before in French but not in English~;
+  \item French capital letters are accentuated (e.g {\og}À bientôt{\fg}
+    and not {\og}A bientôt{\fg}).
 \end{itemize}
 
-\paragraph{Numérotation des couplets et Sauts de ligne}
-La numérotation se fait automatiquement pour chaque
-\latexcom{beginverse} rencontré. Cependant, il est parfois plus
-lisible de scinder un couplet en deux parties, la deuxième partie ne
-devant pas être numérotée. Pour cela, nous utilisons la commande
-\latexcom{beginverse*}. Par exemple, un couplet en huit strophes se
-décompose souvent en $2 \times 4$ strophes comme dans l'exemple
-suivant.
+\paragraph{Verse numbering and line breaks}
+The numbering is automatically performed and increased with each new
+\latexcom{beginverse} environment. However, it is often convenient to
+decompose a same verse in two parts, without numbering the second
+part. To achieve this, use the \latexcom{beginverse*} macro. For
+instance, a verse composed of eight verses (lines) may usually be
+decomposed in two verses of four lines. For example:
 
 \begin{songbook}
 \beginverse
-  His \[Rém]steely skin is covered
-  By \[Fa]centuries of dust
+  His \[Dm]steely skin is covered
+  By \[F]centuries of dust
   \[Do]Once he was a great one
-  \[Rém]Now he's dull and rust
+  \[Dm]Now he's dull and rust
 \endverse
 
 \beginverse*
@@ -464,86 +452,80 @@ suivant.
 \endverse
 \end{songbook}
 
-\paragraph{Agencement en colonnes}
-La commande \latexcom{songcolumns} détermine le nombre de colonnes sur
-lequel sera présentée la chanson. Elle s'utilise juste avant la
-commande \latexcom{beginsong}. Vous pouvez indiquer le nombre de
-colonnes à utiliser pour écrire votre chanson (généralement 1, 2 ou
-3). Par convention, utilisez deux colonnes par défaut.
+\paragraph{Columns layout}
+The macro \latexcom{songcolumns} determines the number of columns of
+the song in the final pdf. Use this macro right before the
+\latexcom{beginsong} command. Usually, a song is presented on 1, 2 or
+3 columns. By default, specify two columns.
 
 \begin{songbook}
 \songcolumns{2}
-\beginsong{Titre}
+\beginsong{Title}
 \end{songbook}
 
-\paragraph{Caractères spéciaux}
-Quelques caractères doivent être codés différemment en utilisant des
-commandes \LaTeX{} pour un meilleur résultat. Les deux exemples
-principaux sont les 3 points (\dots) et le caractère \oe{}. Pour
-représenter ces caractères, vous devez utiliser respectivement les
-commandes \latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le
-caractère utf-8 \command{œ}). On utilise des accolades autour des
-commandes de sorte que les commandes puissent être insérées où vous le
-désirez sans interférer avec le reste du texte. Voir aussi la
-\refsec{sec:utils}.
+\paragraph{Special characters}
+A few characters must be written according to \LaTeX{} commands for a
+better rendering in the pdf. For example, ellipsises should be written
+by the command \latexcom{dots}. See also \refsec{sec:utils}.
 
-\paragraph{Ch\oe{}urs et répétitions}
-Lorsqu'une phrase ou un couplet est répété plusieurs fois d'affilée,
-utiliser la commande \latexcom{rep} plutôt que d'écrire \emph{bis} ou
-d'indiquer directement (x4). Par exemple, si le mot \emph{Hallelujah}
-est répété quatre fois, nous écrirons~:
+\paragraph{Echo and repeat}
+When a sentence is repeated several times, use the command
+\latexcom{rep} instead of writing \emph{bis} or (x4). For example, if the
+word \emph{Hallelujah} is repeated four times, write:
 
 \begin{songbook}
 Hallelujah \rep{4}
 \end{songbook}
 
-La commande \latexcom{echo} fait référence à des chœurs (ou
-similaire).
+The command \latexcom{echo} refers to choirs or alike.
 
 \begin{songbook}
 Hallelujah \echo{Hallelujah}
 \end{songbook}
 
-\paragraph{Diagrammes des accords}
-Étant donné qu'un accord de guitare peut se jouer de plusieurs façons
-différentes et qu'il est parfois judicieux de privilégier telle ou
-telle position, le songbook permet de représenter schématiquement ces
-accords en début de chanson. Pour cela, nous utilisons la commande
-\latexcom{gtab} juste avant le premier couplet ou refrain. Voici
-quelques exemples classiques~:
+\paragraph{Chords diagrams}
+Given that the same guitar chord may be played differently and that
+one position may be better than another, the songbook allows to
+represent the chord as a diagram at the beginning of the song through
+the command \latexcom{gtab}, right before the first verse of the
+song. Following are a few examples:
 
 \begin{songbook}
-\gtab{Do}{3:002220}
-\gtab{Ré}{XX0232}
-\gtab{Mi}{022100}
-\gtab{Lam}{X02210}
+\gtab{C}{3:002220}
+\gtab{D}{XX0232}
+\gtab{E}{022100}
+\gtab{Am}{X02210}
 \end{songbook}
 
+\begin{nota}
+  \begin{itemize}
+  \item X is the capital letter x. The lower-case variant is not supported.
+  \item 0 is the figure zero and not the capital letter O.
+  \end{itemize}
+\end{nota}
+
 \begin{itemize}
-\item les six chiffres correspondent aux six cordes de la guitare
-  (\chord{Mi}, \chord{La}, \chord{Ré}, \chord{Sol},
-  \chord{Si}, \chord{Mi})~;
-\item la valeur du chiffre indique la fret (case) sur laquelle on
-  appuie~;
-\item 0 désigne une corde jouée à vide~;
-\item X indique que la corde ne doit pas être jouée~;
-\item une valeur avant un ``:'' désigne un barré (\emph{3:} indique un
-  barré de trois frets).
+\item the six figures correspond to the six guitar strings
+  (\chord{E}, \chord{A}, \chord{D}, \chord{G},
+  \chord{B}, \chord{E})~;
+\item the value indicates the fret to be played;
+\item 0 denotes an open string;
+\item X indicates that the string should not be played;
+\item a value before ``:'' denotes a barre (\emph{3:} denotes a barre chord on third fret).
 \end{itemize}
 
 %------------------------------------------------------------------------------
-\subsection{Intégration de partitions Lilypond}
+\subsection{Lilypond music sheets}
 %------------------------------------------------------------------------------
 
-Si vous souhaitez rajouter une ligne mélodique dans une chanson, vous
-pouvez utiliser Lilypond pour générer la partition. Créez pour cela
-un nouveau fichier \file{partition.ly} dans le répertoire
-\directory{songbook/lilypond}. Il faut inclure le fichier d'en-tête
-\file{header} et définir l'option \command{paper-height} de façon à ce que la
-partition produite tienne sur une page avec le moins de blanc
-possible. Une première estimation est de compter 1.6\,cm pour une
-ligne. Puis, écrivez votre partition entre accolades
-(voir~\reffig{fig:lilypond}).
+If you want to add a melodic pattern in a song, you may use Lilypond
+syntax to write the score. In this regard, open a new file
+\file{score.ly} in the repertory \directory{songbook/lilypond}.
+Import the file \file{header} at the beginning of your file and define
+the option \command{paper-height} to ensure that the pdf score fits
+one single page with minimum whitespace. A first approach is to count
+1.6\,cm for a single line. Then, write your score between brackets
+(see~\reffig{fig:lilypond}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
@@ -570,27 +552,25 @@ ligne. Puis, écrivez votre partition entre accolades
 }
 \end{lilypond}
   \end{minipage}
-  \caption{Intégration de partitions avec Lilypond.}
+  \caption{Source code for a Lilypond music sheet.}
   \label{fig:lilypond}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Enfin, pour insérer votre partition \file{sheet.ly} dans une
-chanson, utilisez la commande \latexcom{lilypond} le fichier
-\ext{sg} adéquat~:
+Finally, your file \file{sheet.ly} can be inserted in a song \ext{sg} through
+the \latexcom{lilypond} command:
 
 \begin{songbook}
 \lilypond{sheet}
 \end{songbook}
 
 %------------------------------------------------------------------------------
-\subsection{Exemple}
+\subsection{Example}
 %------------------------------------------------------------------------------
 
-Voici l'exemple complet de la chanson \emph{Sad robot} par
+Here is a complete example of the song \emph{Sad robot} by
 \emph{Pornophonique}\footnote{\byncnd~\url{http://www.jamendo.com/fr/track/81740}}
-pouvant être utilisé comme point de départ pour écrire une nouvelle
-chanson.
+that may be used as a reference for a new song.
 
 \begin{songbook}
 \selectlanguage{english}
@@ -599,17 +579,17 @@ chanson.
   [by=Pornophonique,cov=8-bit-lagerfeuer,album=8-bit lagerfeuer]
 
   \cover
-  \gtab{Rém}{XX0231}
-  \gtab{Fa}{1:022100}
-  \gtab{Do}{X32010}
+  \gtab{Dm}{XX0231}
+  \gtab{F}{1:022100}
+  \gtab{C}{X32010}
 
   \lilypond{Sad_robot}
 
   \beginverse
-    His \[Rém]steely skin is covered
-    By \[Fa]centuries of dust
-    \[Do]Once he was a great one
-    \[Rém]Now he's dull and rust
+    His \[Dm]steely skin is covered
+    By \[F]centuries of dust
+    \[C]Once he was a great one
+    \[Dm]Now he's dull and rust
   \endverse
 
   \beginverse*
