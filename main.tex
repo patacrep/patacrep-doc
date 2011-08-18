@@ -1,11 +1,15 @@
 %*******************************************************************************
 \makeatletter\def\input@path{ {style/} {tex/} }\makeatother
-\documentclass[fr]{patacrep}
+\documentclass{patacrep}
 \input{macros}
 %*******************************************************************************
 \begin{document}
 \AddToShipoutPicture{\BackgroundPic{cover-footer}}
-\input{cover}
+\iffr
+\input{cover-fr}
+\else
+\input{cover-en}
+\fi
 \ClearShipoutPicture
 \thispagestyle{empty}
 

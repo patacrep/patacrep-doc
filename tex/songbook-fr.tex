@@ -218,13 +218,13 @@ Contient un ensemble de scripts utilitaires. Un script s'exécute par la command
 
 \begin{itemize}
 \item \file{resize-cover.sh}~: permet de redimensionner
-  automatiquement tous les fichiers .jpg du répertoire
+  automatiquement tous les fichiers \ext{jpg} du répertoire
   \directory{songbook/songs} correspondant aux pochettes des albums. À
   exécuter après l'ajout d'une nouvelle pochette jpg.
 
-\item \file{latex-preprocessing.py}~: applique un ensemble de règles
+\item \file{rules.py}~: applique un ensemble de règles
   automatiques pour les notations \LaTeX{} de certains caractères et
-  pour les notations d'accords.  À exécuter après l'ajout d'une
+  pour les notations d'accords. À exécuter après l'ajout d'une
   nouvelle chanson pour être sûr de respecter les standards du
   songbook.
 
@@ -292,10 +292,10 @@ Contient différents fichiers \LaTeX{} (licences etc.).
 
 \paragraph{\directory{./img}}
 Contient les images utilisées dans les songbooks (exceptés les
-pochettes des albums). Pour rajouter \file{my\_image.jpg} dans une
+pochettes des albums). Pour rajouter \file{mon\_image.jpg} dans une
 chanson, utilisez la macro \latexcom{image} dans un fichier
 \ext{sg}. Cette macro se comporte comme la commande \LaTeX{}
-\latexcom{includegraphics}.
+\latexcom{includegraphics}. Par exemple~:
 
 \begin{songbook}
   \image[width=4cm]{mon\_image}
@@ -388,26 +388,27 @@ tolérées, veillez à utiliser des underscores. L'en-tête d'un fichier
 
 Les paramètres \command{Titre}, \command{Artiste},
 \command{album-cover} et \command{Album} sont à renseigner pour chaque
-nouvelle chanson. Le paramètre \command{album-cover} désigne un fichier
-\file{album-cover.jpg} devant se trouver dans le même répertoire que
-le fichier \ext{sg}. La chanson se compose d'une succession de couplets
-\anglais{verse} et de refrains \anglais{chorus}. Un couplet est alors
-encapsulé par les balises \latexcom{beginverse} et
-\latexcom{endverse}. De la même manière, un refrain est placé entre
-les balises \latexcom{beginchorus} et \latexcom{endchorus}. Les
-paroles sont écrites normalement entre le \latexcom{begin} et le
-\latexcom{end}. Pour préciser sur quelle syllabe un accord doit être
-joué, on utilise une commande spéciale. Par exemple, la commande
-\latexcom{[Mi]} produira un \command{Mi} au dessus de la syllabe
-suivante. Vous pouvez utiliser n'importe quel texte pour désigner un
-accord.
+nouvelle chanson. Le paramètre \command{album-cover} désigne un
+fichier \file{album-cover.jpg} devant se trouver dans le même
+répertoire que le fichier \ext{sg}.
+
+La chanson se compose d'une succession de couplets \anglais{verse} et
+de refrains \anglais{chorus}. Un couplet est alors encapsulé par les
+balises \latexcom{beginverse} et \latexcom{endverse}. De la même
+manière, un refrain est placé entre les balises \latexcom{beginchorus}
+et \latexcom{endchorus}. Les paroles sont écrites normalement entre le
+\latexcom{begin} et le \latexcom{end}.
+
+Pour préciser sur quelle syllabe un accord doit être joué, on utilise
+une commande spéciale. Par exemple, la commande \latexcom{[E]}
+produira un \command{Mi} au dessus de la syllabe suivante dans le pdf.
 
 \begin{songbook}
 \beginverse
-  His \[Rém]steely skin is covered
-  By \[Fa]centuries of dust
-  \[Do]Once he was a great one
-  \[Rém]Now he's dull and rust
+  His \[Dm]steely skin is covered
+  By \[F]centuries of dust
+  \[C]Once he was a great one
+  \[Dm]Now he's dull and rust
 \endverse
 \end{songbook}
 
@@ -418,16 +419,19 @@ Chaque chanson se termine avec la commande \latexcom{endsong}.
 %------------------------------------------------------------------------------
 
 \paragraph{Notation des accords}
-La convention de nommage des accords du recueil n'est \emph{pas} la
-convention anglo-saxone désignation des accords par (A, B, C, D, E, F,
-G) mais la notation latine (La, Si, Do, Ré, Mi, Fa, Sol). Par défaut,
-l'accord est majeur (Do fait référence à l'accord de Do majeur). Les
+Il est impératif d'utiliser la convention anglo-saxone de notation des
+accords (A, B, C, D, E, F, G) et non pas la notation latine (La, Si,
+Do, Ré, Mi, Fa, Sol). En revanche, suivant suivant le paramètre
+\emph{langue} du template utilisé, le rendu des accords dans le pdf
+pourra être différent (l'accord \latexcom{[D]} sera affiché
+\command{Ré} si la langue du songbook est \emph{french}). Par défaut,
+l'accord est majeur (C fait référence à l'accord de Do majeur). Les
 accords mineurs sont précisés par un \command{m} minuscule.  Le
 symbole bémol ($\flat$) est représenté en utilisant le caractère
 \command{\&}. Le dièse ($\sharp$) est codé par le caractère
 \command{\#}. Les autres notations sont simplement ajoutées comme des
 caractères à l'accord principal. Par exemple, l'accord de \command{La
-  bémol mineur} est noté \latexcom{[La\&m]}.
+  bémol mineur} est noté \latexcom{[A\&m]}.
 
 \paragraph{Répétition des accords}
 De façon à avoir un document lisible et relativement compact, les
@@ -440,7 +444,7 @@ un texte bien moins surchargé et (beaucoup) moins de pages à imprimer.
 \paragraph{Typographie}
 \begin{itemize}
   \item Chaque ligne commence par une majuscule~;
-  \item Pas de ponctuation en fin de ligne~;
+  \item Pas de ponctuation en fin de ligne (sauf ``? et !'')~;
   \item Les signes composés de deux symboles {\og}; : ! ?{\fg}
     prennent une espace insécable avant en français, mais pas en
     anglais~;
@@ -453,16 +457,16 @@ La numérotation se fait automatiquement pour chaque
 \latexcom{beginverse} rencontré. Cependant, il est parfois plus
 lisible de scinder un couplet en deux parties, la deuxième partie ne
 devant pas être numérotée. Pour cela, nous utilisons la commande
-\latexcom{beginverse*}. Par exemple, un couplet en huit strophes se
-décompose souvent en $2 \times 4$ strophes comme dans l'exemple
+\latexcom{beginverse*}. Par exemple, un couplet en huit vers se
+décompose souvent en deux strophes de quatre vers comme dans l'exemple
 suivant.
 
 \begin{songbook}
 \beginverse
-  His \[Rém]steely skin is covered
-  By \[Fa]centuries of dust
-  \[Do]Once he was a great one
-  \[Rém]Now he's dull and rust
+  His \[Dm]steely skin is covered
+  By \[F]centuries of dust
+  \[C]Once he was a great one
+  \[Dm]Now he's dull and rust
 \endverse
 
 \beginverse*
@@ -476,9 +480,9 @@ suivant.
 \paragraph{Agencement en colonnes}
 La commande \latexcom{songcolumns} détermine le nombre de colonnes sur
 lequel sera présentée la chanson. Elle s'utilise juste avant la
-commande \latexcom{beginsong}. Vous pouvez indiquer le nombre de
-colonnes à utiliser pour écrire votre chanson (généralement 1, 2 ou
-3). Par convention, utilisez deux colonnes par défaut.
+commande \latexcom{beginsong}. Généralement une chanson se présente
+sur 1, 2 ou 3 colonnes. Par convention, utilisez deux colonnes par
+défaut.
 
 \begin{songbook}
 \songcolumns{2}
@@ -486,15 +490,15 @@ colonnes à utiliser pour écrire votre chanson (généralement 1, 2 ou
 \end{songbook}
 
 \paragraph{Caractères spéciaux}
-Quelques caractères doivent être codés différemment en utilisant des
-commandes \LaTeX{} pour un meilleur résultat. Les deux exemples
-principaux sont les 3 points (\dots) et le caractère \oe{}. Pour
-représenter ces caractères, vous devez utiliser respectivement les
-commandes \latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le
-caractère utf-8 \command{œ}). On utilise des accolades autour des
-commandes de sorte que les commandes puissent être insérées où vous le
-désirez sans interférer avec le reste du texte. Voir aussi la
-\refsec{sec:utils}.
+Quelques caractères doivent être écrits différemment en utilisant des
+commandes \LaTeX{} pour un obtenir un meilleur rendu typographique
+dans le pdf. Les deux exemples principaux sont les trois points de
+suspension (\dots) et le caractère \oe{}. Pour représenter ces
+caractères, vous devez utiliser respectivement les commandes
+\latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le caractère utf-8
+\command{œ}). On utilise des accolades autour des commandes de sorte
+que les commandes puissent être insérées où vous le désirez sans
+interférer avec le reste du texte. Voir aussi la \refsec{sec:utils}.
 
 \paragraph{Ch\oe{}urs et répétitions}
 Lorsqu'une phrase ou un couplet est répété plusieurs fois d'affilée,
@@ -522,22 +526,29 @@ accords en début de chanson. Pour cela, nous utilisons la commande
 quelques exemples classiques~:
 
 \begin{songbook}
-\gtab{Do}{3:002220}
-\gtab{Ré}{XX0232}
-\gtab{Mi}{022100}
-\gtab{Lam}{X02210}
+\gtab{C}{3:002220}
+\gtab{D}{XX0232}
+\gtab{E}{022100}
+\gtab{Am}{X02210}
 \end{songbook}
+
+\begin{nota}
+  \begin{itemize}
+  \item X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
+  \item 0 est le chiffre zéro et non pas la lettre majuscule o.
+  \end{itemize}
+\end{nota}
 
 \begin{itemize}
 \item les six chiffres correspondent aux six cordes de la guitare
   (\chord{Mi}, \chord{La}, \chord{Ré}, \chord{Sol},
   \chord{Si}, \chord{Mi})~;
-\item la valeur du chiffre indique la fret (case) sur laquelle on
+\item la valeur du chiffre indique la frette sur laquelle on
   appuie~;
 \item 0 désigne une corde jouée à vide~;
 \item X indique que la corde ne doit pas être jouée~;
 \item une valeur avant un ``:'' désigne un barré (\emph{3:} indique un
-  barré de trois frets).
+  barré de trois frettes).
 \end{itemize}
 
 %------------------------------------------------------------------------------
@@ -608,17 +619,17 @@ chanson.
   [by=Pornophonique,cov=8-bit-lagerfeuer,album=8-bit lagerfeuer]
 
   \cover
-  \gtab{Rém}{XX0231}
-  \gtab{Fa}{1:022100}
-  \gtab{Do}{X32010}
+  \gtab{Dm}{XX0231}
+  \gtab{F}{1:022100}
+  \gtab{C}{X32010}
 
   \lilypond{Sad_robot}
 
   \beginverse
-    His \[Rém]steely skin is covered
-    By \[Fa]centuries of dust
-    \[Do]Once he was a great one
-    \[Rém]Now he's dull and rust
+    His \[Dm]steely skin is covered
+    By \[F]centuries of dust
+    \[C]Once he was a great one
+    \[Dm]Now he's dull and rust
   \endverse
 
   \beginverse*
