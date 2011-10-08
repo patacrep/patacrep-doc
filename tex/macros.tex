@@ -72,3 +72,8 @@
 \newcommand{\recueil}[1]{\emph{Songbook}\xspace}
 \newcommand{\client}[1]{\emph{Songbook-Client}\xspace}
 \newcommand{\anglais}[1]{(\emph{#1} en anglais)}
+
+\let\urlORIG\url
+\renewcommand{\url}[1]{%
+\mbox{\urlORIG{#1}}
+}
