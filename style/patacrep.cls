@@ -75,7 +75,7 @@
 \hypersetup{
 pdfauthor = {Romain Goffe},%
 pdftitle = {Patacrep! Songbook Documentation},%
-pdfkeywords = {},%
+pdfkeywords = {Songbook; LaTeX; Guitar; Tabs; Songs},%
 pdfcreator = {PDFLaTeX},%
 pdfproducer = {PDFLaTeX}}
 
