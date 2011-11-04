@@ -139,7 +139,7 @@ In the lower part (System Variables), scroll the list until the
 contains a set of paths that are separated by semicolons. The
 following paths must be present:
 \begin{itemize}
-\item Python~: \verb#C:\textbackslash Python27#
+\item Python~: \verb#C:\Python27#
 \item Miktex~: \verb# C:\Program Files\MiKTeX 2.9\miktex\bin#
 \item Lilypond~: \verb#C:\Program Files\LilyPond\usr\bin#
 \end{itemize}
@@ -278,7 +278,11 @@ corresponding artist. For instance:
 Contains the Lilypond music sheet sources as \ext{ly} files.
 
 \paragraph{\directory{./tex}}
-Contains a few additional \LaTeX{} files such as packages, licenses etc.
+Contains \LaTeX{} files such as packages, licenses, classes etc.
+
+\paragraph{\directory{./books}}
+Contains all \ext{sb} files that correspond to the different pdf books
+available at \url{www.patacrep.com}.
 
 \paragraph{\directory{./img}}
 Contains the images that may be inserted in a songbook (except album
@@ -298,9 +302,9 @@ the \LaTeX{} macro \latexcom{includegraphics}. For example:
 In order to build a songbook, a \ext{sb} file is required whose
 content is detailed in the following. A songbook file (\ext{sb})
 contains a set of values for the options that are provided by a
-template and a list of songs.  A \ext{sb} file must be saved at the
-root of the project. Following is an example of a songbook file based
-on the minimal template and containing two songs.
+template and a list of songs.  A \ext{sb} file must be saved into the
+\directory{./books} directory. Following is an example of a songbook
+file based on the minimal template and containing two songs.
 
 \begin{code}
 {

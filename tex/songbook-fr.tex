@@ -145,7 +145,7 @@ double-cliquant dessus. Le \command{Path} contient un ensemble de
 chemins séparés par des \emph{points-virgules}. Assurez-vous qu'elle
 contient les chemins suivants. Dans le cas contraire, ajoutez-les~:
 \begin{itemize}
-\item Python~: \verb#C:\textbackslash Python27#
+\item Python~: \verb#C:\Python27#
 \item Miktex~: \verb# C:\Program Files\MiKTeX 2.9\miktex\bin#
 \item Lilypond~: \verb#C:\Program Files\LilyPond\usr\bin#
 \end{itemize}                     
@@ -290,6 +290,10 @@ Contient les sources des partitions Lilypond sous la forme de fichiers
 \paragraph{\directory{./tex}}
 Contient différents fichiers \LaTeX{} (licences etc.).
 
+\paragraph{\directory{./books}}
+Contient les fichiers \ext{sb} qui correspondent aux différents
+recueils pdfs mis à disposition sur \url{www.patacrep.com}.
+
 \paragraph{\directory{./img}}
 Contient les images utilisées dans les songbooks (exceptés les
 pochettes des albums). Pour rajouter \file{mon\_image.jpg} dans une
@@ -306,11 +310,11 @@ chanson, utilisez la macro \latexcom{image} dans un fichier
 \label{sec:create-songbook}
 %*******************************************************************************
 
-Pour produire un recueil, vous devez créer un fichier \ext{sb}
-dont le contenu est précisé ci-après. Les fichiers songbook
-\ext{sb} contiennent un ensemble d'options pour la
-personnalisation du recueil ainsi qu'une liste de chansons.
-Ces recueils doivent être enregistrés à la racine du projet.
+Pour produire un recueil, vous devez créer un fichier \ext{sb} dont le
+contenu est précisé ci-après. Les fichiers songbook \ext{sb}
+contiennent un ensemble d'options pour la personnalisation du recueil
+ainsi qu'une liste de chansons. Ces recueils doivent être enregistrés
+dans le répertoire \directory{./books}.
 
 \begin{code}
 {
