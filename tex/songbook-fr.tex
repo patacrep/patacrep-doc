@@ -75,9 +75,9 @@ Quelques options de base du makefile~:
 \item \command{\$ make clean}~: supprime tous les fichiers de logs et
   les fichiers générés à part les recueils finaux \ext{pdf}.
 \item \command{\$ make cleanall}~: supprime tous les fichiers générés,
-  y compris les pdf.
+  y compris les PDF.
 \item \command{\$ make lilypond}~: génère dans \directory{./lilypond} les
-  pdf de toutes les partitions lilypond \ext{ly} trouvées dans
+  PDF de toutes les partitions lilypond \ext{ly} trouvées dans
   \directory{./lilypond}. Il est nécessaire d'avoir installé
   \emph{lilypond} au préalable.
 \item \command{\$ make book.pdf}~: la compilation de tous les carnets
@@ -228,10 +228,6 @@ Contient un ensemble de scripts utilitaires. Un script s'exécute par la command
   nouvelle chanson pour être sûr de respecter les standards du
   songbook.
 
-\item \file{typo.sh}~: applique un ensemble de règles typographiques
-  comme la suppression des espaces doubles ou la gestion des
-  guillemets.
-
 \item \file{new-songs-list.sh}~: permet de récupérer la liste des
   chansons ajoutées depuis la dernière version.
 
@@ -292,7 +288,7 @@ Contient différents fichiers \LaTeX{} (licences etc.).
 
 \paragraph{\directory{./books}}
 Contient les fichiers \ext{sb} qui correspondent aux différents
-recueils pdfs mis à disposition sur \url{www.patacrep.com}.
+recueils PDF mis à disposition sur \url{www.patacrep.com}.
 
 \paragraph{\directory{./img}}
 Contient les images utilisées dans les songbooks (exceptés les
@@ -346,9 +342,11 @@ disponibles sont les suivantes~:
     title & le titre du recueil & chaîne de caractères \\
     author & l'auteur du recueil & chaîne de caractères \\
     booktype & avec ou sans accords & \command{chorded} ou \command{lyric}\\
-    bookoptions & affichage des éléments & \command{diagram}, \command{lilypond},\\
-    & & \command{pictures}, \command{tabs}\\
-    version & la version actuelle du pdf & chaîne de caractères \\
+    bookoptions & affichage des éléments & \command{lilypond}, \command{diagram},\\
+    & & \command{importantdiagramonly},\\
+    & & \command{pictures}, \command{tabs},\\
+    & & \command{repeatchords}\\
+    version & la version actuelle du PDF & chaîne de caractères \\
     subtitle & sous-titre du recueil & chaîne de caractères \\
     web & adresse de votre site & chaîne de caractères \\
     mail & votre adresse email & chaîne de caractères \\
@@ -364,6 +362,19 @@ disponibles sont les suivantes~:
     \hline
   \end{tabular}
 \end{center}
+
+Description des \og bookoptions \fg{} :
+\begin{description}
+  \item[\command{lilypond}] affiche les partitions Lilypond ;
+  \item[\command{diagram}] affiche les diagrammes des accords ;
+  \item[\command{importantdiagramonly}] affiche les diagrammes des
+    accords, mais seulement ceux marqués comme important par le
+    transcripteur de la chanson ;
+  \item[\command{pictures}] affiche les couvertures des albums ;
+  \item[\command{tabs}] affiche les tablatures ;
+  \item[\command{repeatchords}] répète les accords dans tous les
+    couplets des chansons, si la transcription le permet.
+\end{description}
 
 Pour compiler votre recueil \file{mybook.sb}~:
 \begin{unix}
@@ -382,7 +393,8 @@ make mybook.pdf
 
 Une chanson est un fichier texte \file{chanson.sg} placé dans
 le répertoire \directory{songs/Artiste}. Les espaces n'étant pas
-tolérées, veillez à utiliser des underscores. L'en-tête d'un fichier
+tolérées, veillez à utiliser des tirets bas (\emph{underscores}.
+L'en-tête d'un fichier
 \ext{sg} se présente de la manière suivante~:
 
 \begin{songbook}
@@ -405,7 +417,7 @@ et \latexcom{endchorus}. Les paroles sont écrites normalement entre le
 
 Pour préciser sur quelle syllabe un accord doit être joué, on utilise
 une commande spéciale. Par exemple, la commande \latexcom{[E]}
-produira un \command{Mi} au dessus de la syllabe suivante dans le pdf.
+produira un \command{Mi} au dessus de la syllabe suivante dans le PDF.
 
 \begin{songbook}
 \beginverse
@@ -426,7 +438,7 @@ Chaque chanson se termine avec la commande \latexcom{endsong}.
 Il est impératif d'utiliser la convention anglo-saxone de notation des
 accords (A, B, C, D, E, F, G) et non pas la notation latine (La, Si,
 Do, Ré, Mi, Fa, Sol). En revanche, suivant suivant le paramètre
-\emph{langue} du template utilisé, le rendu des accords dans le pdf
+\emph{langue} du template utilisé, le rendu des accords dans le PDF
 pourra être différent (l'accord \latexcom{[D]} sera affiché
 \command{Ré} si la langue du songbook est \emph{french}). Par défaut,
 l'accord est majeur (C fait référence à l'accord de Do majeur). Les
@@ -445,15 +457,26 @@ du premier couplet en chantant les paroles du second peut demander un
 peu de gymnastique, cela fera travailler votre mémoire tout en offrant
 un texte bien moins surchargé et (beaucoup) moins de pages à imprimer.
 
+Si toutefois vous souaitez que les accords soient répétés dans toute la
+chanson, vous pouvez utiliser l'option \command{repeatchords} du
+template de votre recueil (voir la section \ref{sec:create-songbook}).
+À noter qu'à l'heure actuelle la plupart des chansons ne sont pas
+transcrites entièrement et ne permettent donc pas la répétition des
+accords.
+
 \paragraph{Typographie}
 \begin{itemize}
-  \item Chaque ligne commence par une majuscule~;
-  \item Pas de ponctuation en fin de ligne (sauf ``? et !'')~;
-  \item Les signes composés de deux symboles {\og}; : ! ?{\fg}
-    prennent une espace insécable avant en français, mais pas en
-    anglais~;
+  \item Chaque ligne commence par une majuscule.
+  \item Pas de ponctuation en fin de ligne (sauf « ? » et « ! »).
+  \item En français, les signes composés de deux symboles
+    {\og}; : ! ?{\fg} doivent être précédés d'une espace insécable, mais
+    pas en anglais.
   \item Les majuscules s'accentuent (par exemple {\og}À bientôt{\fg}
-    et non pas {\og}A bientôt{\fg}).
+    et non pas {\og}A bientôt{\fg}) ; si votre disposition de clavier ne
+    vous permet pas de taper de majuscules accentuées, vous pouvez
+    utiliser la notation \LaTeX{} : \verb|\`A| pour un \`A, \verb|\'E|
+    pour un \'E, \verb|\"I| pour un \"I, \verb|\^O| pour un \^O,
+    \verb|\c{C}| pour un \c{C}, etc.).
 \end{itemize}
 
 \paragraph{Numérotation des couplets et Sauts de ligne}
@@ -496,10 +519,11 @@ défaut.
 \paragraph{Caractères spéciaux}
 Quelques caractères doivent être écrits différemment en utilisant des
 commandes \LaTeX{} pour un obtenir un meilleur rendu typographique
-dans le pdf. Les deux exemples principaux sont les trois points de
+dans le PDF. Les deux exemples principaux sont les trois points de
 suspension (\dots) et le caractère \oe{}. Pour représenter ces
 caractères, vous devez utiliser respectivement les commandes
-\latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le caractère utf-8
+\latexcom{dots} et \latexcom{oe\{\}} (ou utiliser les caractère UTF-8
+\command{…} et
 \command{œ}). On utilise des accolades autour des commandes de sorte
 que les commandes puissent être insérées où vous le désirez sans
 interférer avec le reste du texte. Voir aussi la \refsec{sec:utils}.
@@ -537,10 +561,9 @@ quelques exemples classiques~:
 \end{songbook}
 
 \begin{nota}
-  \begin{itemize}
-  \item X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
-  \item 0 est le chiffre zéro et non pas la lettre majuscule o.
-  \end{itemize}
+  X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
+
+  0 est le chiffre zéro et non pas la lettre majuscule o.
 \end{nota}
 
 \begin{itemize}
@@ -551,9 +574,19 @@ quelques exemples classiques~:
   appuie~;
 \item 0 désigne une corde jouée à vide~;
 \item X indique que la corde ne doit pas être jouée~;
-\item une valeur avant un ``:'' désigne un barré (\emph{3:} indique un
-  barré de trois frettes).
+\item une valeur avant un « : » désigne un barré (« \verb|3:| » indique
+  un barré à la 3\ieme frette).
 \end{itemize}
+
+\begin{nota}
+  Une nouvelle convention, en cours d'intégration, permet d'indiquer un
+  \emph{décalage} du diagramme de N frettes plutôt qu'un barré à la
+  frette N.\\
+  La même notation est pour l'instant utilisée ; afin de rendre la mise à
+  jour plus facile lorsqu'une nouvelle syntaxe sera créée, merci de
+  placer un commentaire dans le code de la chanson lorsque vous souhaitez
+  indiquer un décalage et non un barré.
+\end{nota}
 
 %------------------------------------------------------------------------------
 \subsection{Intégration de partitions Lilypond}
