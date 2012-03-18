@@ -75,9 +75,9 @@ Quelques options de base du makefile~:
 \item \command{\$ make clean}~: supprime tous les fichiers de logs et
   les fichiers générés à part les recueils finaux \ext{pdf}.
 \item \command{\$ make cleanall}~: supprime tous les fichiers générés,
-  y compris les pdf.
+  y compris les PDF.
 \item \command{\$ make lilypond}~: génère dans \directory{./lilypond} les
-  pdf de toutes les partitions lilypond \ext{ly} trouvées dans
+  PDF de toutes les partitions lilypond \ext{ly} trouvées dans
   \directory{./lilypond}. Il est nécessaire d'avoir installé
   \emph{lilypond} au préalable.
 \item \command{\$ make book.pdf}~: la compilation de tous les carnets
@@ -292,7 +292,7 @@ Contient différents fichiers \LaTeX{} (licences etc.).
 
 \paragraph{\directory{./books}}
 Contient les fichiers \ext{sb} qui correspondent aux différents
-recueils pdfs mis à disposition sur \url{www.patacrep.com}.
+recueils PDF mis à disposition sur \url{www.patacrep.com}.
 
 \paragraph{\directory{./img}}
 Contient les images utilisées dans les songbooks (exceptés les
@@ -348,7 +348,7 @@ disponibles sont les suivantes~:
     booktype & avec ou sans accords & \command{chorded} ou \command{lyric}\\
     bookoptions & affichage des éléments & \command{diagram}, \command{lilypond},\\
     & & \command{pictures}, \command{tabs}\\
-    version & la version actuelle du pdf & chaîne de caractères \\
+    version & la version actuelle du PDF & chaîne de caractères \\
     subtitle & sous-titre du recueil & chaîne de caractères \\
     web & adresse de votre site & chaîne de caractères \\
     mail & votre adresse email & chaîne de caractères \\
@@ -405,7 +405,7 @@ et \latexcom{endchorus}. Les paroles sont écrites normalement entre le
 
 Pour préciser sur quelle syllabe un accord doit être joué, on utilise
 une commande spéciale. Par exemple, la commande \latexcom{[E]}
-produira un \command{Mi} au dessus de la syllabe suivante dans le pdf.
+produira un \command{Mi} au dessus de la syllabe suivante dans le PDF.
 
 \begin{songbook}
 \beginverse
@@ -426,7 +426,7 @@ Chaque chanson se termine avec la commande \latexcom{endsong}.
 Il est impératif d'utiliser la convention anglo-saxone de notation des
 accords (A, B, C, D, E, F, G) et non pas la notation latine (La, Si,
 Do, Ré, Mi, Fa, Sol). En revanche, suivant suivant le paramètre
-\emph{langue} du template utilisé, le rendu des accords dans le pdf
+\emph{langue} du template utilisé, le rendu des accords dans le PDF
 pourra être différent (l'accord \latexcom{[D]} sera affiché
 \command{Ré} si la langue du songbook est \emph{french}). Par défaut,
 l'accord est majeur (C fait référence à l'accord de Do majeur). Les
@@ -496,7 +496,7 @@ défaut.
 \paragraph{Caractères spéciaux}
 Quelques caractères doivent être écrits différemment en utilisant des
 commandes \LaTeX{} pour un obtenir un meilleur rendu typographique
-dans le pdf. Les deux exemples principaux sont les trois points de
+dans le PDF. Les deux exemples principaux sont les trois points de
 suspension (\dots) et le caractère \oe{}. Pour représenter ces
 caractères, vous devez utiliser respectivement les commandes
 \latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le caractère utf-8
