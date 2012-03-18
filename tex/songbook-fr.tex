@@ -346,8 +346,10 @@ disponibles sont les suivantes~:
     title & le titre du recueil & chaîne de caractères \\
     author & l'auteur du recueil & chaîne de caractères \\
     booktype & avec ou sans accords & \command{chorded} ou \command{lyric}\\
-    bookoptions & affichage des éléments & \command{diagram}, \command{lilypond},\\
-    & & \command{pictures}, \command{tabs}\\
+    bookoptions & affichage des éléments & \command{lilypond}, \command{diagram},\\
+    & & \command{importantdiagramonly},\\
+    & & \command{pictures}, \command{tabs},\\
+    & & \command{repeatchords}\\
     version & la version actuelle du PDF & chaîne de caractères \\
     subtitle & sous-titre du recueil & chaîne de caractères \\
     web & adresse de votre site & chaîne de caractères \\
@@ -364,6 +366,19 @@ disponibles sont les suivantes~:
     \hline
   \end{tabular}
 \end{center}
+
+Description des \og bookoptions \fg{} :
+\begin{description}
+  \item[\command{lilypond}] affiche les partitions Lilypond ;
+  \item[\command{diagram}] affiche les diagrammes des accords ;
+  \item[\command{importantdiagramonly}] affiche les diagrammes des
+    accords, mais seulement ceux marqués comme important par le
+    transcripteur de la chanson ;
+  \item[\command{pictures}] affiche les couvertures des albums ;
+  \item[\command{tabs}] affiche les tablatures ;
+  \item[\command{repeatchords}] répète les accords dans tous les
+    couplets des chansons, si la transcription le permet.
+\end{description}
 
 Pour compiler votre recueil \file{mybook.sb}~:
 \begin{unix}
@@ -444,6 +459,13 @@ fois à leur première occurrence. En effet, même si jouer les morceaux
 du premier couplet en chantant les paroles du second peut demander un
 peu de gymnastique, cela fera travailler votre mémoire tout en offrant
 un texte bien moins surchargé et (beaucoup) moins de pages à imprimer.
+
+Si toutefois vous souaitez que les accords soient répétés dans toute la
+chanson, vous pouvez utiliser l'option \command{repeatchords} du
+template de votre recueil (voir la section \ref{sec:create-songbook}).
+À noter qu'à l'heure actuelle la plupart des chansons ne sont pas
+transcrites entièrement et ne permettent donc pas la répétition des
+accords.
 
 \paragraph{Typographie}
 \begin{itemize}
