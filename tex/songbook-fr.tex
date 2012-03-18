@@ -393,7 +393,8 @@ make mybook.pdf
 
 Une chanson est un fichier texte \file{chanson.sg} placé dans
 le répertoire \directory{songs/Artiste}. Les espaces n'étant pas
-tolérées, veillez à utiliser des underscores. L'en-tête d'un fichier
+tolérées, veillez à utiliser des tirets bas (\emph{underscores}.
+L'en-tête d'un fichier
 \ext{sg} se présente de la manière suivante~:
 
 \begin{songbook}
@@ -521,7 +522,8 @@ commandes \LaTeX{} pour un obtenir un meilleur rendu typographique
 dans le PDF. Les deux exemples principaux sont les trois points de
 suspension (\dots) et le caractère \oe{}. Pour représenter ces
 caractères, vous devez utiliser respectivement les commandes
-\latexcom{dots} et \latexcom{oe\{\}} (ou utiliser le caractère utf-8
+\latexcom{dots} et \latexcom{oe\{\}} (ou utiliser les caractère UTF-8
+\command{…} et
 \command{œ}). On utilise des accolades autour des commandes de sorte
 que les commandes puissent être insérées où vous le désirez sans
 interférer avec le reste du texte. Voir aussi la \refsec{sec:utils}.
@@ -559,10 +561,9 @@ quelques exemples classiques~:
 \end{songbook}
 
 \begin{nota}
-  \begin{itemize}
-  \item X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
-  \item 0 est le chiffre zéro et non pas la lettre majuscule o.
-  \end{itemize}
+  X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
+
+  0 est le chiffre zéro et non pas la lettre majuscule o.
 \end{nota}
 
 \begin{itemize}
