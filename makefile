@@ -78,7 +78,7 @@ ps: $(CIBLE).ps.gz
 
 pdf: LATEX = pdflatex
 pdf: $(CIBLE).pdf
-	$(PDFREADER) $<
+	if which $(PDFREADER) >/dev/null 2>&1 ; then $(PDFREADER) $< ; fi
 
 clean:
 	@rm -f $(AUX) $(CIBLE).toc
