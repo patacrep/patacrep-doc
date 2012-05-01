@@ -342,10 +342,12 @@ disponibles sont les suivantes~:
     title & le titre du recueil & chaîne de caractères \\
     author & l'auteur du recueil & chaîne de caractères \\
     booktype & avec ou sans accords & \command{chorded} ou \command{lyric}\\
+    lang & langue du recueil & \command{french}, \command{english}, etc. \\
+    instruments & instruments à afficher & \command{guitar}, \command{ukulele} \\
     bookoptions & affichage des éléments & \command{lilypond}, \command{diagram},\\
     & & \command{importantdiagramonly},\\
-    & & \command{pictures}, \command{tabs},\\
-    & & \command{repeatchords}\\
+    & & \command{onesongperpage}, \command{pictures},\\
+    & & \command{repeatchords}, \command{tabs}\\
     version & la version actuelle du PDF & chaîne de caractères \\
     subtitle & sous-titre du recueil & chaîne de caractères \\
     web & adresse de votre site & chaîne de caractères \\
@@ -365,15 +367,17 @@ disponibles sont les suivantes~:
 
 Description des \og bookoptions \fg{} :
 \begin{description}
-  \item[\command{lilypond}] affiche les partitions Lilypond ;
   \item[\command{diagram}] affiche les diagrammes des accords ;
   \item[\command{importantdiagramonly}] affiche les diagrammes des
     accords, mais seulement ceux marqués comme important par le
     transcripteur de la chanson ;
+  \item[\command{lilypond}] affiche les partitions Lilypond ;
   \item[\command{pictures}] affiche les couvertures des albums ;
   \item[\command{tabs}] affiche les tablatures ;
   \item[\command{repeatchords}] répète les accords dans tous les
-    couplets des chansons, si la transcription le permet.
+    couplets des chansons, si la transcription le permet ;
+  \item[\command{onesongperpage}] force l'affichage d'une seule
+    chanson par page.
 \end{description}
 
 Pour compiler votre recueil \file{mybook.sb}~:
@@ -592,7 +596,7 @@ quelques exemples classiques~:
 \subsection{Intégration de partitions Lilypond}
 %------------------------------------------------------------------------------
 
-Si vous souhaitez rajouter une ligne mélodique dans une chanson, vous
+Si vous souhaitez ajouter une ligne mélodique dans une chanson, vous
 pouvez utiliser Lilypond pour générer la partition. Créez pour cela
 un nouveau fichier \file{partition.ly} dans le répertoire
 \directory{songbook/lilypond}. Il faut inclure le fichier d'en-tête
