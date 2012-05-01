@@ -413,23 +413,25 @@ fichier \file{album-cover.jpg} devant se trouver dans le même
 répertoire que le fichier \ext{sg}.
 
 La chanson se compose d'une succession de couplets \anglais{verse} et
-de refrains \anglais{chorus}. Un couplet est alors encapsulé par les
-balises \latexcom{beginverse} et \latexcom{endverse}. De la même
-manière, un refrain est placé entre les balises \latexcom{beginchorus}
-et \latexcom{endchorus}. Les paroles sont écrites normalement entre le
-\latexcom{begin} et le \latexcom{end}.
+de refrains \anglais{chorus}. Un couplet figure dans un environnement
+\command{verse}, c'est-à-dire qu'il commence par \verb|\begin{verse}|
+et se termine par \verb|\end{verse}|. De la même manière, un refrain
+est placé dans un environnement \command{chorus}, c'est-à-dire entre les
+balises \verb|\begin{chorus}| et \verb|\end{chorus}|. Les paroles sont
+écrites normalement entre les balises d'ouverture et de fermeture de
+l'environnement.
 
 Pour préciser sur quelle syllabe un accord doit être joué, on utilise
 une commande spéciale. Par exemple, la commande \latexcom{[E]}
 produira un \command{Mi} au dessus de la syllabe suivante dans le PDF.
 
 \begin{songbook}
-\beginverse
+\begin{verse}
   His \[Dm]steely skin is covered
   By \[F]centuries of dust
   \[C]Once he was a great one
   \[Dm]Now he's dull and rust
-\endverse
+\end{verse}
 \end{songbook}
 
 Chaque chanson se termine avec la commande \latexcom{endsong}.
@@ -485,27 +487,28 @@ accords.
 
 \paragraph{Numérotation des couplets et Sauts de ligne}
 La numérotation se fait automatiquement pour chaque
-\latexcom{beginverse} rencontré. Cependant, il est parfois plus
+\verb|\begin{verse}| rencontré. Cependant, il est parfois plus
 lisible de scinder un couplet en deux parties, la deuxième partie ne
 devant pas être numérotée. Pour cela, nous utilisons la commande
-\latexcom{beginverse*}. Par exemple, un couplet en huit vers se
+\verb|\begin{verse*}| ; il faut alors fermer l'environnement par
+\verb|\end{verse*}|. Par exemple, un couplet en huit vers se
 décompose souvent en deux strophes de quatre vers comme dans l'exemple
 suivant.
 
 \begin{songbook}
-\beginverse
+\begin{verse}
   His \[Dm]steely skin is covered
   By \[F]centuries of dust
   \[C]Once he was a great one
   \[Dm]Now he's dull and rust
-\endverse
+\end{verse}
 
-\beginverse*
+\begin{verse*}
   An oily tear he's crying
   Can you feel the pain
   Of the sad, sad robot
   And it's driving him insane
-\endverse
+\end{verse*}
 \end{songbook}
 
 \paragraph{Agencement en colonnes}
@@ -666,69 +669,69 @@ chanson.
 
   \lilypond{Sad_robot}
 
-  \beginverse
+  \begin{verse}
     His \[Dm]steely skin is covered
     By \[F]centuries of dust
     \[C]Once he was a great one
     \[Dm]Now he's dull and rust
-  \endverse
+  \end{verse}
 
-  \beginverse*
+  \begin{verse*}
     An oily tear he's crying
     Can you feel the pain
     Of the sad, sad robot
     And it's driving him insane
-  \endverse
+  \end{verse*}
 
-  \beginverse*
+  \begin{verse*}
     He can't turn back time nor history
     So his life became a misery
     He has to face the destiny
     Nobody cares anymore
-  \endverse
+  \end{verse*}
 
-  \beginchorus
+  \begin{chorus}
     Sad, sad robot
     Sad, sad robot
     Sad, sad robot
     All alone
-  \endchorus
+  \end{chorus}
 
-  \beginchorus
+  \begin{chorus}
     He's a sad, sad robot \rep{3}
     He's so alone
-  \endchorus
+  \end{chorus}
 
-  \beginverse
+  \begin{verse}
     Me steely skin is covered
     By centuries of dust
     Once me was a great one
     But now I'm dull and rust
-  \endverse
+  \end{verse}
 
-  \beginverse*
+  \begin{verse*}
     An oily tear I'm crying
     Can you feel me pain
     I'm the sad, sad robot
     Driving me insane
-  \endverse
+  \end{verse*}
 
-  \beginverse*
+  \begin{verse*}
     I can't turn back time nor history
     So me life became a misery
     I have to face me destiny
     That I'm all on me own
-  \endverse
+  \end{verse*}
 
-  \beginchorus
+  \begin{chorus}
     Red, red robot
     I'm a red, red robot \rep{2}
     And so I shall return
-  \endchorus
+  \end{chorus}
 
-  \beginchorus
+  \begin{chorus}
     I'm a red, red robot \rep{3}
     So I shall return
-  \endchorus
+  \end{chorus}
 \endsong
 \end{songbook}
