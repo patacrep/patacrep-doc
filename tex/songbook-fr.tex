@@ -441,20 +441,37 @@ Chaque chanson se termine avec la commande \latexcom{endsong}.
 \subsection{Règles de style}
 %------------------------------------------------------------------------------
 
+De nombreuses règles de style peuvent être appliquées automatiquement
+à l'ensemble des chansons via le script \file{utils/rules.py}. Ce
+script vérifie les espaces en fin de ligne, certaines règles de
+ponctuation, quelques fautes d'orthographe etc. Pour l'utiliser,
+exécutez la commande suivante dans le répertoire du songbook :
+
+\begin{unix}
+python utils/rules.py
+\end{unix}
+
 \paragraph{Notation des accords}
 Il est impératif d'utiliser la convention anglo-saxone de notation des
 accords (A, B, C, D, E, F, G) et non pas la notation latine (La, Si,
 Do, Ré, Mi, Fa, Sol). En revanche, suivant suivant le paramètre
 \emph{langue} du template utilisé, le rendu des accords dans le PDF
 pourra être différent (l'accord \latexcom{[D]} sera affiché
-\command{Ré} si la langue du songbook est \emph{french}). Par défaut,
-l'accord est majeur (C fait référence à l'accord de Do majeur). Les
-accords mineurs sont précisés par un \command{m} minuscule.  Le
-symbole bémol $\flat$ est représenté en utilisant le caractère
-\command{\&}. Le dièse $\sharp$ est codé par le caractère
+\command{Ré} si la langue du songbook est \emph{french}).
+
+Par défaut, l'accord est majeur (C fait référence à l'accord de Do
+majeur). Les accords mineurs sont précisés par un \command{m}
+minuscule.  Le symbole bémol $\flat$ est représenté en utilisant le
+caractère \command{\&}. Le dièse $\sharp$ est codé par le caractère
 \command{\#}. Les autres notations sont simplement ajoutées comme des
 caractères à l'accord principal. Par exemple, l'accord de \command{La
   bémol mineur} est noté \latexcom{[A\&m]}.
+
+\begin{nota}
+  Pour des raisons techniques, le symbole \command{\#} ne peut pas
+  être utilisé dans les environnements \latexcom{nolyrics}. Dans ce
+  cas là, il faut utiliser \latexcom{sharp}.
+\end{nota}
 
 \paragraph{Répétition des accords}
 De façon à avoir un document lisible et relativement compact, les
@@ -471,19 +488,48 @@ template de votre recueil (voir la section \ref{sec:create-songbook}).
 transcrites entièrement et ne permettent donc pas la répétition des
 accords.
 
-\paragraph{Typographie}
+\paragraph{Capitalisation}
 \begin{itemize}
   \item Chaque ligne commence par une majuscule.
-  \item Pas de ponctuation en fin de ligne (sauf « ? » et « ! »).
-  \item En français, les signes composés de deux symboles
-    {\og}; : ! ?{\fg} doivent être précédés d'une espace insécable, mais
-    pas en anglais.
+  \item Ne pas capitaliser inutilement les titres des chansons. Par
+    exemple, écrire \emph{Here comes my baby} et non pas \emph{Here
+      Comes My Baby}.
   \item Les majuscules s'accentuent (par exemple {\og}À bientôt{\fg}
     et non pas {\og}A bientôt{\fg}) ; si votre disposition de clavier ne
     vous permet pas de taper de majuscules accentuées, vous pouvez
     utiliser la notation \LaTeX{} : \verb|\`A| pour un \`A, \verb|\'E|
     pour un \'E, \verb|\"I| pour un \"I, \verb|\^O| pour un \^O,
     \verb|\c{C}| pour un \c{C}, etc.).
+\end{itemize}
+
+\paragraph{Ponctuation}
+\begin{itemize}
+\item Évitez la ponctuation en fin de ligne comme les virgules, points
+  et points-virgules. Elle est de toutes façons quasiment entièrement
+  supprimée par le script \file{rules.py}. Seuls sont conservés les
+  points d'interrogation, d'exclamation, les deux-points et
+  points-virgules.
+\item Pour les guillemets, on utilise \`{}\`{} (deux backquotes) pour
+  les ouvrants et '' (deux simples quotes) pour les fermants plutôt
+  que " (double quote) ; le script \file{rules.py} pourra ainsi les
+  adapter automatiquement suivant la langue de la chanson.
+\end{itemize}
+
+\paragraph{Contractions/Exagérations}
+\begin{itemize}
+\item Les textes chantés utilisent beaucoup de contractions et
+  d'exagérations orales. Il n'y pas de politique précise dans le
+  songbook mais restez \emph{sobres}.
+\item Pour les chœurs, évitez les \emph{Ahhhhhhhhh Ohhhhh ouhhhh} et
+  préférez des \emph{ah oh ouh} tous simples.
+\item Évitez à tout prix les doubles points d'exclamation (et limitez
+  les simples), n'abusez pas des points de suspension (on peut
+  quasiment toujours les supprimer) etc.
+\item Pour les contractions, faites comme bon vous semble mais n'en
+  mettez pas partout. Des phrases comme \emph{j'vais pt'êt' r'prendr'
+    un verr'} peuvent s'écrire plus lisiblement \emph{j'vais peut-être
+    reprendre un verre}, quitte à ne pas coller à la phonétique
+  exacte.
 \end{itemize}
 
 \paragraph{Numérotation des couplets et Sauts de ligne}
@@ -595,6 +641,23 @@ quelques exemples classiques~:
   placer un commentaire dans le code de la chanson lorsque vous souhaitez
   indiquer un décalage et non un barré.
 \end{nota}
+
+\paragraph{Indentation}
+Pour faciliter la lecture/relecture des fichiers \ext{sg}, indentez le
+code avec deux espaces après un bloc begin jusqu'au bloc end
+suivant. Par exemple :
+\begin{songbook}
+\beginsong
+  \begin{verse}
+    blabla
+    blabla
+  \end{verse}
+\endsong
+\end{songbook}
+Cela peut se faire automatiquement avec le songbook-client (et/ou le
+mode emacs) : sélectionnez tout le texte et appuyez sur la touche
+tabulation.
+
 
 %------------------------------------------------------------------------------
 \subsection{Intégration de partitions Lilypond}
