@@ -80,6 +80,8 @@ Quelques options de base du makefile~:
   PDF de toutes les partitions lilypond \ext{ly} trouvées dans
   \directory{./lilypond}. Il est nécessaire d'avoir installé
   \emph{lilypond} au préalable.
+\item \command{\$ make archive}~: crée une archive compressée
+  \file{songbook.tar.gz} des fichiers sources du projet.
 \item \command{\$ make book.pdf}~: la compilation de tous les carnets
   pouvant être longue, si seule une version précise vous intéresse,
   vous pouvez lancer la compilation d'un seul fichier \ext{pdf}. À la place
@@ -92,11 +94,10 @@ Quelques options de base du makefile~:
     \command{make} & description \\
     \hline
     \file{songbook.pdf} &~: version complète avec toutes les chansons \\
-    \file{volume-1.pdf} &~: volume 1 (171 chansons, 152 pages)\\
-    \file{volume-2.pdf} &~: volume 2 (180 chansons, 157 pages)\\
+    \file{volume-$i$.pdf} &~: crée le volume $i$ (environ 160 pages)\\
     \file{naheulbeuk.pdf} &~: version spéciale Donjon de Naheulbeuk\\
     \file{english.pdf} &~: chansons en anglais uniquement\\
-    \file{english.pdf} &~: chansons en français uniquement\\
+    \file{french.pdf} &~: chansons en français uniquement\\
     \hline
   \end{tabular}
 \end{center}
