@@ -215,17 +215,13 @@ Directement sur
 Github\footnote{\url{http://github.com/crep4ever/songbook-client/issues}}
 ou via le forum \footnote{\url{http://www.patacrep.com/forum/}}.
 
-\paragraph{Erreur Sqlite au démarrage} 
-Si vous voyez une boîte de dialogue d'avertissement se lancer au
-démarrage de l'application indiquant que le support de sqlite est
-nécessaire, vous ne pourrez pas utiliser l'interface. Vérifiez que
-votre système dispose bien du support Qt de sqlite (sous
-Debian/Ubuntu, il s'agit du paquet \command{libqt4-sql-sqlite}).
-
 \paragraph{Les partitions de solfège n'apparaissent pas}
 Si la compilation de votre recueil de chansons n'intègre pas les
-partitions malgré l'option \emph{Lilypond} correctement cochée dans les
-préférences, vérifiez que Lilypond est bien installé sur votre système. 
+partitions malgré l'option \emph{Lilypond} correctement cochée dans
+les préférences, vérifiez que Lilypond est bien installé sur votre
+système. Sous MacOs et Windows, il est nécessaire de générer soi-même
+les pdf correspondants aux partitions, le processus n'étant pas
+automatisé par le makefile.
 
 \paragraph{La bibliothèque des chansons est vide} 
 Vérifiez que le chemin d'accès au \recueil{} est correctement
