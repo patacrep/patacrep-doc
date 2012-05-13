@@ -20,18 +20,16 @@ caractères spéciaux. Dans ce manuel, le répertoire de travail est
 supposé être~: \directory{\$HOME/songbook} pouvant être noté
 \directory{/home/user/songbook} ou \directory{$\sim$/songbook}.
 
-%------------------------------------------------------------------------------
-\subsection{\linux}
-%------------------------------------------------------------------------------
-
 Le songbook utilise \LaTeX{} pour la mise en page des chansons et
 Python pour la génération des tables des matières (dépendances
 obligatoires). Il est également possible d'inclure en option des
-partitions générées avec Lilypond. Enfin, le projet est distribué via
-un dépôt \git donc il est recommandé d'installer l'outil pour des
-raisons de simplicité (dépendances recommandées). Enfin, vous aurez
-besoin d'un logiciel pour lire les fichiers \ext{pdf} produits. Si vous êtes
-sous Debian/Ubuntu~:
+partitions générées avec Lilypond (dépendances recommandées). Enfin,
+vous aurez besoin d'un logiciel pour lire les fichiers \ext{pdf}
+produits.
+
+%------------------------------------------------------------------------------
+\subsection{\linux}
+%------------------------------------------------------------------------------
 
 \paragraph{Dépendances}
 
@@ -44,6 +42,7 @@ Installation des dépendances obligatoires.
 Installation des dépendances recommandées.
 \begin{unix}
   sudo apt-get install texlive-fonts-recommended
+  sudo apt-get install texlive-fonts-extra
   sudo apt-get install lilypond
 \end{unix}
 
@@ -114,12 +113,12 @@ La commande \command{make} sans option correspond à \command{make
 Installation des dépendances obligatoires.
 \begin{itemize}
 \item Miktex~: \url{http://miktex.org/}
-\item Python~: \url{http://www.python.org/download/releases/2.7.2/}
+\item Python~: \url{http://www.python.org/download/releases/2.7.3/}
 \end{itemize}
 
 \begin{nota}
 La compilation sous \windows a uniquement été testée avec~: MikTeX~2.9
-et Python~2.7.2.
+et Python~2.7.3.
 \end{nota}
 
 Installation des dépendances recommandées.
@@ -130,7 +129,6 @@ Installation des dépendances recommandées.
 
 \paragraph{Modification de la variable \command{Path}}
 
-Redémarrez votre machine après l'installation des logiciels. 
 Il faut maintenant modifier la variable \command{Path} de votre
 système.
 \begin{itemize}
@@ -290,6 +288,11 @@ Contient différents fichiers \LaTeX{} (licences etc.).
 \paragraph{\directory{./books}}
 Contient les fichiers \ext{sb} qui correspondent aux différents
 recueils PDF mis à disposition sur \url{www.patacrep.com}.
+
+\paragraph{\directory{./covers}}
+Répertoire temporaire contenant les pochettes des albumes. Ce
+répertoire est généré automatiquement lors de la compilation d'un
+recueil et est uniquement présent pour des raisons de performance.
 
 \paragraph{\directory{./img}}
 Contient les images utilisées dans les songbooks (exceptés les
@@ -470,7 +473,7 @@ caractères à l'accord principal. Par exemple, l'accord de \command{La
 \begin{nota}
   Pour des raisons techniques, le symbole \command{\#} ne peut pas
   être utilisé dans les environnements \latexcom{nolyrics}. Dans ce
-  cas là, il faut utiliser \latexcom{sharp}.
+  cas là, il faut utiliser \latexcom{shrp}.
 \end{nota}
 
 \paragraph{Répétition des accords}
@@ -499,7 +502,7 @@ accords.
     vous permet pas de taper de majuscules accentuées, vous pouvez
     utiliser la notation \LaTeX{} : \verb|\`A| pour un \`A, \verb|\'E|
     pour un \'E, \verb|\"I| pour un \"I, \verb|\^O| pour un \^O,
-    \verb|\c{C}| pour un \c{C}, etc.).
+    \verb|\c{C}| pour un \c{C}, etc).
 \end{itemize}
 
 \paragraph{Ponctuation}
@@ -600,25 +603,23 @@ Hallelujah \echo{Hallelujah}
 \end{songbook}
 
 \paragraph{Diagrammes des accords}
-Étant donné qu'un accord de guitare peut se jouer de plusieurs façons
-différentes et qu'il est parfois judicieux de privilégier telle ou
-telle position, le songbook permet de représenter schématiquement ces
-accords en début de chanson. Pour cela, nous utilisons la commande
-\latexcom{gtab} juste avant le premier couplet ou refrain. Voici
-quelques exemples classiques~:
+Étant donné qu'un accord de guitare et/ou de ukulélé peut se jouer de
+plusieurs façons différentes et qu'il est parfois judicieux de
+privilégier telle ou telle position, le songbook permet de représenter
+schématiquement ces accords en début de chanson sous forme de
+diagrame. Pour cela, nous utilisons les commandes \latexcom{gtab}
+(guitare) et \latexcom{utab} (ukulélé) juste avant le premier couplet
+ou refrain. Dans le cas où ces accords ne sont pas standards, ils
+peuvent être marqués comme importants avec les commandes
+\latexcom{gtab*} et \latexcom{utab*}. Voici quelques exemples
+classiques~:
 
 \begin{songbook}
 \gtab{C}{3:002220}
-\gtab{D}{XX0232}
-\gtab{E}{022100}
-\gtab{Am}{X02210}
+\gtab*{Amaj7}{5:X0221X}
+\utab{C}{0003}
+\utab{B&m}{1:2000}
 \end{songbook}
-
-\begin{nota}
-  X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
-
-  0 est le chiffre zéro et non pas la lettre majuscule o.
-\end{nota}
 
 \begin{itemize}
 \item les six chiffres correspondent aux six cordes de la guitare
@@ -633,6 +634,10 @@ quelques exemples classiques~:
 \end{itemize}
 
 \begin{nota}
+  X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
+
+  0 est le chiffre zéro et non pas la lettre majuscule o.
+
   Une nouvelle convention, en cours d'intégration, permet d'indiquer un
   \emph{décalage} du diagramme de N frettes plutôt qu'un barré à la
   frette N.\\
@@ -730,6 +735,9 @@ chanson.
   \gtab{Dm}{XX0231}
   \gtab{F}{1:022100}
   \gtab{C}{X32010}
+  \utab{Dm}{2210}
+  \utab{F}{2010}
+  \utab{C}{0003}
 
   \lilypond{Sad_robot}
 
@@ -766,36 +774,5 @@ chanson.
     He's so alone
   \end{chorus}
 
-  \begin{verse}
-    Me steely skin is covered
-    By centuries of dust
-    Once me was a great one
-    But now I'm dull and rust
-  \end{verse}
-
-  \begin{verse*}
-    An oily tear I'm crying
-    Can you feel me pain
-    I'm the sad, sad robot
-    Driving me insane
-  \end{verse*}
-
-  \begin{verse*}
-    I can't turn back time nor history
-    So me life became a misery
-    I have to face me destiny
-    That I'm all on me own
-  \end{verse*}
-
-  \begin{chorus}
-    Red, red robot
-    I'm a red, red robot \rep{2}
-    And so I shall return
-  \end{chorus}
-
-  \begin{chorus}
-    I'm a red, red robot \rep{3}
-    So I shall return
-  \end{chorus}
 \endsong
 \end{songbook}

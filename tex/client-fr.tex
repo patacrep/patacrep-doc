@@ -97,59 +97,8 @@ différentes colonnes peuvent être affichées/masquées dans l'onglet
 seules les colonnes \command{Titre}, \command{Artiste} et
 \command{Album} sont visibles.
 
-Les chansons de la bibliothèque sont sélectionnables par simple clic.
-Une chanson sélectionnée est affichée en surbrillance. Cliquez sur une
-chanson sélectionnée pour la dé-sélectionner.
-
-%*******************************************************************************
-\section{Ajouter une chanson}
-%*******************************************************************************
-
-Le menu \menu{Bibliothèque}{Nouvelle chanson} permet d'ajouter une
-nouvelle chanson à la bibliothèque (\reffig{fig:new-song-a}). La boîte
-de dialogue permet de renseigner les méta-données de la chanson comme
-son titre, son compositeur etc. Ces différents champs permettent de
-générer le squelette du nouveau fichier \ext{sg} correspondant à la
-chanson (\reffig{fig:new-song-b}). La troisième étape
-(\reffig{fig:new-song-c}) consiste à écrire la tablature. Enfin, la
-chanson peut être sélectionnée dans la bibliothèque pour en obtenir le
-rendu au format pdf depuis le menu \menu{Recueil}{Générer PDF}
-(\reffig{fig:new-song-d}).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}
-  \centering
-  %% -- subfigures --
-  \subfigure[]{
-    \label{fig:new-song-a}
-    \includegraphics[width=0.35\textwidth]{new-song}%
-  }%
-  \hspace{0.1cm}%
-  \subfigure[]{%
-    \label{fig:new-song-b}%
-    \includegraphics[width=0.6\textwidth]{song-editor-1}%
-  }%
-  \hspace{0.1cm}%
-  \subfigure[]{%
-    \label{fig:new-song-c}%
-    \includegraphics[width=0.6\textwidth]{song-editor-2}%
-  }%
-  \hspace{0.1cm}%
-  \subfigure[]{%
-    \label{fig:new-song-d}%
-    \includegraphics[width=0.35\textwidth]{result}%
-  }%
-  %% -- subfigures --
-  \caption{%
-    Ajout d'une nouvelle chanson.
-    \subref{fig:new-song-a}~Renseignement des méta-données~; %
-    \subref{fig:new-song-b}~Génération automatique du squelette \ext{sg}~; %
-    \subref{fig:new-song-c}~Écriture de la tablature~; %
-    \subref{fig:new-song-d}~Génération du pdf.%
-  }%
-  \label{fig:new-song}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sélectionnez les chansons de la bibliothèque que vous souhaitez
+inclure dans votre recueil avant de lancer la génération du PDF.
 
 
 %*******************************************************************************
@@ -162,20 +111,23 @@ sélectionnées ainsi que son style et ses options
 (voir~\refsec{sec:create-songbook}).
 
 \paragraph{Style et options d'un recueil}
-Une boîte de dialogue permet de rapidement sélectionner le style du
-recueil pdf ainsi que les différentes éléments à afficher
-(\reffig{fig:new-songbook}).
+L'onglet \command{Recueil} du menu \menu{Édition}{Préférences} permet
+de rapidement sélectionner le style du recueil pdf ainsi que les
+différentes éléments à afficher (\reffig{fig:preferences-songbook}).
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{new-songbook}
+  \includegraphics[width=.6\textwidth]{preferences-songbook}
   \caption{Personnalisation d'un recueil.}
-  \label{fig:new-songbook}
+  \label{fig:preferences-songbook}
 \end{figure}
 
 %*******************************************************************************
 \section{Compilation depuis les sources}
 %*******************************************************************************
+
+Le \client{} est une application écrite en Qt/C++ dont la compilation
+est gérée par CMake.
 
 %-------------------------------------------------------------------------------
 \subsection{\linux}
@@ -184,8 +136,9 @@ recueil pdf ainsi que les différentes éléments à afficher
 \paragraph{Dépendances}
 
 \begin{unix}
-  sudo apt-get install build-essential cmake libarchive-dev libhunspell-dev
-  sudo apt-get install qt4-qmake qt4-dev-tools libqt4-sql-sqlite
+  sudo apt-get install build-essential cmake 
+  sudo apt-get install libarchive-dev libhunspell-dev
+  sudo apt-get install qt4-qmake qt4-dev-tools
 \end{unix}
 
 \paragraph{Téléchargement}
@@ -205,6 +158,17 @@ recueil pdf ainsi que les différentes éléments à afficher
 \subsection{\windows}
 %-------------------------------------------------------------------------------
 
+Téléchargez et installez la dernière version du SDK Qt disponible à
+l'adresse~: \url{http://qt.nokia.com/downloads}. Ouvrez QtCreator,
+choisissez 
+\begin{center}
+  \menu{Fichier}{Ouvrir un nouveau fichier}
+\end{center}
+et sélectionnez le fichier \file{CMakeList.txt} situé à la racine du
+répertoire des sources du \client{}. Cliquez sur \Key{Éxécuter
+  CMake}. Votre projet \client{} est maintenant configuré.
+
+%TODO: libarchive et libhunspell
 
 %*******************************************************************************
 \section{FAQ}
