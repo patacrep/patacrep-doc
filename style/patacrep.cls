@@ -156,12 +156,14 @@ pdfproducer = {PDFLaTeX}}
 % language definition
 \lstdefinelanguage{songbook}{
   keywords=[1]{
-    beginsong,beginverse,beginchorus,
-    endsong,endverse,endchorus
+    beginsong,endsong,begin,end,
+    beginscripture, endscripture
   },
   morekeywords=[2]{
-    selectlanguage,songcolumns,gtab,
-    cover, rep, echo, lilypond, image
+    selectlanguage,songcolumns,gtab,utab,
+    cover,rep,echo,lilypond,image,
+    nolyrics,Intro,Outro,Bridge,Pattern,
+    textnote,musicnote,transpose
   },
   morecomment=[l]{\%},
   morecomment=[s]{[}{]},
