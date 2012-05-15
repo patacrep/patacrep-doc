@@ -64,13 +64,25 @@
 \newcommand{\command}[1]{\texttt{#1}}
 \newcommand{\Key}[1]{\Ovalbox{#1}}
 \newcommand{\cf}[1]{(voir~\refsec{#1})}
-\newcommand{\git}{Git\xspace}
+\newcommand{\git}{\href{http://git-scm.com/}{Git}\xspace}
 \newcommand{\windows}{Windows\xspace}
 \newcommand{\linux}{Linux\xspace}
+\newcommand{\python}{\href{www.python.org/}{Python}\xspace}
+\newcommand{\latex}{\href{http://www.latex-project.org/}{\LaTeX}\xspace}
+\newcommand{\songs}{\href{http://songs.sourceforge.net/}{\emph{Songs \LaTeX{} Package}}\xspace}
 \newcommand{\chord}[1]{\texttt{#1}\xspace}
 \newcommand{\menu}[2]{\texttt{\mbox{#1~>~#2}}}
-\newcommand{\recueil}[1]{\emph{Songbook}\xspace}
-\newcommand{\client}[1]{\emph{Songbook-Client}\xspace}
+\newcommand{\recueil}{\emph{Songbook}\xspace}
+\newcommand{\client}{\emph{Songbook-Client}\xspace}
+\newcommand{\emacsmode}{%
+  \href{http://github.com/crep4ever/songbook-emacs-mode}{%
+    \iffr%
+    mode emacs%
+    \else%
+    emacs mode%
+    \fi%
+  }%
+}
 \newcommand{\anglais}[1]{(\emph{#1} en anglais)}
 
 \let\urlORIG\url
