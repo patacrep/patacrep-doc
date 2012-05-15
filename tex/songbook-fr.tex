@@ -20,8 +20,8 @@ caractères spéciaux. Dans ce manuel, le répertoire de travail est
 supposé être~: \directory{\$HOME/songbook} pouvant être noté
 \directory{/home/user/songbook} ou \directory{$\sim$/songbook}.
 
-Le songbook utilise \LaTeX{} pour la mise en page des chansons et
-Python pour la génération des tables des matières (dépendances
+Le \recueil utilise \latex pour la mise en page des chansons et
+\python pour la génération des tables des matières (dépendances
 obligatoires). Il est également possible d'inclure en option des
 partitions générées avec Lilypond (dépendances recommandées). Enfin,
 vous aurez besoin d'un logiciel pour lire les fichiers \ext{pdf}
@@ -121,6 +121,22 @@ La compilation sous \windows a uniquement été testée avec~: MikTeX~2.9
 et Python~2.7.3.
 \end{nota}
 
+\begin{nota}
+MikTeX est une distribution \latex qui permet d'installer {\og}à la
+volée{\fg} les \emph{paquets} manquants. Pensez à autoriser leur
+téléchargement automatique lors de l'installation
+(\reffig{fig:miktex}).
+\end{nota}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.7\textwidth]{miktex}
+  \caption{Installation {\og}à la volée{\fg} des paquets \LaTeX{} avec
+    MikTeX.}
+  \label{fig:miktex}
+\end{figure}
+
+
 Installation des dépendances recommandées.
 \begin{itemize} 
 \item Lilypond~: \url{http://lilypond.org/install/}
@@ -130,13 +146,21 @@ Installation des dépendances recommandées.
 \paragraph{Modification de la variable \command{Path}}
 
 Il faut maintenant modifier la variable \command{Path} de votre
-système.
+système (\reffig{fig:windows-path}).
 \begin{itemize}
 \item Clic-droit sur Poste de travail (XP) ou sur Ordinateur (Vista,
   Seven) puis Propriétés.
 \item Dans \menu{Paramètres}{Système Avancés}, cliquez sur Variables
   d'environnement.
 \end{itemize}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{windows-path}
+  \caption{Modification de la variable \command{Path}.}
+  \label{fig:windows-path}
+\end{figure}
+
 
 Dans la partie basse (Variables système), faîtes dérouler la liste
 jusqu'à trouver \command{Path}. La variable est modifiable en
@@ -165,13 +189,13 @@ Les sources peuvent être récupérées sous la forme d'une archive
 \ext{tar.gz} à l'adresse~:
 \url{http://www.patacrep.com/data/documents/songbook.tar.gz}. Vous
 pouvez en extraire le contenu à l'aide de logiciels comme
-7zip\footnote{\url{http://www.7-zip.org/}} ou
-Winrar\footnote{\url{http://www.win-rar.com/}}.
+\href{http://www.7-zip.org/}{7zip} ou
+\href{http://www.win-rar.com/}{Winrar}.
 
 Alternativement, si vous avez installé un client
-Git\footnote{\url{http://git-scm.com/}} sur votre machine, par exemple
-Mysysgit\footnote{\url{http://code.google.com/p/msysgit/}}, vous
-pouvez utiliser l'adresse suivante pour récupérer les sources~:
+\href{http://git-scm.com/}{Git} sur votre machine, comme par exemple
+\href{http://code.google.com/p/msysgit/}{Mysysgit}, vous pouvez
+utiliser l'adresse suivante pour récupérer les sources~:
 
 \begin{unix}
   git clone git://git.lohrun.net/songbook.git
@@ -182,25 +206,47 @@ pouvez utiliser l'adresse suivante pour récupérer les sources~:
 \begin{enumerate}
 \item Ouvrez l'invite de commandes \windows~: \Key{Windows}+\Key{r}, entrez
   \command{cmd} et validez par \Key{Entrée}
-  (\reffig{fig:terminal-windows}).
+  (\reffig{fig:terminal-windows-a}).
 \item Allez dans le répertoire du songbook en utilisant la commande \command{cd}.
 Par exemple,
   \begin{unix}
     cd C:\
     cd songbook
   \end{unix}
-\item Utilisez l'exécutable \file{make.bat} en donnant en paramètre un fichier \ext{sb}.
-  Par exemple,
+\item Utilisez l'exécutable \file{make.bat} du répertoire
+  \directory{windows} en donnant en paramètre le nom, sans extension,
+  d'un fichier \ext{sb} du répertoire \directory{books}
+  (\reffig{fig:terminal-windows-b}). Par exemple~:
   \begin{unix}
-    make.bat songbook.sb
+    windows\make.bat songbook
   \end{unix}
+  permet de construire le fichier \file{songbook.pdf} associé au
+  fichier \file{books/songbook.sb}.
 \end{enumerate}
 
-\begin{nota}
-MikTeX est une distribution \LaTeX{} qui permet d'installer {\og}à la
-volée{\fg} les \emph{paquets} manquants. Installez les paquets requis
-(\reffig{fig:paquets-miktex}).
-\end{nota}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+  %% -- subfigures --
+  \subfigure[]{
+    \label{fig:terminal-windows-a}
+    \includegraphics[width=\textwidth]{terminal-windows-a}%
+  }%
+  \hspace{0.1cm}%
+  \subfigure[]{%
+    \label{fig:terminal-windows-b}%
+    \includegraphics[width=\textwidth]{terminal-windows-b}%
+  }%
+  %% -- subfigures --
+  \caption[Terminal Windows]{%
+    Génération d'un recueil via l'invite de commandes Windows.
+    \subref{fig:terminal-windows-a}~Lancement de l'invite de commandes~; %
+    \subref{fig:terminal-windows-b}~Génération du recueil \file{songbook.pdf}.%
+  }%
+  \label{fig:terminal-windows}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %*******************************************************************************
 \section{Description du contenu}
@@ -222,7 +268,7 @@ Contient un ensemble de scripts utilitaires. Un script s'exécute par la command
   exécuter après l'ajout d'une nouvelle pochette jpg.
 
 \item \file{rules.py}~: applique un ensemble de règles
-  automatiques pour les notations \LaTeX{} de certains caractères et
+  automatiques pour les notations \latex de certains caractères et
   pour les notations d'accords. À exécuter après l'ajout d'une
   nouvelle chanson pour être sûr de respecter les standards du
   songbook.
@@ -283,7 +329,17 @@ Contient les sources des partitions Lilypond sous la forme de fichiers
 \ext{ly}.
 
 \paragraph{\directory{./tex}}
-Contient différents fichiers \LaTeX{} (licences etc.).
+Contient les fichiers \latex, en particulier~:
+
+\begin{itemize}
+\item le fichier \file{songs.sty} du projet \songs~;
+\item la classe \file{crepbook.cls} qui fait l'interface entre les
+  templates et le paquet \file{songs.sty}~;
+\item le fichier \file{chords.tex} qui contient la liste des positions
+  d'accords les plus utiles~;
+\item le fichier \file{license.tex} qui contient la licence
+  \href{http://creativecommons.org/}{Creative Commons}.
+\end{itemize}
 
 \paragraph{\directory{./books}}
 Contient les fichiers \ext{sb} qui correspondent aux différents
@@ -295,10 +351,10 @@ répertoire est généré automatiquement lors de la compilation d'un
 recueil et est uniquement présent pour des raisons de performance.
 
 \paragraph{\directory{./img}}
-Contient les images utilisées dans les songbooks (exceptés les
+Contient les images utilisées dans les songbooks (exceptées les
 pochettes des albums). Pour rajouter \file{mon\_image.jpg} dans une
 chanson, utilisez la macro \latexcom{image} dans un fichier
-\ext{sg}. Cette macro se comporte comme la commande \LaTeX{}
+\ext{sg}. Cette macro se comporte comme la commande \latex
 \latexcom{includegraphics}. Par exemple~:
 
 \begin{songbook}
@@ -500,7 +556,7 @@ accords.
   \item Les majuscules s'accentuent (par exemple {\og}À bientôt{\fg}
     et non pas {\og}A bientôt{\fg}) ; si votre disposition de clavier ne
     vous permet pas de taper de majuscules accentuées, vous pouvez
-    utiliser la notation \LaTeX{} : \verb|\`A| pour un \`A, \verb|\'E|
+    utiliser la notation \latex~: \verb|\`A| pour un \`A, \verb|\'E|
     pour un \'E, \verb|\"I| pour un \"I, \verb|\^O| pour un \^O,
     \verb|\c{C}| pour un \c{C}, etc).
 \end{itemize}
@@ -575,7 +631,7 @@ défaut.
 
 \paragraph{Caractères spéciaux}
 Quelques caractères doivent être écrits différemment en utilisant des
-commandes \LaTeX{} pour un obtenir un meilleur rendu typographique
+commandes \latex pour un obtenir un meilleur rendu typographique
 dans le PDF. Les deux exemples principaux sont les trois points de
 suspension (\dots) et le caractère \oe{}. Pour représenter ces
 caractères, vous devez utiliser respectivement les commandes
@@ -605,7 +661,7 @@ Hallelujah \echo{Hallelujah}
 \paragraph{Diagrammes des accords}
 Étant donné qu'un accord de guitare et/ou de ukulélé peut se jouer de
 plusieurs façons différentes et qu'il est parfois judicieux de
-privilégier telle ou telle position, le songbook permet de représenter
+privilégier telle ou telle position, le \recueil permet de représenter
 schématiquement ces accords en début de chanson sous forme de
 diagrame. Pour cela, nous utilisons les commandes \latexcom{gtab}
 (guitare) et \latexcom{utab} (ukulélé) juste avant le premier couplet
@@ -637,7 +693,9 @@ classiques~:
   X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
 
   0 est le chiffre zéro et non pas la lettre majuscule o.
+\end{nota}
 
+\begin{nota}
   Une nouvelle convention, en cours d'intégration, permet d'indiquer un
   \emph{décalage} du diagramme de N frettes plutôt qu'un barré à la
   frette N.\\
@@ -659,8 +717,8 @@ suivant. Par exemple :
   \end{verse}
 \endsong
 \end{songbook}
-Cela peut se faire automatiquement avec le songbook-client (et/ou le
-mode emacs) : sélectionnez tout le texte et appuyez sur la touche
+Cela peut se faire automatiquement avec le \client (et/ou le
+\emacsmode) : sélectionnez tout le texte et appuyez sur la touche
 tabulation.
 
 
@@ -708,22 +766,22 @@ ligne. Puis, écrivez votre partition entre accolades
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Enfin, pour insérer votre partition \file{sheet.ly} dans une
-chanson, utilisez la commande \latexcom{lilypond} le fichier
+Enfin, pour insérer votre partition \file{partition.ly} dans une
+chanson, utilisez la commande \latexcom{lilypond} dans le fichier
 \ext{sg} adéquat~:
 
 \begin{songbook}
-\lilypond{sheet}
+\lilypond{partition}
 \end{songbook}
 
 %------------------------------------------------------------------------------
+\newpage
 \subsection{Exemple}
 %------------------------------------------------------------------------------
 
-Voici l'exemple complet de la chanson \emph{Sad robot} par
-\emph{Pornophonique}\footnote{\byncnd~\url{http://www.jamendo.com/fr/track/81740}}
-pouvant être utilisé comme point de départ pour écrire une nouvelle
-chanson.
+Voici un exemple simplifié de la chanson
+\href{http://www.jamendo.com/fr/track/81740}{\emph{Sad robot} par
+  \emph{Pornophonique}}.
 
 \begin{songbook}
 \selectlanguage{english}
@@ -748,31 +806,27 @@ chanson.
     \[Dm]Now he's dull and rust
   \end{verse}
 
-  \begin{verse*}
-    An oily tear he's crying
-    Can you feel the pain
-    Of the sad, sad robot
-    And it's driving him insane
-  \end{verse*}
+  \begin{repatedchords}
+    \begin{verse*}
+      An \[Dm]oily tear he's crying
+      \[F]Can you feel the pain
+      Of the \[C]sad, sad robot
+      And it's \[Dm]driving him insane
+    \end{verse*}
 
-  \begin{verse*}
-    He can't turn back time nor history
-    So his life became a misery
-    He has to face the destiny
-    Nobody cares anymore
-  \end{verse*}
+    \begin{verse*}
+      He can't \[Dm]turn back time nor history
+      So his \[F]life became a misery
+      He \[C]has to face the destiny
+      Nobody \[Dm]cares anymore
+    \end{verse*}
 
-  \begin{chorus}
-    Sad, sad robot
-    Sad, sad robot
-    Sad, sad robot
-    All alone
-  \end{chorus}
-
-  \begin{chorus}
-    He's a sad, sad robot \rep{3}
-    He's so alone
-  \end{chorus}
-
+    \begin{chorus}
+      \[Dm]Sad, sad robot
+      \[F]Sad, sad robot
+      \[C]Sad, sad robot
+      All a\[Dm]lone
+    \end{chorus}
+  \end{repeatedchords}
 \endsong
 \end{songbook}
