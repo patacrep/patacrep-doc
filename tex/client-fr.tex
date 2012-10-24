@@ -14,7 +14,7 @@ gratuit développé sur
 
 \begin{nota}
   Quel que soit votre système d'exploitation, il est nécessaire d'avoir
-  installé au préalable les dépendances du \recueil lui-même
+  installé au préalable les dépendances du \songbook lui-même
   (\refsec{sec:install}) afin de pouvoir produire un recueil PDF.
 \end{nota}
 
@@ -39,7 +39,7 @@ sont proposés sur le site
 \end{figure}
 
 Par défaut, l'interface est vide (\reffig{fig:start}). Le
-\client doit être lié à un \recueil existant. Vous avez
+\client doit être lié à un \songbook existant. Vous avez
 deux solutions~:
 
 \begin{enumerate}
@@ -51,9 +51,9 @@ deux solutions~:
   (\reffig{fig:solution-b}).
 \end{enumerate}
 
-Après avoir indiqué ou téléchargé un \recueil, le \client génère la
+Après avoir indiqué ou téléchargé un \songbook, le \client génère la
 \emph{bibliothèque des chansons} trouvées dans le sous-répertoire
-\directory{songs} du \recueil.
+\directory{songs} du \songbook.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,7 +71,7 @@ Après avoir indiqué ou téléchargé un \recueil, le \client génère la
   }%
   %% -- subfigures --
   \caption{% 
-    Deux solutions permettent de lier le \emph{Songbook-Client} à un \recueil.
+    Deux solutions permettent de lier le \emph{Songbook-Client} à un \songbook.
     \subref{fig:solution-a}~Indiquer le chemin d'un répertoire existant~;%
     \subref{fig:solution-b}~Télécharger depuis internet.%
   }%
@@ -214,7 +214,7 @@ est maintenant configuré, lancez la compilation avec
   }%
   %% -- subfigures --
   \caption{% 
-    Compilation des sources du \recueil avec QtCreator.
+    Compilation des sources du \songbook avec QtCreator.
     \subref{fig:qtcreator-a}~Ouverture du projet~;%
     \subref{fig:qtcreator-b}~Configuration avec CMake~;%
     \subref{fig:qtcreator-c}~Compilation.%
@@ -242,7 +242,7 @@ les pdf correspondants aux partitions, le processus n'étant pas
 automatisé par le makefile.
 
 \paragraph{La bibliothèque des chansons est vide} 
-Vérifiez que le chemin d'accès au \recueil est correctement
+Vérifiez que le chemin d'accès au \songbook est correctement
 renseigné dans \menu{Édition}{Préférences}. Le chemin indiqué doit contenir
 impérativement le makefile et le répertoire \directory{songs/}.
 

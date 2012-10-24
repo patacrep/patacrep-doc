@@ -20,7 +20,7 @@ caractères spéciaux. Dans ce manuel, le répertoire de travail est
 supposé être~: \directory{\$HOME/songbook} pouvant être noté
 \directory{/home/user/songbook} ou \directory{$\sim$/songbook}.
 
-Le \recueil utilise \latex pour la mise en page des chansons et
+Le \songbook utilise \latex pour la mise en page des chansons et
 \python pour la génération des tables des matières (dépendances
 obligatoires). Il est également possible d'inclure en option des
 partitions générées avec Lilypond (dépendances recommandées). Enfin,
@@ -357,9 +357,9 @@ chanson, utilisez la macro \latexcom{image} dans un fichier
 \ext{sg}. Cette macro se comporte comme la commande \latex
 \latexcom{includegraphics}. Par exemple~:
 
-\begin{songbook}
+\begin{song}
   \image[width=4cm]{mon_image}
-\end{songbook}
+\end{song}
 
 %*******************************************************************************
 \section{Créer un recueil}
@@ -461,10 +461,10 @@ tolérées, veillez à utiliser des tirets bas (\emph{underscores}.
 L'en-tête d'un fichier
 \ext{sg} se présente de la manière suivante~:
 
-\begin{songbook}
+\begin{song}
 \beginsong{Titre}
   [by=<Artiste>,cov=<album-cover>,album=<Album>]
-\end{songbook}
+\end{song}
 
 Les paramètres \command{Titre}, \command{Artiste},
 \command{album-cover} et \command{Album} sont à renseigner pour chaque
@@ -485,14 +485,14 @@ Pour préciser sur quelle syllabe un accord doit être joué, on utilise
 une commande spéciale. Par exemple, la commande \latexcom{[E]}
 produira un \command{Mi} au dessus de la syllabe suivante dans le PDF.
 
-\begin{songbook}
+\begin{song}
 \begin{verse}
   His \[Dm]steely skin is covered
   By \[F]centuries of dust
   \[C]Once he was a great one
   \[Dm]Now he's dull and rust
 \end{verse}
-\end{songbook}
+\end{song}
 
 Chaque chanson se termine avec la commande \latexcom{endsong}.
 
@@ -601,7 +601,7 @@ devant pas être numérotée. Pour cela, nous utilisons la commande
 décompose souvent en deux strophes de quatre vers comme dans l'exemple
 suivant.
 
-\begin{songbook}
+\begin{song}
 \begin{verse}
   His \[Dm]steely skin is covered
   By \[F]centuries of dust
@@ -615,7 +615,7 @@ suivant.
   Of the sad, sad robot
   And it's driving him insane
 \end{verse*}
-\end{songbook}
+\end{song}
 
 \paragraph{Agencement en colonnes}
 La commande \latexcom{songcolumns} détermine le nombre de colonnes sur
@@ -624,10 +624,10 @@ commande \latexcom{beginsong}. Généralement une chanson se présente
 sur 1, 2 ou 3 colonnes. Par convention, utilisez deux colonnes par
 défaut.
 
-\begin{songbook}
+\begin{song}
 \songcolumns{2}
 \beginsong{Titre}
-\end{songbook}
+\end{song}
 
 \paragraph{Caractères spéciaux}
 Quelques caractères doivent être écrits différemment en utilisant des
@@ -647,21 +647,21 @@ utiliser la commande \latexcom{rep} plutôt que d'écrire \emph{bis} ou
 d'indiquer directement (x4). Par exemple, si le mot \emph{Hallelujah}
 est répété quatre fois, nous écrirons~:
 
-\begin{songbook}
+\begin{song}
 Hallelujah \rep{4}
-\end{songbook}
+\end{song}
 
 La commande \latexcom{echo} fait référence à des chœurs (ou
 similaire).
 
-\begin{songbook}
+\begin{song}
 Hallelujah \echo{Hallelujah}
-\end{songbook}
+\end{song}
 
 \paragraph{Diagrammes des accords}
 Étant donné qu'un accord de guitare et/ou de ukulélé peut se jouer de
 plusieurs façons différentes et qu'il est parfois judicieux de
-privilégier telle ou telle position, le \recueil permet de représenter
+privilégier telle ou telle position, le \songbook permet de représenter
 schématiquement ces accords en début de chanson sous forme de
 diagrame. Pour cela, nous utilisons les commandes \latexcom{gtab}
 (guitare) et \latexcom{utab} (ukulélé) juste avant le premier couplet
@@ -670,12 +670,12 @@ peuvent être marqués comme importants avec les commandes
 \latexcom{gtab*} et \latexcom{utab*}. Voici quelques exemples
 classiques~:
 
-\begin{songbook}
+\begin{song}
 \gtab{C}{3:002220}
 \gtab*{Amaj7}{5:X0221X}
 \utab{C}{0003}
 \utab{B&m}{1:2000}
-\end{songbook}
+\end{song}
 
 \begin{itemize}
 \item les six chiffres correspondent aux six cordes de la guitare
@@ -709,14 +709,14 @@ classiques~:
 Pour faciliter la lecture/relecture des fichiers \ext{sg}, indentez le
 code avec deux espaces après un bloc begin jusqu'au bloc end
 suivant. Par exemple :
-\begin{songbook}
+\begin{song}
 \beginsong
   \begin{verse}
     blabla
     blabla
   \end{verse}
 \endsong
-\end{songbook}
+\end{song}
 Cela peut se faire automatiquement avec le \client (et/ou le
 \emacsmode) : sélectionnez tout le texte et appuyez sur la touche
 tabulation.
@@ -770,9 +770,9 @@ Enfin, pour insérer votre partition \file{partition.ly} dans une
 chanson, utilisez la commande \latexcom{lilypond} dans le fichier
 \ext{sg} adéquat~:
 
-\begin{songbook}
+\begin{song}
 \lilypond{partition}
-\end{songbook}
+\end{song}
 
 %------------------------------------------------------------------------------
 \newpage
@@ -783,7 +783,7 @@ Voici un exemple simplifié de la chanson
 \href{http://www.jamendo.com/fr/track/81740}{\emph{Sad robot} par
   \emph{Pornophonique}}.
 
-\begin{songbook}
+\begin{song}
 \selectlanguage{english}
 \songcolumns{2}
 \beginsong{Sad robot}
@@ -829,4 +829,4 @@ Voici un exemple simplifié de la chanson
     \end{chorus}
   \end{repeatedchords}
 \endsong
-\end{songbook}
+\end{song}

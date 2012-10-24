@@ -5,6 +5,8 @@
 \ProvidesClass{patacrep}
 \LoadClass[a4paper,twoside,12pt]{book}
 
+\RequirePackage[table]{xcolor} % call it first to avoid clash
+
 %font
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english,frenchb]{babel}
@@ -18,7 +20,6 @@
 \RequirePackage{eso-pic}
 \RequirePackage{fancyhdr,fancybox,fancyvrb}
 \RequirePackage{amssymb,amsmath}
-\RequirePackage[table]{xcolor}
 \RequirePackage{graphicx, subfigure}
 \RequirePackage{multicol}
 \RequirePackage{nota}
@@ -154,7 +155,7 @@ pdfproducer = {PDFLaTeX}}
 }
 
 % language definition
-\lstdefinelanguage{songbook}{
+\lstdefinelanguage{song}{
   keywords=[1]{
     beginsong,endsong,begin,end,
     beginscripture, endscripture
