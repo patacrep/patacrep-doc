@@ -92,7 +92,7 @@ Quelques options de base du makefile~:
     \hline
     \command{make} & description \\
     \hline
-    \file{songbook.pdf} &~: version complète avec toutes les chansons \\
+    \file{songbook\_fr.pdf} &~: version complète avec toutes les chansons \\
     \file{volume-$i$.pdf} &~: crée le volume $i$ (environ 160 pages)\\
     \file{naheulbeuk.pdf} &~: version spéciale Donjon de Naheulbeuk\\
     \file{english.pdf} &~: chansons en anglais uniquement\\
@@ -288,8 +288,6 @@ utilisées etc.
 \begin{itemize}
 \item \file{patacrep.tmpl}~: template par défaut correspondant à la
   mise en page classique.
-\item \file{patacrep-en.tmpl}~: version traduite en anglais du
-  template par défaut.
 \item \file{minimal.tmpl}~: une version plus compacte sans page de
   garde ni table des matières.
 \end{itemize}
@@ -322,7 +320,7 @@ utilisées etc.
 Contient l'ensemble des chansons disponibles sous la forme de fichiers
 \ext{sg}. Chaque chanson se trouve dans un sous-répertoire du nom
 de l'artiste. Par exemple~:
-\file{songs/Pornophonique/Sad\_robot.sg}.
+\file{songs/pornophonique/sad\_robot.sg}.
 
 \paragraph{\directory{./lilypond}}
 Contient les sources des partitions Lilypond sous la forme de fichiers
@@ -346,7 +344,7 @@ Contient les fichiers \ext{sb} qui correspondent aux différents
 recueils PDF mis à disposition sur \url{www.patacrep.com}.
 
 \paragraph{\directory{./covers}}
-Répertoire temporaire contenant les pochettes des albumes. Ce
+Répertoire temporaire contenant les pochettes des albums. Ce
 répertoire est généré automatiquement lors de la compilation d'un
 recueil et est uniquement présent pour des raisons de performance.
 
@@ -381,8 +379,8 @@ dans le répertoire \directory{./books}.
     "pictures"
   ],
 "songs" : [
-    "Le_Donjon_de_Naheulbeuk/10_sous_dans_ma_poche.sg",
-    "Le_Donjon_de_Naheulbeuk/Bugger_off.sg"
+    "le_Donjon_de_naheulbeuk/10_sous_dans_ma_poche.sg",
+    "le_Donjon_de_naheulbeuk/bugger_off.sg"
   ]
 }
 \end{code}
@@ -830,3 +828,4 @@ Voici un exemple simplifié de la chanson
   \end{repeatedchords}
 \endsong
 \end{song}
+

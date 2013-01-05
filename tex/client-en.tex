@@ -7,7 +7,7 @@
 %*******************************************************************************
 %*******************************************************************************
 
-The \client{} application is a graphical interface to build customized
+The \client application is a graphical interface to build customized
 songbooks\footnote{\url{http://www.ohloh.net/p/songbook-client},
   \url{http://github.com/crep4ever/songbook-client}}.
 
@@ -36,8 +36,8 @@ Downloads are available at \url{http://www.patacrep.com/en/static1/downloads}
 \end{figure}
 
 By default, the interface presents an empty list
-(\reffig{fig:start}). The \client{} must be linked to an existing
-\recueil{}. There are two options:
+(\reffig{fig:start}). The \client must be linked to an existing
+\songbook. There are two options:
 
 \begin{enumerate}
 \item Indicate the path of a \directory{songbook} directory that is on
@@ -47,9 +47,9 @@ By default, the interface presents an empty list
   \menu{Library}{Download} (\reffig{fig:solution-b}).
 \end{enumerate}
 
-Once the \client{} is linked to a \recueil{}, the \emph{songs'
+Once the \client is linked to a \songbook, the \emph{songs'
   library} is built from the \ext{sg} files that have been found in
-the \directory{songs} sub-directory of the \recueil{}.
+the \directory{songs} sub-directory of the \songbook.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,7 +67,7 @@ the \directory{songs} sub-directory of the \recueil{}.
   }%
   %% -- subfigures --
   \caption{% 
-    Two options allow to link the \emph{Songbook-Client} to a \recueil{}.
+    Two options allow to link the \emph{Songbook-Client} to a \songbook.
     \subref{fig:solution-a}~Indicate the path to a songbook directory;%
     \subref{fig:solution-b}~Download from the Internet.%
   }%
@@ -220,11 +220,11 @@ the menu \menu{Edition}{Preferences}. If the scores are still not visible
 check that Lilypond is correctly installed on your system.
 
 \paragraph{The songs' library is empty} 
-Check that the path to your \recueil{} is correct in the menu
+Check that the path to your \songbook is correct in the menu
 \menu{Edition}{Preferences}. The path must contain a makefile and the
 \directory{songs/} sub-directory.
 
 \paragraph{Errors after renaming/removing a song} 
 Run \command{make clean} in a terminal or \menu{Songbook}{Clean} from
-the \client{}. If you still have an issue you may manually remove all
+the \client. If you still have an issue you may manually remove all
 \ext{d} files within the \directory{$\sim$/songbook} directory.
