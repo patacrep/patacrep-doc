@@ -1,5 +1,5 @@
 #Dependencies
-texlive-base texlive-lang-french texlive-latex-extra
+texlive-base texlive-lang-french texlive-latex-extra inkscape
 
 #Compilation
 make
