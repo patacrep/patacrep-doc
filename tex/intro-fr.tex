@@ -1,50 +1,42 @@
-%*******************************************************************************
-%*******************************************************************************
 \addentry{toc}{section}{\textbf{Introduction}}
 \chapter*{Introduction}
 \minitoc
 \label{chap:introduction}
 \chaptermark{Introduction}
-%*******************************************************************************
-%*******************************************************************************
 
-Dans ce document, nous expliquons comment utiliser et tirer pleinement
-partie des outils et ressources proposés sur
-\url{http://www.patacrep.com} pour réaliser des recueils de
-chansons. Tout d'abord, une présentation rapide des deux différents
-projets, le \songbook et son interface, le \client.
-
-\paragraph{Songbook}
-Le \songbook est un projet libre et gratuit pour la production de
-recueils de tablatures. Il est rendu possible par le projet libre
-\songs, développé par \href{http://www.utdallas.edu/~hamlen}{Kevin
-  W. Hamlem} et permettant d'écrire des recueils de tablatures en
-\latex. Le \songbook offre également la possibilité d'intégrer des
-partitions ou des extraits de partitions générés par
-\href{http://lilypond.org}{Lilypond}.
-
-Le \songbook correspond à la fois~:
+Dans ce document, nous expliquons comment utiliser et tirer pleinement partie des outils et ressources proposés sur \url{http://www.patacrep.com} pour réaliser des recueils de chansons. Le projet \patacrep se décompose en plusieurs composant :
 \begin{itemize}
-\item à un ensemble d'outils (scripts, makefile) permettant de
-  simplifier et d'automatiser la création d'un recueil~;
-\item à une base de données des tablatures, réalisée collaborativement
-  avec la communauté d'utilisateurs de
-  \href{http://www.patacrep.com}{Patacrep!}
+   \item \patacrep est le moteur de compilation en ligne de commande permettant de créer les fichiers PDF ;
+   \item \patagui est une interface graphique pour utiliser ce moteur ;
+   \item \patadata est une base de donnée de l'ensemble des chansons réunies par la communautée ;
+   \item \patawww est un site web offrant le meme type d'interface que \patagui. 
 \end{itemize}
 
-Vous pouvez par exemple consulter le fichier
-\href{http://www.patacrep.com/data/documents/songbook.pdf}{\file{songbook.pdf}}
-comprenant l'ensemble des chansons pour vous faire une idée du
-résultat.
+Voici une présentation rapide de ces divers composants.
 
-\paragraph{Songbook-client}
-Il s'agit d'une application graphique servant d'interface au
-\songbook. L'application permet de sélectionner en un clic les chansons
-à faire apparaître dans un recueil et fournit également un éditeur
-intégré pour modifier ou ajouter une nouvelle tablature.
+\paragraph{\patacrep}
+\patacrep est un projet libre et gratuit pour la production de recueils de tablatures. Il est rendu possible par le projet libre \songs, développé par \href{http://www.utdallas.edu/~hamlen}{Kevin W. Hamlem} et permettant d'écrire des recueils de tablatures avec \LaTeX\. \patacrep offre également la possibilité d'intégrer des partitions ou des extraits de partitions générés par \href{http://lilypond.org}{Lilypond}.
+
+\patacrep est écrit en Python et en LaTeX, et fourni un utilitaire en ligne de commande que l'on peut appeler avec la commande \command{songbook}. L'interaction avec cet utilitaire passe par l'écriture d'un fichier de description d'un receuil (fichier .sb) ; et par un certain nombre d'options, détaillées dans la partie~\ref{}.
+
+Vous pouvez par exemple consulter le fichier \href{http://www.patacrep.com/data/documents/songbook.pdf}{\file{songbook.pdf}} comprenant l'ensemble des chansons pour vous faire une idée du résultat avec le style par défaut.
+
+\paragraph{\patadata}
+\patadata est une base de données de tablatures, réalisée collaborativement par la communauté d'utilisateurs de \href{http://www.patacrep.com}{\patacrep}. Ces tablatures sont écrites dans des fichier \LaTeX\ portant l'extension .sg, et comportent parfois des partitions lilypond. L'organisation de \patadata et la syntaxe à utiliser pour y ajouter vos propres chansons sont décrits dans la partie~\ref{}.
+
+\paragraph{\patagui}
+Il s'agit d'une application graphique servant d'interface à l'utilitaire \command{songbook}. L'application permet de sélectionner en un clic les chansons à faire apparaître dans un recueil et fournit également un éditeur intégré pour modifier ou ajouter une nouvelle tablature.
+
+\begin{nota}
+Attention, par manque de temps et de developpeurs compétents, \patagui est pour le moment obsolète. Il est toujours possible de l'utiliser avec l'ancienne version de \patacrep, le \emph{Songbook 3.7.???}.
+
+\todo{Ajouter la doc de l'ancienne version}
+\end{nota}
+
+
+\paragraph{\patawww}
+\todo
 
 \paragraph{Licences}
-Tout le code est distribué sous licence
-\href{http://www.gnu.org/licenses/gpl.html}{GPLv2}. Tous les documents
-et autres resources sont distribués sous une licence
-\href{http://creativecommons.org/}{Creative Commons CC-By-Sa}.
+Tout le code est distribué sous licence \href{http://www.gnu.org/licenses/gpl.html}{GPLv2}. Tous les documents
+et autres resources sont distribués sous une licence \href{http://creativecommons.org/}{Creative Commons CC-By-Sa}.
