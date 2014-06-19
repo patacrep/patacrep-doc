@@ -1,8 +1,1 @@
-*.pdf
-fig/pdf/*
-*.aux
-*.log
-*.maf
-*.toc
-*.out
-*.mt*
+/_build
