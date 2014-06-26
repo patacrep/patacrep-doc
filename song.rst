@@ -1,3 +1,5 @@
+.. _song:
+
 Chanson
 =======
 
@@ -32,6 +34,8 @@ Colonnes
 --------
 
 TODO
+
+.. _partitions:
 
 Partitions
 ----------

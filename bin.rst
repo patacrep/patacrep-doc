@@ -1,3 +1,5 @@
+.. _songbook:
+
 Programme ``songbook``
 ======================
 
