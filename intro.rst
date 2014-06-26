@@ -29,6 +29,8 @@ d'outils), et le cœur (l'outil principal, utilisé par les autres outils).
 Pages de développement : `patacrep <http://github.com/patacrep>`_,
 `patacrep/patacrep <http://github.com/patacrep/patacrep>`_.
 
+.. _patadata:
+
 patadata
 ^^^^^^^^
 
@@ -36,6 +38,8 @@ Ce projet contient un grand nombre de chansons pouvant être manipulées par
 `patacrep`, ainsi que divers carnets de chants les rassemblant.
 
 `Page de développement <http://github.com/patacrep/patadata>`_
+
+.. _patanet:
 
 patanet
 ^^^^^^^
@@ -48,6 +52,8 @@ outils `patacrep`, dans un navigateur web.
 
 Outils non maintenus
 ^^^^^^^^^^^^^^^^^^^^
+
+.. _patagui:
 
 patagui
 """""""
