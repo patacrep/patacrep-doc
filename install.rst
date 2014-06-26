@@ -39,8 +39,8 @@ TODO
 Sources
 -------
 
-Archive `.tar.gz`
-^^^^^^^^^^^^^^^^^
+Archive :file:`.tar.gz`
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Les sources de la dernière version sont disponibles ici :
 `<http://example.com/TODO.tar.gz>`_. Après avoir décompressé l'archive, lancez
@@ -62,4 +62,4 @@ sources en utilisant `git <http://git-scm.com>`_ : ::
     git clone https://github.com/patacrep/patacrep.git
 
 L'installation se fait ensuite de la même manière que pour l'installation à
-partir de l'archive `.tar.gz`.
+partir de l'archive :file:`.tar.gz`.

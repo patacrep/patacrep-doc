@@ -15,7 +15,7 @@ Table des matières
 ------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    intro
    install

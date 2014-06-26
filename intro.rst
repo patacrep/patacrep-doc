@@ -37,7 +37,7 @@ patadata
 Ce projet contient un grand nombre de chansons pouvant être manipulées par
 `patacrep`, ainsi que divers carnets de chants les rassemblant.
 
-`Page de développement <http://github.com/patacrep/patadata>`_
+`Page de développement <http://github.com/patacrep/patadata>`__
 
 .. _patanet:
 
@@ -48,7 +48,7 @@ Un interface web est en cours de développement à l'heure où nous écrivons ce
 documentation. Elle permettra de créer des carnets de chants en utilisant les
 outils `patacrep`, dans un navigateur web.
 
-`Page de développement <http://github.com/patacrep/patanet>`_
+`Page de développement <http://github.com/patacrep/patanet>`__
 
 Outils non maintenus
 ^^^^^^^^^^^^^^^^^^^^
@@ -66,7 +66,7 @@ suivantes.
 Nous espérons que son développement reprendra dans le futur (par nous ou de
 nouveaux contributeurs), mais elle est pour le moment obsolète.
 
-`Page de développement <http://github.com/patacrep/patagui>`_
+`Page de développement <http://github.com/patacrep/patagui>`__
 
 pataextra
 """""""""
@@ -75,7 +75,7 @@ Quelques outils pour manipuler les chansons sont disponibles dans ce projet.
 Malheureusement, ce projet est peu maintenu, les outils sont peu documentés, et
 peut-être obsolètes.
 
-`Page de développement <http://github.com/patacrep/pataextra>`_
+`Page de développement <http://github.com/patacrep/pataextra>`__
 
 Outils externes
 ---------------

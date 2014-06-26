@@ -8,13 +8,13 @@ Le cœur d'un recueil est un ensemble de chansons, mais il peut être accompagn�
 d'autres éléments : index des chansons ou auteurs, page de titre, liste
 d'accords, préface, etc.
 
-Un receuil est défini par un fichier `.sb` (détaillé :ref:`ci-après <sb>`). Il
+Un receuil est défini par un fichier :file:`.sb` (détaillé :ref:`ci-après <sb>`). Il
 est accompagné de chansons, templates, fichiers LaTeX, images, etc.
 
 Exemple
 -------
 
-Un exemple de fichier `.sb` est fourni `avec le code source
+Un exemple de fichier :file:`.sb` est fourni `avec le code source
 TODO remplacer avec le blob de la version 4.0.0
 <https://github.com/patacrep/patacrep/blob/master/patacrep/data/examples/example.sb>`_ :
 
@@ -48,14 +48,14 @@ La syntaxe de ce fichier sera détaillée dans la section :ref:`sb`.
 Répertoires
 -----------
 
-La bibliothèque `patacrep` va chercher des information dans un ensemble de
-répertoires, relatif à un répertoire de base (nommé `datadir`). Plusieurs
-`datadir` peuvent être définis : si le fichier requis n'est pas trouvé dans le
-premier `datadir`, il est cherché dans le second, et ainsi de suite.
+La bibliothèque :py:mod:`patacrep` va chercher des information dans un ensemble de
+répertoires, relatif à un répertoire de base (nommé :file:`datadir`). Plusieurs
+:file:`datadir` peuvent être définis : si le fichier requis n'est pas trouvé dans le
+premier :file:`datadir`, il est cherché dans le second, et ainsi de suite.
 
-Les sous-répertoires de ces `datadir` sont les suivants.
+Les sous-répertoires de ces :file:`datadir` sont les suivants.
 
-``img``
+:file:`img`
   Ce répertoire contient des images qui peuvent être incluses à l'aide de la
   commande :
 
@@ -68,22 +68,22 @@ Les sous-répertoires de ces `datadir` sont les suivants.
   ce répertoire, il n'est donc pas nécessaire de préciser leur chemin d'accès
   absolu.
 
-``latex``
-  Ce répertoire peut contenir des fichiers LaTeX (`.tex` ou `.sty`). Lors
+:file:`latex`
+  Ce répertoire peut contenir des fichiers LaTeX (:file:`.tex` ou :file:`.sty`). Lors
   d'inclusion de fichiers, ou de chargement de paquets. C'est dans ce
   répertoire que vous pouvez mettre les fichiers de paquets LaTeX qui ne sont
   pas inclus avec votre distribution.
 
-``songs``
+:file:`songs`
   Les chansons pouvant être incluses dans le carnet de chant sont dans ce
   répertoire. Aucune organisation spécifique n'est imposée à l'intérieur de ce
   répertiore.
 
-``templates``
+:file:`templates`
   Comme son nom l'indique, les :ref:`templates <templates>` sont recherchés
   dans ce répertoire.
 
-``python``
+:file:`python`
   Dans ce répertoire peuvent être placés des modules Python complémentaires.
   Pour le moment, ceci est uniquement utilisé pour :ref:`écrire ses propres
   plugins <plugins_write>`.
@@ -92,9 +92,9 @@ Options
 -------
 
 La plupart des options ne sont pas traitées d'une manière spécifique par
-`patacrep` : elles ne font que peupler la variable correspondante dans le
+:py:mod:`patacrep` : elles ne font que peupler la variable correspondante dans le
 template. Quelques-une d'entre elles (comme ``content`` par exemple sont
-manipulées explicitement par `patacrep`). Ceci signifie qu'en écrivant le
+manipulées explicitement par :py:mod:`patacrep`). Ceci signifie qu'en écrivant le
 template adéquat, il est possible de définir de nouvelles options (plus
 d'information dans la :ref:`partie correspondante <templates>`).
 
@@ -106,7 +106,7 @@ Valeurs par défaut
 
 Quelques options ne peuvent pas être laissées vides, et doivent avoir une
 valeur par défaut. Celle-ci est inscrite *en dur* dans le code source de
-`patacrep`, et est donnée dans la liste des options ci-dessous.
+:py:mod:`patacrep`, et est donnée dans la liste des options ci-dessous.
 
 
 Templates
@@ -116,18 +116,18 @@ Les templates permettent de définir des valeurs particulières à certaines
 options. Par exemple, pour réaliser une collection de recueils, il est possible
 d'en définir les caractéristiques générales dans un template particulier. Les
 options prenant des valeurs différentes pour chacun des recueils sont définies
-dans les fichiers `.sb`.
+dans les fichiers :file:`.sb`.
 
 La syntaxe de ces options est décrite dans la partie :ref:`templates`.
 
 .. _sb:
 
-Fichier ``.sb``
-^^^^^^^^^^^^^^^
+Fichier :file:`.sb`
+^^^^^^^^^^^^^^^^^^^
 
 Ces options ne s'appliquent qu'à un carnet de chant particulier.
 
-Un fichier `.sb` est écrit au format `JSON`. Il contient un dictionnaire, dont
+Un fichier :file:`.sb` est écrit au format `JSON`. Il contient un dictionnaire, dont
 les clefs sont les noms des options, et les valeurs associées sont les valeurs
 de ces options. Le type des valeurs dépend de l'option considérée, et est
 détaillé dans la section suivante.
@@ -141,13 +141,15 @@ du recueil est le français.
 Définies hors des templates
 """""""""""""""""""""""""""
 
+.. tabularcolumns:: |l|L|L|L|
+
 ================= =========================== =================================== =================
 Option            Description                 Type                                Valeur par défaut
 ================= =========================== =================================== =================
 content           contenu à inclure dans le   liste, décrite dans la section      ``[]``
                   recueil                     :ref:`contenu`
 template          template à utiliser         nom d'un fichier présent dans un    ``"default.tex"``
-                                              dossier `templates`
+                                              dossier :file:`templates`
 titleprefixwords  Mots à ignorer dans le      liste de chaînes de caractères      ``[]``
                   classement des chaons
 authwords         Options pour traiter les    dictionnaire de listes de chaînes   ``{"after": ["by"], "ignore": ["unknown"], "sep": ["and"]}``
@@ -160,8 +162,10 @@ authwords         Options pour traiter les    dictionnaire de listes de chaînes
                   noms des auteurs).
 ================= =========================== =================================== =================
 
-Template ``default.tex``
-""""""""""""""""""""""""
+Template :file:`default.tex`
+""""""""""""""""""""""""""""
+
+.. tabularcolumns:: |l|L|L|L|
 
 ================== =========================== ============================================= ===========================
 Option             Description                 Type                                          Valeur par défaut
@@ -203,8 +207,10 @@ footer             pied de page de la page     chaîne de caractères           
                    de garde                    
 ================== =========================== ============================================= ===========================
 
-Template ``patacrep.tex``
-"""""""""""""""""""""""""
+Template :file:`patacrep.tex`
+"""""""""""""""""""""""""""""
+
+.. tabularcolumns:: |l|L|L|L|
 
 ================== =========================== =================================== =================
 Option             Description                 Type                                Valeur par défaut
@@ -253,7 +259,7 @@ répertoire ``amour/*.sg``, triées par auteur, puis par titre.
 
 Pour alléger les notations, une chaîne de caractères à la place d'une
 sous-liste correspond à l'inclusion d'une chanson, et une liste vide correspond
-à l'inclusion de toutes les chansons du répertoire `songs`.
+à l'inclusion de toutes les chansons du répertoire :file:`songs`.
 
 Ainsi, les deux contenus suivants sont équivalents.
 
@@ -276,9 +282,9 @@ Ainsi, les deux contenus suivants sont équivalents.
   }
 
 En pratique, on utilisera souvent un des deux `content` suivant, le premier
-pour inclure toutes les chansons (fichiers `.sg`) trouvées dans le répertoire
-`songs` (en fait, ne pas mentionner du tout l'option `content` dans le fichier
-`.sb` est équivalent à cette forme) :
+pour inclure toutes les chansons (fichiers :file:`.sg`) trouvées dans le répertoire
+:file:`songs` (en fait, ne pas mentionner du tout l'option `content` dans le fichier
+:file:`.sb` est équivalent à cette forme) :
 
 .. code-block:: json
 
@@ -314,32 +320,34 @@ contentlist]`` ou ``["keyword(arguments)", contentlist]``, où:
 Plugins
 ^^^^^^^
 
-Les types de contenus gérés par `patacrep` sont fornis par des extensions (ou
+Les types de contenus gérés par :py:mod:`patacrep` sont fornis par des extensions (ou
 plugins). Un certain nombre (décrits ci-après) sont proposés par défaut, et il
 est possible d'en écrire d'autres.
 
-``song`` : liste de chansons
+:py:mod:`song` : liste de chansons
   Ce plugin, utilisé par défaut, permet d'inclure une liste de chansons, triées
   par ordre alphabétique du nom de fichier. L'unique mot-clef de ce plugin est
   ``song``, qui ne prend pas d'arguments. Il est suivi d'une liste
   d'expressions régulières correspondant aux noms de fichiers à inclure. La
   syntaxe précise de ces expressions est décrite dans la documentation du
   module `glob <https://docs.python.org/2/library/glob.html>`_ ; la base est
-  que ``/`` est utilisé pour parcourir les répertoires, ``..`` correspond au
-  répertoire parant, et ``*`` à n'importe quelle chaîne de caractères.
+  que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` correspond au
+  répertoire parant, et :file:`*` à n'importe quelle chaîne de caractères.
 
   Exemple : ``["song", "premiere.sg", "boire/*.sg"]``.
 
-``sorted`` : liste triée de chansons
+:py:mod:`sorted` : liste triée de chansons
   Ce plugin permet l'inclusion de chansons, triées selon un certain ordre.
   L'unique mot-clef de ce plugin est ``sorted``. Il prend en argument la liste
   des champs selon lesquels triés. Ces champs correspondent aux `keyvals` de
   l'environnement ``song`` (`documentation
   <http://songs.sourceforge.net/songsdoc/songs.html#sec5.1>`_), à ceux ajoutés
-  par `patacrep`, ainsi que ceux éventuellement ajoutés par le template
+  par :py:mod:`patacrep`, ainsi que ceux éventuellement ajoutés par le template
   courant, et à des champs spéciaux. cela donne finalement :
 
-  Paquet `songs <http://songs.sourceforge.net/>`_
+  Paquet `songs <http://songs.sourceforge.net>`__
+
+
     ========== ===========
     Nom        Description
     ========== ===========
@@ -350,17 +358,19 @@ est possible d'en écrire d'autres.
     ========== ===========
 
   Paquet `patacrep`
+
     ========== ===========
     Nom        Description
     ========== ===========
     album      Album
     original   Titre original
-    cov        Chemin de l'image de couverture (relative au répertoire du fichier `.sg`)
+    cov        Chemin de l'image de couverture (relative au répertoire du fichier :file:`.sg`)
     vcov       Chemin de l'image de couverture
     url        URL de la chanson
     ========== ===========
 
   Valeurs spéciales
+
     ========== ===========
     Nom        Description
     ========== ===========
@@ -372,16 +382,16 @@ est possible d'en écrire d'autres.
 
   Il faut remarque la liste de contenu de ``sorted`` n'est pas nécessairement
   une liste d'expression régulière : c'est n'importe quel élément de contenu
-  qui renvoie une liste de chansons. Ainsi, (en utilisant le plugin `cwd`
+  qui renvoie une liste de chansons. Ainsi, (en utilisant le plugin :py:mod:`cwd`
   décrit ci-après), ``["sorted", ["cwd(repertoire)", "*.sg"]]`` est une liste
   de contenu parfaitement valide.
 
   Une conséquence de cela est que donner une liste vide ``["sorted"]`` permet
-  d'inclure toutes les chansons du répertoire `songs`, récursivement.
+  d'inclure toutes les chansons du répertoire :file:`songs`, récursivement.
 
   Exemple : ``["sorted(by, @title)", "boire/*.sg", "amour/*.sg"]``.
 
-``cwd`` : changement de répertoire
+:py:mod:`cwd` : changement de répertoire
   Lorsque plusieurs chansons du même répertoire sont incluses, il peut être
   fastidieux de redonner le chemin complet à chaque fois. Ce plugin permet de
   s'éviter ce travail. Les deux valeurs suivantes de la variable ``content``
@@ -390,23 +400,23 @@ est possible d'en écrire d'autres.
   ``["cwd(des/repertoires/vers)", "chanson1.sg", "chanson2.sg",
   "chanson3.sg"]``.
 
-  Cette commande permet aussi de s'affranchir du répertoire `songs`, dans
+  Cette commande permet aussi de s'affranchir du répertoire :file:`songs`, dans
   lequel sont cherchées les chansons par défaut. La commande
   ``["cwd(repertoire)", "*.sg"]`` va inclure toutes les chansons
-  ``repertoire/*.sg`` puis, seulement si aucune chanson n'a été trouvée, toutes
-  les chansons de ``songs/repertoire/*.sg``.
+  :file:`repertoire/*.sg` puis, seulement si aucune chanson n'a été trouvée, toutes
+  les chansons de :file:`songs/repertoire/*.sg`.
 
-  Enfin, il faut remarque que, tout comme le plugin `sorted`, la liste de
-  contenu de `cwd` n'est pas limitée à une liste d'expressions régulières
+  Enfin, il faut remarque que, tout comme le plugin :py:mod:`sorted`, la liste de
+  contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions régulières
   correspondant à des chansons : elle peut être n'importe quel contenu
   correspondant à une liste de chansons. La commande ``["cwd(repertoire)",
   ["sorted", "*""]]`` est donc valide. De plus, la commande
   ``["cwd(repertoire)"]`` permet d'inclure toutes les chansons (récursivement)
-  comprises dans le répertoire `repertoire`.
+  comprises dans le répertoire :file:`repertoire`.
 
   Exemple : ``["cwd(repertoire)", "chanson1.sg", "chanson2.sg", "chanson3.sg"]]``
 
-``section`` : sections LaTeX
+:py:mod:`section` : sections LaTeX
   Ce plugin permet d'inclure des sections (et chapitres, paragraphes, etc.).
   Les mots-clefs sont ``part``, ``chapter``, ``section``, ``subsection``,
   ``subsubsection``, ``paragraph``, ``subparagraph``, ainsi que leurs versions
@@ -418,7 +428,7 @@ est possible d'en écrire d'autres.
 
   Exemple : ``["chapter", "Chansons d'amour"]``
 
-``songsection`` : sections du paquet `songs <http://songs.sourceforge.net>`_
+:py:mod:`songsection` : sections du paquet `songs <http://songs.sourceforge.net>`__
   Ce plugin introduit deux mots-clefs ``songchapter`` et ``songsection``, qui
   correspondent aux sections et chapitres définis par le paquet `songs`. Le
   style de ces sections sont plus cohérentes avec l'apparence des chansons,
@@ -426,7 +436,7 @@ est possible d'en écrire d'autres.
 
   Exemple : ``["songchapter", "Chansons d'amour"]``
 
-``tex`` : inclusion de fichiers LaTeX quelconques
+:py:mod:`tex` : inclusion de fichiers LaTeX quelconques
   Il est possible avec ce plugin d'inclure un fichier LaTeX quelconque.
   L'unique mot-clef ``tex`` ne prend pas d'arguments, et sa liste de contenu
   est une liste de fichiers latex à inclure dans le recueil.
@@ -438,25 +448,25 @@ est possible d'en écrire d'autres.
 Créer son propre plugin
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Dans toute la suite, nous allons créer un plugin ``foo``, associé au mot-clef
+Dans toute la suite, nous allons créer un plugin :py:mod:`foo`, associé au mot-clef
 ``foo``, qui écrit dans le recueil les arguments et contenu associés, quasiment
-sans traitement. Ce plugin se présente sous la forme d'un fichier `foo.py` (le
-nom de fichier est libre), présent dans un sous répertoire `python/content`
-d'un *datadir*.
+sans traitement. Ce plugin se présente sous la forme d'un fichier :file:`foo.py` (le
+nom de fichier est libre), présent dans un sous répertoire :file:`python/content`
+d'un :file:`datadir`.
 
 Définition
 """"""""""
 
 Un plugin se présente sous la forme d'un fichier Python, présent dans un
-répertoire `python/content` (relativement à un des `datadir`). Ce fichier doit
-contenir une variable ``CONTENT_PLUGIN``, qui est un dictionnaire dont les
-clefs sont des mots-clefs, et les valeurs des fonctions :ref:`parser <parser>`.
+répertoire :file:`python/content` (relativement à un des :file:`datadir`). Ce fichier doit
+contenir une variable :py:data:`CONTENT_PLUGIN`, qui est un dictionnaire dont les
+clefs sont des mots-clefs, et les valeurs des fonctions :ref:`parse <parse>`.
 
 Lors de la compilation du recueil, lors de l'analyse de la variable ``content``
-du fichier `.sb`, lorsqu'un de ces mots-clefs est rencontré, la fonction
-`parser` correspondante est appelée.
+du fichier :file:`.sb`, lorsqu'un de ces mots-clefs est rencontré, la fonction
+:py:func:`parse` correspondante est appelée.
 
-Notre plugin d'exemple contient donc le code suivant (où ``parse`` est une
+Notre plugin d'exemple contient donc le code suivant (où :py:func:`parse` est une
 fonction, définie plus tôt dans le fichier, dont nous allons parler dans la
 partie suivante).
 
@@ -464,22 +474,22 @@ partie suivante).
 
   CONTENT_PLUGIN = {'foo': parse}
 
-Classe `content.Content`
-""""""""""""""""""""""""
+Classe :py:class:`content.Content`
+""""""""""""""""""""""""""""""""""
 
 L'objet qui produit quelque chose dans le recueil est une instance de la classe
-`content.Content`. La méthode d'initialisation est libre, et la méthode
-principale est la méthode `render()`, qui prend en argument le `contexte
-<http://jinja.pocoo.org/docs/api/#the-context>`_ courant, et renvoie une chaîne
-de caractères à inclure dans le fichier `.tex`.
+:py:class:`content.Content`. La méthode d'initialisation est libre, et la méthode
+principale est la méthode :py:meth:`content.Content.render`, qui prend en
+argument le `contexte <http://jinja.pocoo.org/docs/api/#the-context>`_ courant,
+et renvoie une chaîne de caractères à inclure dans le fichier :file:`.tex`.
 
 Plus de détails sur cette classe (ainsi que sur les autres méthodes utilisées)
 sont disponibles dans le docstring de `cette classe TODO(remplacer le lien par
 le blob vers la version 4.0.0)
 <https://github.com/patacrep/patacrep/blob/master/patacrep/content/__init__.py#L84>`_.
 
-Pour notre exemple, nous allons définir une nouvelle classe `Foo()`, héritant
-de cette classe `content.Content`.
+Pour notre exemple, nous allons définir une nouvelle classe :py:class:`Foo`,
+héritant de cette classe :py:class:`content.Content`.
 
 .. code-block:: python
 
@@ -500,31 +510,33 @@ de cette classe `content.Content`.
       return self.arguments + str(self.contentlist)
 
 
-.. _parser:
+.. _parse:
 
-Fonction `parser`
-"""""""""""""""""
+Fonction :py:func:`parse`
+"""""""""""""""""""""""""
 
-La fonction `parser` est appelée lorsque le mot clef est rencontrée, avec comme arguments :
+La fonction :py:func:`parse` est appelée lorsque le mot clef est rencontrée,
+avec comme arguments :
 
-keyword
+`keyword`
   le mot clef ayant déclenché l'appel à cette fonction ;
-argument
+`argument`
   l'argument passé au mot-clef ;
-contentlist
+`contentlist`
   la suite de la liste du contenu
-config
+`config`
   le dictionnaire contenant la configuration du recueil en cours de
   construction. Le modifier est autorisé.
 
 Ainsi, si le contenu du recueil comprend ``["foo(bar)", "one", "two",
-"three"]``, notre fonction `parser()` sera appelée avec comme arguments
-`parser('foo', 'bar', ['one', 'two', 'three'], config)`.
+"three"]``, notre fonction :py:func:`parse` sera appelée avec comme arguments
+:samp:`parse('foo', 'bar', ['one', 'two', 'three'], config)`.
 
 Cette fonction doit retourner une liste (éventuellement vide) d'objets de
-classe `content.Content` (ou une de ces sous-classes). Ces objets seront
-intégrés au recueil (en utilisant principalement leur méthode `render()`) dans
-l'ordre dans lequel ils apparaissent dans cette liste.
+classe :py:class:`content.Content` (ou une de ces sous-classes). Ces objets seront
+intégrés au recueil (en utilisant principalement leur méthode
+:py:meth:`content.Content.render`) dans l'ordre dans lequel ils apparaissent
+dans cette liste.
 
 Notre fonction va donc être la suivante :
 
@@ -552,16 +564,16 @@ Templates par défaut
 
 TODO
 
-``layout.tex``
+:file:`layout.tex`
   TODO
 
-``songs.tex``
+:file:`songs.tex`
   TODO
 
-``default.tex``
+:file:`default.tex`
   TODO
 
-``patacrep.tex``
+:file:`patacrep.tex`
   TODO
 
 Syntaxe
