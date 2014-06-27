@@ -1,3 +1,5 @@
+.. _songbook:
+
 Recueil
 =======
 
@@ -131,6 +133,8 @@ Un fichier :file:`.sb` est écrit au format `JSON`. Il contient un dictionnaire,
 les clefs sont les noms des options, et les valeurs associées sont les valeurs
 de ces options. Le type des valeurs dépend de l'option considérée, et est
 détaillé dans la section suivante.
+
+.. _options:
 
 Liste des options
 ^^^^^^^^^^^^^^^^^
@@ -336,6 +340,8 @@ est possible d'en écrire d'autres.
 
   Exemple : ``["song", "premiere.sg", "boire/*.sg"]``.
 
+.. _plugin_sorted:
+
 :py:mod:`sorted` : liste triée de chansons
   Ce plugin permet l'inclusion de chansons, triées selon un certain ordre.
   L'unique mot-clef de ce plugin est ``sorted``. Il prend en argument la liste
@@ -355,6 +361,8 @@ est possible d'en écrire d'autres.
     cr         informations de copyright
     li         licence
     sr         référence à la bible (le paquet `songs` a été écrit à l'origine pour des chants religieux)
+    index      une entrée supplémentaire dans l'index pour un vers
+    ititle     une entrée supplémentaire dans l'index pour un titre
     ========== ===========
 
   Paquet `patacrep`
@@ -435,6 +443,8 @@ est possible d'en écrire d'autres.
   mais elles ne sont pas numérotées, et il n'y a pas de version étoilée.
 
   Exemple : ``["songchapter", "Chansons d'amour"]``
+
+.. _plugin_tex:
 
 :py:mod:`tex` : inclusion de fichiers LaTeX quelconques
   Il est possible avec ce plugin d'inclure un fichier LaTeX quelconque.
