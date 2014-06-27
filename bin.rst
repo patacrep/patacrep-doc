@@ -11,6 +11,8 @@ voir :ref:`patagui` ou :ref:`patanet`).
 Utilisation
 -----------
 
+.. program:: songbook
+
 .. code-block:: none
 
   songbook [-h] [--version] [--datadir DATADIR [DATADIR ...]] [--verbose] [--steps STEPS] book.sb
@@ -18,21 +20,26 @@ Utilisation
 L'argument obligatoire est le nom d'un fichier :file:`.sb`, qui est compilé en un
 recueil de chansons. Les options optionnelles sont les suivantes.
 
-``-h, --help``
+.. option:: -h, --help
+
   Affiche une aide et termine le programme.
 
-``--version``
+.. option:: --version
+
   Affiche la version du programme.
 
-:samp:`--datadir {DATADIR} [{DATADIR} ...], -d {DATADIR} [{DATADIR} ...]`
+.. option:: --datadir <DATADIR> [<DATADIR> ...], -d <DATADIR> [<DATADIR> ...]
+
   Répertoire contenant les données, contenant (mais ce n'est pas obligatoire)
   les sous-répertoires :file:`songs`, :file:`img`, :file:`latex`,
   :file:`templates`, :file:`python`.
 
-``--verbose, -v``
+.. option:: --verbose, -v
+
   Affiche davantage de messages lors de la compilation.
 
-:samp:`--steps {STEPS}, -s {STEPS}`
+.. option:: --steps <STEPS>, -s <STEPS>
+
   Spécifie les étapes de la compilation à effectuer. La valeur par défaut est ``tex,pdf,sbx,pdf,clean``. Les étapes disponibles sont :
 
   =========   ===========
