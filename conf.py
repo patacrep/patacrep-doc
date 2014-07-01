@@ -202,6 +202,10 @@ latex_elements = {
 
 'babel': r'\usepackage[francais]{babel}',
 'fncychap': r'\usepackage[Sonny]{fncychap}',
+'preamble': r"""
+    \DeclareUnicodeCharacter{266F}{\ensuremath{\sharp}}
+    \DeclareUnicodeCharacter{266D}{\ensuremath{\flat}}
+""",
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
