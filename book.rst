@@ -463,6 +463,9 @@ est possible d'en écrire d'autres.
 
   Exemple : ``["tex", "intro.tex"]``
 
+:py:mod:`include`: inclusion de contenu au format ``json``.
+  TODO Voir https://github.com/patacrep/patacrep/pull/53
+
 .. _plugins_write:
 
 Créer son propre plugin

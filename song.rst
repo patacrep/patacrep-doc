@@ -164,6 +164,10 @@ Titres
 
     \renewcommand{\indextitle}[2]{#1 #2}
 
+  Noter que cette commande prend toujours deux arguments, le premier pouvant
+  être vide (par exemple `\\indextitle{}{Enivrez-vous}`).  Il faut donc être
+  vigilant à ce que le résultat de la commande prenne en compte ce cas-là.
+
 Auteurs
   Le traitement des auteurs est fait de telle manière à ce que, par exemple,
   une chanson ayant pour auteur :samp:`Composée par Jean Boyer (1945), chantée
@@ -183,9 +187,7 @@ Auteurs
 
         Paroles de William Blake, musique de Hubert Parry, chanté par Emerson,~Lake~and~Palmer
 
-  #. La chaîne est découpée suivant les séparateurs de :samp:`authwords['sep']`
-       (c'est-à-dire ``and`` et ``et`` dans le cas présent), ainsi que la
-       virgule.
+  #. La chaîne est découpée suivant les séparateurs de :samp:`authwords['sep']` (c'est-à-dire ``and`` et ``et`` dans le cas présent), ainsi que la virgule.
 
       .. code-block:: latex
 
@@ -197,8 +199,7 @@ Auteurs
       ``and``, car ce séparateur n'est pas entouré d'espaces mais d'espaces
       insécables ``~``.
 
-  #. Tout ce qui précède des éléments de ``authwords['after']`` (``par`` et
-       ``de`` dans notre exemple) est supprimé.
+  #. Tout ce qui précède des éléments de ``authwords['after']`` (``par`` et ``de`` dans notre exemple) est supprimé.
 
       .. code-block:: latex
 
@@ -206,8 +207,7 @@ Auteurs
         Hubert Parry
         Emerson,~Lake~and~Palmer
 
-  #. Les auteurs correspondant à des auteurs de la liste
-       ``authwords['ignore']`` sont supprimés (aucun dans notre exemple).
+  #. Les auteurs correspondant à des auteurs de la liste ``authwords['ignore']`` sont supprimés (aucun dans notre exemple).
 
       .. code-block:: latex
 
@@ -215,13 +215,19 @@ Auteurs
         Hubert Parry
         Emerson,~Lake~and~Palmer
 
-  #. Les auteurs sont passés à la commande
-       :samp:`\\indexauthor{{prénom}}{{nom}}`, qui va se charger d'afficher
-       correctement les noms (voir paragraphe suivant).
+  #. Les auteurs sont découpés entre le prénom (ou l'article pour les groupes) et le nom de famille. Le découpage est fait à la dernière espace.
+
+      .. code-block:: latex
+
+        William / Blake
+        Hubert / Parry
+        / Emerson,~Lake~and~Palmer
+
+  #. Les auteurs sont passés à la commande :samp:`\\indexauthor{{prénom}}{{nom}}`, qui va se charger d'afficher correctement les noms (voir paragraphe suivant).
 
 
   Par défaut, les auteurs sont affichés dans l'index avec le prénom rejeté
-  après le nom, avec une virgule (par exemple *Poe,Edgar Allan*). Il est
+  après le nom, avec une virgule (par exemple *Poe, Edgar Allan*). Il est
   possible de modifier cela en redéfinissant la commande LaTeX
   :samp:`\indexauthor{{prénom}}{{nom}}`. Par exemple, pour afficher le prénom
   entre parenthèse en début de nom (*(Edgar Allan) Poe*), on pourra mettre dans
@@ -230,6 +236,10 @@ Auteurs
   .. code-block:: latex
 
     \renewcommand{\indexauthor}[2]{(#1) #2}
+
+  Cette commande prend toujours deux arguments, le premier pouvant être vide
+  (par example `\\indexauthor{}{Simon and Garfunkel}`). Il faut être donc
+  vigilant à ce que sa définition prenne en compte ce cas spécial.
 
 
 .. _couplets:
