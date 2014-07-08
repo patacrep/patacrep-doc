@@ -10,10 +10,10 @@ Le cœur d'un recueil est un ensemble de chansons, mais il peut être accompagn�
 d'autres éléments : index des chansons ou auteurs, page de titre, liste
 d'accords, préface, etc.
 
-Un receuil est décrit par un fichier :file:`.sb` (détaillé :ref:`ci-après <sb>`).
+Un recueil est décrit par un fichier :file:`.sb` (détaillé :ref:`ci-après <sb>`).
 Il est généré par ``songbook`` en assemblant des fichiers de chansons :file:`.sg`,
 des templates :file:`.tex`, des fichiers LaTeX :file:`.tex`, des images, etc.
-Tout ce contenu est placé dans des dossiers de donnée appellés :ref:`datadir <datadir>`.
+Tout ce contenu est placé dans des dossiers de donnée appelés :ref:`datadir <datadir>`.
 
 Un carnet fini, au format PDF, est la jonction d'un contenu et d'une mise en
 page particulière. Les options qui gouvernent cette mise en page sont
@@ -89,7 +89,7 @@ Les sous-répertoires de ces :file:`datadir` sont les suivants.
 :file:`songs`
   Les chansons pouvant être incluses dans le carnet de chant sont dans ce
   répertoire. Aucune organisation spécifique n'est imposée à l'intérieur de ce
-  répertiore.
+  répertoire.
 
 :file:`templates`
   Comme son nom l'indique, les :ref:`templates <templates>` sont recherchés
@@ -105,12 +105,12 @@ Options
 
 La plupart des options ne sont pas traitées d'une manière spécifique par
 :py:mod:`patacrep` : elles ne font que peupler la variable correspondante dans le
-template. Quelques-une d'entre elles (comme ``content`` par exemple sont
+template. Quelques-unes d'entre elles (comme ``content`` par exemple sont
 manipulées explicitement par :py:mod:`patacrep`). Ceci signifie qu'en écrivant le
 template adéquat, il est possible de définir de nouvelles options (plus
 d'information dans la :ref:`partie correspondante <templates>`).
 
-Il existe différente manières de définir les options utilisées pour génére le
+Il existe différentes manières de définir les options utilisées pour générer le
 carnet de chant. Nous les donnons ici par ordre de priorité décroissante.
 
 Valeurs par défaut
@@ -165,7 +165,7 @@ content           contenu à inclure dans le   liste, décrite dans la section  
 template          template à utiliser         nom d'un fichier présent dans un    ``"default.tex"``
                                               dossier :file:`templates`
 titleprefixwords  Mots à ignorer dans le      liste de chaînes de caractères      ``[]``
-                  classement des chaons
+                  classement des chansons
 authwords         Options pour traiter les    dictionnaire de listes de chaînes   ``{"after": ["by"], "ignore": ["unknown"], "sep": ["and"]}``
                   noms d'auteurs (commandes   de caractères, dont les clefs
                   LaTeX ``authsepword``       sont ``sep``,
@@ -248,7 +248,7 @@ Cette partie décrit comment insérer des chansons dans un recueil.
 Introduction
 ^^^^^^^^^^^^
 
-Le contenu d'un recueil est défini avec l'option ``content`` du fichiers
+Le contenu d'un recueil est défini avec l'option ``content`` du fichier
 :ref:`.sb <sb>`, sous la forme d'une liste. Le type de cette liste dépend du
 contenu à inclure. Voici un exemple de contenu.
 
@@ -328,7 +328,7 @@ contentlist]`` ou ``["keyword(arguments)", contentlist]``, où:
 ``contentlist``
   est la suite de la liste (éventuellement vide). Encore une fois, c'est le
   moteur gérant ce mot clef qui la traite, et sa signification dépend du mot
-  clef.
+clef.
 
 
 Plugins
@@ -346,7 +346,7 @@ est possible d'en écrire d'autres.
   syntaxe précise de ces expressions est décrite dans la documentation du
   module `glob <https://docs.python.org/2/library/glob.html>`_ ; la base est
   que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` correspond au
-  répertoire parant, et :file:`*` à n'importe quelle chaîne de caractères.
+  répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
 
   Exemple : ``["song", "premiere.sg", "boire/*.sg"]``.
 
@@ -400,7 +400,7 @@ est possible d'en écrire d'autres.
 
   Il faut remarque la liste de contenu de ``sorted`` n'est pas nécessairement
   une liste d'expression régulière : c'est n'importe quel élément de contenu
-  qui renvoie une liste de chansons. Ainsi, (en utilisant le plugin :py:mod:`cwd`
+  qui renvoie une liste de chansons. Ainsi (en utilisant le plugin :py:mod:`cwd`
   décrit ci-après), ``["sorted", ["cwd(repertoire)", "*.sg"]]`` est une liste
   de contenu parfaitement valide.
 
@@ -440,8 +440,8 @@ est possible d'en écrire d'autres.
   ``subsubsection``, ``paragraph``, ``subparagraph``, ainsi que leurs versions
   étoilées.
 
-  Ces mots-clefs ne prennent pas d'argument, et ont pour contenu une chaîne de
-  caractères (le titre), ou deux pour les versions non-étoilées (le titre, et
+  Ces mots-clefs ne prennent pas d'arguments, et ont pour contenu une chaîne de
+  caractères (le titre), ou deux pour les versions non étoilées (le titre, et
   le titre court pour la table des matières).
 
   Exemple : ``["chapter", "Chansons d'amour"]``
@@ -449,7 +449,7 @@ est possible d'en écrire d'autres.
 :py:mod:`songsection` : sections du paquet `songs <http://songs.sourceforge.net>`__
   Ce plugin introduit deux mots-clefs ``songchapter`` et ``songsection``, qui
   correspondent aux sections et chapitres définis par le paquet `songs`. Le
-  style de ces sections sont plus cohérentes avec l'apparence des chansons,
+  style de ces sections est plus cohérent avec l'apparence des chansons,
   mais elles ne sont pas numérotées, et il n'y a pas de version étoilée.
 
   Exemple : ``["songchapter", "Chansons d'amour"]``
@@ -469,7 +469,7 @@ Créer son propre plugin
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Dans toute la suite, nous allons créer un plugin :py:mod:`foo`, associé au mot-clef
-``foo``, qui écrit dans le recueil les arguments et contenu associés, quasiment
+``foo``, qui écrit dans le recueil les arguments et contenu associé, quasiment
 sans traitement. Ce plugin se présente sous la forme d'un fichier :file:`foo.py` (le
 nom de fichier est libre), présent dans un sous répertoire :file:`python/content`
 d'un :file:`datadir`.
@@ -535,7 +535,7 @@ héritant de cette classe :py:class:`content.Content`.
 Fonction :py:func:`parse`
 """""""""""""""""""""""""
 
-La fonction :py:func:`parse` est appelée lorsque le mot clef est rencontrée,
+La fonction :py:func:`parse` est appelée lorsque le mot clef est rencontré,
 avec comme arguments :
 
 `keyword`

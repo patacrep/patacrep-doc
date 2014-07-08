@@ -7,7 +7,7 @@ Présentation
 Ce projet fournit des outils pour compiler un carnet de chants en LaTeX (en
 utilisant le `paquet songs <http://songs.sourceforge.net/>`_).
 
-Chaque chanson peut être écrite en n'utilisant qu'un sous ensemble de commandes
+Chaque chanson peut être écrite en n'utilisant qu'un sous-ensemble de commandes
 LaTeX, et des fonctionnalités de haut niveau permettent une manipulation aisée
 du contenu.
 

@@ -38,7 +38,7 @@ Vous pouvez ensuite tester le bon fonctionnement de l'utilitaire ``songbook`` av
 
     songbook --version
 
-Si jamais la réponse est ``songbook: command not found``, c'est que :file:`/urs/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, executez la commande ::
+Si jamais la réponse est ``songbook: command not found``, c'est que :file:`/urs/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, exécutez la commande ::
 
     echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
 
@@ -47,17 +47,17 @@ Windows
 
 Commencez par installer les dépendances habituelles :
  - `Python 2.7 <https://www.python.org/download/>`_
- - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir acces a LaTeX.
+ - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX.
 
-Puis téléchargez `les sources <http://example.com/TODO.zip>`_ de Patacrep. Décompressez le fichier où vous voulez (cette explication suppose que vous l'avez mis sur le bureau), puis lancez une invite de commande en tapant ``cmd`` dans le menu démarer. Déplacez vous dans le dossier où sont les sources, par exemple : ::
+Puis téléchargez `les sources <http://example.com/TODO.zip>`_ de Patacrep. Décompressez le fichier où vous voulez (cette explication suppose que vous l'avez mis sur le bureau), puis lancez une invite de commande en tapant ``cmd`` dans le menu démarrer. Déplacez-vous dans le dossier où sont les sources, par exemple : ::
 
     cd Desktop\Patacrep
 
-puis lancez le script d'installation windows : ::
+puis lancez le script d'installation Windows : ::
 
     install_windows.bat
 
-Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossier Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer les dépendances de ``Patacrep``. Enfin, il installe ``Patacrep`` et l'utilitaire ``songbook``.
+Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossiers Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer les dépendances de ``Patacrep``. Enfin, il installe ``Patacrep`` et l'utilitaire ``songbook``.
 
 
 .. _install_sources:
@@ -82,7 +82,7 @@ Ou alors, pour une installation avec `pip <http://pypi.python.org/pypi/pip/>`_
 
 TODO: installation via Pypi ?
 
-Dépôt `git` : version de developpement
+Dépôt `git` : version de développement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pour obtenir la version de développement, il est possible de télécharger les
@@ -93,7 +93,7 @@ sources en utilisant `git <http://git-scm.com>`_ : ::
 L'installation se fait ensuite de la même manière que pour l'installation à
 partir des sources.
 
-Pour mettre à jour la version de dévellopement, utilisez simplement ::
+Pour mettre à jour la version de développement, utilisez simplement ::
 
     git pull
     ./setup.py install

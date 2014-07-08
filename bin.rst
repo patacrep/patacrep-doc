@@ -5,7 +5,7 @@ Programme :command:`songbook`
 
 Le programme :command:`songbook` est une interface minimale à la bibliothèque
 :py:mod:`patacrep` : il permet de compiler un recueil à partir du fichier :file:`.sb` (pour
-des programme qui permettent de manipuler ce fichier :file:`.sb`, ou les chansons,
+des programmes qui permettent de manipuler ce fichier :file:`.sb`, ou les chansons,
 voir :ref:`patagui` ou :ref:`patanet`).
 
 Utilisation

@@ -23,7 +23,7 @@ d'outils), et le cœur (l'outil principal, utilisé par les autres outils).
   `patadata`, `patanet`, `patagui`) et est un ensemble d'outils de manipulation
   de chants et de carnets de chants.
 * `patacrep/patacrep` est la bibliothèque principale, qui fournit les outils
-  pricipaux nécessaires à cette manipulation, ainsi qu'un outil en ligne de
+  principaux nécessaires à cette manipulation, ainsi qu'un outil en ligne de
   commande (:ref:`songbook <songbook>`).
 
 Pages de développement : `patacrep <http://github.com/patacrep>`_,
@@ -44,7 +44,7 @@ Ce projet contient un grand nombre de chansons pouvant être manipulées par
 patanet
 ^^^^^^^
 
-Un interface web est en cours de développement à l'heure où nous écrivons cette
+Une interface web est en cours de développement à l'heure où nous écrivons cette
 documentation. Elle permettra de créer des carnets de chants en utilisant les
 outils `patacrep`, dans un navigateur web.
 
@@ -111,7 +111,7 @@ Lilypond
 ^^^^^^^^
 
 Il est possible d'intégrer des partitions aux chansons. Si ces partitions
-peuvent être intégrées comme des images (jpg, png, pdf) en utilisant le paquet
+peuvent être intégrées comme des images (JPG, PNG, PDF) en utilisant le paquet
 `graphicx` de LaTeX sans utiliser de fonctionnalité particulière de `patacrep`,
 ce dernier permet de manipuler les partitions écrites au format Lilypond.
 
