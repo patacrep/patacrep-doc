@@ -1,0 +1,212 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../installation.rst:2
+msgid "Installation"
+msgstr ""
+
+#: ../../installation.rst:5
+msgid "Paquets compilés"
+msgstr ""
+
+#: ../../installation.rst:7
+msgid ""
+"Des paquets compilés sont fournis pour les distributions (et architectures) "
+"suivantes. Pour les autres architectures, le paquet peut être installé "
+":ref:`à partir des sources <install_sources>`."
+msgstr ""
+
+#: ../../installation.rst:12
+msgid "Debian/Ubuntu"
+msgstr ""
+
+#: ../../installation.rst:14
+msgid ""
+"Téléchargez le paquet `.deb` de la dernière version : "
+"`<http://example.com/TODO.deb>`_."
+msgstr ""
+
+#: ../../installation.rst:17
+msgid ""
+"Pour la plupart des distributions, un double clic sur le fichier obtenu "
+"devrait lancer l'installation. Sinon, utilisez la commande suivante : ::"
+msgstr ""
+
+#: ../../installation.rst:23
+msgid "MacOSX"
+msgstr ""
+
+#: ../../installation.rst:31
+msgid ""
+"Vous pouvez utiliser le package d'installation MacOSX disponible sur la page"
+" des téléchargements `<http://example.com/TODO.pkg>`_. Vous aurez aussi "
+"besoin d'installer les dépendances suivantes :"
+msgstr ""
+
+#: ../../installation.rst:26 ../../installation.rst:55
+msgid "`Python 2.7 <https://www.python.org/download/>`_"
+msgstr ""
+
+#: ../../installation.rst:27
+msgid ""
+"LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus "
+"simple à installer, mais est un peu lourde. Si vous vous sentez l'âme "
+"aventureuse, vous pouvez utiliser l'installateur en ligne de commande de "
+"`TeXLive <https://www.tug.org/texlive/doc/texlive-en/texlive-"
+"en.html#x1-140003>`_ et personnaliser les options d'installation pour "
+"réduire le poids. Vous aurez besoin des paquets de base, ainsi que du "
+"support des langues étrangères."
+msgstr ""
+
+#: ../../installation.rst:28
+msgid ""
+"Lilypond peut être utile si vous souhaitez compiler les partitions dans les "
+"chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le "
+"télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. "
+"Décompressez l'archive, puis placez là dans :file:`/Applications`. Vous "
+"devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver "
+"en lançant les commandes suivantes dans un Terminal : ::"
+msgstr ""
+
+#: ../../installation.rst:33
+msgid ""
+"La première commande va vous demander votre mot de passe administrateur."
+msgstr ""
+
+#: ../../installation.rst:35
+msgid ""
+"Pour vérifier que tout s'est bien passé, ouvrez un terminal "
+"(:file:`/Applications/Utilitaires/Terminal`) et entrez les commandes "
+"suivantes ::"
+msgstr ""
+
+#: ../../installation.rst:41
+msgid ""
+"Si le numéro de version s'affiche, tout va bien, si vous avez une erreur "
+"``command not found``, il y a un problème."
+msgstr ""
+
+#: ../../installation.rst:43
+msgid ""
+"Vous pouvez ensuite tester le bon fonctionnement de l'utilitaire "
+"``songbook`` avec la commande ::"
+msgstr ""
+
+#: ../../installation.rst:47
+msgid ""
+"Si jamais la réponse est ``songbook: command not found``, c'est que "
+":file:`/urs/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, "
+"exécutez la commande ::"
+msgstr ""
+
+#: ../../installation.rst:52
+msgid "Windows"
+msgstr ""
+
+#: ../../installation.rst:57
+msgid "Commencez par installer les dépendances habituelles :"
+msgstr ""
+
+#: ../../installation.rst:56
+msgid "`MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX."
+msgstr ""
+
+#: ../../installation.rst:57
+msgid "TODO : Lilypond"
+msgstr ""
+
+#: ../../installation.rst:59
+msgid ""
+"Puis téléchargez `les sources <http://example.com/TODO.zip>`_ de Patacrep. "
+"Décompressez le fichier où vous voulez (cette explication suppose que vous "
+"l'avez mis sur le bureau), puis lancez une invite de commande en tapant "
+"``cmd`` dans le menu démarrer. Déplacez-vous dans le dossier où sont les "
+"sources, par exemple : ::"
+msgstr ""
+
+#: ../../installation.rst:63
+msgid "puis lancez le script d'installation Windows : ::"
+msgstr ""
+
+#: ../../installation.rst:67
+msgid ""
+"Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter "
+"les dossiers Python :file:`C:\\\\Python27` et "
+":file:`C:\\\\Python27\\\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour "
+"y ajouter ``.py``. Après quoi il télécharge `pip "
+"<http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer les "
+"dépendances de ``Patacrep``. Enfin, il installe ``Patacrep`` et l'utilitaire"
+" ``songbook``."
+msgstr ""
+
+#: ../../installation.rst:72
+msgid "Installation depuis les sources"
+msgstr ""
+
+#: ../../installation.rst:75
+msgid "Archive :file:`.tar.gz` : version stable"
+msgstr ""
+
+#: ../../installation.rst:77
+msgid ""
+"Les sources de la dernière version stable sont disponibles ici : "
+"`<http://example.com/TODO.tar.gz>`_. Après avoir décompressé l'archive, "
+"lancez la commande suivante depuis le répertoire où les sont les fichiers : "
+"::"
+msgstr ""
+
+#: ../../installation.rst:84
+msgid ""
+"Ou alors, pour une installation avec `pip "
+"<http://pypi.python.org/pypi/pip/>`_ (sans décompresser l'archive) : ::"
+msgstr ""
+
+#: ../../installation.rst:89
+msgid "TODO: installation via Pypi ?"
+msgstr ""
+
+#: ../../installation.rst:92
+msgid "Dépôt `git` : version de développement"
+msgstr ""
+
+#: ../../installation.rst:94
+msgid ""
+"Pour obtenir la version de développement, il est possible de télécharger les"
+" sources en utilisant `git <http://git-scm.com>`_ : ::"
+msgstr ""
+
+#: ../../installation.rst:99
+msgid ""
+"L'installation se fait ensuite de la même manière que pour l'installation à "
+"partir des sources."
+msgstr ""
+
+#: ../../installation.rst:102
+msgid "Pour mettre à jour la version de développement, utilisez simplement ::"
+msgstr ""
+
+#: ../../installation.rst:109
+msgid "Informations supplémentaires"
+msgstr ""
+
+#: ../../installation.rst:112
+msgid "CentOS 6.5"
+msgstr ""
+
+#: ../../installation.rst:114
+msgid ""
+"Sur CentOS 6.5, un certain nombre de logiciel par défaut sont trop ancien "
+"pour faire fonctionner Patacrep correctement. En particulier, vous devriez "
+"utiliser une version récente de TeXLive, et installer ghostscript en version"
+" 9."
+msgstr ""

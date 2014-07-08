@@ -1,0 +1,81 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../book/index.rst:2
+msgid "Créer un recueil"
+msgstr ""
+
+#: ../../book/index.rst:5
+msgid "Introduction"
+msgstr ""
+
+#: ../../book/index.rst:7
+msgid ""
+"Le cœur d'un recueil est un ensemble de chansons, mais il peut être "
+"accompagné d'autres éléments : index des chansons ou auteurs, page de titre,"
+" liste d'accords, préface, etc."
+msgstr ""
+
+#: ../../book/index.rst:11
+msgid ""
+"Un recueil est décrit par un fichier :file:`.sb` (détaillé :ref:`ci-après "
+"<sb>`). Il est généré par ``songbook`` en assemblant des fichiers de "
+"chansons :file:`.sg`, des templates :file:`.tex`, des fichiers LaTeX "
+":file:`.tex`, des images, etc. Tout ce contenu est placé dans des dossiers "
+"de donnée appelés :ref:`datadir <datadir>`."
+msgstr ""
+
+#: ../../book/index.rst:16
+msgid ""
+"Un carnet fini, au format PDF, est la jonction d'un contenu et d'une mise en"
+" page particulière. Les options qui gouvernent cette mise en page sont "
+"principalement décrites dans les :ref:`templates <layout>`. Les différentes "
+"manières d'ajouter du contenu à un carnet sont décrites dans la section "
+":ref:`content`."
+msgstr ""
+
+#: ../../book/index.rst:22
+msgid "Exemple de fichier :file:`.sb`"
+msgstr ""
+
+#: ../../book/index.rst:24
+msgid ""
+"Un exemple de fichier :file:`.sb` est fourni `avec le code source TODO "
+"remplacer avec le blob de la version 4.0.0 "
+"<https://github.com/patacrep/patacrep/blob/master/patacrep/data/examples/example.sb>`_"
+" :"
+msgstr ""
+
+#: ../../book/index.rst:53
+msgid "La syntaxe de ce fichier sera détaillée dans la section :ref:`sb`."
+msgstr ""
+
+#: ../../book/index.rst:56
+msgid "Compiler un fichier :file:`.sb`"
+msgstr ""
+
+#: ../../book/index.rst:58
+msgid "TODO"
+msgstr ""
+
+#: ../../book/index.rst:61
+msgid "Ecrire ses propres fichiers :file:`.sb`"
+msgstr ""
+
+#: ../../book/index.rst:63
+msgid "Mettre du contenu TODO : liens vers content"
+msgstr ""
+
+#: ../../book/index.rst:66
+msgid "Faire une mise en page TODO : liens vers layout"
+msgstr ""

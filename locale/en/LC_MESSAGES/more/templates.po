@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../more/templates.rst:4
+msgid "Changer la mise en page des carnets : le système des templates"
+msgstr ""
+
+#: ../../more/templates.rst:6 ../../more/templates.rst:11
+#: ../../more/templates.rst:14 ../../more/templates.rst:17
+#: ../../more/templates.rst:20 ../../more/templates.rst:23
+#: ../../more/templates.rst:30 ../../more/templates.rst:35
+msgid "TODO"
+msgstr ""
+
+#: ../../more/templates.rst:9
+msgid "Templates par défaut"
+msgstr ""
+
+#: ../../more/templates.rst:14
+msgid ":file:`layout.tex`"
+msgstr ""
+
+#: ../../more/templates.rst:17
+msgid ":file:`songs.tex`"
+msgstr ""
+
+#: ../../more/templates.rst:20
+msgid ":file:`default.tex`"
+msgstr ""
+
+#: ../../more/templates.rst:23
+msgid ":file:`patacrep.tex`"
+msgstr ""
+
+#: ../../more/templates.rst:26
+msgid "Syntaxe"
+msgstr ""
+
+#: ../../more/templates.rst:28
+msgid "(sans réinventer la documentation de jinja2)"
+msgstr ""
+
+#: ../../more/templates.rst:33
+msgid "Créer son propre template"
+msgstr ""

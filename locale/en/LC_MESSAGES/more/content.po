@@ -1,0 +1,155 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../more/content.rst:4
+msgid "Ajouter du contenu aux carnet : écrire un plugin"
+msgstr ""
+
+#: ../../more/content.rst:6
+msgid ""
+"Dans toute la suite, nous allons créer un plugin :py:mod:`foo`, associé au "
+"mot-clef ``foo``, qui écrit dans le recueil les arguments et contenu "
+"associé, quasiment sans traitement. Ce plugin se présente sous la forme d'un"
+" fichier :file:`foo.py` (le nom de fichier est libre), présent dans un sous "
+"répertoire :file:`python/content` d'un :file:`datadir`."
+msgstr ""
+
+#: ../../more/content.rst:13
+msgid "Définition"
+msgstr ""
+
+#: ../../more/content.rst:15
+msgid ""
+"Un plugin se présente sous la forme d'un fichier Python, présent dans un "
+"répertoire :file:`python/content` (relativement à un des :file:`datadir`). "
+"Ce fichier doit contenir une variable :py:data:`CONTENT_PLUGIN`, qui est un "
+"dictionnaire dont les clefs sont des mots-clefs, et les valeurs des "
+"fonctions :ref:`parse <parse>`."
+msgstr ""
+
+#: ../../more/content.rst:20
+msgid ""
+"Lors de la compilation du recueil, lors de l'analyse de la variable "
+"``content`` du fichier :file:`.sb`, lorsqu'un de ces mots-clefs est "
+"rencontré, la fonction :py:func:`parse` correspondante est appelée."
+msgstr ""
+
+#: ../../more/content.rst:24
+msgid ""
+"Notre plugin d'exemple contient donc le code suivant (où :py:func:`parse` "
+"est une fonction, définie plus tôt dans le fichier, dont nous allons parler "
+"dans la partie suivante)."
+msgstr ""
+
+#: ../../more/content.rst:33
+msgid "Classe :py:class:`content.Content`"
+msgstr ""
+
+#: ../../more/content.rst:35
+msgid ""
+"L'objet qui produit quelque chose dans le recueil est une instance de la "
+"classe :py:class:`content.Content`. La méthode d'initialisation est libre, "
+"et la méthode principale est la méthode :py:meth:`content.Content.render`, "
+"qui prend en argument le `contexte <http://jinja.pocoo.org/docs/api/#the-"
+"context>`_ courant, et renvoie une chaîne de caractères à inclure dans le "
+"fichier :file:`.tex`."
+msgstr ""
+
+#: ../../more/content.rst:41
+msgid ""
+"Plus de détails sur cette classe (ainsi que sur les autres méthodes "
+"utilisées) sont disponibles dans le docstring de `cette classe "
+"TODO(remplacer le lien par le blob vers la version 4.0.0) "
+"<https://github.com/patacrep/patacrep/blob/master/patacrep/content/__init__.py#L84>`_."
+msgstr ""
+
+#: ../../more/content.rst:46
+msgid ""
+"Pour notre exemple, nous allons définir une nouvelle classe :py:class:`Foo`,"
+" héritant de cette classe :py:class:`content.Content`."
+msgstr ""
+
+#: ../../more/content.rst:71
+msgid "Fonction :py:func:`parse`"
+msgstr ""
+
+#: ../../more/content.rst:73
+msgid ""
+"La fonction :py:func:`parse` est appelée lorsque le mot clef est rencontré, "
+"avec comme arguments :"
+msgstr ""
+
+#: ../../more/content.rst:76
+msgid "`keyword`"
+msgstr ""
+
+#: ../../more/content.rst:77
+msgid "le mot clef ayant déclenché l'appel à cette fonction ;"
+msgstr ""
+
+#: ../../more/content.rst:78
+msgid "`argument`"
+msgstr ""
+
+#: ../../more/content.rst:79
+msgid "l'argument passé au mot-clef ;"
+msgstr ""
+
+#: ../../more/content.rst:80
+msgid "`contentlist`"
+msgstr ""
+
+#: ../../more/content.rst:81
+msgid "la suite de la liste du contenu"
+msgstr ""
+
+#: ../../more/content.rst:84
+msgid "`config`"
+msgstr ""
+
+#: ../../more/content.rst:83
+msgid ""
+"le dictionnaire contenant la configuration du recueil en cours de "
+"construction. Le modifier est autorisé."
+msgstr ""
+
+#: ../../more/content.rst:86
+msgid ""
+"Ainsi, si le contenu du recueil comprend ``[\"foo(bar)\", \"one\", \"two\", "
+"\"three\"]``, notre fonction :py:func:`parse` sera appelée avec comme "
+"arguments :samp:`parse('foo', 'bar', ['one', 'two', 'three'], config)`."
+msgstr ""
+
+#: ../../more/content.rst:90
+msgid ""
+"Cette fonction doit retourner une liste (éventuellement vide) d'objets de "
+"classe :py:class:`content.Content` (ou une de ces sous-classes). Ces objets "
+"seront intégrés au recueil (en utilisant principalement leur méthode "
+":py:meth:`content.Content.render`) dans l'ordre dans lequel ils apparaissent"
+" dans cette liste."
+msgstr ""
+
+#: ../../more/content.rst:96
+msgid "Notre fonction va donc être la suivante :"
+msgstr ""
+
+#: ../../more/content.rst:104
+msgid "Bilan"
+msgstr ""
+
+#: ../../more/content.rst:106
+msgid ""
+"Notre plugin est maintenant fonctionnel. Il va être appelé si la variable "
+"``content`` du recueil contient par exemple ``[\"foo(bar)\", \"one\", "
+"\"two\", \"three\"]``."
+msgstr ""
