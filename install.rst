@@ -97,3 +97,12 @@ Pour mettre à jour la version de développement, utilisez simplement ::
 
     git pull
     ./setup.py install
+
+
+Informations supplémentaires
+----------------------------
+
+CentOS 6.5
+^^^^^^^^^^
+
+Sur CentOS 6.5, un certain nombre de logiciel par défaut sont trop ancien pour faire fonctionner Patacrep correctement. En particulier, vous devriez utiliser une version récente de TeXLive, et installer ghostscript en version 9.
