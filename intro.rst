@@ -24,7 +24,7 @@ d'outils), et le cœur (l'outil principal, utilisé par les autres outils).
   de chants et de carnets de chants.
 * `patacrep/patacrep` est la bibliothèque principale, qui fournit les outils
   principaux nécessaires à cette manipulation, ainsi qu'un outil en ligne de
-  commande (:ref:`songbook <songbook>`).
+  commande (:ref:`songbook <songbookbin>`).
 
 Pages de développement : `patacrep <http://github.com/patacrep>`_,
 `patacrep/patacrep <http://github.com/patacrep/patacrep>`_.

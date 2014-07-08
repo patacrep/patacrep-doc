@@ -1,4 +1,4 @@
-.. _songbook:
+.. _songbookbin:
 
 Programme :command:`songbook`
 =============================

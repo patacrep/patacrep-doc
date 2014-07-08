@@ -328,7 +328,7 @@ contentlist]`` ou ``["keyword(arguments)", contentlist]``, où:
 ``contentlist``
   est la suite de la liste (éventuellement vide). Encore une fois, c'est le
   moteur gérant ce mot clef qui la traite, et sa signification dépend du mot
-clef.
+  clef.
 
 
 Plugins
