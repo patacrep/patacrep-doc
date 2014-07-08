@@ -25,6 +25,12 @@ MacOSX
 Vous pouvez utiliser le package d'installation MacOSX disponible sur la page des téléchargements `<http://example.com/TODO.pkg>`_. Vous aurez aussi besoin d'installer les dépendances suivantes :
  - `Python 2.7 <https://www.python.org/download/>`_
  - LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus simple à installer, mais est un peu lourde. Si vous vous sentez l'âme aventureuse, vous pouvez utiliser l'installateur en ligne de commande de `TeXLive <https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-140003>`_ et personnaliser les options d'installation pour réduire le poids. Vous aurez besoin des paquets de base, ainsi que du support des langues étrangères.
+ - Lilypond peut être utile si vous souhaitez compiler les partitions dans les chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. Décompressez l'archive, puis placez là dans :file:`/Applications`. Vous devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver en lançant les commandes suivantes dans un Terminal : ::
+
+     sudo ln -s /Applications/LilyPond.app/Contents/Resources/bin/lilypond /usr/local/bin/lilypond
+     echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
+
+La première commande va vous demander votre mot de passe administrateur.
 
 Pour vérifier que tout s'est bien passé, ouvrez un terminal (:file:`/Applications/Utilitaires/Terminal`) et entrez les commandes suivantes ::
 
@@ -48,6 +54,7 @@ Windows
 Commencez par installer les dépendances habituelles :
  - `Python 2.7 <https://www.python.org/download/>`_
  - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX.
+ - TODO : Lilypond
 
 Puis téléchargez `les sources <http://example.com/TODO.zip>`_ de Patacrep. Décompressez le fichier où vous voulez (cette explication suppose que vous l'avez mis sur le bureau), puis lancez une invite de commande en tapant ``cmd`` dans le menu démarrer. Déplacez-vous dans le dossier où sont les sources, par exemple : ::
 
@@ -58,7 +65,6 @@ puis lancez le script d'installation Windows : ::
     install_windows.bat
 
 Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossiers Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer les dépendances de ``Patacrep``. Enfin, il installe ``Patacrep`` et l'utilitaire ``songbook``.
-
 
 .. _install_sources:
 
