@@ -10,8 +10,15 @@ Le cœur d'un recueil est un ensemble de chansons, mais il peut être accompagn�
 d'autres éléments : index des chansons ou auteurs, page de titre, liste
 d'accords, préface, etc.
 
-Un receuil est défini par un fichier :file:`.sb` (détaillé :ref:`ci-après <sb>`). Il
-est accompagné de chansons, templates, fichiers LaTeX, images, etc.
+Un receuil est décrit par un fichier :file:`.sb` (détaillé :ref:`ci-après <sb>`).
+Il est généré par ``songbook`` en assemblant des fichiers de chansons :file:`.sg`,
+des templates :file:`.tex`, des fichiers LaTeX :file:`.tex`, des images, etc.
+Tout ce contenu est placé dans des dossiers de donnée appellés :ref:`datadir <datadir>`.
+
+Un carnet fini, au format PDF, est la jonction d'un contenu et d'une mise en
+page particulière. Les options qui gouvernent cette mise en page sont
+principalement décrites dans les :ref:`templates`. Les différentes manières
+d'ajouter du contenu à un carnet sont décrites dans la section :ref:`contenu`.
 
 Exemple
 -------
@@ -46,6 +53,9 @@ TODO remplacer avec le blob de la version 4.0.0
     }
 
 La syntaxe de ce fichier sera détaillée dans la section :ref:`sb`.
+
+
+.. _datadir:
 
 Répertoires
 -----------
@@ -178,7 +188,7 @@ instruments        instruments à afficher      Liste de chaînes de caractères
                                                ``guitar``, ``ukulele``
 booktype           Type de recueil             Chaîne de caractères, parmi :                 ``"chorded"``
                                                ``chorded`` (avec accords) ou
-                                               ``lyric`` (paroles uniquement)        
+                                               ``lyric`` (paroles uniquement)
 bookoptions        éléments à afficher         Liste de chaînes de caractères parmi :        ``["diagram", "pictures"]``
                                                ``lilypond`` (partitions lilypond),
                                                ``diagram`` (diagrammes d'accords),
@@ -189,8 +199,8 @@ bookoptions        éléments à afficher         Liste de chaînes de caractèr
                                                ``repeatchords`` (répéter les accords),
                                                ``tabs`` (tablatures)
 classoptions       options passées à la        liste de chaînes de caractères                ``[]``
-                   commande ``\documentclass`` 
-                   du document LaTeX principal 
+                   commande ``\documentclass``
+                   du document LaTeX principal
 notenamesout       Nom des notes               chaîne de caractères parmi :                  ``"solfedge"``
                                                ``solfedge`` (Do, Ré, Mi...) et
                                                ``alphascale`` (A, B, C...)
@@ -200,15 +210,15 @@ author             auteur du recueil           chaîne de caractères           
 subtitle           sous-titre du recueil       chaîne de caractères                           *vide*
 version            version du recueil          chaîne de caractères                          ``"undefined"``
 web                adresse du site web du      chaîne de caractères                          ``"http://www.patacrep.com"``
-                   recueil                     
+                   recueil
 mail               adresse électronique        chaîne de caractères                          ``"crep@team-on-fire.com"``
-                   associée au recueil         
+                   associée au recueil
 
 picture            image de la page de garde   chemin vers image, au format                  ``"treble_a.png"``
                                                ``jpg``, ``png`` ou ``pdf``
 picturecopyright   copyright de l'image        chaîne de caractères                          ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
 footer             pied de page de la page     chaîne de caractères                          ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
-                   de garde                    
+                   de garde
 ================== =========================== ============================================= ===========================
 
 Template :file:`patacrep.tex`
@@ -221,11 +231,11 @@ Option             Description                 Type                             
 ================== =========================== =================================== =================
 titleprefixwords   *idem*                      *idem*                              ``["The", "Le", "La", "L'", "A", "Au", "Ces", "De", "Des", "El", "Les", "Ma", "Mon", "Un"]}``
 songnumberbgcolor  couleur des numéros des     code hexadécimal                    ``"D1E4AE"``
-                   chansons                    
+                   chansons
 notebgcolor        couleur des notes dans      code hexadécimal                    ``"D1E4AE"``
-                   les chansons                
+                   les chansons
 indexbgcolor       couleur des liens dans      code hexadécimal                    ``"D1E4AE"``
-                   l'index                     
+                   l'index
 ================== =========================== =================================== =================
 
 .. _contenu:
@@ -324,7 +334,7 @@ contentlist]`` ou ``["keyword(arguments)", contentlist]``, où:
 Plugins
 ^^^^^^^
 
-Les types de contenus gérés par :py:mod:`patacrep` sont fornis par des extensions (ou
+Les types de contenus gérés par :py:mod:`patacrep` sont fournis par des extensions (ou
 plugins). Un certain nombre (décrits ci-après) sont proposés par défaut, et il
 est possible d'en écrire d'autres.
 
