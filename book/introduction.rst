@@ -70,6 +70,9 @@ détaillé dans la section sur la :ref:`mise en page <layout>`. Une option est u
 s'agit de l'option ``"content"``, qui traduit le contenu du futur carnet de chants. Sa syntaxe est 
 détaillé dans la partie sur le :ref:`contenu des carnets <content>`.
 
+
+.. _build_songbook:
+
 Compiler un fichier :file:`.sb`
 -------------------------------
 
