@@ -1,7 +1,7 @@
 .. _layout:
 
 Faire la mise en page d'un carnet
----------------------------------
+=================================
 
 TODO : reformuler
 
@@ -16,7 +16,7 @@ Il existe différentes manières de définir les options utilisées pour génér
 carnet de chant. Nous les donnons ici par ordre de priorité décroissante.
 
 Valeurs par défaut
-^^^^^^^^^^^^^^^^^^
+------------------
 
 Quelques options ne peuvent pas être laissées vides, et doivent avoir une
 valeur par défaut. Celle-ci est inscrite *en dur* dans le code source de
@@ -24,7 +24,7 @@ valeur par défaut. Celle-ci est inscrite *en dur* dans le code source de
 
 
 Templates
-^^^^^^^^^
+---------
 
 Les templates permettent de définir des valeurs particulières à certaines
 options. Par exemple, pour réaliser une collection de recueils, il est possible
@@ -37,7 +37,7 @@ La syntaxe de ces options est décrite dans la partie :ref:`templates`.
 .. _sb:
 
 Fichier :file:`.sb`
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 Ces options ne s'appliquent qu'à un carnet de chant particulier.
 
@@ -49,13 +49,13 @@ détaillé dans la section suivante.
 .. _options:
 
 Liste des options
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Les valeurs par défaut sont données ici en supposant que la langue principale
 du recueil est le français.
 
 Définies hors des templates
-"""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabularcolumns:: |l|L|L|L|
 
@@ -79,7 +79,7 @@ authwords         Options pour traiter les    dictionnaire de listes de chaînes
 ================= =========================== =================================== =================
 
 Template :file:`default.tex`
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabularcolumns:: |l|L|L|L|
 
@@ -124,7 +124,7 @@ footer             pied de page de la page     chaîne de caractères           
 ================== =========================== ============================================= ===========================
 
 Template :file:`patacrep.tex`
-"""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabularcolumns:: |l|L|L|L|
 

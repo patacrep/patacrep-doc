@@ -1,7 +1,7 @@
 .. _datadir:
 
 Organisation des ``datadirs``
------------------------------
+=============================
 
 La bibliothèque :py:mod:`patacrep` va chercher des information dans un ensemble de
 répertoires, relatif à un répertoire de base (nommé :file:`datadir`). Plusieurs

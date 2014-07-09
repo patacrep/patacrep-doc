@@ -1,7 +1,7 @@
 .. _content:
 
 Éléments de contenu d'un carnet
--------------------------------
+===============================
 
 Cette partie décrit comment insérer des chansons dans un recueil.
 

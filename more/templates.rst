@@ -1,12 +1,12 @@
 .. _templates:
 
 Changer la mise en page des carnets : le système des templates
---------------------------------------------------------------
+==============================================================
 
 TODO
 
 Templates par défaut
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 TODO
 
@@ -23,13 +23,13 @@ TODO
   TODO
 
 Syntaxe
-^^^^^^^
+-------
 
 (sans réinventer la documentation de jinja2)
 
 TODO
 
 Créer son propre template
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 TODO

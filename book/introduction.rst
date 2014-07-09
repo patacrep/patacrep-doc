@@ -1,8 +1,5 @@
-Créer un recueil
-================
-
 Introduction
--------------
+============
 
 Le cœur d'un recueil est un ensemble de chansons, mais il peut être accompagné
 d'autres éléments : index des chansons ou auteurs, page de titre, liste
@@ -17,6 +14,8 @@ Un carnet fini, au format PDF, est la jonction d'un contenu et d'une mise en
 page particulière. Les options qui gouvernent cette mise en page sont
 principalement décrites dans les :ref:`templates <layout>`. Les différentes manières
 d'ajouter du contenu à un carnet sont décrites dans la section :ref:`content`.
+
+.. _example:
 
 Exemple de fichier :file:`.sb`
 ------------------------------
@@ -65,3 +64,4 @@ TODO : liens vers content
 
 Faire une mise en page
 TODO : liens vers layout
+

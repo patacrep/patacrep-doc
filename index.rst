@@ -19,15 +19,10 @@ Table des matières
 
    introduction
    installation
-   book/index
-   book/content
-   book/layout
+   book
    song
    bin
-   more/index
-   more/datadir
-   more/content
-   more/templates
+   more
 
 
 

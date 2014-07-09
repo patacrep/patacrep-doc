@@ -1,7 +1,7 @@
 .. _plugins_write:
 
 Ajouter du contenu aux carnet : écrire un plugin
--------------------------------------------------
+================================================
 
 Dans toute la suite, nous allons créer un plugin :py:mod:`foo`, associé au mot-clef
 ``foo``, qui écrit dans le recueil les arguments et contenu associé, quasiment
@@ -10,7 +10,7 @@ nom de fichier est libre), présent dans un sous répertoire :file:`python/conte
 d'un :file:`datadir`.
 
 Définition
-""""""""""
+----------
 
 Un plugin se présente sous la forme d'un fichier Python, présent dans un
 répertoire :file:`python/content` (relativement à un des :file:`datadir`). Ce fichier doit
@@ -30,7 +30,7 @@ partie suivante).
   CONTENT_PLUGIN = {'foo': parse}
 
 Classe :py:class:`content.Content`
-""""""""""""""""""""""""""""""""""
+----------------------------------
 
 L'objet qui produit quelque chose dans le recueil est une instance de la classe
 :py:class:`content.Content`. La méthode d'initialisation est libre, et la méthode
@@ -68,7 +68,7 @@ héritant de cette classe :py:class:`content.Content`.
 .. _parse:
 
 Fonction :py:func:`parse`
-"""""""""""""""""""""""""
+-------------------------
 
 La fonction :py:func:`parse` est appelée lorsque le mot clef est rencontré,
 avec comme arguments :
@@ -101,7 +101,7 @@ Notre fonction va donc être la suivante :
     return [Foo(argument, contentlist)]
 
 Bilan
-"""""
+-----
 
 Notre plugin est maintenant fonctionnel. Il va être appelé si la variable
 ``content`` du recueil contient par exemple ``["foo(bar)", "one", "two",
