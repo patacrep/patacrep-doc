@@ -34,17 +34,15 @@ dans les fichiers :file:`.sb`.
 
 La syntaxe de ces options est décrite dans la partie :ref:`templates`.
 
-.. _sb:
 
 Fichier :file:`.sb`
 -------------------
 
-Ces options ne s'appliquent qu'à un carnet de chant particulier.
+La majeure partie de la personalisation d'un carnet est effectuée à cet endroit. 
+Un fichier :file:`.sb` contient un dictionnaire JSON, dont les clefs sont des options
+et les valeurs les valeurs prisent par ces options.
 
-Un fichier :file:`.sb` est écrit au format `JSON`. Il contient un dictionnaire, dont
-les clefs sont les noms des options, et les valeurs associées sont les valeurs
-de ces options. Le type des valeurs dépend de l'option considérée, et est
-détaillé dans la section suivante.
+Ces options ne s'appliquent qu'à un carnet de chant particulier.
 
 .. _options:
 
