@@ -107,6 +107,8 @@ est possible d'en écrire d'autres.
   répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
 
   Exemple : ``["song", "premiere.sg", "boire/*.sg"]``.
+  
+  TODO : expliquer les règles de recherche des fichiers par "song"
 
 .. _plugin_sorted:
 
@@ -221,9 +223,31 @@ est possible d'en écrire d'autres.
 
   Exemple : ``["tex", "intro.tex"]``
 
-:py:mod:`include`: inclusion de contenu au format ``json``.
-  TODO Voir https://github.com/patacrep/patacrep/pull/53
-
+:py:mod:`include`: inclusion d'un autre fichier de contenu.
+  Ce plugin permet d'inclure un autre fichier au format ``JSON`` dans le contenu du
+  carnet courant. Ainsi, mettre ``["include", "my_content.sbc"]`` ira chercher le fichier 
+  :file:`my_content.sbc` et placera le contenu de ce fichier dans le carnet principal.
+  :file:`my_content.sbc` doit contenir une liste d'éléments de contenu valide. Par exemple, 
+  on peut imaginer qu'il contienne ceci :
+  
+     .. code-block:: json
+  
+        [
+            ["section", "Chansons à boire"],
+            "boire/*.sg",
+            ["section", "Chansons d'amour"],
+            ["include", "amour.sbc"]
+        ]
+  
+  En particulier, il peut donc contenir un ou plusieurs autres mot-clef ``"include"``, et 
+  il est possible d'écrire des choses comme ``["sorted(by, @title)", ["include", 
+  "chansons_a_boire.sbc"]]``. Un cas d'utilisation typique est l'inclusion du même contenu
+  dans plusieurs carnets différents. L'extention :file:`.sbc` est arbitraire, et a été choisie
+  commme abréviation de "SongBook Content" (contenu de carnet de chants).
+  
+  Les fichiers inclus de cette manière sont recherchés dans tous les :ref:`datadir <datadir>`
+  plus le dossier dans lequel se trouve le fichier dans lequel ``"include"`` a été rencontré.
+   
 
 TODO : Lien vers "Écrire son Plugin" 
 TODO : Lien vers Répertoires 
