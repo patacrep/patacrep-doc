@@ -1,6 +1,6 @@
 # Patacrep-doc
 
-Documentation for the [patacrep](/patacrep/patacrep) project, using Sphinx. To build the documentation, you will need a `make` implementation and sphinx. Sphinx can be installed with `pip`.
+Documentation for the [patacrep](/patacrep/patacrep) project, using Sphinx. To build the documentation, you will need a `make` implementation and sphinx. Sphinx can be installed with `pip`, or very likely with the package manager of your distribution.
 
 # Compilation
 
@@ -16,7 +16,7 @@ You will need a working LaTeX distribution.
 
 ## Translated version
 
-The main language of the documentation is french. English version is also available, and can be build with the following steps : 
+The main language of the documentation is French. English version is also available, and can be build with the following steps : 
 
 1. Install `gettext`, or make sure you have it.
 2. Install `sphinx-intl` with `pip`.
@@ -26,7 +26,7 @@ The main language of the documentation is french. English version is also availa
 6. Build the HTML version with `make -e SPHINXOPTS="-D language='en'" html`
 7. Build the PDF version with `make -e SPHINXOPTS="-D language='en'" latexpdf`
 
-When the french documentation is updated, restart at step 3.
+When the French documentation is updated, restart at step 3.
 
 # Compiled version
 
