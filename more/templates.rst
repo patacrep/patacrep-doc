@@ -17,7 +17,7 @@ modifier la mise en page. LaTeX étant utilisé pour créer ces carnets, une bon
 de ce langage est nécessaire.
 
 Ces fichiers :file:`.tex` sont créés avec le moteur de template `Jinja2 <http://jinja.pocoo.org/>`_,
-en utilisant une syntaxe dérivée légèrement différente et plus adaptée à LaTeX.
+en utilisant une syntaxe légèrement différente de la version par défaut et plus adaptée à LaTeX.
 
 Fonctionnement d'un système de templates
 ----------------------------------------
@@ -65,19 +65,61 @@ Les instructions les plus utiles sont détaillées ici.
       (* block mon_bloc *)
          Contenu
       (* endblock *)
+   
+   Plusieurs blocs sont définis dans les :ref:`templates par défaut <templates_default>`
 
-:dfn:`extend et include` :
-   TODO
+:dfn:`extends` :
+   Il est possible d'étendre un template près-existant. Dès lors, tout le contenu écrit 
+   dans un bloc sera placé dans le bloc correspondant du template parent. Si le bloc n'existe pas,
+   le contenu sera placé à la fin du fichier, et donc ignoré à la compilatio LaTeX car
+   placé après le ``\end{document}``. Pour étendre un template particulier, on utilise ::
+      
+      (* extends "template.tex" *)
 
 :dfn:`if` :
-   TODO
+   Il est possible d'effectuer des placements conditionels avec les instructions ``if``.
+   La syntaxe est simplement : ::
+   
+      (* if <condition1> *)
+         Placé si la condition 1 est vraie
+      (* elif <condition2> *)
+         Placé si la condition 2 est vraie
+      (* else *)
+         Placé si les conditions 1 et 2 sont fausses
+      (* endif *)
+      
+   Les insructions `elif` et `else` sont facultatives, et les conditions peuvent être n'importe
+   quelle expression valide en Python. Par exemple : ::
+   
+      (* if booktype == "chorded" *)
+         \addschords
+      (* endif *)
+      
+      (* if textwidth > 42 *)
+         \collumns{3}
+      (* endif *)
    
 :dfn:`for` :
-   TODO
+   Il est possible de répeter un contenu avec une boucle ``for``. La syntxe est la suivante : ::
+   
+      (* for lang in languages_list *)
+         Contenu à être répété, en utilisant la variable ((lang))
+      (* endfor *)
+   
+   Un cas d'utilisation pourrai être : ::
+      
+      (* for lang in languages_list *)
+         (* if not lang == "french" *)
+            \setlang{ ((lang)) }
+         (* else *)
+            \setmainlang{ ((lang)) }
+         (* endif *)
+      (* endfor *)
 
 Pour le reste des fonctionalités de Jinja, vous pouvez aller voir la `documentation <http://jinja.pocoo.org/>`_,
 en retenant que ``{{ variable }}`` et ``{% instruction %}`` on été remplacés par ``(( variable ))`` et ``(* instruction *)``.
 
+.. _templates_default:
 
 Templates par défaut
 --------------------
@@ -86,10 +128,33 @@ Les templates suivant sont fournis par défaut par ``Patacrep``, et remplissent 
 fonctions différentes.  
 
 :file:`layout.tex`
-  Défini l'ensemble des ``block`` qui seront accessibles aux autres templates.
+  Défini l'ensemble des ``block`` qui seront accessibles aux autres templates. Les blocs suivant sont
+  définis, dans cet ordre :
+     :dfn:`preambule`
+        Bloc placé avant le ``\begin{document}``. Utile pour importer des packages ou redéfinir des
+        macro LaTeX ;
+
+     :dfn:`title`
+        Bloc utilisé pour placer les commandes de la page de titre, `i.e.` ``\maketitle`` ;
+
+     :dfn:`preface`
+        Pour ajouter une préface au recueil ;
+     
+     :dfn:`index`
+        Pour placer les index ;
+     
+     :dfn:`chords`
+        Pour placer une liste d'accords au début du carnet ;
+        
+     :dfn:`songs`
+        Le contenu principal est placé dans ce bloc ;
+     
+     :dfn:`postface`
+        Pour ajouter une postface au receuil.
+     
 
 :file:`songs.tex`
-  Le template :file:`songs.tex` étends :file:`layout.tex`, et permet de placer les chansons dans le document.
+  Le template :file:`songs.tex` étends :file:`layout.tex`, et se charge de placer le contenu dans le document.
 
 :file:`default.tex`
   Le template :file:`default.tex` étends :file:`songs.tex`, et applique une mise en forme minimale.
@@ -97,25 +162,50 @@ fonctions différentes.
 
 :file:`patacrep.tex`
   Le template :file:`patacrep.tex` étends :file:`default.tex`, et applique la mise en forme spéciale du
-  projet Patacrep.
+  projet Patacrep. Si vous souhaitez modifier légèrement la mise en page du carnet, ce template sera utile.
 
 
 Créer son propre template
 -------------------------
 
-Pour créer votre propre template et l'utiliser, il vous faudra creer un fichier mon_template.tex dans un 
-sous-dossier :file:`templates` d'un :ref:`datadir <datadir_templates>`, et ajouter 
+Pour créer votre propre template et l'utiliser, il vous faudra creer un fichier :file:`mon_template.tex`
+dans un sous-dossier :file:`templates` d'un :ref:`datadir <datadir_templates>`, et ajouter 
 ``"template":"mon_template.tex"`` dans votre fichier :file:`.sb`. Le plus simple pour vous est encore 
 de faire hériter votre template de l'un des templates par défaut de Patacrep, comme :file:`default.tex` 
-ou :file:`patacrep.tex`.
+ou :file:`patacrep.tex`. Vous pourrez alors (re)définir les commandes LaTeX de votre choix. 
+
+La `documentation <http://songs.sourceforge.net/songsdoc/songs.html#sec11>`_ (en anglais) du package ``songs`` explique
+comment modifier la mise en page des carnets créés, et quelles commandes redéfinir.
 
 .. _templates_vars:
 
 Les variables
 ^^^^^^^^^^^^^
 
-TODO
+Si vous voulez accéder à des variables dans vos templates avec la syntaxe ``(( ma_variable ))``, vous 
+devez définir ces variables au début de votre fichier de template. Ces définition doivent être placées 
+entre les instructions ``(* variables *)`` et ``(* endvariables *)``, et sont décrite au format JSON selon 
+le schéma suivant :
 
+.. code-block:: json
 
-Pour modifier la mise en page des carnet, la `documentation <http://songs.sourceforge.net/songsdoc/songs.html#sec11>`_ 
-correspondante du package ``songs`` sera aussi très utile !
+   {
+   "ma_variable": {"description": {"english": "english description", "french": "description française"},
+                  "default": {"default":[]}   
+   }
+
+Les variables sont déclarées dans un dictionnaire, dont les clefs sont les noms des variables, et les valeurs des
+dictionnaires. Dans ces valeurs peuvent entrer plusieurs clefs, dont les plus utiles sont ``"description"``, qui est 
+un dictionnaire de description de cette variable ; et ``"default"`` qui reseigne la valeur par défaut de cette variable.
+
+La valeur par défaut peut être de tous les types acceptés par JSON (chaînes, listes et dictionnaires) et 
+peut dépendre ou non de la langue, avec la syntaxe suivante : 
+
+.. code-block:: json
+
+   {
+   "ma_variable": {"default": {"default":"Valeur indépendante de la langue."},
+   "mon_autre_variable": {"default": {"french":"Valeur par défaut pour un carnet en français.",
+                                      "english":"Valeur par défaut pour un carnet en anglais.",
+                                       }   
+   }
