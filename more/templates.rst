@@ -130,6 +130,10 @@ fonctions différentes.
 :file:`layout.tex`
   Défini l'ensemble des ``block`` qui seront accessibles aux autres templates. Les blocs suivant sont
   définis, dans cet ordre :
+
+     :dfn:`documentclass`
+        Bloc contenant la commande ``\documentclass{article}``. À surcharger pour changer la classe LaTeX utilisée, ou ajouter des options ;
+
      :dfn:`preambule`
         Bloc placé avant le ``\begin{document}``. Utile pour importer des packages ou redéfinir des
         macro LaTeX ;
@@ -139,25 +143,25 @@ fonctions différentes.
 
      :dfn:`preface`
         Pour ajouter une préface au recueil ;
-     
+
      :dfn:`index`
         Pour placer les index ;
-     
+
      :dfn:`chords`
         Pour placer une liste d'accords au début du carnet ;
-        
+
      :dfn:`songs`
         Le contenu principal est placé dans ce bloc ;
-     
+
      :dfn:`postface`
         Pour ajouter une postface au receuil.
-     
+
 
 :file:`songs.tex`
-  Le template :file:`songs.tex` étends :file:`layout.tex`, et se charge de placer le contenu dans le document.
+  Le template :file:`songs.tex` étends :file:`layout.tex`, et se charge de placer le contenu dans le document. Il contient le minimum nécessaire pour que les chansons (mais pas les index) soient rendues.
 
 :file:`default.tex`
-  Le template :file:`default.tex` étends :file:`songs.tex`, et applique une mise en forme minimale.
+  Le template :file:`default.tex` étends :file:`songs.tex`, et applique une mise en forme minimale, ainsi que les index.
   Si vous voulez créer votre propre mise en page, c'est sans doutes celui-ci qu'il vous faudra étendre.
 
 :file:`patacrep.tex`
