@@ -1,0 +1,53 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:2
+msgid "Projet ``Patacrep``"
+msgstr ""
+
+#: ../../index.rst:5
+msgid "Présentation"
+msgstr ""
+
+#: ../../index.rst:7
+msgid ""
+"Ce projet fournit des outils pour compiler un carnet de chants en LaTeX (en "
+"utilisant le `paquet songs <http://songs.sourceforge.net/>`_)."
+msgstr ""
+
+#: ../../index.rst:10
+msgid ""
+"Chaque chanson peut être écrite en n'utilisant qu'un sous-ensemble de "
+"commandes LaTeX, et des fonctionnalités de haut niveau permettent une "
+"manipulation aisée du contenu."
+msgstr ""
+
+#: ../../index.rst:15
+msgid "Table des matières"
+msgstr ""
+
+#: ../../index.rst:35
+msgid "Index et tables"
+msgstr ""
+
+#: ../../index.rst:37
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../index.rst:38
+msgid ":ref:`modindex`"
+msgstr ""
+
+#: ../../index.rst:39
+msgid ":ref:`search`"
+msgstr ""

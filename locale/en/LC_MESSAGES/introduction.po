@@ -1,0 +1,237 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../introduction.rst:2
+msgid "Introduction"
+msgstr ""
+
+#: ../../introduction.rst:5
+msgid "Liens"
+msgstr ""
+
+#: ../../introduction.rst:7
+msgid "Projet `patacrep` :"
+msgstr ""
+
+#: ../../introduction.rst:9
+msgid "Page officielle : http://patacrep.com"
+msgstr ""
+
+#: ../../introduction.rst:10
+msgid "Forum : http://www.patacrep.com/forum"
+msgstr ""
+
+#: ../../introduction.rst:11
+msgid "Page développement : http://github.com/patacrep/patacrep"
+msgstr ""
+
+#: ../../introduction.rst:14
+msgid "Projets liés"
+msgstr ""
+
+#: ../../introduction.rst:17
+msgid "patacrep"
+msgstr ""
+
+#: ../../introduction.rst:19
+msgid ""
+"Le nom `patacrep` désigne à la fois l'ensemble du projet (un ensemble "
+"d'outils), et le cœur (l'outil principal, utilisé par les autres outils)."
+msgstr ""
+
+#: ../../introduction.rst:22
+msgid ""
+"`patacrep` regroupe les projets décrits ci-après (`patacrep`, `pataextra`, "
+"`patadata`, `patanet`, `patagui`) et est un ensemble d'outils de "
+"manipulation de chants et de carnets de chants."
+msgstr ""
+
+#: ../../introduction.rst:25
+msgid ""
+"`patacrep/patacrep` est la bibliothèque principale, qui fournit les outils "
+"principaux nécessaires à cette manipulation, ainsi qu'un outil en ligne de "
+"commande (:ref:`songbook <songbookbin>`)."
+msgstr ""
+
+#: ../../introduction.rst:29
+msgid ""
+"Pages de développement : `patacrep <http://github.com/patacrep>`_, "
+"`patacrep/patacrep <http://github.com/patacrep/patacrep>`_."
+msgstr ""
+
+#: ../../introduction.rst:35
+msgid "patadata"
+msgstr ""
+
+#: ../../introduction.rst:37
+msgid ""
+"Ce projet contient un grand nombre de chansons pouvant être manipulées par "
+"`patacrep`, ainsi que divers carnets de chants les rassemblant."
+msgstr ""
+
+#: ../../introduction.rst:40
+msgid "`Page de développement <http://github.com/patacrep/patadata>`__"
+msgstr ""
+
+#: ../../introduction.rst:45
+msgid "patanet"
+msgstr ""
+
+#: ../../introduction.rst:47
+msgid ""
+"Une interface web est en cours de développement à l'heure où nous écrivons "
+"cette documentation. Elle permettra de créer des carnets de chants en "
+"utilisant les outils `patacrep`, dans un navigateur web."
+msgstr ""
+
+#: ../../introduction.rst:51
+msgid "`Page de développement <http://github.com/patacrep/patanet>`__"
+msgstr ""
+
+#: ../../introduction.rst:54
+msgid "Outils non maintenus"
+msgstr ""
+
+#: ../../introduction.rst:59
+msgid "patagui"
+msgstr ""
+
+#: ../../introduction.rst:61
+msgid ""
+"Une interface graphique a été développée pour une ancienne version de "
+"`patacrep`. Nous manquons malheureusement de temps pour la maintenir à jour."
+" Elle devrait fonctionner avec la version 3.7.2 de `patacrep`, mais pas avec"
+" les suivantes."
+msgstr ""
+
+#: ../../introduction.rst:66
+msgid ""
+"Nous espérons que son développement reprendra dans le futur (par nous ou de "
+"nouveaux contributeurs), mais elle est pour le moment obsolète."
+msgstr ""
+
+#: ../../introduction.rst:69
+msgid "`Page de développement <http://github.com/patacrep/patagui>`__"
+msgstr ""
+
+#: ../../introduction.rst:72
+msgid "pataextra"
+msgstr ""
+
+#: ../../introduction.rst:74
+msgid ""
+"Quelques outils pour manipuler les chansons sont disponibles dans ce projet."
+" Malheureusement, ce projet est peu maintenu, les outils sont peu "
+"documentés, et peut-être obsolètes."
+msgstr ""
+
+#: ../../introduction.rst:78
+msgid "`Page de développement <http://github.com/patacrep/pataextra>`__"
+msgstr ""
+
+#: ../../introduction.rst:81
+msgid "Outils externes"
+msgstr ""
+
+#: ../../introduction.rst:83
+msgid "Outils que l'utilisateur pourrait avoir à manipuler."
+msgstr ""
+
+#: ../../introduction.rst:86
+msgid "LaTeX"
+msgstr ""
+
+#: ../../introduction.rst:88
+msgid ""
+"L'ensemble d'outils `patacrep` ne fait en réalité que manipuler des fichiers"
+" LaTeX : un carnet de chants, et les chansons en particulier, sont écrits "
+"dans ce langage. Même si nous espérons que l'utilisation de `patacrep` "
+"diminue grandement les connaissances nécessaires pour écrire du LaTeX, il "
+"pourra être utile de se familiariser avec cet outil, avec par exemple `Une "
+"courte (?) introduction à LaTeX2e "
+"<http://mirrors.ctan.org/info/lshort/french/lshort-fr.pdf>`_ (`original en "
+"anglais <http://mirrors.ctan.org/info/lshort/english/lshort.pdf>`_)."
+msgstr ""
+
+#: ../../introduction.rst:97
+msgid ""
+"Pour les cas de base, copier un recueil ou une chanson déjà existante pour "
+"l'adapter à ses besoins devrait suffire à commencer à travailler."
+msgstr ""
+
+#: ../../introduction.rst:101
+msgid "Songs"
+msgstr ""
+
+#: ../../introduction.rst:103
+msgid ""
+"En particulier, le paquet `songs <http://songs.sourceforge.net>`_ "
+"(`documentation <http://songs.sourceforge.net/songsdoc/songs.html>`_ en "
+"anglais) est utilisé pour rendre les chansons, et en particulier pour "
+"marquer les accords."
+msgstr ""
+
+#: ../../introduction.rst:108
+msgid ""
+"Les cas d'utilisation de base sont expliqués dans la section :ref:`song`."
+msgstr ""
+
+#: ../../introduction.rst:111
+msgid "Lilypond"
+msgstr ""
+
+#: ../../introduction.rst:113
+msgid ""
+"Il est possible d'intégrer des partitions aux chansons. Si ces partitions "
+"peuvent être intégrées comme des images (JPG, PNG, PDF) en utilisant le "
+"paquet `graphicx` de LaTeX sans utiliser de fonctionnalité particulière de "
+"`patacrep`, ce dernier permet de manipuler les partitions écrites au format "
+"Lilypond."
+msgstr ""
+
+#: ../../introduction.rst:118
+msgid ""
+"Plus d'informations dans la section :ref:`partitions`, et sur le `site du "
+"projet <http://www.lilypond.org/>`_."
+msgstr ""
+
+#: ../../introduction.rst:122
+msgid "Python"
+msgstr ""
+
+#: ../../introduction.rst:124
+msgid ""
+"`Python <http://python.org>`_ est le langage de programmation utilisé pour "
+"écrire la majeure partie des outils de `patacrep`. S'il n'est pas nécessaire"
+" d'avoir entendu parler de ce langage pour créer un carnet de chant, c'est "
+"en Python que peuvent être écrites des extensions permettant d'inclure de "
+"nouveaux formats de contenu aux carnets de chant. Voir la section "
+":ref:`plugins_write` pour plus d'informations."
+msgstr ""
+
+#: ../../introduction.rst:132
+msgid "jinja2"
+msgstr ""
+
+#: ../../introduction.rst:134
+msgid ""
+"`Jinja2 <http://jinja.pocoo.org/>`_ est le moteur utilisé pour écrire les "
+"templates. Bien qu'écrit en Python, la connaissance de ce langage n'est "
+"nécessaire que pour des cas d'utilisation avancés."
+msgstr ""
+
+#: ../../introduction.rst:138
+msgid ""
+"L'utilisation pour les cas de base est décrite dans la section "
+":ref:`templates`."
+msgstr ""

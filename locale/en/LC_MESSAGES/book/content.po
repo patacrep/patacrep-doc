@@ -1,0 +1,413 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Patacrep 4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../book/content.rst:4
+msgid "Éléments de contenu d'un carnet"
+msgstr ""
+
+#: ../../book/content.rst:6
+msgid "Cette partie décrit comment insérer des chansons dans un recueil."
+msgstr ""
+
+#: ../../book/content.rst:9
+msgid "Introduction"
+msgstr ""
+
+#: ../../book/content.rst:11
+msgid ""
+"Le contenu d'un recueil est défini avec l'option ``content`` du fichier "
+":ref:`.sb <sb>`, sous la forme d'une liste. Le type de cette liste dépend du"
+" contenu à inclure. Voici un exemple de contenu."
+msgstr ""
+
+#: ../../book/content.rst:27
+msgid ""
+"Comme nous pouvons le voir, la valeur de ``content`` est une liste de "
+"listes. Le premier élément de chacune de ces sous-listes est une chaîne "
+"indiquant le type de contenu considéré : par exemple, ``[\"section\", "
+"\"Chansons à boire\"]`` va créer une section ayant pour titre *Chansons à "
+"boire*, tandis que ``[\"sorted(by, @title)\", \"amour/*.sg\"]`` va inclure "
+"toutes les chansons du répertoire ``amour/*.sg``, triées par auteur, puis "
+"par titre."
+msgstr ""
+
+#: ../../book/content.rst:34
+msgid ""
+"Pour alléger les notations, une chaîne de caractères à la place d'une sous-"
+"liste correspond à l'inclusion d'une chanson, et une liste vide correspond à"
+" l'inclusion de toutes les chansons du répertoire :file:`songs`."
+msgstr ""
+
+#: ../../book/content.rst:38
+msgid "Ainsi, les deux contenus suivants sont équivalents."
+msgstr ""
+
+#: ../../book/content.rst:58
+msgid ""
+"En pratique, on utilisera souvent un des deux `content` suivant, le premier "
+"pour inclure toutes les chansons (fichiers :file:`.sg`) trouvées dans le "
+"répertoire :file:`songs` (en fait, ne pas mentionner du tout l'option "
+"`content` dans le fichier :file:`.sb` est équivalent à cette forme) :"
+msgstr ""
+
+#: ../../book/content.rst:69
+msgid ""
+"et le second pour inclure toutes ces chansons, triées pas auteur, album puis"
+" titre (c'est le tri par défaut) :"
+msgstr ""
+
+#: ../../book/content.rst:78
+msgid ""
+"La structure générale d'un élément de contenu est le suivant ``[\"keyword\","
+" contentlist]`` ou ``[\"keyword(arguments)\", contentlist]``, où:"
+msgstr ""
+
+#: ../../book/content.rst:82
+msgid "``keyword``"
+msgstr ""
+
+#: ../../book/content.rst:82
+msgid "est un mot clef, précisant le type de contenu"
+msgstr ""
+
+#: ../../book/content.rst:86
+msgid "``arguments``"
+msgstr ""
+
+#: ../../book/content.rst:85
+msgid ""
+"est un argument, optionnel, au mot-clef. Il est passé tel quel, sans "
+"analyse, au moteur gérant ce mot-clef, et son type et sa forme dépendent du "
+"mot-clef."
+msgstr ""
+
+#: ../../book/content.rst:90
+msgid "``contentlist``"
+msgstr ""
+
+#: ../../book/content.rst:89
+msgid ""
+"est la suite de la liste (éventuellement vide). Encore une fois, c'est le "
+"moteur gérant ce mot clef qui la traite, et sa signification dépend du mot-"
+"clef."
+msgstr ""
+
+#: ../../book/content.rst:93
+msgid "Types de contenus disponibles"
+msgstr ""
+
+#: ../../book/content.rst:95
+msgid ""
+"Les types de contenus gérés par :py:mod:`patacrep` sont fournis par des "
+"extensions (ou plugins). Un certain nombre (décrits ci-après) sont proposés "
+"par défaut, et il est possible d'en écrire d'autres."
+msgstr ""
+
+#: ../../book/content.rst:109
+msgid ":py:mod:`song` : liste de chansons"
+msgstr ""
+
+#: ../../book/content.rst:100
+msgid ""
+"Ce plugin, utilisé par défaut, permet d'inclure une liste de chansons, "
+"triées par ordre alphabétique du nom de fichier. L'unique mot-clef de ce "
+"plugin est ``song``, qui ne prend pas d'arguments. Il est suivi d'une liste "
+"d'expressions régulières correspondant aux noms de fichiers à inclure. La "
+"syntaxe précise de ces expressions est décrite dans la documentation du "
+"module `glob <https://docs.python.org/2/library/glob.html>`_ ; la base est "
+"que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` "
+"correspond au répertoire parent, et :file:`*` à n'importe quelle chaîne de "
+"caractères."
+msgstr ""
+
+#: ../../book/content.rst:109
+msgid "Exemple : ``[\"song\", \"premiere.sg\", \"boire/*.sg\"]``."
+msgstr ""
+
+#: ../../book/content.rst:168
+msgid ":py:mod:`sorted` : liste triée de chansons"
+msgstr ""
+
+#: ../../book/content.rst:114
+msgid ""
+"Ce plugin permet l'inclusion de chansons, triées selon un certain ordre. "
+"L'unique mot-clef de ce plugin est ``sorted``. Il prend en argument la liste"
+" des champs selon lesquels triés. Ces champs correspondent aux `keyvals` de "
+"l'environnement ``song`` (`documentation "
+"<http://songs.sourceforge.net/songsdoc/songs.html#sec5.1>`_), à ceux ajoutés"
+" par :py:mod:`patacrep`, ainsi que ceux éventuellement ajoutés par le "
+"template courant, et à des champs spéciaux. cela donne finalement :"
+msgstr ""
+
+#: ../../book/content.rst:122
+msgid "Paquet `songs <http://songs.sourceforge.net>`__"
+msgstr ""
+
+#: ../../book/content.rst:126 ../../book/content.rst:139
+#: ../../book/content.rst:151
+msgid "Nom"
+msgstr ""
+
+#: ../../book/content.rst:126 ../../book/content.rst:139
+#: ../../book/content.rst:151
+msgid "Description"
+msgstr ""
+
+#: ../../book/content.rst:128
+msgid "by"
+msgstr ""
+
+#: ../../book/content.rst:128
+msgid "auteurs"
+msgstr ""
+
+#: ../../book/content.rst:129
+msgid "cr"
+msgstr ""
+
+#: ../../book/content.rst:129
+msgid "informations de copyright"
+msgstr ""
+
+#: ../../book/content.rst:130
+msgid "li"
+msgstr ""
+
+#: ../../book/content.rst:130
+msgid "licence"
+msgstr ""
+
+#: ../../book/content.rst:131
+msgid "sr"
+msgstr ""
+
+#: ../../book/content.rst:131
+msgid ""
+"référence à la bible (le paquet `songs` a été écrit à l'origine pour des "
+"chants religieux)"
+msgstr ""
+
+#: ../../book/content.rst:132
+msgid "index"
+msgstr ""
+
+#: ../../book/content.rst:132
+msgid "une entrée supplémentaire dans l'index pour un vers"
+msgstr ""
+
+#: ../../book/content.rst:133
+msgid "ititle"
+msgstr ""
+
+#: ../../book/content.rst:133
+msgid "une entrée supplémentaire dans l'index pour un titre"
+msgstr ""
+
+#: ../../book/content.rst:136
+msgid "Paquet `patacrep`"
+msgstr ""
+
+#: ../../book/content.rst:141
+msgid "album"
+msgstr ""
+
+#: ../../book/content.rst:141
+msgid "Album"
+msgstr ""
+
+#: ../../book/content.rst:142
+msgid "original"
+msgstr ""
+
+#: ../../book/content.rst:142
+msgid "Titre original"
+msgstr ""
+
+#: ../../book/content.rst:143
+msgid "cov"
+msgstr ""
+
+#: ../../book/content.rst:143
+msgid ""
+"Chemin de l'image de couverture (relative au répertoire du fichier "
+":file:`.sg`)"
+msgstr ""
+
+#: ../../book/content.rst:144
+msgid "vcov"
+msgstr ""
+
+#: ../../book/content.rst:144
+msgid "Chemin de l'image de couverture"
+msgstr ""
+
+#: ../../book/content.rst:145
+msgid "url"
+msgstr ""
+
+#: ../../book/content.rst:145
+msgid "URL de la chanson"
+msgstr ""
+
+#: ../../book/content.rst:148
+msgid "Valeurs spéciales"
+msgstr ""
+
+#: ../../book/content.rst:153
+msgid "@title"
+msgstr ""
+
+#: ../../book/content.rst:153
+msgid "Titres"
+msgstr ""
+
+#: ../../book/content.rst:154
+msgid "@path"
+msgstr ""
+
+#: ../../book/content.rst:154
+msgid "Chemin du fichier"
+msgstr ""
+
+#: ../../book/content.rst:157
+msgid "L'ordre de tri par défaut est : auteurs, album, titre."
+msgstr ""
+
+#: ../../book/content.rst:159
+msgid ""
+"Il faut remarque la liste de contenu de ``sorted`` n'est pas nécessairement "
+"une liste d'expression régulière : c'est n'importe quel élément de contenu "
+"qui renvoie une liste de chansons. Ainsi (en utilisant le plugin "
+":py:mod:`cwd` décrit ci-après), ``[\"sorted\", [\"cwd(repertoire)\", "
+"\"*.sg\"]]`` est une liste de contenu parfaitement valide."
+msgstr ""
+
+#: ../../book/content.rst:165
+msgid ""
+"Une conséquence de cela est que donner une liste vide ``[\"sorted\"]`` "
+"permet d'inclure toutes les chansons du répertoire :file:`songs`, "
+"récursivement."
+msgstr ""
+
+#: ../../book/content.rst:168
+msgid "Exemple : ``[\"sorted(by, @title)\", \"boire/*.sg\", \"amour/*.sg\"]``."
+msgstr ""
+
+#: ../../book/content.rst:193
+msgid ":py:mod:`cwd` : changement de répertoire"
+msgstr ""
+
+#: ../../book/content.rst:171
+msgid ""
+"Lorsque plusieurs chansons du même répertoire sont incluses, il peut être "
+"fastidieux de redonner le chemin complet à chaque fois. Ce plugin permet de "
+"s'éviter ce travail. Les deux valeurs suivantes de la variable ``content`` "
+"sont équivalentes : ``[\"des/repertoires/vers/chanson1.sg\", "
+"\"des/repertoires/vers/chanson2.sg\", "
+"\"des/repertoires/vers/chanson3.sg\"]`` et ``[\"cwd(des/repertoires/vers)\","
+" \"chanson1.sg\", \"chanson2.sg\", \"chanson3.sg\"]``."
+msgstr ""
+
+#: ../../book/content.rst:179
+msgid ""
+"Cette commande permet aussi de s'affranchir du répertoire :file:`songs`, "
+"dans lequel sont cherchées les chansons par défaut. La commande "
+"``[\"cwd(repertoire)\", \"*.sg\"]`` va inclure toutes les chansons "
+":file:`repertoire/*.sg` puis, seulement si aucune chanson n'a été trouvée, "
+"toutes les chansons de :file:`songs/repertoire/*.sg`."
+msgstr ""
+
+#: ../../book/content.rst:185
+msgid ""
+"Enfin, il faut remarque que, tout comme le plugin :py:mod:`sorted`, la liste"
+" de contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions "
+"régulières correspondant à des chansons : elle peut être n'importe quel "
+"contenu correspondant à une liste de chansons. La commande "
+"``[\"cwd(repertoire)\", [\"sorted\", \"*\"\"]]`` est donc valide. De plus, "
+"la commande ``[\"cwd(repertoire)\"]`` permet d'inclure toutes les chansons "
+"(récursivement) comprises dans le répertoire :file:`repertoire`."
+msgstr ""
+
+#: ../../book/content.rst:193
+msgid ""
+"Exemple : ``[\"cwd(repertoire)\", \"chanson1.sg\", \"chanson2.sg\", "
+"\"chanson3.sg\"]]``"
+msgstr ""
+
+#: ../../book/content.rst:205
+msgid ":py:mod:`section` : sections LaTeX"
+msgstr ""
+
+#: ../../book/content.rst:196
+msgid ""
+"Ce plugin permet d'inclure des sections (et chapitres, paragraphes, etc.). "
+"Les mots-clefs sont ``part``, ``chapter``, ``section``, ``subsection``, "
+"``subsubsection``, ``paragraph``, ``subparagraph``, ainsi que leurs versions"
+" étoilées."
+msgstr ""
+
+#: ../../book/content.rst:201
+msgid ""
+"Ces mots-clefs ne prennent pas d'arguments, et ont pour contenu une chaîne "
+"de caractères (le titre), ou deux pour les versions non étoilées (le titre, "
+"et le titre court pour la table des matières)."
+msgstr ""
+
+#: ../../book/content.rst:205
+msgid "Exemple : ``[\"chapter\", \"Chansons d'amour\"]``"
+msgstr ""
+
+#: ../../book/content.rst:213
+msgid ""
+":py:mod:`songsection` : sections du paquet `songs "
+"<http://songs.sourceforge.net>`__"
+msgstr ""
+
+#: ../../book/content.rst:208
+msgid ""
+"Ce plugin introduit deux mots-clefs ``songchapter`` et ``songsection``, qui "
+"correspondent aux sections et chapitres définis par le paquet `songs`. Le "
+"style de ces sections est plus cohérent avec l'apparence des chansons, mais "
+"elles ne sont pas numérotées, et il n'y a pas de version étoilée."
+msgstr ""
+
+#: ../../book/content.rst:213
+msgid "Exemple : ``[\"songchapter\", \"Chansons d'amour\"]``"
+msgstr ""
+
+#: ../../book/content.rst:222
+msgid ":py:mod:`tex` : inclusion de fichiers LaTeX quelconques"
+msgstr ""
+
+#: ../../book/content.rst:218
+msgid ""
+"Il est possible avec ce plugin d'inclure un fichier LaTeX quelconque. "
+"L'unique mot-clef ``tex`` ne prend pas d'arguments, et sa liste de contenu "
+"est une liste de fichiers latex à inclure dans le recueil."
+msgstr ""
+
+#: ../../book/content.rst:222
+msgid "Exemple : ``[\"tex\", \"intro.tex\"]``"
+msgstr ""
+
+#: ../../book/content.rst:226
+msgid ":py:mod:`include`: inclusion de contenu au format ``json``."
+msgstr ""
+
+#: ../../book/content.rst:225
+msgid "TODO Voir https://github.com/patacrep/patacrep/pull/53"
+msgstr ""
+
+#: ../../book/content.rst:228
+msgid "TODO : Lien vers \"Écrire son Plugin\" TODO : Lien vers Répertoires"
+msgstr ""
