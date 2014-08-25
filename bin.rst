@@ -49,7 +49,7 @@ recueil de chansons. Les options optionnelles sont les suivantes.
   ``pdf``     Compile le fichier :file:`.tex`.
   ``sbx``     Compile les index (chansons et auteurs).
   ``clean``   Supprime les fichiers temporaires.
-  ``%cmd``    Étape spéciale : la suite d'une chaîne commençant par le signe ``%`` sera exécutée dans un shell.
+  ``#cmd``    Étape spéciale : la suite d'une chaîne commençant par le signe ``#`` sera exécutée dans un shell.
   =========   ===========
 
   Plusieurs étapes (sauf l'étape spéciale) peuvent être combinées en une seule option ``--steps``, séparées par des virgules.
