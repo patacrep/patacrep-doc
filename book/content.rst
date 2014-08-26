@@ -248,6 +248,9 @@ est possible d'en écrire d'autres.
   Les fichiers inclus de cette manière sont recherchés dans tous les :ref:`datadir <datadir>`
   plus le dossier dans lequel se trouve le fichier dans lequel ``"include"`` a été rencontré.
    
+Il est possible d'ajouter son propre type de contenu (images, fichiers abc, ...) à un carnet
+en écrivant son propre plugin. La procédure est décrite dans la section :ref:`plugins_write`.
 
-TODO : Lien vers "Écrire son Plugin" 
-TODO : Lien vers Répertoires 
+Les fichiers utilisés par :py:mod:`patacrep` pour créer des carnets de chant sont rassemblés
+dans des dossier qui suivent une organisation particulière. Cette organisation est décrite 
+dans la section :ref:`datadir`.
