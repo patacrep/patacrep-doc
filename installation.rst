@@ -52,9 +52,9 @@ Windows
 ^^^^^^^
 
 Commencez par installer les dépendances habituelles :
- - `Python 2.7 <https://www.python.org/download/>`_
- - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX.
- - TODO : Lilypond
+ - `Python 2.7 <https://www.python.org/download/>`_ ;
+ - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX ;
+ - `Lilypond http://www.lilypond.org/windows.fr.html`_ si vous voulez compiler les partitions associées à certaines chansons.
 
 Puis téléchargez `les sources <http://example.com/TODO.zip>`_ de Patacrep. Décompressez le fichier où vous voulez (cette explication suppose que vous l'avez mis sur le bureau), puis lancez une invite de commande en tapant ``cmd`` dans le menu démarrer. Déplacez-vous dans le dossier où sont les sources, par exemple : ::
 
