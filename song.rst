@@ -4,11 +4,11 @@ Chanson
 =======
 
 Une chanson est un fichier texte :file:`chanson.sg` placé dans le répertoire
-:file:`songs` (ou un de ses sous-répertoires). C'est un fichier LaTeX
+:file:`songs` (ou un de ses sous-répertoires) d'un datadir. C'est un fichier LaTeX
 interprété avec le paquet `songs <http://songs.sourceforge.net>`__. Si la
-connaissance du LaTeX peut-être nécessaire pour faire des choses compliquées,
+connaissance de LaTeX peut-être nécessaire pour faire des choses compliquées,
 cette documentation devrait permettre d'écrire des chansons sans connaissance
-préalable du LaTeX.
+préalable de LaTeX.
 
 Ce fichier commence par la ligne :samp:`\\beginsong{{titres}}` (éventuellement
 précédée des commandes définissant la :ref:`langue <langue>` de la chanson et
@@ -445,20 +445,6 @@ classiques~:
 
   * X est la lettre majuscule x. Un x minuscule produira une erreur lors de la compilation.
   * 0 est le chiffre zéro et non pas la lettre majuscule o.
-
-
-.. note::
-
-  Une nouvelle convention, en cours d'intégration, permet d'indiquer un
-  *décalage* du diagramme de N frettes plutôt qu'un barré à la
-  frette N.
-
-  La même notation est pour l'instant utilisée ; afin de rendre la mise à
-  jour plus facile lorsqu'une nouvelle syntaxe sera créée, merci de
-  placer un commentaire dans le code de la chanson lorsque vous souhaitez
-  indiquer un décalage et non un barré.
-
-  TODO
 
 
 Intersongs
