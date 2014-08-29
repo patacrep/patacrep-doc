@@ -497,5 +497,3 @@ défaut.
 
     \songcolumns{2}
     \beginsong{Titre}
-
-TODO

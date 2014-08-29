@@ -56,12 +56,13 @@ Syntaxe des fichiers :file:`.sb`
 
 Un fichier :file:`.sb` est écrit au format `JSON`. Le format JSON est un type de fichier
 texte dans lequel on représente des information de trois manières différentes : 
- - Les chaînes ou chaînes de charactère sont délimitées par des guillemets anglais ``"..."``;
- - Les listes sont des listes d'éléments ordonnés,  délimitées par ``[`` et ``]``, 
-   et leur contenu est séparé par des virgules ``,``.
- - Les dictionnaires sont des associations *clef/valeur*, les clefs étant la plupart du 
-   temps des chaînes, et les valeurs pouvant être n'importe quoi. Ils sont délimités par ``{``
-   et ``}``, et les différentes paires *clef/valeur* sont séparées par des virgules.
+
+  - Les chaînes ou chaînes de charactère sont délimitées par des guillemets anglais ``"..."``;
+  - Les listes sont des listes d'éléments ordonnés,  délimitées par ``[`` et ``]``, 
+    et leur contenu est séparé par des virgules ``,``.
+  - Les dictionnaires sont des associations *clef/valeur*, les clefs étant la plupart du 
+    temps des chaînes, et les valeurs pouvant être n'importe quoi. Ils sont délimités par ``{``
+    et ``}``, et les différentes paires *clef/valeur* sont séparées par des virgules.
 
 
 Il contient un dictionnaire, dont les clefs sont les noms d'options, et les valeurs associées 
@@ -76,14 +77,20 @@ détaillé dans la partie sur le :ref:`contenu des carnets <content>`.
 Compiler un fichier :file:`.sb`
 -------------------------------
 
-TODO
+Le fichier :file:`carnet.sb` peut être compilé (*ie* transformé en fichier PDF)
+en ligne de commande, avec la commande suivante : ::
+
+  songbook chemin/vers/carnet.sb
+  
+L'intégralité des options de la commande ``songbook`` sont disponible dans
+la :ref:`section dédiée <songbookbin>`.
 
 Ecrire ses propres fichiers :file:`.sb`
 ---------------------------------------
 
-Mettre du contenu
-TODO : liens vers content
+Le contenu d'un carnet est géré par le mot-clef ``content`` d'un fichier :file:`.sb`.
+Les différents types de contenus disponibles sont décrits dans la section :ref:`content`.
 
-Faire une mise en page
-TODO : liens vers layout
+Tous les autres mots-clefs des fichiers :file:`.sb` servent à faire la mise en page des
+carnets. Les options sont présentées dans la section :ref:`layout`.
 

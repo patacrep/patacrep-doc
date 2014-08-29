@@ -102,13 +102,18 @@ est possible d'en écrire d'autres.
   ``song``, qui ne prend pas d'arguments. Il est suivi d'une liste
   d'expressions régulières correspondant aux noms de fichiers à inclure. La
   syntaxe précise de ces expressions est décrite dans la documentation du
-  module `glob <https://docs.python.org/2/library/glob.html>`_ ; la base est
-  que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` correspond au
-  répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
+  module `glob <https://docs.python.org/2/library/glob.html>`_ ; le minimum à savoir 
+  est que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` 
+  correspond au répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
 
   Exemple : ``["song", "premiere.sg", "boire/*.sg"]``.
   
-  TODO : expliquer les règles de recherche des fichiers par "song"
+  Les fichiers sont recherchés successivement dans les datadirs associés 
+  à un carnet. :py:mod:`song` commence par chercher dans le repertoire
+  :file:`songs` du premier datadir et si au moins un fichier correspond 
+  à l'expression régulière, stope la recherche et passe à l'expression suivante.
+  Sinon, il cherche dans le datadir suivant, et ainsi de suite jusqu'à la 
+  fin de la liste.
 
 .. _plugin_sorted:
 
