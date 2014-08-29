@@ -3,17 +3,12 @@
 Faire la mise en page d'un carnet
 =================================
 
-TODO : reformuler
-
-La plupart des options ne sont pas traitées d'une manière spécifique par
-:py:mod:`patacrep` : elles ne font que peupler la variable correspondante dans le
-template. Quelques-unes d'entre elles (comme ``content`` par exemple sont
-manipulées explicitement par :py:mod:`patacrep`). Ceci signifie qu'en écrivant le
-template adéquat, il est possible de définir de nouvelles options (plus
-d'information dans la :ref:`partie correspondante <templates>`).
-
-Il existe différentes manières de définir les options utilisées pour générer le
-carnet de chant. Nous les donnons ici par ordre de priorité décroissante.
+La mise en page des carnets est gérée par un système d'options : il est possible
+de spécifier la taille et l'orientation du papier, le type de police des accords,
+*etc.* en mettant le bon mot clef dans un fichier :file:`.sb`. Toutes ces options
+ont des valeurs par défaut, définis à plusieurs endroits. La valeur finale d'une 
+option peut provenir de plusieurs origines, données ici par ordre de priorité
+croissante : 
 
 Valeurs par défaut
 ------------------
@@ -30,17 +25,18 @@ Les templates permettent de définir des valeurs particulières à certaines
 options. Par exemple, pour réaliser une collection de recueils, il est possible
 d'en définir les caractéristiques générales dans un template particulier. Les
 options prenant des valeurs différentes pour chacun des recueils sont définies
-dans les fichiers :file:`.sb`.
-
-La syntaxe de ces options est décrite dans la partie :ref:`templates`.
-
+dans les fichiers :file:`.sb`. Ceci signifie qu'en écrivant le template adéquat,
+il est possible de définir de nouvelles options de mise en page (plus
+d'information dans la :ref:`partie correspondante <templates>`).
 
 Fichier :file:`.sb`
 -------------------
 
 La majeure partie de la personalisation d'un carnet est effectuée à cet endroit. 
 Un fichier :file:`.sb` contient un dictionnaire JSON, dont les clefs sont des options
-et les valeurs les valeurs prisent par ces options.
+et les valeurs les valeurs prisent par ces options. Losrqu'un fichier :file:`.sb` 
+est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"`` 
+sont transmis au gestionnaire de mise en page.
 
 Ces options ne s'appliquent qu'à un carnet de chant particulier.
 
@@ -137,5 +133,3 @@ notebgcolor        couleur des notes dans      code hexadécimal                
 indexbgcolor       couleur des liens dans      code hexadécimal                    ``"D1E4AE"``
                    l'index
 ================== =========================== =================================== =================
-
-TODO : Lien vers Templates
