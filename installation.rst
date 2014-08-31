@@ -22,7 +22,7 @@ lancer l'installation. Sinon, utilisez la commande suivante : ::
 MacOSX
 ^^^^^^
 
-Vous pouvez utiliser le package d'installation MacOSX disponible sur la page des téléchargements `<http://example.com/TODO.pkg>`_. Vous aurez aussi besoin d'installer les dépendances suivantes :
+Vous aurez besoin d'installer les dépendances suivantes :
  - `Python 2.7 <https://www.python.org/download/>`_
  - LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus simple à installer, mais est un peu lourde. Si vous vous sentez l'âme aventureuse, vous pouvez utiliser l'installateur en ligne de commande de `TeXLive <https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-140003>`_ et personnaliser les options d'installation pour réduire le poids. Vous aurez besoin des paquets de base, ainsi que du support des langues étrangères.
  - Lilypond peut être utile si vous souhaitez compiler les partitions dans les chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. Décompressez l'archive, puis placez là dans :file:`/Applications`. Vous devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver en lançant les commandes suivantes dans un Terminal : ::
@@ -36,9 +36,11 @@ Pour vérifier que tout s'est bien passé, ouvrez un terminal (:file:`/Applicati
 
    python --version
    pdflatex --version
-
+   lilypond --version
 
 Si le numéro de version s'affiche, tout va bien, si vous avez une erreur ``command not found``, il y a un problème.
+
+L'installation de Patacrep en lui-même peut alors se faire de deux manières différentes : vous pouvez utiliser le package d'installation MacOSX disponible `<http://example.com/TODO.pkg>`_, ou bien utiliser la méthode d'installation utilisant :ref:`pip <install_pip>`. 
 
 Vous pouvez ensuite tester le bon fonctionnement de l'utilitaire ``songbook`` avec la commande ::
 
@@ -56,37 +58,38 @@ Commencez par installer les dépendances habituelles :
  - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX ;
  - `Lilypond http://www.lilypond.org/windows.fr.html`_ si vous voulez compiler les partitions associées à certaines chansons.
 
-Puis téléchargez `les sources <http://example.com/TODO.zip>`_ de Patacrep. Décompressez le fichier où vous voulez (cette explication suppose que vous l'avez mis sur le bureau), puis lancez une invite de commande en tapant ``cmd`` dans le menu démarrer. Déplacez-vous dans le dossier où sont les sources, par exemple : ::
+Si vous ne possédez pas d'installation Python fonctionnelle, utilisez `le script d'installation windows <http://example.com/TODO.zip>`_. Décompressez le dossier où vous voulez et cliquez sur le script :command:`install.bat`. Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossiers Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer :py:mod:`Patacrep`.
 
-    cd Desktop\Patacrep
+Si vous avez déjà une installation Python 2.7 fonctionnelle, avec les bonnes valeurs des variables d'environnement ``%PATH%`` et ``%PATHEXT%``, vous pouvez utiliser directement l'installation avec :ref:`pip <install_pip>` ou depuis :ref:`les sources <install_sources>`. 
 
-puis lancez le script d'installation Windows : ::
+.. _install_pip:
 
-    install_windows.bat
+Installation depuis PyPi
+------------------------
 
-Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossiers Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer les dépendances de ``Patacrep``. Enfin, il installe ``Patacrep`` et l'utilitaire ``songbook``.
+La bibliothèque patacrep et le programme :command:`songbook` sont disponibles sur le Python Packages Index, vous
+pouvez donc les installer avec `pip <http://pip.readthedocs.org/en/latest/>`_ ou `easy_install <http://pythonhosted.org/setuptools/easy_install.html>`_. ::
+
+    pip install patacrep
+    easy_install patacrep
+
+:command:`easy_install` devrait être fournit avec toutes les distributions Python de base ; et :command:`pip` peut être installé
+avec :command:`easy_install` ou `directement <http://pip.pypa.io/en/latest/installing.html#install-pip>`_.
 
 .. _install_sources:
 
 Installation depuis les sources
 -------------------------------
 
-Archive :file:`.tar.gz` : version stable
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Archives :file:`.tar.gz` et :file:`.zip` : version stable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Les sources de la dernière version stable sont disponibles ici :
-`<http://example.com/TODO.tar.gz>`_. Après avoir décompressé l'archive, lancez
+Les sources de la dernière version stable sont disponibles aux formats 
+`.tar.gz <http://example.com/TODO.tar.gz>`_ et `.zip <http://example.com/TODO.zip>`_. Après avoir décompressé l'archive, lancez
 la commande suivante depuis le répertoire où les sont les fichiers : ::
 
     pip install -r Requirements.txt
-    ./setup.py install
-
-Ou alors, pour une installation avec `pip <http://pypi.python.org/pypi/pip/>`_
-(sans décompresser l'archive) : ::
-
-    pip install https://github.com/patacrep/patacrep/archive/TODO.zip
-
-TODO: installation via Pypi ?
+    python setup.py install
 
 Dépôt `git` : version de développement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,7 +105,7 @@ partir des sources.
 Pour mettre à jour la version de développement, utilisez simplement ::
 
     git pull
-    ./setup.py install
+    python setup.py install
 
 
 Informations supplémentaires
