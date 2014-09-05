@@ -68,6 +68,8 @@ Les instructions les plus utiles sont détaillées ici.
    
    Plusieurs blocs sont définis dans les :ref:`templates par défaut <templates_default>`
 
+.. _template_extends:
+
 :dfn:`extends` :
    Il est possible d'étendre un template près-existant. Dès lors, tout le contenu écrit 
    dans un bloc sera placé dans le bloc correspondant du template parent. Si le bloc n'existe pas,
@@ -116,7 +118,7 @@ Les instructions les plus utiles sont détaillées ici.
          (* endif *)
       (* endfor *)
 
-Pour le reste des fonctionalités de Jinja, vous pouvez aller voir la `documentation <http://jinja.pocoo.org/>`_,
+Pour le reste des fonctionalités de Jinja, vous pouvez aller voir la `documentation <http://jinja.pocoo.org/>`__,
 en retenant que ``{{ variable }}`` et ``{% instruction %}`` on été remplacés par ``(( variable ))`` et ``(* instruction *)``.
 
 .. _templates_default:

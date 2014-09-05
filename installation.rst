@@ -56,9 +56,9 @@ Windows
 Commencez par installer les dépendances habituelles :
  - `Python 2.7 <https://www.python.org/download/>`_ ;
  - `MikTeX 2.9 <http://miktex.org/download>`_ pour avoir accès a LaTeX ;
- - `Lilypond http://www.lilypond.org/windows.fr.html`_ si vous voulez compiler les partitions associées à certaines chansons.
+ - `Lilypond <http://www.lilypond.org/windows.fr.html>`_ si vous voulez compiler les partitions associées à certaines chansons.
 
-Si vous ne possédez pas d'installation Python fonctionnelle, utilisez `le script d'installation windows <http://example.com/TODO.zip>`_. Décompressez le dossier où vous voulez et cliquez sur le script :command:`install.bat`. Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossiers Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`_, et s'en sert pour installer :py:mod:`Patacrep`.
+Si vous ne possédez pas d'installation Python fonctionnelle, utilisez `le script d'installation windows <http://example.com/TODO.zip>`_. Décompressez le dossier où vous voulez et cliquez sur le script :command:`install.bat`. Ce script modifie votre variable d'environnement ``%PATH%`` pour y ajouter les dossiers Python :file:`C:\\Python27` et :file:`C:\\Python27\\Scripts`, ainsi que la variable ``%PATHEXT%`` pour y ajouter ``.py``. Après quoi il télécharge `pip <http://pypi.python.org/pypi/pip/>`__, et s'en sert pour installer :py:mod:`Patacrep`.
 
 Si vous avez déjà une installation Python 2.7 fonctionnelle, avec les bonnes valeurs des variables d'environnement ``%PATH%`` et ``%PATHEXT%``, vous pouvez utiliser directement l'installation avec :ref:`pip <install_pip>` ou depuis :ref:`les sources <install_sources>`. 
 
