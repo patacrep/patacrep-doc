@@ -28,10 +28,9 @@ Les sous-répertoires de ces :file:`datadir` sont les suivants.
 .. _datadir_latex:
 
 :file:`latex`
-  Ce répertoire peut contenir des fichiers LaTeX (:file:`.tex` ou :file:`.sty`). Lors
-  d'inclusion de fichiers, ou de chargement de paquets. C'est dans ce
-  répertoire que vous pouvez mettre les fichiers de paquets LaTeX qui ne sont
-  pas inclus avec votre distribution.
+  Ce répertoire peut contenir des fichiers LaTeX (:file:`.tex` ou :file:`.sty`).
+  C'est dans ce répertoire que vous pouvez mettre les fichiers de paquets LaTeX
+  qui ne sont pas inclus avec votre distribution.
 
 .. _datadir_songs:
 

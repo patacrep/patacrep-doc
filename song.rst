@@ -110,7 +110,7 @@ Les différents titres sont séparés par des doubles barre obliques :
 :samp:`\beginsong{{titre1} \\\\ {titre2} \\\\ {titre3}}`.
 
 La liste des paramètres disponibles (certains paramètres de `songs`, et
-d'autres ajoutés par `patacrep`, est donnée ici. Pour une utilisation avancée,
+d'autres ajoutés par `patacrep`), est donnée ici. Pour une utilisation avancée,
 il est possible de `définir de nouveaux paramètres
 <http://songs.sourceforge.net/songsdoc/songs.html#sec11.8>`_.
 
@@ -165,7 +165,7 @@ Titres
     \renewcommand{\indextitle}[2]{#1 #2}
 
   Noter que cette commande prend toujours deux arguments, le premier pouvant
-  être vide (par exemple `\\indextitle{}{Enivrez-vous}`).  Il faut donc être
+  être vide (par exemple :samp:`\\indextitle{{}}{{Enivrez-vous}}`).  Il faut donc être
   vigilant à ce que le résultat de la commande prenne en compte ce cas-là.
 
 Auteurs
@@ -229,7 +229,7 @@ Auteurs
   Par défaut, les auteurs sont affichés dans l'index avec le prénom rejeté
   après le nom, avec une virgule (par exemple *Poe, Edgar Allan*). Il est
   possible de modifier cela en redéfinissant la commande LaTeX
-  :samp:`\indexauthor{{prénom}}{{nom}}`. Par exemple, pour afficher le prénom
+  :samp:`\\indexauthor{{prénom}}{{nom}}`. Par exemple, pour afficher le prénom
   entre parenthèse en début de nom (*(Edgar Allan) Poe*), on pourra mettre dans
   le préambule du fichier :
 
@@ -238,7 +238,7 @@ Auteurs
     \renewcommand{\indexauthor}[2]{(#1) #2}
 
   Cette commande prend toujours deux arguments, le premier pouvant être vide
-  (par example `\\indexauthor{}{Simon and Garfunkel}`). Il faut être donc
+  (par example :samp:`\\indexauthor{{}}{{Simon and Garfunkel}}`). Il faut être donc
   vigilant à ce que sa définition prenne en compte ce cas spécial.
 
 
@@ -249,10 +249,10 @@ Couplets, refrains
 
 La chanson se compose d'une succession de couplets (*verse*) et
 de refrains (*chorus*). Un couplet figure dans un environnement
-:samp:`verse`, c'est-à-dire qu'il commence par :samp:`\beginverse`
-et se termine par :samp:`\endverse`. De la même manière, un refrain
+:samp:`verse`, c'est-à-dire qu'il commence par :samp:`\\beginverse`
+et se termine par :samp:`\\endverse`. De la même manière, un refrain
 est placé dans un environnement :samp:`chorus`, c'est-à-dire entre les
-balises :samp:`\beginchorus` et :samp:`\endchorus`. Les paroles sont
+balises :samp:`\\beginchorus` et :samp:`\\endchorus`. Les paroles sont
 écrites normalement entre les balises d'ouverture et de fermeture de
 l'environnement.
 
@@ -260,17 +260,17 @@ l'environnement.
 
   Contrairement à ce qui est habituel en LaTeX, les retours à la ligne sont
   respectés. Il n'est donc pas nécessaire de sauter une ligne ou d'utiliser une
-  commande ``\\`` ou ``\par`` à chaque fin de vers.
+  commande :samp:`\\\\` ou :samp:`\\par` à chaque fin de vers.
 
 Numérotation
 ^^^^^^^^^^^^
 
 La numérotation se fait automatiquement pour chaque
-:samp:`\beginverse` rencontré. Cependant, il est parfois plus
+:samp:`\\beginverse` rencontré. Cependant, il est parfois plus
 lisible de scinder un couplet en deux parties, la deuxième partie ne
 devant pas être numérotée. Pour cela, nous utilisons la commande
-:samp:`\beginverse*` ; il faut alors fermer l'environnement par
-:samp:`\endverse*`. Par exemple, un couplet en huit vers se
+:samp:`\\beginverse*` ; il faut alors fermer l'environnement par
+:samp:`\\endverse*`. Par exemple, un couplet en huit vers se
 décompose souvent en deux strophes de quatre vers comme dans l'exemple
 suivant.
 
@@ -302,7 +302,7 @@ produira un :samp:`Mi` au dessus de la syllabe suivante dans le PDF.
 Il est impératif d'utiliser la convention anglo-saxone de notation des accords
 (A, B, C, D, E, F, G) et non pas la notation latine (La, Si, Do, Ré, Mi, Fa,
 Sol). En revanche, suivant la langue utilisée pour le recueil, le rendu des
-accords dans le PDF pourra être différent (l'accord :samp:`[D]` sera affiché
+accords dans le PDF pourra être différent (l'accord :samp:`\\[D]` sera affiché
 :samp:`Ré` si la langue du songbook est :samp:`french`). Ce rendu est
 paramétrable avec :ref:`l'option <options>` :samp:`notenamesout`.
 
@@ -417,15 +417,15 @@ chanson, utilisez la commande :samp:`lilypond` dans le fichier
 Diagrammes des accords
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Étant donné qu'un accord de guitare et/ou de ukulélé peut se jouer de
+Étant donné qu'un accord de guitare ou de ukulélé peut se jouer de
 plusieurs façons différentes et qu'il est parfois judicieux de
 privilégier telle ou telle position, `patacrep` permet de représenter
 schématiquement ces accords en début de chanson sous forme de
-diagrame. Pour cela, nous utilisons les commandes :samp:`gtab`
-(guitare) et :samp:`utab` (ukulélé) juste avant le premier couplet
+diagramme. Pour cela, nous utilisons les commandes :samp:`\\gtab`
+(guitare) et :samp:`\\utab` (ukulélé) juste avant le premier couplet
 ou refrain. Dans le cas où ces accords ne sont pas standards, ils
 peuvent être marqués comme importants avec les commandes
-:samp:`gtab*` et :samp:`utab*`. Voici quelques exemples
+:samp:`\\gtab*` et :samp:`\\utab*`. Voici quelques exemples
 classiques~:
 
 .. code-block:: latex

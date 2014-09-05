@@ -22,6 +22,9 @@ lancer l'installation. Sinon, utilisez la commande suivante : ::
 MacOSX
 ^^^^^^
 
+Dépendances
+"""""""""""
+
 Vous aurez besoin d'installer les dépendances suivantes :
  - `Python 2.7 <https://www.python.org/download/>`_
  - LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus simple à installer, mais est un peu lourde. Si vous vous sentez l'âme aventureuse, vous pouvez utiliser l'installateur en ligne de commande de `TeXLive <https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-140003>`_ et personnaliser les options d'installation pour réduire le poids. Vous aurez besoin des paquets de base, ainsi que du support des langues étrangères.
@@ -30,7 +33,7 @@ Vous aurez besoin d'installer les dépendances suivantes :
      sudo ln -s /Applications/LilyPond.app/Contents/Resources/bin/lilypond /usr/local/bin/lilypond
      echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
 
-La première commande va vous demander votre mot de passe administrateur.
+  La première commande va vous demander votre mot de passe administrateur.
 
 Pour vérifier que tout s'est bien passé, ouvrez un terminal (:file:`/Applications/Utilitaires/Terminal`) et entrez les commandes suivantes ::
 
@@ -39,6 +42,9 @@ Pour vérifier que tout s'est bien passé, ouvrez un terminal (:file:`/Applicati
    lilypond --version
 
 Si le numéro de version s'affiche, tout va bien, si vous avez une erreur ``command not found``, il y a un problème.
+
+Patacrep
+""""""""
 
 L'installation de Patacrep en lui-même peut alors se faire de deux manières différentes : vous pouvez utiliser le package d'installation MacOSX disponible `<http://example.com/TODO.pkg>`_, ou bien utiliser la méthode d'installation utilisant :ref:`pip <install_pip>`. 
 
@@ -67,7 +73,7 @@ Si vous avez déjà une installation Python 2.7 fonctionnelle, avec les bonnes v
 Installation depuis PyPi
 ------------------------
 
-La bibliothèque patacrep et le programme :command:`songbook` sont disponibles sur le Python Packages Index, vous
+La bibliothèque patacrep et le programme :command:`songbook` sont disponibles sur le `Python Packages Index <http://pypi.python.org/pypi/patacrep>`_, vous
 pouvez donc les installer avec `pip <http://pip.readthedocs.org/en/latest/>`_ ou `easy_install <http://pythonhosted.org/setuptools/easy_install.html>`_. ::
 
     pip install patacrep

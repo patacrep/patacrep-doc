@@ -40,7 +40,9 @@ dans la construction des templates.
 :dfn:`Variables` :
    Les variables sont délimitées par deux parenthèses : ``((song))`` sera replacé par le 
    contenu de la variable ``song`` lors du rendu d'un template. Il est possible d'appeller
-   des méthodes python sur les variables : ``(( songlist.length() ))`` est tout à fait valide.
+   des méthodes python sur les variables : ``(( songlist.length() ))`` est tout
+   à fait valide (si toutefois l'objet ``songlist`` a une méthode
+   ``length()``).
    
    Les variables accessibles dans un template sont l'ensemble des options définies dans le 
    :ref:`bloc de déclaration des variables <templates_vars>`, et prennent soit les valeur par
@@ -73,7 +75,7 @@ Les instructions les plus utiles sont détaillées ici.
 :dfn:`extends` :
    Il est possible d'étendre un template près-existant. Dès lors, tout le contenu écrit 
    dans un bloc sera placé dans le bloc correspondant du template parent. Si le bloc n'existe pas,
-   le contenu sera placé à la fin du fichier, et donc ignoré à la compilatio LaTeX car
+   le contenu sera placé à la fin du fichier, et donc ignoré à la compilation LaTeX car
    placé après le ``\end{document}``. Pour étendre un template particulier, on utilise ::
       
       (* extends "template.tex" *)
@@ -158,6 +160,8 @@ fonctions différentes.
      :dfn:`postface`
         Pour ajouter une postface au receuil.
 
+  Ce template ne produit aucun fichier PDF.
+
 
 :file:`songs.tex`
   Le template :file:`songs.tex` étends :file:`layout.tex`, et se charge de placer le contenu dans le document. Il contient le minimum nécessaire pour que les chansons (mais pas les index) soient rendues.
@@ -213,5 +217,6 @@ peut dépendre ou non de la langue, avec la syntaxe suivante :
    "ma_variable": {"default": {"default":"Valeur indépendante de la langue."},
    "mon_autre_variable": {"default": {"french":"Valeur par défaut pour un carnet en français.",
                                       "english":"Valeur par défaut pour un carnet en anglais.",
-                                       }   
+                                      "default":"Valeur par défaut si la langue n'est ni le français ni l'anglais."
+                                       }
    }

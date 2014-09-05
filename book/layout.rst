@@ -69,7 +69,7 @@ authwords         Options pour traiter les    dictionnaire de listes de chaînes
                   ``authignoreword`` (noms à  ``after``
                   ignorer), ``authbyword``
                   (mots introduisant les
-                  noms des auteurs).
+                  noms des auteurs)).
 ================= =========================== =================================== =================
 
 Template :file:`default.tex`
@@ -103,18 +103,6 @@ notenamesout       Nom des notes               chaîne de caractères parmi :   
 lang               langue du recueil           ``french``, ``english``, etc.                 ``"english"``
 title              titre du recueil            chaîne de caractères                          ``"Recueil de chansons pour guitare"``
 author             auteur du recueil           chaîne de caractères                          ``"L'équipe Patacrep"``
-subtitle           sous-titre du recueil       chaîne de caractères                           *vide*
-version            version du recueil          chaîne de caractères                          ``"undefined"``
-web                adresse du site web du      chaîne de caractères                          ``"http://www.patacrep.com"``
-                   recueil
-mail               adresse électronique        chaîne de caractères                          ``"crep@team-on-fire.com"``
-                   associée au recueil
-
-picture            image de la page de garde   chemin vers image, au format                  ``"treble_a.png"``
-                                               ``jpg``, ``png`` ou ``pdf``
-picturecopyright   copyright de l'image        chaîne de caractères                          ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
-footer             pied de page de la page     chaîne de caractères                          ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
-                   de garde
 ================== =========================== ============================================= ===========================
 
 Template :file:`patacrep.tex`
@@ -132,4 +120,16 @@ notebgcolor        couleur des notes dans      code hexadécimal                
                    les chansons
 indexbgcolor       couleur des liens dans      code hexadécimal                    ``"D1E4AE"``
                    l'index
+subtitle           sous-titre du recueil       chaîne de caractères                           *vide*
+version            version du recueil          chaîne de caractères                          ``"undefined"`` *(la version n'est alors pas indiquée)*
+web                adresse du site web du      chaîne de caractères                          ``"http://www.patacrep.com"``
+                   recueil
+mail               adresse électronique        chaîne de caractères                          ``"crep@team-on-fire.com"``
+                   associée au recueil
+
+picture            image de la page de garde   chemin vers image, au format                  ``"treble_a.png"``
+                                               ``jpg``, ``png`` ou ``pdf``
+picturecopyright   copyright de l'image        chaîne de caractères                          ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
+footer             pied de page de la page     chaîne de caractères                          ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
+                   de garde
 ================== =========================== =================================== =================

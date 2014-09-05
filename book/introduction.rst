@@ -55,17 +55,17 @@ Syntaxe des fichiers :file:`.sb`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un fichier :file:`.sb` est écrit au format `JSON`. Le format JSON est un type de fichier
-texte dans lequel on représente des information de trois manières différentes : 
+texte dans lequel on représente des information de trois manières différentes :
 
-  - Les chaînes ou chaînes de charactère sont délimitées par des guillemets anglais ``"..."``;
-  - Les listes sont des listes d'éléments ordonnés,  délimitées par ``[`` et ``]``, 
-    et leur contenu est séparé par des virgules ``,``.
-  - Les dictionnaires sont des associations *clef/valeur*, les clefs étant la plupart du 
-    temps des chaînes, et les valeurs pouvant être n'importe quoi. Ils sont délimités par ``{``
+  - les chaînes ou chaînes de charactère sont délimitées par des guillemets anglais ``"..."``;
+  - les listes sont des listes d'éléments ordonnés,  délimitées par ``[`` et ``]``,
+    et leurs éléments sont séparés par des virgules ``,`` ;
+  - les dictionnaires sont des associations *clef/valeur*, les clefs étant la plupart du 
+    temps des chaînes, et les valeurs pouvant être n'importe quel type de données accepté par JSON. Ils sont délimités par ``{``
     et ``}``, et les différentes paires *clef/valeur* sont séparées par des virgules.
 
 
-Il contient un dictionnaire, dont les clefs sont les noms d'options, et les valeurs associées 
+Le fichier :file:`.sb` contient un dictionnaire, dont les clefs sont les noms d'options, et les valeurs associées 
 sont les valeurs de ces options. Le type des valeurs dépend de l'option considérée, et est
 détaillé dans la section sur la :ref:`mise en page <layout>`. Une option est un peu spéciale, il 
 s'agit de l'option ``"content"``, qui traduit le contenu du futur carnet de chants. Sa syntaxe est 

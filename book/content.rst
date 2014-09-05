@@ -111,7 +111,7 @@ est possible d'en écrire d'autres.
   Les fichiers sont recherchés successivement dans les datadirs associés 
   à un carnet. :py:mod:`song` commence par chercher dans le repertoire
   :file:`songs` du premier datadir et si au moins un fichier correspond 
-  à l'expression régulière, stope la recherche et passe à l'expression suivante.
+  à l'expression régulière, stoppe la recherche et passe à l'expression suivante.
   Sinon, il cherche dans le datadir suivant, et ainsi de suite jusqu'à la 
   fin de la liste.
 
@@ -176,8 +176,8 @@ est possible d'en écrire d'autres.
 
 :py:mod:`cwd` : changement de répertoire
   Lorsque plusieurs chansons du même répertoire sont incluses, il peut être
-  fastidieux de redonner le chemin complet à chaque fois. Ce plugin permet de
-  s'éviter ce travail. Les deux valeurs suivantes de la variable ``content``
+  fastidieux de redonner le chemin complet à chaque fois. Ce plugin permet
+  d'éviter ce travail. Les deux valeurs suivantes de la variable ``content``
   sont équivalentes : ``["des/repertoires/vers/chanson1.sg",
   "des/repertoires/vers/chanson2.sg", "des/repertoires/vers/chanson3.sg"]`` et
   ``["cwd(des/repertoires/vers)", "chanson1.sg", "chanson2.sg",
@@ -189,7 +189,7 @@ est possible d'en écrire d'autres.
   :file:`repertoire/*.sg` puis, seulement si aucune chanson n'a été trouvée, toutes
   les chansons de :file:`songs/repertoire/*.sg`.
 
-  Enfin, il faut remarque que, tout comme le plugin :py:mod:`sorted`, la liste de
+  Enfin, il faut remarquer que, tout comme le plugin :py:mod:`sorted`, la liste de
   contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions régulières
   correspondant à des chansons : elle peut être n'importe quel contenu
   correspondant à une liste de chansons. La commande ``["cwd(repertoire)",
@@ -207,7 +207,7 @@ est possible d'en écrire d'autres.
 
   Ces mots-clefs ne prennent pas d'arguments, et ont pour contenu une chaîne de
   caractères (le titre), ou deux pour les versions non étoilées (le titre, et
-  le titre court pour la table des matières).
+  le titre court, optionnel, pour la table des matières).
 
   Exemple : ``["chapter", "Chansons d'amour"]``
 
