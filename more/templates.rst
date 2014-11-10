@@ -12,7 +12,7 @@ Le processus de génération d'un carnet en PDF est le suivant :
 
 Après l'étape 1, l'intégralité du carnet (contenu et mise en page) est défini. 
 Pour modifier un carnet, il faut donc se pencher sur cette étape. La gestion du 
-contenu est délégée aux :ref:`plugins <plugins_write>`, ici nous allons voir comment 
+contenu est déléguée aux :ref:`plugins <plugins_write>`, ici nous allons voir comment 
 modifier la mise en page. LaTeX étant utilisé pour créer ces carnets, une bonne connaissance
 de ce langage est nécessaire.
 
@@ -25,7 +25,7 @@ Fonctionnement d'un système de templates
 Idée de base
 ^^^^^^^^^^^^
 
-Lors de la création de carnets de chants avec LaTeX, on écrit souvent des fichier ayant la 
+Lors de la création de carnets de chants avec LaTeX, on écrit souvent des fichiers ayant la 
 même structure, mais un contenu un peu différent. Un moteur de template permet de décrire la
 structure du fichier final, en indiquant quelle valeur devra être utilisée à quel endroit pour
 effectuer le rendu du document.
@@ -34,18 +34,18 @@ Syntaxe
 ^^^^^^^
 
 Il y a deux types d'éléments de syntaxe avec Jinja2 : des variables, qui seront simplement 
-remplacés par leur valeur et des instructions de contrôle, qui permettent d'ajouter de la logique
+remplacées par leurs valeurs et des instructions de contrôle, qui permettent d'ajouter de la logique
 dans la construction des templates.
 
 :dfn:`Variables` :
-   Les variables sont délimitées par deux parenthèses : ``((song))`` sera replacé par le 
-   contenu de la variable ``song`` lors du rendu d'un template. Il est possible d'appeller
+   Les variables sont délimitées par deux parenthèses : ``((song))`` sera remplacé par le 
+   contenu de la variable ``song`` lors du rendu d'un template. Il est possible d'appeler
    des méthodes python sur les variables : ``(( songlist.length() ))`` est tout
    à fait valide (si toutefois l'objet ``songlist`` a une méthode
    ``length()``).
    
    Les variables accessibles dans un template sont l'ensemble des options définies dans le 
-   :ref:`bloc de déclaration des variables <templates_vars>`, et prennent soit les valeur par
+   :ref:`bloc de déclaration des variables <templates_vars>`, et prennent soit les valeurs par
    défaut, soit les valeurs définies par les utilisateurs dans les fichiers :file:`.sb`.
    
    Lorsque ces variables sont des chemins de fichiers, il est important de toujours utiliser
@@ -53,8 +53,8 @@ dans la construction des templates.
    ``(( path2posix(path) ))``.
 
 :dfn:`Instructions` :
-   Les instructions sont signalés par ``(* *)``. Ils existe plusieurs, qui suivent le même
-   format : ``(* <instruction> <arguments> *)``, et se termine parfois par ``(* end<instruction> *)``.
+   Les instructions sont signalées par ``(* *)``. Il en existe plusieurs, qui suivent le même
+   format : ``(* <instruction> <arguments> *)``, et qui se terminent parfois par ``(* end<instruction> *)``.
    
 Les instructions les plus utiles sont détaillées ici.
 
@@ -104,7 +104,7 @@ Les instructions les plus utiles sont détaillées ici.
       (* endif *)
    
 :dfn:`for` :
-   Il est possible de répeter un contenu avec une boucle ``for``. La syntxe est la suivante : ::
+   Il est possible de répeter un contenu avec une boucle ``for``. La syntaxe est la suivante : ::
    
       (* for lang in languages_list *)
          Contenu à être répété, en utilisant la variable ((lang))
@@ -121,18 +121,18 @@ Les instructions les plus utiles sont détaillées ici.
       (* endfor *)
 
 Pour le reste des fonctionalités de Jinja, vous pouvez aller voir la `documentation <http://jinja.pocoo.org/>`__,
-en retenant que ``{{ variable }}`` et ``{% instruction %}`` on été remplacés par ``(( variable ))`` et ``(* instruction *)``.
+en retenant que ``{{ variable }}`` et ``{% instruction %}`` ont été remplacé par ``(( variable ))`` et ``(* instruction *)``.
 
 .. _templates_default:
 
 Templates par défaut
 --------------------
 
-Les templates suivant sont fournis par défaut par ``Patacrep``, et remplissent des
+Les templates suivants sont fournis par défaut par ``Patacrep`` et remplissent des
 fonctions différentes.  
 
 :file:`layout.tex`
-  Défini l'ensemble des ``block`` qui seront accessibles aux autres templates. Les blocs suivant sont
+  Défini l'ensemble des ``block`` qui seront accessibles aux autres templates. Les blocs suivants sont
   définis, dans cet ordre :
 
      :dfn:`documentclass`
@@ -158,7 +158,7 @@ fonctions différentes.
         Le contenu principal est placé dans ce bloc ;
 
      :dfn:`postface`
-        Pour ajouter une postface au receuil.
+        Pour ajouter une postface au recueil.
 
   Ce template ne produit aucun fichier PDF.
 
@@ -168,7 +168,7 @@ fonctions différentes.
 
 :file:`default.tex`
   Le template :file:`default.tex` étends :file:`songs.tex`, et applique une mise en forme minimale, ainsi que les index.
-  Si vous voulez créer votre propre mise en page, c'est sans doutes celui-ci qu'il vous faudra étendre.
+  Si vous voulez créer votre propre mise en page, c'est sans doute celui-ci qu'il vous faudra étendre.
 
 :file:`patacrep.tex`
   Le template :file:`patacrep.tex` étends :file:`default.tex`, et applique la mise en forme spéciale du
@@ -193,8 +193,8 @@ Les variables
 ^^^^^^^^^^^^^
 
 Si vous voulez accéder à des variables dans vos templates avec la syntaxe ``(( ma_variable ))``, vous 
-devez définir ces variables au début de votre fichier de template. Ces définition doivent être placées 
-entre les instructions ``(* variables *)`` et ``(* endvariables *)``, et sont décrite au format JSON selon 
+devez définir ces variables au début de votre fichier de template. Ces définitions doivent être placées 
+entre les instructions ``(* variables *)`` et ``(* endvariables *)``, et sont décrites au format JSON selon 
 le schéma suivant :
 
 .. code-block:: json
@@ -206,7 +206,7 @@ le schéma suivant :
 
 Les variables sont déclarées dans un dictionnaire, dont les clefs sont les noms des variables, et les valeurs des
 dictionnaires. Dans ces valeurs peuvent entrer plusieurs clefs, dont les plus utiles sont ``"description"``, qui est 
-un dictionnaire de description de cette variable ; et ``"default"`` qui reseigne la valeur par défaut de cette variable.
+un dictionnaire de description de cette variable ; et ``"default"`` qui renseigne la valeur par défaut de cette variable.
 
 La valeur par défaut peut être de tous les types acceptés par JSON (chaînes, listes et dictionnaires) et 
 peut dépendre ou non de la langue, avec la syntaxe suivante : 
