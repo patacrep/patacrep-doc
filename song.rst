@@ -1,7 +1,7 @@
 .. _song:
 
-Chanson
-=======
+Écrire une chanson
+==================
 
 Une chanson est un fichier texte :file:`chanson.sg` placé dans le répertoire
 :file:`songs` (ou un de ses sous-répertoires) d'un datadir. C'est un fichier LaTeX
@@ -391,18 +391,18 @@ partition entre accolades, comme dans l'exemple suivant.
 .. code-block:: lilypond
 
   \begin{lilypond}
-  \include "header" 
-  \paper{paper-height = 3.3\cm} 
+  \include "header"
+  \paper{paper-height = 3.3\cm}
   {
-    \key c \major 
-    \time 2/4 
+    \key c \major
+    \time 2/4
     \relative c''
       {
-        e4 c g'2 a4 a8. a16 g8 e4 c8 
-        a'4 a8. a16 g8 f e c d2~ d4 
-        e8 f g4 g8. g16 f8 e d c a c4 a8 g4 
+        e4 c g'2 a4 a8. a16 g8 e4 c8
+        a'4 a8. a16 g8 f e c d2~ d4
+        e8 f g4 g8. g16 f8 e d c a c4 a8 g4
         c8 d e8 g4 g,8 e' e d d c2
-      } 
+      }
   }
   \end{lilypond}
 
