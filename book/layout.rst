@@ -6,9 +6,9 @@ Faire la mise en page d'un carnet
 La mise en page des carnets est gérée par un système d'options : il est possible
 de spécifier la taille et l'orientation du papier, le type de police des accords,
 *etc.* en mettant le bon mot clef dans un fichier :file:`.sb`. Toutes ces options
-ont des valeurs par défaut, définis à plusieurs endroits. La valeur finale d'une 
+ont des valeurs par défaut, définis à plusieurs endroits. La valeur finale d'une
 option peut provenir de plusieurs origines, données ici par ordre de priorité
-croissante : 
+croissante :
 
 Valeurs par défaut
 ------------------
@@ -32,10 +32,10 @@ d'information dans la :ref:`partie correspondante <templates>`).
 Fichier :file:`.sb`
 -------------------
 
-La majeure partie de la personalisation d'un carnet est effectuée à cet endroit. 
+La majeure partie de la personalisation d'un carnet est effectuée à cet endroit.
 Un fichier :file:`.sb` contient un dictionnaire JSON, dont les clefs sont des options
-et les valeurs les valeurs prisent par ces options. Losrqu'un fichier :file:`.sb` 
-est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"`` 
+et les valeurs les valeurs prisent par ces options. Losrqu'un fichier :file:`.sb`
+est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"``
 sont transmis au gestionnaire de mise en page.
 
 Ces options ne s'appliquent qu'à un carnet de chant particulier.
@@ -58,6 +58,14 @@ Option            Description                 Type                              
 ================= =========================== =================================== =================
 content           contenu à inclure dans le   liste, décrite dans la section      ``[]``
                   recueil                     :ref:`content`
+encoding          encodage des fichiers       chaîne de charactères               ""
+                  à lire
+
+                  Si aucune valeur n'est
+                  renseignée, ``patacrep``
+                  essaye de deviner
+                  l'encodage des fichiers.
+
 template          template à utiliser         nom d'un fichier présent dans un    ``"default.tex"``
                                               dossier :file:`templates`
 titleprefixwords  Mots à ignorer dans le      liste de chaînes de caractères      ``[]``
