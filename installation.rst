@@ -24,6 +24,42 @@ distributions. En attendant, ``patacrep`` peut être installé en utilisant pip
 garder un environnement d'installation propre). Voir la :ref:`section suivante
 <install_pip>` pour les instructions.
 
+Voici quelques informations supplémentaires pour certaines distributions.
+
+Debian
+""""""
+
+Les paquets à installer sous Debian sont :
+
+- Python (il n'est pas nécessaire d'installer ces paquets avec apt : :ref:`pypi <install_pip>` s'en chargera) : TODO
+
+- LaTeX :
+
+  - Nécessaire : TODO
+  - Optionnel pour ``patacrep``, nécessaire pour ``patadata`` : TODO
+
+- Lilypond (optionnel) : TODO
+
+Bilan :
+
+- Paquets nécessaires :
+
+  .. code-block:: shell
+
+    apt-get install TODO Latex minimal
+
+- Paquets recommandés :
+
+  .. code-block:: shell
+
+    apt-get install TODO Latex recommandé + lilypond
+
+CentOS 6.5
+""""""""""
+
+Sur CentOS 6.5, un certain nombre de logiciel par défaut sont trop ancien pour faire fonctionner Patacrep correctement. En particulier, vous devriez utiliser une version récente de TeXLive, et installer ghostscript en version 9.
+
+
 MacOSX
 ^^^^^^
 
@@ -99,14 +135,6 @@ Pour mettre à jour la version de développement, utilisez simplement ::
 
 Depuis le dossier :file:`patacrep`
 
-
-Informations supplémentaires
-----------------------------
-
-CentOS 6.5
-^^^^^^^^^^
-
-Sur CentOS 6.5, un certain nombre de logiciel par défaut sont trop ancien pour faire fonctionner Patacrep correctement. En particulier, vous devriez utiliser une version récente de TeXLive, et installer ghostscript en version 9.
 
 Mise à jour
 ===========
