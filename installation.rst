@@ -11,14 +11,18 @@ suivantes :
  - Python 3.3 ou plus récent. Python 2 n'est pas supporté ;
  - LaTeX, et en particulier ``pdflatex`` ;
 
-`Patacrep` a aussi des dépendances optionelles, qui peuvent ajouter des foncitonnalités,
+`Patacrep` a aussi des dépendances optionelles, qui peuvent ajouter des fonctionnalités,
 mais ne sont pas obligatoires :
  - Lilypond, pour compiler des partitions.
 
 GNU/Linux
 ^^^^^^^^^
 
-TODO
+Il n'existe pas (pour le moment ?) de paquet pour les différentes
+distributions. En attendant, ``patacrep`` peut être installé en utilisant pip
+(éventuellement dans un `virtualenv <http://virtualenv.readthedocs.org>`_, pour
+garder un environnement d'installation propre). Voir la :ref:`section suivante
+<install_pip>` pour les instructions.
 
 MacOSX
 ^^^^^^
