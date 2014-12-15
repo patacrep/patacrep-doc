@@ -6,7 +6,7 @@ Faire la mise en page d'un carnet
 La mise en page des carnets est gérée par un système d'options : il est possible
 de spécifier la taille et l'orientation du papier, le type de police des accords,
 *etc.* en mettant le bon mot clef dans un fichier :file:`.sb`. Toutes ces options
-ont des valeurs par défaut, définis à plusieurs endroits. La valeur finale d'une
+ont des valeurs par défaut, définies à plusieurs endroits. La valeur finale d'une
 option peut provenir de plusieurs origines, données ici par ordre de priorité
 croissante :
 
@@ -58,8 +58,9 @@ Option            Description                 Type                              
 ================= =========================== =================================== =================
 content           contenu à inclure dans le   liste, décrite dans la section      ``[]``
                   recueil                     :ref:`content`
-encoding          encodage des fichiers       chaîne de charactères               ""
-                  à lire
+encoding          encodage des fichiers       chaîne de charactères               ``""``
+                  à lire (chansons,
+                  templates, etc.).
 
                   Si aucune valeur n'est
                   renseignée, ``patacrep``
