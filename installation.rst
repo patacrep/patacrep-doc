@@ -8,12 +8,12 @@ Dépendances
 dépendances à installer pour le faire fonctionner. Ces dépendances sont les mêmes pour tous
 les systèmes d'exploitation, mais la méthode d'installation diffère. Ces dépendance sont les
 suivantes :
- - Python 3.3 ou plus récent. Python 2 n'est pas supporté ;
- - LaTeX, et en particulier ``pdflatex`` ;
+- Python 3.3 ou plus récent. Python 2 n'est pas supporté ;
+- LaTeX, et en particulier ``pdflatex`` ;
 
 `Patacrep` a aussi des dépendances optionelles, qui peuvent ajouter des fonctionnalités,
 mais ne sont pas obligatoires :
- - Lilypond, pour compiler des partitions.
+- Lilypond, pour compiler des partitions.
 
 GNU/Linux
 ^^^^^^^^^
@@ -29,30 +29,41 @@ Voici quelques informations supplémentaires pour certaines distributions.
 Debian
 """"""
 
-Les paquets à installer sous Debian sont :
+Les paquets à installer sous Debian (et sans doutes sous ses dérivées: Ubuntu, ...) sont :
 
-- Python (il n'est pas nécessaire d'installer ces paquets avec apt : :ref:`pypi <install_pip>` s'en chargera) : TODO
+- Python 3.4
+
+   Malheureusement, Debian Wheezy ne fourni que Python 3.2, qui est incompatible. Les deux solutions
+   sont soit d'installer le paquet .deb depuis le site officiel de `Python <https://www.python.org/download/>`_,
+   soit d'utiliser les paquets de Jessie (la prochaine version stable de Debian). Pour cela, il faut ajouter
+   la ligne ``deb http://ftp.fr.debian.org/debian jessie main`` à la fin du fichier :file:`/etc/apt/sources.list`,
+   soit en une ligne : ::
+
+      echo "deb http://ftp.fr.debian.org/debian jessie main " >> /etc/apt/sources.list
+
+   Puis installer Python3.4 et pip avec :command:`apt-get` : ::
+
+      apt-get update
+      apt-get install python3.4 python3-pip
+
+   Vous pouriez avoir envie de supprimer cette ligne, pour ne pas installer d'autres paquets spécifiques à Jessie.
 
 - LaTeX :
 
-  - Nécessaire : TODO
-  - Optionnel pour ``patacrep``, nécessaire pour ``patadata`` : TODO
+  - Nécessaire : texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra
+  - Optionnel pour ``patacrep``, nécessaire pour ``patadata`` : texlive-lang-english, texlive-lang-french, texlive-lang-portuguese, texlive-lang-spanish, texlive-fonts-extra
 
-- Lilypond (optionnel) : TODO
+- Lilypond (optionnel) : lilypond
 
 Bilan :
 
-- Paquets nécessaires :
+- Paquets nécessaires : ::
 
-  .. code-block:: shell
+    apt-get install texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra
 
-    apt-get install TODO Latex minimal
+- Paquets recommandés : ::
 
-- Paquets recommandés :
-
-  .. code-block:: shell
-
-    apt-get install TODO Latex recommandé + lilypond
+    apt-get install lilypond texlive-lang-english, texlive-lang-french, texlive-lang-portuguese, texlive-lang-spanish, texlive-fonts-extra
 
 CentOS 6.5
 """"""""""
@@ -108,7 +119,7 @@ Mac OS X
 ^^^^^^^^
 
 Si vous avez des erreurs lors de l'installation, deux cas sont possibles :
-   - erreur ``permission denied`` : vous n'avez pas de droits en écriture dans :path:`/usr/bin`. Ajoutez ``sudo`` devant la commande fautive, et relancez là (``sudo pip3 install patacrep``). Un mot de passe administrateur vous sera demandé.
+   - erreur ``permission denied`` : vous n'avez pas de droits en écriture dans :file:`/usr/bin`. Ajoutez ``sudo`` devant la commande fautive, et relancez là (``sudo pip3 install patacrep``). Un mot de passe administrateur vous sera demandé.
    - ``songbook: command not found``, c'est que :file:`/urs/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, exécutez la commande ::
 
        echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
