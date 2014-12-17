@@ -8,11 +8,13 @@ Dépendances
 dépendances à installer pour le faire fonctionner. Ces dépendances sont les mêmes pour tous
 les systèmes d'exploitation, mais la méthode d'installation diffère. Ces dépendance sont les
 suivantes :
-- Python 3.3 ou plus récent. Python 2 n'est pas supporté ;
+
+- Python 3.3 ou plus récent. **Python 2 n'est pas supporté** ;
 - LaTeX, et en particulier ``pdflatex`` ;
 
 `Patacrep` a aussi des dépendances optionelles, qui peuvent ajouter des fonctionnalités,
 mais ne sont pas obligatoires :
+
 - Lilypond, pour compiler des partitions.
 
 GNU/Linux
