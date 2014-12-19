@@ -22,7 +22,7 @@ GNU/Linux
 
 Il n'existe pas (pour le moment ?) de paquet pour les différentes
 distributions. En attendant, ``patacrep`` peut être installé en utilisant pip
-(éventuellement dans un `virtualenv <http://virtualenv.readthedocs.org>`_, pour
+(éventuellement dans un `virtualenv <http://virtualenv.readthedocs.org>`__, pour
 garder un environnement d'installation propre). Voir la :ref:`section suivante
 <install_pip>` pour les instructions.
 
@@ -31,41 +31,36 @@ Voici quelques informations supplémentaires pour certaines distributions.
 Debian
 """"""
 
-Les paquets à installer sous Debian (et sans doutes sous ses dérivées: Ubuntu, ...) sont :
+Il n'existe pas (encore ?) de paquet debian pour `patacrep`. Les paquets à
+installer sous Debian (et sans doutes sous ses dérivées comme Ubuntu) sont :
 
 - Python 3.4
 
-   Malheureusement, Debian Wheezy ne fourni que Python 3.2, qui est incompatible. Les deux solutions
-   sont soit d'installer le paquet .deb depuis le site officiel de `Python <https://www.python.org/download/>`_,
-   soit d'utiliser les paquets de Jessie (la prochaine version stable de Debian). Pour cela, il faut ajouter
-   la ligne ``deb http://ftp.fr.debian.org/debian jessie main`` à la fin du fichier :file:`/etc/apt/sources.list`,
-   soit en une ligne : ::
+  .. note::
 
-      echo "deb http://ftp.fr.debian.org/debian jessie main " >> /etc/apt/sources.list
+    Malheureusement, Debian Wheezy (stable) ne fourni que
+    Python 3.2, qui est incompatible. Pour utiliser patacrep, il faut installer
+    Python3.4, par exemple en utilisant `apt-pinnig
+    <http://jaqque.sbih.org/kplug/apt-pinning.html>`_.
 
-   Puis installer Python3.4 et pip avec :command:`apt-get` : ::
+  - Installer les paquets nécessaires (pour une installation de `patacrep` sans :ref:`virtualenv <virtualenv>`):
 
-      apt-get update
-      apt-get install python3.4 python3-pip
+    .. code-block:: shell
 
-   Vous pouriez avoir envie de supprimer cette ligne, pour ne pas installer d'autres paquets spécifiques à Jessie.
+        apt-get install python3.4 python3-pip
+
+  - Installer les paquets nécessaires (pour une installation de `patacrep` avec :ref:`virtualenv <virtualenv>`):
+
+    .. code-block:: shell
+
+        apt-get install python3-virtualenv
 
 - LaTeX :
 
-  - Nécessaire : texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra
-  - Optionnel pour ``patacrep``, nécessaire pour ``patadata`` : texlive-lang-english, texlive-lang-french, texlive-lang-portuguese, texlive-lang-spanish, texlive-fonts-extra
+  - Nécessaires : ``texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra``
+  - Optionnel pour `patacrep`, nécessaire pour `patadata` : ``texlive-lang-english texlive-lang-french texlive-lang-portuguese texlive-lang-spanish texlive-fonts-extra``
 
-- Lilypond (optionnel) : lilypond
-
-Bilan :
-
-- Paquets nécessaires : ::
-
-    apt-get install texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra
-
-- Paquets recommandés : ::
-
-    apt-get install lilypond texlive-lang-english, texlive-lang-french, texlive-lang-portuguese, texlive-lang-spanish, texlive-fonts-extra
+- Lilypond (optionnel) : ``lilypond``
 
 CentOS 6.5
 """"""""""
@@ -109,13 +104,41 @@ Une fois les dépendances installées, vous pouvez vérifier que tout s'est bien
 
 Si le numéro de version s'affiche, tout va bien, si vous avez une erreur ``command not found``, il y a un problème.
 
-Pour la suite, la bibliothèque `Patacrep` et le programme :command:`songbook` sont disponibles sur le `Python Packages Index <http://pypi.python.org/pypi/patacrep>`_, vous pouvez donc les installer avec ``pip`` ::
+Pour la suite, la bibliothèque `Patacrep` et le programme :command:`songbook` sont disponibles sur le `Python Packages Index <http://pypi.python.org/pypi/patacrep>`_, vous pouvez donc les installer avec ``pip``.
+
+Sans :ref:`virtualenv <virtualenv>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: shell
 
     pip3 install patacrep
 
 Puis pour tester si tout a bien fonctionné ::
 
    songbook --version
+
+.. _virtualenv:
+
+Avec :ref:`virtualenv <virtualenv>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pour éviter de mélanger les installation système (par `apt`, `yum` ou autre) et
+les installations de `pip`, il est recommandé d'installer l'application
+localement dans un `virtualenv`:
+
+.. code-block:: shell
+
+  $ virtualenv -p python3 virtualenv
+  Already using interpreter /usr/bin/python3
+  Using base prefix '/usr'
+  New python executable in virtualenv/bin/python3
+  Also creating executable in virtualenv/bin/python
+  Installing setuptools, pip...done.
+  $ . virtualenv/bin/activate
+  (virtualenv)$ pip install patacrep
+  ...
+  $ songbook --version
+  ...
 
 Mac OS X
 ^^^^^^^^
