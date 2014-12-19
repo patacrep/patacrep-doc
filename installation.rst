@@ -140,6 +140,15 @@ localement dans un `virtualenv`:
   $ songbook --version
   ...
 
+Si vous optez pour une installation dans un `virtualenv`, il faudra lancer
+la commande
+
+.. code-block:: shell
+
+   . PATH_TO_VIRTUALENV/bin/activate
+
+avant chaque utilisation de :command:`songbook` ou de `patacrep`.
+
 Mac OS X
 ^^^^^^^^
 
