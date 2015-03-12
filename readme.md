@@ -2,7 +2,7 @@
 
 Documentation for the [patacrep](https://github.com/patacrep/patacrep) project, using Sphinx. 
 
-This documentation may be read online on [Read the Docs](http://patacrep.readthedocs.org/fr/latest/index.html).
+This documentation may be read online on [Read the Docs](http://patacrep.readthedocs.org/).
 
 To build the documentation, you will need a `make` implementation and sphinx. Sphinx can be installed with `pip`, or very likely with the package manager of your distribution.
 
