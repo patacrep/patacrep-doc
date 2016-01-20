@@ -22,50 +22,74 @@ Exemple de fichier :file:`.sb`
 
 Un exemple de fichier :file:`.sb` est fourni `avec le code source
 TODO remplacer avec le blob de la version 4.0.0
-<https://github.com/patacrep/patacrep/blob/master/patacrep/data/examples/example.sb>`_ :
+<https://github.com/patacrep/patacrep/blob/master/examples/example.sb>`_ :
 
-.. code-block:: json
+.. code-block:: yaml
 
-    {
-    "bookoptions" : [
-        "importantdiagramonly",
-        "repeatchords",
-        "lilypond",
-        "pictures"
-      ],
-    "booktype" : "chorded",
-    "lang" : "french",
-    "authwords" : {
-      "sep" : ["and", "et"]
-      },
-    "content" : [
-      ["section", "Traditional"],
-      "chevaliers_de_la_table_ronde.sg",
-      "greensleeves.sg",
-      "vent_frais.sg",
-      ["section", "Example"],
-      "example*.sg",
-      "example*.sg"
-      ]
-    }
+  content:
+    - section: "Chants Traditionnels"
+    - "chevaliers_de_la_table_ronde.sg"
+    - "greensleeves.sg"
+    - "vent_frais.sg",
+    - section: "Exemples"
+    - "exemple*.sg"
+    
+  book:
+    lang: en
+    encoding: utf-8
+    pictures: yes
+    template: default.tex
+    onesongperpage: no
+
+  chords: # Options relatives aux accords
+    show: yes
+    diagramreminder: important
+    diagrampage: yes
+    repeatchords: yes
+    lilypond: no
+    tablatures: no
+    instrument: guitar
+    notation: alphascale
+
+  authors: # Comment sont analysés les auteurs
+    separators:
+    - and
+    ignore:
+    - unknown
+    after:
+    - by
+
+  titles: # Comment sont analysés les titres
+    prefix:
+    - The
+    - Le
+    - La
+    - "L'"
+    - A
+    - Au
+    - Ces
+    - De
+    - Des
+    - El
+    - Les
+    - Ma
+    - Mon
+    - Un
 
 .. _sb:
 
 Syntaxe des fichiers :file:`.sb`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Un fichier :file:`.sb` est écrit au format `JSON`. Le format JSON est un type de fichier
+Un fichier :file:`.sb` est écrit au format `YAML`. Le format YAML est un type de fichier
 texte dans lequel on représente des information de trois manières différentes :
 
-  - les chaînes ou chaînes de charactère sont délimitées par des guillemets anglais ``"..."``;
-  - les listes sont des listes d'éléments ordonnés,  délimitées par ``[`` et ``]``,
-    et leurs éléments sont séparés par des virgules ``,`` ;
-  - les dictionnaires sont des associations *clef/valeur*, les clefs étant la plupart du 
-    temps des chaînes, et les valeurs pouvant être n'importe quel type de données accepté par JSON. Ils sont délimités par ``{``
-    et ``}``, et les différentes paires *clef/valeur* sont séparées par des virgules.
+  - les listes sont des listes d'éléments ordonnés : chaque élément commence sur une nouvelle ligne, précédé d'un tiret ``-``. Tous les élements d'une même liste doivent avoir la même indentation (décalage à depuis le bord gauche) ;
+  - les tableaux associatifs composé de multiples *clef/valeur*, les clefs étant la plupart du temps des chaînes, et les valeurs pouvant être n'importe quel type de données accepté par YAML.
+  - les données scalaires : chaînes de charactère (délimitées par des guillemets anglais ``"..."``), nombre, booléen (``yes``/``no``);
 
 
-Le fichier :file:`.sb` contient un dictionnaire, dont les clefs sont les noms d'options, et les valeurs associées 
+Le fichier :file:`.sb` contient un tableau associatif, dont les clefs sont les noms d'options, et les valeurs associées 
 sont les valeurs de ces options. Le type des valeurs dépend de l'option considérée, et est
 détaillé dans la section sur la :ref:`mise en page <layout>`. Une option est un peu spéciale, il 
 s'agit de l'option ``"content"``, qui traduit le contenu du futur carnet de chants. Sa syntaxe est 
