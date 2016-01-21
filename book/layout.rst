@@ -94,7 +94,7 @@ Ce sont des sous-clés de la clé ``book``.
                                                                               Actuellement "fr" et "en" sont supportés.                      
  onesongperpage   Commencer toutes les chansons sur une nouvelle page         Booléen                                     no                 
  pictures         Afficher les couvertures des albums                         Booléen                                     yes                
- template         Template de carnet à utiliser                               Chaîne de charactères                       ``default.tex``    
+ template         Template de carnet à utiliser                               Chaîne de charactères                       ``patacrep.tex``    
  encoding         Encodage des fichiers à lire (chansons, templates, etc.).   Chaîne de charactères                       ``utf-8``          
                   Peut poser des problèmes d'accentuation.                                                                                   
 ================= =========================================================== =========================================== ===================
@@ -167,19 +167,34 @@ Ce sont des sous-clés de la clé ``titles``.
                                                             ``- Un``            
 ========= =============================== ================= ===================
 
-Templates
----------
+Options des templates
+---------------------
 
-Les templates permettent de définir des valeurs particulières à certaines
-options. Par exemple, pour réaliser une collection de recueils, il est possible
-d'en définir les caractéristiques générales dans un template particulier. Les
-options prenant des valeurs différentes pour chacun des recueils sont définies
-dans les fichiers :file:`.sb`. Ceci signifie qu'en écrivant le template adéquat,
-il est possible de définir de nouvelles options de mise en page (plus
-d'information dans la :ref:`partie correspondante <templates>`).
+Certains options sont propres aux templates utilisés. Par exemple le template
+:file:`patacrep.tex` (qui inclut notamment :file:`default.tex`) permet de personnaliser
+certaines couleurs et la page de garde.
+
+Les options des templates sont regroupés sous la clé ``template`` avec comme sous-clé le nom
+du fichier de template:
+
+.. code-block:: yaml
+  
+  # options précédentes `book`, `chords`...
+  
+  template:
+    patacrep.tex:
+      color:
+        songlink: FF0000
+        hyperlink: 0000FF
+      bgcolor:
+        note: D1E4AE
+        songnumber: AED1E4
+        index: E4AED1
 
 Template :file:`default.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+// TODO
 
 .. tabularcolumns:: |l|L|L|L|
 
