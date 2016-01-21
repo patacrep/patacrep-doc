@@ -29,7 +29,7 @@ contenu à inclure. Voici un exemple de contenu.
 Comme nous pouvons le voir, la valeur de ``content`` est une liste de tableaux associatifs
 ou de chaînes de caractères.
 Une chaîne de caractères est automatiquement transformé en tableau avec une clé ``song``. Ainsi ``"boire/*.csg"`` et ``song: "boire/*.csg"`` sont équivalents.
-La *clé* des tableaux associatif (avant le ``:``) est une chaîne indiquant le
+La *clé* d'un tableau associatif (avant le ``:``) est une chaîne indiquant le
 type de contenu considéré : par exemple, ``section: "Chansons à boire"`` va
 créer une section ayant pour titre *Chansons à boire*, tandis que
 
