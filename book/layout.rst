@@ -125,6 +125,48 @@ Ce sont des sous-clés de la clé ``chords``.
 =================  ===================================================== ========================================================== ===================
 
 
+Analyse des auteurs
+^^^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``authors``.
+
+.. tabularcolumns:: |l|L|L|L|
+
+============= ======================================== ================= ===================
+ Option       Description                              Type              Valeur par défaut  
+ ============= ======================================== ================= ===================
+ separators   Mots qui séparent les artistes           Tableau de mots   ``- and``          
+ ignore       Noms d'artistes à ignorer                Tableau de mots   ``- unknown``      
+ after        Mots introduisant les noms des auteurs   Tableau de mots   ``- by``           
+============= ======================================== ================= ===================
+
+
+Analyse des titres
+^^^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``titles``.
+
+.. tabularcolumns:: |l|L|L|L|
+
+========= =============================== ================= ===================
+ Option   Description                     Type              Valeur par défaut  
+========= =============================== ================= ===================
+ prefix   Préfixe à ignorer lors du tri   Tableau de mots   ``- The``          
+                                                            ``- Le``            
+                                                            ``- La``            
+                                                            ``- "L'"``          
+                                                            ``- A``             
+                                                            ``- Au``            
+                                                            ``- Ces``           
+                                                            ``- De``            
+                                                            ``- Des``           
+                                                            ``- El``            
+                                                            ``- Les``           
+                                                            ``- Ma``            
+                                                            ``- Mon``           
+                                                            ``- Un``            
+========= =============================== ================= ===================
+
 Templates
 ---------
 
