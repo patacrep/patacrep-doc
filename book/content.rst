@@ -30,7 +30,7 @@ Comme nous pouvons le voir, la valeur de ``content`` est une liste de tableaux a
 ou de chaînes de caractères.
 Une chaîne de caractères est automatiquement transformé en tableau avec une clé ``song``. Ainsi ``"boire/*.csg"`` et ``song: "boire/*.csg"`` sont équivalents.
 La *clé* d'un tableau associatif (avant le ``:``) est une chaîne indiquant le
-type de contenu considéré : par exemple, ``section: "Chansons à boire"`` va
+type de contenu considéré : par exemple ``section: "Chansons à boire"`` va
 créer une section ayant pour titre *Chansons à boire*, tandis que
 
 .. code-block:: yaml
@@ -44,6 +44,7 @@ créer une section ayant pour titre *Chansons à boire*, tandis que
 va inclure toutes les chansons des répertoires ``amour/*.csg`` et ``love/*.csg``, triées par auteur (``by``), puis par titre (``@title``).
 
 Lorsqu'un tableau de type ``content`` n'a pas de contenu, cela va inclure toutes les chansons du répertoire :file:`songs`:
+
 .. code-block:: yaml
 
   content:
@@ -71,25 +72,24 @@ est possible d'en écrire d'autres.
   minimum à savoir est que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` 
   correspond au répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
 
-  Exemple : 
-.. code-block:: yaml
-
-  content:
-    song:
+  .. code-block:: yaml
+  
+    content:
+      song:
+        - "premiere.sg"
+        - "boire/*.sg"
+  
+  Est équivalent à (mot-clé ``song`` automatique):
+  
+  .. code-block:: yaml
+  
+    content:
       - "premiere.sg"
       - "boire/*.sg"
 
-Est équivalent à (mot-clé ``song`` automatique):
 
-.. code-block:: yaml
-
-  content:
-    - "premiere.sg"
-    - "boire/*.sg"
-
-  
   Les fichiers sont recherchés successivement dans les datadirs associés 
-  à un carnet. :py:mod:`song` commence par chercher dans le repertoire
+  à un carnet : :py:mod:`song` commence par chercher dans le repertoire
   :file:`songs` du premier datadir et si au moins un fichier correspond 
   à l'expression régulière, stoppe la recherche et passe à l'expression suivante.
   Sinon, il cherche dans le datadir suivant, et ainsi de suite jusqu'à la 
@@ -149,42 +149,67 @@ Est équivalent à (mot-clé ``song`` automatique):
   qui renvoie une liste de chansons. Ainsi (en utilisant le plugin :py:mod:`cwd`
   décrit ci-après) le ``content`` suivant est parfaitement valide.
 
-.. code-block:: yaml
+  .. code-block:: yaml
+  
+    content:
+      sorted:
+        content: 
+          - cwd:
+            path: repertoire
+            content: "*.sg"
 
-  content:
-    sorted:
-      content: 
-        - cwd:
-          path: repertoire
-          content: "*.sg"
-
-  Une conséquence de cela est que ne pas donner de ``content` à  ``sorted`` permet
+  Une conséquence de cela est que ne pas donner de ``content`` à  ``sorted`` permet
   d'inclure toutes les chansons du répertoire :file:`songs`, récursivement.
 
 :py:mod:`cwd` : changement de répertoire
   Lorsque plusieurs chansons du même répertoire sont incluses, il peut être
   fastidieux de redonner le chemin complet à chaque fois. Ce plugin permet
   d'éviter ce travail. Les deux valeurs suivantes de la variable ``content``
-  sont équivalentes : ``["des/repertoires/vers/chanson1.sg",
-  "des/repertoires/vers/chanson2.sg", "des/repertoires/vers/chanson3.sg"]`` et
-  ``["cwd(des/repertoires/vers)", "chanson1.sg", "chanson2.sg",
-  "chanson3.sg"]``.
+  sont équivalentes : 
 
-  Cette commande permet aussi de s'affranchir du répertoire :file:`songs`, dans
-  lequel sont cherchées les chansons par défaut. La commande
-  ``["cwd(repertoire)", "*.sg"]`` va inclure toutes les chansons
-  :file:`repertoire/*.sg` puis, seulement si aucune chanson n'a été trouvée, toutes
-  les chansons de :file:`songs/repertoire/*.sg`.
+  .. code-block:: yaml
+  
+    content: 
+      - cwd:
+        path: des/repertoires/vers
+        content: 
+          - "chanson1.sg"
+          - "chanson2.sg"
+          - "chanson3.sg"
+  
+  .. code-block:: yaml
+  
+    content: 
+      - "des/repertoires/vers/chanson1.sg"
+      - "des/repertoires/vers/chanson2.sg"
+      - "des/repertoires/vers/chanson3.sg"
+
+  Cette commande recherche en priorité des chants dans le sous-dossier ``path`` relatif au
+  dossier du fichier :ref:`.sb <sb>`. Si aucun contenu n'est trouvé, alors les chants
+  sont recherché dans le sous-dossier  ``path`` relatif au répertoire :file:`songs` des :ref:`datadir <datadir>` (dans
+  lequel sont cherchées les chansons par défaut).
 
   Enfin, il faut remarquer que, tout comme le plugin :py:mod:`sorted`, la liste de
   contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions régulières
   correspondant à des chansons : elle peut être n'importe quel contenu
-  correspondant à une liste de chansons. La commande ``["cwd(repertoire)",
-  ["sorted", "*""]]`` est donc valide. De plus, la commande
-  ``["cwd(repertoire)"]`` permet d'inclure toutes les chansons (récursivement)
-  comprises dans le répertoire :file:`repertoire`.
+  correspondant à une liste de chansons. De plus, la commande
+  ``cwd`` utlisée sans préciser de ``path`` permet d'inclure toutes les chansons (récursivement)
+  comprises dans le répertoire :file:`path`.
 
-  Exemple : ``["cwd(repertoire)", "chanson1.sg", "chanson2.sg", "chanson3.sg"]]``
+  .. code-block:: yaml
+  
+    content: 
+      - "chants_a_boire/*.sg"
+
+  Ne va inclure que les chants situés directement dans le dossier :file:`chants_a_boire`, 
+  alors que la command ``cwd`` suivante va aussi inclure les chants des sous-dossiers 
+  :file:`chants_a_boire/de_l_eau/`, :file:`chants_a_boire/du_vin/` ...
+
+  .. code-block:: yaml
+  
+    content: 
+      cwd:
+          path: chants_a_boire
 
 :py:mod:`section` : sections LaTeX
   Ce plugin permet d'inclure des sections (et chapitres, paragraphes, etc.).
