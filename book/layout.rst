@@ -13,9 +13,92 @@ croissante :
 Valeurs par défaut
 ------------------
 
-Quelques options ne peuvent pas être laissées vides, et doivent avoir une
-valeur par défaut. Celle-ci est inscrite *en dur* dans le code source de
-:py:mod:`patacrep`, et est donnée dans la liste des options ci-dessous.
+La plupart des options peuvent être omises : elle prendront alors une
+valeur par défaut, documentée ci-dessous.
+
+
+Fichier :file:`.sb`
+-------------------
+
+La majeure partie de la personalisation d'un carnet est effectuée à cet endroit.
+Un fichier :file:`.sb` contient un dictionnaire YAML, dont les clefs sont des options
+et les valeurs les valeurs prisent par ces options. Lorsqu'un fichier :file:`.sb`
+est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"``
+sont transmis au gestionnaire de mise en page.
+
+Voici par exemple le fichier :file:`.sb` qui fournit les options par défaut :
+
+.. code-block:: yaml
+
+  book: # Options générales
+    lang: en
+    encoding: utf-8
+    pictures: yes
+    template: default.tex
+    onesongperpage: no
+
+  chords: # Options musicales
+    show: yes
+    diagramreminder: important
+    diagrampage: yes
+    repeatchords: yes
+    lilypond: no
+    tablatures: no
+    instrument: guitar
+    notation: alphascale
+
+  authors: # Analyse des auteurs
+    separators:
+    - and
+    ignore:
+    - unknown
+    after:
+    - by
+
+  titles: # Analyse des titres
+    prefix:
+    - The
+    - Le
+    - La
+    - "L'"
+    - A
+    - Au
+    - Ces
+    - De
+    - Des
+    - El
+    - Les
+    - Ma
+    - Mon
+    - Un
+
+.. _options:
+
+Liste des options
+-----------------
+
+Les valeurs par défaut sont données ici en supposant que la langue principale
+du recueil est le français.
+
+Options générales
+^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``book``.
+
+.. tabularcolumns:: |l|L|L|L|
+
+================= =========================================================== =========================================== =============================
+ Option           Description                                                 Type                                        Valeur par défaut  
+================= =========================================================== =========================================== =============================
+ lang             Langue du carnet (Code ISO 639-1 à 2 lettres).              Chaîne de charactères                       en                 
+                                                                              Actuellement "fr" et "en" sont supportés.                      
+ onesongperpage   Commencer toutes les chansons sur une nouvelle page         Booléen                                     no                 
+ pictures         Afficher les couvertures des albums                         Booléen                                     yes                
+ template         Template de carnet à utiliser                               Chaîne de charactères                       default.tex        
+ encoding         Encodage des fichiers à lire (chansons, templates, etc.).   Chaîne de charactères                       utf-8              
+                  Peut poser des problèmes d'accentuation.                                                                                   
+================= =========================================================== =========================================== =============================
+
 
 
 Templates
@@ -28,58 +111,6 @@ options prenant des valeurs différentes pour chacun des recueils sont définies
 dans les fichiers :file:`.sb`. Ceci signifie qu'en écrivant le template adéquat,
 il est possible de définir de nouvelles options de mise en page (plus
 d'information dans la :ref:`partie correspondante <templates>`).
-
-Fichier :file:`.sb`
--------------------
-
-La majeure partie de la personalisation d'un carnet est effectuée à cet endroit.
-Un fichier :file:`.sb` contient un dictionnaire JSON, dont les clefs sont des options
-et les valeurs les valeurs prisent par ces options. Losrqu'un fichier :file:`.sb`
-est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"``
-sont transmis au gestionnaire de mise en page.
-
-Ces options ne s'appliquent qu'à un carnet de chant particulier.
-
-.. _options:
-
-Liste des options
------------------
-
-Les valeurs par défaut sont données ici en supposant que la langue principale
-du recueil est le français.
-
-Définies hors des templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. tabularcolumns:: |l|L|L|L|
-
-================= =========================== =================================== =================
-Option            Description                 Type                                Valeur par défaut
-================= =========================== =================================== =================
-content           contenu à inclure dans le   liste, décrite dans la section      ``[]``
-                  recueil                     :ref:`content`
-encoding          encodage des fichiers       chaîne de charactères               ``""``
-                  à lire (chansons,
-                  templates, etc.).
-
-                  Si aucune valeur n'est
-                  renseignée, ``patacrep``
-                  essaye de deviner
-                  l'encodage des fichiers.
-
-template          template à utiliser         nom d'un fichier présent dans un    ``"default.tex"``
-                                              dossier :file:`templates`
-titleprefixwords  Mots à ignorer dans le      liste de chaînes de caractères      ``[]``
-                  classement des chansons
-authwords         Options pour traiter les    dictionnaire de listes de chaînes   ``{"after": ["by"], "ignore": ["unknown"], "sep": ["and"]}``
-                  noms d'auteurs (commandes   de caractères, dont les clefs
-                  LaTeX ``authsepword``       sont ``sep``,
-                  (sépatareurs de noms),      ``ignore`` et
-                  ``authignoreword`` (noms à  ``after``
-                  ignorer), ``authbyword``
-                  (mots introduisant les
-                  noms des auteurs)).
-================= =========================== =================================== =================
 
 Template :file:`default.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -142,3 +173,5 @@ picturecopyright   copyright de l'image        chaîne de caractères           
 footer             pied de page de la page     chaîne de caractères                          ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
                    de garde
 ================== =========================== =================================== =================
+
+
