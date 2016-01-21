@@ -263,9 +263,10 @@ est possible d'en écrire d'autres.
   il est possible de les trier à postériori:
   
      .. code-block:: yaml
-     content:
-        - sorted:
-            content:
+
+        content:
+          - sorted:
+              content:
                 include: "amour.sbc"
   
   Un cas d'utilisation typique est l'inclusion du même contenu
