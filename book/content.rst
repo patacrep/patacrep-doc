@@ -203,7 +203,7 @@ est possible d'en écrire d'autres.
 
   Ne va inclure que les chants situés directement dans le dossier :file:`chants_a_boire`, 
   alors que la command ``cwd`` suivante va aussi inclure les chants des sous-dossiers 
-  :file:`chants_a_boire/de_l_eau/`, :file:`chants_a_boire/du_vin/` ...
+  :file:`chants_a_boire/de_l_eau/`, :file:`chants_a_boire/du_vin/`...
 
   .. code-block:: yaml
   
@@ -215,13 +215,19 @@ est possible d'en écrire d'autres.
   Ce plugin permet d'inclure des sections (et chapitres, paragraphes, etc.).
   Les mots-clefs sont ``part``, ``chapter``, ``section``, ``subsection``,
   ``subsubsection``, ``paragraph``, ``subparagraph``, ainsi que leurs versions
-  étoilées.
+  étoilées (qui ne seront pas numérotées).
 
-  Ces mots-clefs ne prennent pas d'arguments, et ont pour contenu une chaîne de
-  caractères (le titre), ou deux pour les versions non étoilées (le titre, et
+  Ces mots-clefs ont pour contenu soit une chaîne de caractères (le titre), 
+  soit une valeur ``name`` et une valeur ``short`` pour les versions non étoilées (le titre, et
   le titre court, optionnel, pour la table des matières).
 
-  Exemple : ``["chapter", "Chansons d'amour"]``
+  .. code-block:: yaml
+  
+    content: 
+      chapter: "Chansons d'amour"
+      chapter:
+        name: "Chansons à boire"
+        short: "prosit"
 
 :py:mod:`songsection` : sections du paquet `songs <http://songs.sourceforge.net>`__
   Ce plugin introduit deux mots-clefs ``songchapter`` et ``songsection``, qui
@@ -229,38 +235,43 @@ est possible d'en écrire d'autres.
   style de ces sections est plus cohérent avec l'apparence des chansons,
   mais elles ne sont pas numérotées, et il n'y a pas de version étoilée.
 
-  Exemple : ``["songchapter", "Chansons d'amour"]``
+  Exemple : ``songchapter: "Chansons d'amour"``
 
 .. _plugin_tex:
 
 :py:mod:`tex` : inclusion de fichiers LaTeX quelconques
   Il est possible avec ce plugin d'inclure un fichier LaTeX quelconque.
-  L'unique mot-clef ``tex`` ne prend pas d'arguments, et sa liste de contenu
-  est une liste de fichiers latex à inclure dans le recueil.
+  L'unique mot-clef ``tex`` prend en argument le ou les fichiers latex à inclure dans le recueil.
 
-  Exemple : ``["tex", "intro.tex"]``
+  Exemple : ``tex: "intro.tex"``
 
 :py:mod:`include`: inclusion d'un autre fichier de contenu.
-  Ce plugin permet d'inclure un autre fichier au format ``JSON`` dans le contenu du
-  carnet courant. Ainsi, mettre ``["include", "my_content.sbc"]`` ira chercher le fichier 
+  Ce plugin permet d'inclure un autre fichier au format ``YAML`` dans le contenu du
+  carnet courant. Ainsi, mettre ``include: "my_content.sbc"`` ira chercher le fichier 
   :file:`my_content.sbc` et placera le contenu de ce fichier dans le carnet principal.
   :file:`my_content.sbc` doit contenir une liste d'éléments de contenu valide. Par exemple, 
   on peut imaginer qu'il contienne ceci :
   
-     .. code-block:: json
+     .. code-block:: yaml
   
-        [
-            ["section", "Chansons à boire"],
-            "boire/*.sg",
-            ["section", "Chansons d'amour"],
-            ["include", "amour.sbc"]
-        ]
+        - section: "Chansons à boire"
+        - "boire/*.sg"
+        - section: "Chansons d'amour"
+        - include: "amour.sbc"
   
   En particulier, il peut donc contenir un ou plusieurs autres mot-clef ``"include"``, et 
-  il est possible d'écrire des choses comme ``["sorted(by, @title)", ["include", 
-  "chansons_a_boire.sbc"]]``. Un cas d'utilisation typique est l'inclusion du même contenu
+  il est possible de les trier à postériori:
+  
+     .. code-block:: yaml
+     content:
+        - sorted:
+            content:
+                include: "amour.sbc"
+  
+  Un cas d'utilisation typique est l'inclusion du même contenu
   dans plusieurs carnets différents. L'extention :file:`.sbc` est arbitraire, et a été choisie
-  commme abréviation de "SongBook Content" (contenu de carnet de chants).
+  commme abréviation de "SongBook Content" (contenu de carnet de chants), cependant il est tout
+  à fait autorisé d'utiliser d'autres extensions: ``include: "fichier.yaml"``.
   
   Les fichiers inclus de cette manière sont recherchés dans tous les :ref:`datadir <datadir>`
   plus le dossier dans lequel se trouve le fichier dans lequel ``"include"`` a été rencontré.
