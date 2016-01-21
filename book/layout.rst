@@ -87,9 +87,9 @@ Ce sont des sous-clés de la clé ``book``.
 
 .. tabularcolumns:: |l|L|L|L|
 
-================= =========================================================== =========================================== =============================
+================= =========================================================== =========================================== ===================
  Option           Description                                                 Type                                        Valeur par défaut  
-================= =========================================================== =========================================== =============================
+================= =========================================================== =========================================== ===================
  lang             Langue du carnet (Code ISO 639-1 à 2 lettres).              Chaîne de charactères                       en                 
                                                                               Actuellement "fr" et "en" sont supportés.                      
  onesongperpage   Commencer toutes les chansons sur une nouvelle page         Booléen                                     no                 
@@ -97,8 +97,32 @@ Ce sont des sous-clés de la clé ``book``.
  template         Template de carnet à utiliser                               Chaîne de charactères                       default.tex        
  encoding         Encodage des fichiers à lire (chansons, templates, etc.).   Chaîne de charactères                       utf-8              
                   Peut poser des problèmes d'accentuation.                                                                                   
-================= =========================================================== =========================================== =============================
+================= =========================================================== =========================================== ===================
 
+Options musicales
+^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``chords``.
+
+.. tabularcolumns:: |l|L|L|L|
+
+=================  ===================================================== ========================================================== ===================
+ Option            Description                                           Type                                                       Valeur par défaut  
+=================  ===================================================== ========================================================== ===================
+ show              Afficher les accords au dessus des paroles            Booléen                                                    yes                
+ diagramreminder   Rappeler en début de chansons certains accords        "all": Rappel de tous les accords présents dans le chant   important          
+                                                                         "important": Rappel des accords peu communs                                   
+                                                                         "none": Aucun rappel d'accords                                                
+ diagrampage       Montrer la page d'accords en début de carnet          Booléen                                                    yes                
+ repeatchords      Afficher les accords pour tous les couplets           Booléen                                                    yes                
+                   (pas disponible pour tous les chants)                                                                                               
+ lilypond          Inclure les partitions musicales                      Booléen                                                    no                 
+                   (nécéssite le logiciel libre lilypond)                                                                                              
+ tablatures        Inclure les tablatures                                Booléen                                                    no                 
+ instrument        Instrument pour lequel il faut rappeler les accords   "guitar" ou "ukulele"                                      guitar             
+ notation          Notation des accords                                  "alphascale": Système internanial ABCDEFG                  alphascale         
+                                                                         "solfedge":  Système français Do Ré Mi                                        
+=================  ===================================================== ========================================================== ===================
 
 
 Templates
