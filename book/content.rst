@@ -12,82 +12,49 @@ Le contenu d'un recueil est défini avec l'option ``content`` du fichier
 :ref:`.sb <sb>`, sous la forme d'une liste. Le type de cette liste dépend du
 contenu à inclure. Voici un exemple de contenu.
 
-.. code-block:: json
 
-  {
-  "content": [
-                ["tex", "intro.tex"],
-                ["section", "Chansons à boire"],
-                ["song", "boire/*.sg"],
-                ["section", "Chansons d'amour"],
-                ["sorted(by, @title)", "amour/*.sg"]
-              ]
-  }
+.. code-block:: yaml
 
-Comme nous pouvons le voir, la valeur de ``content`` est une liste de listes.
-Le premier élément de chacune de ces sous-listes est une chaîne indiquant le
-type de contenu considéré : par exemple, ``["section", "Chansons à boire"]`` va
+    content:
+      - tex: "intro.tex"
+      - section: "Chansons à boire"
+      - "boire/*.csg"
+      - section: "Chansons d'amour"
+      - sorted:
+          key: ["by", "@title"]
+          content: 
+            - "amour/*.csg"
+            - "love/*.csg"
+
+Comme nous pouvons le voir, la valeur de ``content`` est une liste de tableaux associatifs
+ou de chaînes de caractères.
+Une chaîne de caractères est automatiquement transformé en tableau avec une clé ``song``. Ainsi ``"boire/*.csg"`` et ``song: "boire/*.csg"`` sont équivalents.
+La *clé* des tableaux associatif (avant le ``:``) est une chaîne indiquant le
+type de contenu considéré : par exemple, ``section: "Chansons à boire"`` va
 créer une section ayant pour titre *Chansons à boire*, tandis que
-``["sorted(by, @title)", "amour/*.sg"]`` va inclure toutes les chansons du
-répertoire ``amour/*.sg``, triées par auteur, puis par titre.
 
-Pour alléger les notations, une chaîne de caractères à la place d'une
-sous-liste correspond à l'inclusion d'une chanson, et une liste vide correspond
-à l'inclusion de toutes les chansons du répertoire :file:`songs`.
+.. code-block:: yaml
 
-Ainsi, les deux contenus suivants sont équivalents.
+      - sorted:
+          key: ["by", "@title"]
+          content: 
+            - "amour/*.csg"
+            - "love/*.csg"
 
-.. code-block:: json
+va inclure toutes les chansons des répertoires ``amour/*.csg`` et ``love/*.csg``, triées par auteur (``by``), puis par titre (``@title``).
 
-  {
-  "content": [
-               ["section", "Chansons à boire"],
-               "boire/*.sg",
-             ]
-  }
+Lorsqu'un tableau de type ``content`` n'a pas de contenu, cela va inclure toutes les chansons du répertoire :file:`songs`:
+.. code-block:: yaml
 
-.. code-block:: json
+  content:
 
-  {
-  "content": [
-               ["section", "Chansons à boire"],
-               ["song", "boire/*.sg"],
-             ]
-  }
-
-En pratique, on utilisera souvent un des deux `content` suivant, le premier
-pour inclure toutes les chansons (fichiers :file:`.sg`) trouvées dans le répertoire
-:file:`songs` (en fait, ne pas mentionner du tout l'option `content` dans le fichier
-:file:`.sb` est équivalent à cette forme) :
-
-.. code-block:: json
-
-  {
-  "content": []
-  }
-
-et le second pour inclure toutes ces chansons, triées pas auteur, album puis
+Ou alors pour inclure toutes ces chansons, triées pas auteur, album puis
 titre (c'est le tri par défaut) :
 
-.. code-block:: json
+.. code-block:: yaml
 
-  {
-  "content": [["sorted"]]
-  }
-
-La structure générale d'un élément de contenu est le suivant ``["keyword",
-contentlist]`` ou ``["keyword(arguments)", contentlist]``, où:
-
-``keyword``
-  est un mot clef, précisant le type de contenu
-
-``arguments``
-  est un argument, optionnel, au mot-clef. Il est passé tel quel, sans analyse,
-  au moteur gérant ce mot-clef, et son type et sa forme dépendent du mot-clef.
-
-``contentlist``
-  est la suite de la liste (éventuellement vide). Encore une fois, c'est le
-  moteur gérant ce mot clef qui la traite, et sa signification dépend du mot-clef.
+  content:
+    sorted:
 
 Types de contenus disponibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,16 +64,29 @@ plugins). Un certain nombre (décrits ci-après) sont proposés par défaut, et 
 est possible d'en écrire d'autres.
 
 :py:mod:`song` : liste de chansons
-  Ce plugin, utilisé par défaut, permet d'inclure une liste de chansons, triées
-  par ordre alphabétique du nom de fichier. L'unique mot-clef de ce plugin est
-  ``song``, qui ne prend pas d'arguments. Il est suivi d'une liste
-  d'expressions régulières correspondant aux noms de fichiers à inclure. La
-  syntaxe précise de ces expressions est décrite dans la documentation du
-  module `glob <https://docs.python.org/2/library/glob.html>`_ ; le minimum à savoir 
-  est que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` 
+  Ce plugin, utilisé par défaut en l'absence de mot-clé, permet d'inclure une liste de chansons, triées
+  par ordre alphabétique du nom de fichier. Il est suivi d'une ou plusieurs expressions
+  régulières correspondant aux noms de fichiers à inclure. La syntaxe précise de ces expressions est décrite dans la 
+  documentation du module `glob <https://docs.python.org/3.4/library/glob.html>`_ ; le 
+  minimum à savoir est que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` 
   correspond au répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
 
-  Exemple : ``["song", "premiere.sg", "boire/*.sg"]``.
+  Exemple : 
+.. code-block:: yaml
+
+  content:
+    song:
+      - "premiere.sg"
+      - "boire/*.sg"
+
+Est équivalent à (mot-clé ``song`` automatique):
+
+.. code-block:: yaml
+
+  content:
+    - "premiere.sg"
+    - "boire/*.sg"
+
   
   Les fichiers sont recherchés successivement dans les datadirs associés 
   à un carnet. :py:mod:`song` commence par chercher dans le repertoire
@@ -119,8 +99,9 @@ est possible d'en écrire d'autres.
 
 :py:mod:`sorted` : liste triée de chansons
   Ce plugin permet l'inclusion de chansons, triées selon un certain ordre.
-  L'unique mot-clef de ce plugin est ``sorted``. Il prend en argument la liste
-  des champs selon lesquels triés. Ces champs correspondent aux `keyvals` de
+  Il prend deux arguments (facultatifs): ``key`` pour la liste
+  des champs selon lesquels les chansons de l'argument ``content`` doivent être triées. 
+  Ces champs correspondent aux `keyvals` de
   l'environnement ``song`` (`documentation
   <http://songs.sourceforge.net/songsdoc/songs.html#sec5.1>`_), à ceux ajoutés
   par :py:mod:`patacrep`, ainsi que ceux éventuellement ajoutés par le template
@@ -166,13 +147,19 @@ est possible d'en écrire d'autres.
   Il faut remarque la liste de contenu de ``sorted`` n'est pas nécessairement
   une liste d'expression régulière : c'est n'importe quel élément de contenu
   qui renvoie une liste de chansons. Ainsi (en utilisant le plugin :py:mod:`cwd`
-  décrit ci-après), ``["sorted", ["cwd(repertoire)", "*.sg"]]`` est une liste
-  de contenu parfaitement valide.
+  décrit ci-après) le ``content`` suivant est parfaitement valide.
 
-  Une conséquence de cela est que donner une liste vide ``["sorted"]`` permet
+.. code-block:: yaml
+
+  content:
+    sorted:
+      content: 
+        - cwd:
+          path: repertoire
+          content: "*.sg"
+
+  Une conséquence de cela est que ne pas donner de ``content` à  ``sorted`` permet
   d'inclure toutes les chansons du répertoire :file:`songs`, récursivement.
-
-  Exemple : ``["sorted(by, @title)", "boire/*.sg", "amour/*.sg"]``.
 
 :py:mod:`cwd` : changement de répertoire
   Lorsque plusieurs chansons du même répertoire sont incluses, il peut être
