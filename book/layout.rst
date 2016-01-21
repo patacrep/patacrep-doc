@@ -134,7 +134,7 @@ Ce sont des sous-clés de la clé ``authors``.
 
 ============= ======================================== ================= ===================
  Option       Description                              Type              Valeur par défaut  
- ============= ======================================== ================= ===================
+============= ======================================== ================= ===================
  separators   Mots qui séparent les artistes           Tableau de mots   ``- and``          
  ignore       Noms d'artistes à ignorer                Tableau de mots   ``- unknown``      
  after        Mots introduisant les noms des auteurs   Tableau de mots   ``- by``           
