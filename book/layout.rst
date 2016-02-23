@@ -88,7 +88,6 @@ Ce sont des sous-clés de la clé ``book``.
 
 lang
 ````
-
 Langue du carnet (Code ISO 639-1 à 2 lettres).
 
 * Défaut: ``en``
@@ -114,17 +113,15 @@ Afficher les couvertures des albums.
 
 template
 ````````
-
 Template de carnet à utiliser.
 
 * Défaut: ``patacrep.tex``
 * Type: Chaîne de charactères
-* Valeurs: Voir le dossier ``data/templates`` pour les autres fichiers possibles
+* Valeurs: Voir le dossier ``templates`` des datadirs pour les autres fichiers disponibles
 
 
 encoding
 ````````
-
 Encodage des fichiers à lire (chansons, templates, etc.). Peut aider à résoudre des problèmes d'accentuation.
 
 * Défaut: ``utf-8``
@@ -138,7 +135,6 @@ Ce sont des sous-clés de la clé ``chords``.
 
 show
 ````
-
 Afficher les accords au sein des paroles.
 
 * Défaut: ``yes``
@@ -147,7 +143,6 @@ Afficher les accords au sein des paroles.
 
 diagramreminder
 ```````````````
-
 Rappeler en début de chansons certains diagrammes d'accords.
 
 * Défaut: ``important``
@@ -161,7 +156,6 @@ Rappeler en début de chansons certains diagrammes d'accords.
 
 diagrampage
 ```````````
-
 Insérer une page d'accords en début de carnet.
 
 * Défaut: ``yes``
@@ -170,7 +164,6 @@ Insérer une page d'accords en début de carnet.
 
 repeatchords
 ````````````
-
 Afficher les accords dans tous les couplets (disponible uniquement pour certains chants).
 
 * Défaut: ``yes``
@@ -179,7 +172,6 @@ Afficher les accords dans tous les couplets (disponible uniquement pour certains
 
 lilypond
 ````````
-
 Inclure les partitions musicales (nécéssite le logiciel libre lilypond).
 
 * Défaut: ``no``
@@ -188,7 +180,6 @@ Inclure les partitions musicales (nécéssite le logiciel libre lilypond).
 
 tablatures
 ``````````
-
 Inclure les tablatures.
 
 * Défaut: ``no``
@@ -197,7 +188,6 @@ Inclure les tablatures.
 
 instrument
 ``````````
-
 Instrument pour lequel il faut rappeler les accords.
 
 * Défaut: ``guitar``
@@ -210,7 +200,6 @@ Instrument pour lequel il faut rappeler les accords.
 
 notation
 ````````
-
 Notation des accords.
 
 * Défaut: ``alphascale``
@@ -229,7 +218,6 @@ Ce sont des sous-clés de la clé ``authors``.
 
 separators
 ``````````
-
 Mots qui séparent les noms d'artistes.
 
 * Défaut: ``- and``
@@ -238,7 +226,6 @@ Mots qui séparent les noms d'artistes.
 
 ignore
 ``````
-
 Noms d'artistes à ignorer.
 
 * Défaut: ``- unknown``
@@ -247,7 +234,6 @@ Noms d'artistes à ignorer.
 
 after
 `````
-
 Mots introduisant les noms des auteurs.
 
 * Défaut: ``- by``
@@ -262,7 +248,6 @@ Ce sont des sous-clés de la clé ``titles``.
 
 prefix
 ``````
-
 Préfixe à ignorer lors du tri des titres (notamment dans l'index).
 
 * Défaut:
@@ -302,6 +287,9 @@ du fichier de template:
   # options précédentes `book`, `chords`...
   
   template:
+    default.tex:
+      title: "Recueil de chansons pour guitare"
+      author: "L'équipe Patacrep"
     patacrep.tex:
       color:
         songlink: FF0000
@@ -311,40 +299,33 @@ du fichier de template:
         songnumber: AED1E4
         index: E4AED1
 
+
 Template :file:`default.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-// TODO
 
-.. tabularcolumns:: |l|L|L|L|
+title
+`````
+Titre du carnet de chants.
 
-================== =========================== ============================================= ===========================
-Option             Description                 Type                                          Valeur par défaut
-================== =========================== ============================================= ===========================
-instruments        instruments à afficher      Liste de chaînes de caractères parmi :        ``["guitar"]``
-                                               ``guitar``, ``ukulele``
-booktype           Type de recueil             Chaîne de caractères, parmi :                 ``"chorded"``
-                                               ``chorded`` (avec accords) ou
-                                               ``lyric`` (paroles uniquement)
-bookoptions        éléments à afficher         Liste de chaînes de caractères parmi :        ``["diagram", "pictures"]``
-                                               ``lilypond`` (partitions lilypond),
-                                               ``diagram`` (diagrammes d'accords),
-                                               ``importantdiagramonly`` (diagrammes
-                                               importants uniquement),
-                                               ``onesongperpage`` (une chanson par page),
-                                               ``pictures`` (couvertures des albums),
-                                               ``repeatchords`` (répéter les accords),
-                                               ``tabs`` (tablatures)
-classoptions       options passées à la        liste de chaînes de caractères                ``[]``
-                   commande ``\documentclass``
-                   du document LaTeX principal
-notenamesout       Nom des notes               chaîne de caractères parmi :                  ``"solfedge"``
-                                               ``solfedge`` (Do, Ré, Mi...) et
-                                               ``alphascale`` (A, B, C...)
-lang               langue du recueil           ``french``, ``english``, etc.                 ``"english"``
-title              titre du recueil            chaîne de caractères                          ``"Recueil de chansons pour guitare"``
-author             auteur du recueil           chaîne de caractères                          ``"L'équipe Patacrep"``
-================== =========================== ============================================= ===========================
+* Défaut: ``"Guitar songbook"``
+* Type: Chaîne de charactères
+
+
+author
+``````
+Auteur du carnet de chants.
+
+* Défaut: ``"The Patacrep Team"``
+* Type: Chaîne de charactères
+
+
+classoptions
+````````````
+Options de la classe LaTeX.
+
+* Défaut: `` `` (vide)
+* Type: Chaîne de charactères
 
 Template :file:`patacrep.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
