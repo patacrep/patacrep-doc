@@ -136,25 +136,89 @@ Options musicales
 
 Ce sont des sous-clés de la clé ``chords``.
 
-.. tabularcolumns:: |l|L|L|L|
+show
+````
 
-=================  ===================================================== ========================================================== ===================
- Option            Description                                           Type                                                       Valeur par défaut  
-=================  ===================================================== ========================================================== ===================
- show              Afficher les accords au dessus des paroles            Booléen                                                    yes                
- diagramreminder   Rappeler en début de chansons certains accords        - ``all`` : Rappel de tous les accords présents du chant   ``important``      
-                                                                         - ``important`` : Rappel des accords peu communs                              
-                                                                         - ``none`` : Aucun rappel d'accords                                           
- diagrampage       Montrer la page d'accords en début de carnet          Booléen                                                    yes                
- repeatchords      Afficher les accords pour tous les couplets           Booléen                                                    yes                
-                   (pas disponible pour tous les chants)                                                                                               
- lilypond          Inclure les partitions musicales                      Booléen                                                    no                 
-                   (nécéssite le logiciel libre lilypond)                                                                                              
- tablatures        Inclure les tablatures                                Booléen                                                    no                 
- instrument        Instrument pour lequel il faut rappeler les accords   ``guitar`` ou ``ukulele``                                  ``guitar``         
- notation          Notation des accords                                  - ``alphascale`` : Système internanial ABCDEFG             ``alphascale``     
-                                                                         - ``solfedge`` :  Système français Do Ré Mi                                   
-=================  ===================================================== ========================================================== ===================
+Afficher les accords au sein des paroles.
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+diagramreminder
+```````````````
+
+Rappeler en début de chansons certains diagrammes d'accords.
+
+* Défaut: ``important``
+* Type: Chaîne de charactères
+* Valeurs:
+
+  - ``all`` : Rappel de tous les accords présents dans le chant
+  - ``important`` : Rappel des accords peu communs du chant
+  - ``none`` : Aucun rappel d'accords
+
+
+diagrampage
+```````````
+
+Insérer une page d'accords en début de carnet.
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+repeatchords
+````````````
+
+Afficher les accords dans tous les couplets (disponible uniquement pour certains chants).
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+lilypond
+````````
+
+Inclure les partitions musicales (nécéssite le logiciel libre lilypond).
+
+* Défaut: ``no``
+* Type: Booléen
+
+
+tablatures
+``````````
+
+Inclure les tablatures.
+
+* Défaut: ``no``
+* Type: Booléen
+
+
+instrument
+``````````
+
+Instrument pour lequel il faut rappeler les accords.
+
+* Défaut: ``guitar``
+* Type: Chaîne de charactères
+* Valeurs:
+
+  - ``guitar`` : Guitare
+  - ``ukulele`` : Ukulélé
+
+
+notation
+````````
+
+Notation des accords.
+
+* Défaut: ``alphascale``
+* Type: Chaîne de charactères
+* Valeurs:
+
+  - ``alphascale`` : Système internanial ABCDEFG
+  - ``solfedge`` :  Système français Do Ré Mi
 
 
 Analyse des auteurs
