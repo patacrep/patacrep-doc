@@ -1,32 +1,24 @@
 .. _layout:
 
-Faire la mise en page d'un carnet
+Mise en page du carnet
 =================================
 
 La mise en page des carnets est gérée par un système d'options : il est possible
 de spécifier la taille et l'orientation du papier, le type de police des accords,
-*etc.* en mettant le bon mot clef dans un fichier :file:`.sb`. Toutes ces options
-ont des valeurs par défaut, définies à plusieurs endroits. La valeur finale d'une
-option peut provenir de plusieurs origines, données ici par ordre de priorité
-croissante :
-
-Valeurs par défaut
-------------------
+*etc.* en mettant le bon mot clef dans un fichier :file:`.yaml`. 
 
 La plupart des options peuvent être omises : elle prendront alors une
 valeur par défaut, documentée ci-dessous.
 
 
-Fichier :file:`.sb`
--------------------
+Exemple de fichier :file:`.yaml`
+--------------------------------
 
-La majeure partie de la personalisation d'un carnet est effectuée à cet endroit.
-Un fichier :file:`.sb` contient un dictionnaire YAML, dont les clefs sont des options
-et les valeurs les valeurs prisent par ces options. Lorsqu'un fichier :file:`.sb`
-est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"``
-sont transmis au gestionnaire de mise en page.
+Un fichier :file:`.yaml` contient un dictionnaire YAML, dont les clefs sont les noms
+des options et leur valeur associée pour la mise en page.
+Le mot-clef ``content`` ne gère pas la mise en page, mais le :ref:`contenu du carnet <content>`.
 
-Voici par exemple le fichier :file:`.sb` qui fournit les options par défaut :
+Voici par exemple le fichier :file:`.yaml` qui fournit les options par défaut :
 
 .. code-block:: yaml
 
@@ -71,6 +63,7 @@ Voici par exemple le fichier :file:`.sb` qui fournit les options par défaut :
     - Ma
     - Mon
     - Un
+  content:
 
 .. _options:
 
