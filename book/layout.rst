@@ -327,33 +327,103 @@ Options de la classe LaTeX.
 * Défaut: `` `` (vide)
 * Type: Chaîne de charactères
 
+
 Template :file:`patacrep.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: |l|L|L|L|
 
-================== =========================== =================================== =================
-Option             Description                 Type                                Valeur par défaut
-================== =========================== =================================== =================
-titleprefixwords   *idem*                      *idem*                              ``["The", "Le", "La", "L'", "A", "Au", "Ces", "De", "Des", "El", "Les", "Ma", "Mon", "Un"]}``
-songnumberbgcolor  couleur des numéros des     code hexadécimal                    ``"D1E4AE"``
-                   chansons
-notebgcolor        couleur des notes dans      code hexadécimal                    ``"D1E4AE"``
-                   les chansons
-indexbgcolor       couleur des liens dans      code hexadécimal                    ``"D1E4AE"``
-                   l'index
-subtitle           sous-titre du recueil       chaîne de caractères                           *vide*
-version            version du recueil          chaîne de caractères                          ``"undefined"`` *(la version n'est alors pas indiquée)*
-web                adresse du site web du      chaîne de caractères                          ``"http://www.patacrep.com"``
-                   recueil
-mail               adresse électronique        chaîne de caractères                          ``"crep@team-on-fire.com"``
-                   associée au recueil
+subtitle
+````````
+Sous-titre du carnet (pour la page de garde).
 
-picture            image de la page de garde   chemin vers image, au format                  ``"treble_a.png"``
-                                               ``jpg``, ``png`` ou ``pdf``
-picturecopyright   copyright de l'image        chaîne de caractères                          ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
-footer             pied de page de la page     chaîne de caractères                          ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
-                   de garde
-================== =========================== =================================== =================
+* Défaut: `` `` (vide)
+* Type: Chaîne de charactères
 
+
+version
+````````
+Version du carnet (pour la page de garde).
+
+* Défaut: `` `` (vide)
+* Type: Chaîne de charactères
+
+
+url
+```
+Site web de l'auteur (pour la page de garde).
+
+* Défaut: ``"http://www.patacrep.com"``
+* Type: Chaîne de charactères
+
+
+email
+`````
+Courriel de l'auteur (pour la page de garde).
+
+* Défaut: ``"crep@team-on-fire.com"``
+* Type: Chaîne de charactères
+
+
+picture
+```````
+Image pour la page de garde.
+
+* Défaut: ``"img/treble_a"``
+* Type: Chaîne de charactères
+
+
+picturecopyright
+````````````````
+Copyright pour l'image de la page de garde.
+
+* Défaut: ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
+* Type: Chaîne de charactères
+
+
+footer
+``````
+Pied de page de la page de garde.
+
+* Défaut: ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
+* Type: Chaîne de charactères
+
+
+color: songlink
+```````````````
+Couleur des liens vers les chants.
+
+* Défaut: ``4e9a06``
+* Type: Couleur en hexadécimal
+
+
+color: hyperlink
+````````````````
+Couleurs des liens hypertextes.
+
+* Défaut: ``204a87``
+* Type: Couleur en hexadécimal
+
+
+bgcolor: songnumber
+```````````````````
+Couleur de fond des numéros de chants.
+
+* Défaut: ``D1E4AE``
+* Type: Couleur en hexadécimal
+
+
+bgcolor: note
+`````````````
+Couleur de fond des indications.
+
+* Défaut: ``D1E4AE``
+* Type: Couleur en hexadécimal
+
+
+bgcolor: index
+``````````````
+Couleur de fond des lettres de l'index.
+
+* Défaut: ``D1E4AE``
+* Type: Couleur en hexadécimal
 
