@@ -324,7 +324,7 @@ classoptions
 ````````````
 Options de la classe LaTeX.
 
-* Défaut: `` `` (vide)
+* Défaut: *(vide)*
 * Type: Chaîne de charactères
 
 
@@ -336,7 +336,7 @@ subtitle
 ````````
 Sous-titre du carnet (pour la page de garde).
 
-* Défaut: `` `` (vide)
+* Défaut: *(vide)*
 * Type: Chaîne de charactères
 
 
@@ -344,7 +344,7 @@ version
 ````````
 Version du carnet (pour la page de garde).
 
-* Défaut: `` `` (vide)
+* Défaut: *(vide)*
 * Type: Chaîne de charactères
 
 
