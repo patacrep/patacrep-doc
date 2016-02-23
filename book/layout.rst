@@ -85,19 +85,51 @@ Options générales
 
 Ce sont des sous-clés de la clé ``book``.
 
-.. tabularcolumns:: |l|L|L|L|
 
-================= =========================================================== =========================================== ===================
- Option           Description                                                 Type                                        Valeur par défaut  
-================= =========================================================== =========================================== ===================
- lang             Langue du carnet (Code ISO 639-1 à 2 lettres).              Chaîne de charactères                       ``en``         
-                                                                              Actuellement "fr" et "en" sont supportés.                      
- onesongperpage   Commencer toutes les chansons sur une nouvelle page         Booléen                                     no                 
- pictures         Afficher les couvertures des albums                         Booléen                                     yes                
- template         Template de carnet à utiliser                               Chaîne de charactères                       ``patacrep.tex``    
- encoding         Encodage des fichiers à lire (chansons, templates, etc.).   Chaîne de charactères                       ``utf-8``          
-                  Peut poser des problèmes d'accentuation.                                                                                   
-================= =========================================================== =========================================== ===================
+lang
+````
+
+Langue du carnet (Code ISO 639-1 à 2 lettres).
+
+* Défaut: ``en``
+* Type: Chaîne de charactères
+* Valeurs: ``fr`` et ``en`` sont actuellement supportés
+
+
+onesongperpage
+``````````````
+Commencer toutes les chansons sur une nouvelle page.
+
+* Défaut: ``no``
+* Type: Booléen
+
+
+pictures
+````````
+Afficher les couvertures des albums.
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+template
+````````
+
+Template de carnet à utiliser.
+
+* Défaut: ``patacrep.tex``
+* Type: Chaîne de charactères
+* Valeurs: Voir le dossier ``data/templates`` pour les autres fichiers possibles
+
+
+encoding
+````````
+
+Encodage des fichiers à lire (chansons, templates, etc.). Peut aider à résoudre des problèmes d'accentuation.
+
+* Défaut: ``utf-8``
+* Type: Chaîne de charactères
+
 
 Options musicales
 ^^^^^^^^^^^^^^^^^
