@@ -182,7 +182,7 @@ Depuis le dossier :file:`patacrep`
 
 
 Mise à jour
-===========
+-----------
 
 Pour effectuer une mise à jour de `Patacrep`, vérifiez que les dépendances sont à jour, puis lancez la commande ::
 
