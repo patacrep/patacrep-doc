@@ -58,7 +58,7 @@ titre (c'est le tri par défaut) :
     sorted:
 
 Types de contenus disponibles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Les types de contenus gérés par :py:mod:`patacrep` sont fournis par des extensions (ou
 plugins). Un certain nombre (décrits ci-après) sont proposés par défaut, et il
@@ -76,16 +76,16 @@ est possible d'en écrire d'autres.
   
     content:
       song:
-        - "premiere.sg"
-        - "boire/*.sg"
+        - "premiere.csg"
+        - "boire/*.tsg"
   
   Est équivalent à (mot-clé ``song`` automatique):
   
   .. code-block:: yaml
   
     content:
-      - "premiere.sg"
-      - "boire/*.sg"
+      - "premiere.csg"
+      - "boire/*.tsg"
 
 
   Les fichiers sont recherchés successivement dans les datadirs associés 
@@ -128,7 +128,7 @@ est possible d'en écrire d'autres.
     ========== ===========
     album      Album
     original   Titre original
-    cov        Chemin de l'image de couverture (relative au répertoire du fichier :file:`.sg`)
+    cov        Chemin de l'image de couverture (relative au répertoire du fichier :file:`.csg`)
     vcov       Chemin de l'image de couverture
     url        URL de la chanson
     ========== ===========
@@ -156,7 +156,7 @@ est possible d'en écrire d'autres.
         content: 
           - cwd:
             path: repertoire
-            content: "*.sg"
+            content: "*.csg"
 
   Une conséquence de cela est que ne pas donner de ``content`` à  ``sorted`` permet
   d'inclure toutes les chansons du répertoire :file:`songs`, récursivement.
@@ -173,16 +173,16 @@ est possible d'en écrire d'autres.
       - cwd:
         path: des/repertoires/vers
         content: 
-          - "chanson1.sg"
-          - "chanson2.sg"
-          - "chanson3.sg"
+          - "chanson1.csg"
+          - "chanson2.csg"
+          - "chanson3.csg"
   
   .. code-block:: yaml
   
     content: 
-      - "des/repertoires/vers/chanson1.sg"
-      - "des/repertoires/vers/chanson2.sg"
-      - "des/repertoires/vers/chanson3.sg"
+      - "des/repertoires/vers/chanson1.csg"
+      - "des/repertoires/vers/chanson2.csg"
+      - "des/repertoires/vers/chanson3.csg"
 
   Cette commande recherche en priorité des chants dans le sous-dossier ``path`` relatif au
   dossier du fichier :ref:`.sb <sb>`. Si aucun contenu n'est trouvé, alors les chants
@@ -199,7 +199,7 @@ est possible d'en écrire d'autres.
   .. code-block:: yaml
   
     content: 
-      - "chants_a_boire/*.sg"
+      - "chants_a_boire/*.csg"
 
   Ne va inclure que les chants situés directement dans le dossier :file:`chants_a_boire`, 
   alors que la command ``cwd`` suivante va aussi inclure les chants des sous-dossiers 
@@ -255,7 +255,7 @@ est possible d'en écrire d'autres.
      .. code-block:: yaml
   
         - section: "Chansons à boire"
-        - "boire/*.sg"
+        - "boire/*.csg"
         - section: "Chansons d'amour"
         - include: "amour.sbc"
   
