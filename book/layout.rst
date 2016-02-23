@@ -77,8 +77,8 @@ Voici par exemple le fichier :file:`.sb` qui fournit les options par défaut :
 Liste des options
 -----------------
 
-Les valeurs par défaut sont données ici en supposant que la langue principale
-du recueil est le français.
+Les valeurs par défaut sont données ici en supposant que **la langue principale
+du carnet est le français**.
 
 Options générales
 ^^^^^^^^^^^^^^^^^
@@ -202,7 +202,7 @@ notation
 ````````
 Notation des accords.
 
-* Défaut: ``alphascale``
+* Défaut: ``solfedge``
 * Type: Chaîne de charactères
 * Valeurs:
 
@@ -308,7 +308,7 @@ title
 `````
 Titre du carnet de chants.
 
-* Défaut: ``"Guitar songbook"``
+* Défaut: ``"Recueil de chansons pour guitare"``
 * Type: Chaîne de charactères
 
 
@@ -316,7 +316,7 @@ author
 ``````
 Auteur du carnet de chants.
 
-* Défaut: ``"The Patacrep Team"``
+* Défaut: ``"L'équipe Patacrep"``
 * Type: Chaîne de charactères
 
 
@@ -384,7 +384,7 @@ footer
 ``````
 Pied de page de la page de garde.
 
-* Défaut: ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
+* Défaut: ``"Créé avec le programme Songbook (\\url{http://www.patacrep.com})"``
 * Type: Chaîne de charactères
 
 
