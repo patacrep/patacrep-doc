@@ -1,7 +1,7 @@
 .. _song:
 
-Écrire une chanson
-==================
+Écriture des chansons
+=====================
 
 Une chanson est un fichier texte :file:`chanson.sg` placé dans le répertoire
 :file:`songs` (ou un de ses sous-répertoires) d'un datadir. C'est un fichier LaTeX
