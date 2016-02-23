@@ -279,7 +279,7 @@ Certains options sont propres aux templates utilisés. Par exemple le template
 :file:`patacrep.tex` (qui inclut notamment :file:`default.tex`) permet de personnaliser
 certaines couleurs et la page de garde.
 
-Les options des templates sont regroupés sous la clé ``template`` avec comme sous-clé le nom
+Les options des templates sont regroupées sous la clé ``template`` avec comme sous-clé le nom
 du fichier de template:
 
 .. code-block:: yaml
