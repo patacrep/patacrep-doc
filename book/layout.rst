@@ -226,15 +226,32 @@ Analyse des auteurs
 
 Ce sont des sous-clés de la clé ``authors``.
 
-.. tabularcolumns:: |l|L|L|L|
 
-============= ======================================== ================= ===================
- Option       Description                              Type              Valeur par défaut  
-============= ======================================== ================= ===================
- separators   Mots qui séparent les artistes           Tableau de mots   ``- and``          
- ignore       Noms d'artistes à ignorer                Tableau de mots   ``- unknown``      
- after        Mots introduisant les noms des auteurs   Tableau de mots   ``- by``           
-============= ======================================== ================= ===================
+separators
+``````````
+
+Mots qui séparent les noms d'artistes.
+
+* Défaut: ``- and``
+* Type: Tableau de mots
+
+
+ignore
+``````
+
+Noms d'artistes à ignorer.
+
+* Défaut: ``- unknown``
+* Type: Tableau de mots
+
+
+after
+`````
+
+Mots introduisant les noms des auteurs.
+
+* Défaut: ``- by``
+* Type: Tableau de mots
 
 
 Analyse des titres
@@ -242,26 +259,33 @@ Analyse des titres
 
 Ce sont des sous-clés de la clé ``titles``.
 
-.. tabularcolumns:: |l|L|L|L|
 
-========= =============================== ================= ===================
- Option   Description                     Type              Valeur par défaut  
-========= =============================== ================= ===================
- prefix   Préfixe à ignorer lors du tri   Tableau de mots   ``- The``          
-                                                            ``- Le``            
-                                                            ``- La``            
-                                                            ``- "L'"``          
-                                                            ``- A``             
-                                                            ``- Au``            
-                                                            ``- Ces``           
-                                                            ``- De``            
-                                                            ``- Des``           
-                                                            ``- El``            
-                                                            ``- Les``           
-                                                            ``- Ma``            
-                                                            ``- Mon``           
-                                                            ``- Un``            
-========= =============================== ================= ===================
+prefix
+``````
+
+Préfixe à ignorer lors du tri des titres (notamment dans l'index).
+
+* Défaut:
+
+.. code-block:: yaml
+
+  - The
+  - Le
+  - La
+  - "L'"
+  - A
+  - Au
+  - Ces
+  - De
+  - Des
+  - El
+  - Les
+  - Ma
+  - Mon
+  - Un
+
+* Type: Tableau de mots
+
 
 Options des templates
 ---------------------
