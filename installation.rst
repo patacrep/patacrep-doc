@@ -153,10 +153,10 @@ Mac OS X
 ^^^^^^^^
 
 Si vous avez des erreurs lors de l'installation, deux cas sont possibles :
-   - erreur ``permission denied`` : vous n'avez pas de droits en écriture dans :file:`/usr/bin`. Ajoutez ``sudo`` devant la commande fautive, et relancez là (``sudo pip3 install patacrep``). Un mot de passe administrateur vous sera demandé.
-   - ``songbook: command not found``, c'est que :file:`/urs/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, exécutez la commande ::
+   - erreur ``permission denied`` : vous n'avez pas de droits en écriture dans :file:`/usr/bin`. Ajoutez ``sudo`` devant la commande fautive, et relancez-la (``sudo pip3 install patacrep``). Un mot de passe administrateur vous sera demandé.
+   - ``songbook: command not found``, c'est que :file:`/usr/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, exécutez la commande ::
 
-       echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
+       echo "export PATH=$PATH:/usr/local/bin" >> ~/.bashrc
 
 .. _install_sources:
 
