@@ -40,7 +40,7 @@ installer sous Debian (et ses dérivées comme Ubuntu) sont :
 
     Malheureusement, Debian Wheezy (stable) ne fourni que
     Python 3.2, qui est incompatible. Pour utiliser patacrep, il faut installer
-    Python3.4, par exemple en utilisant `apt-pinnig
+    Python3.4, par exemple en utilisant `apt-pinning
     <http://jaqque.sbih.org/kplug/apt-pinning.html>`_.
 
   - Installer les paquets nécessaires (pour une installation de `patacrep` sans :ref:`virtualenv <virtualenv>`):
