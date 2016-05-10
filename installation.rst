@@ -36,13 +36,6 @@ installer sous Debian (et sans doutes sous ses dérivées comme Ubuntu) sont :
 
 - Python 3.4
 
-  .. note::
-
-    Malheureusement, Debian Wheezy (stable) ne fourni que
-    Python 3.2, qui est incompatible. Pour utiliser patacrep, il faut installer
-    Python3.4, par exemple en utilisant `apt-pinnig
-    <http://jaqque.sbih.org/kplug/apt-pinning.html>`_.
-
   - Installer les paquets nécessaires (pour une installation de `patacrep` sans :ref:`virtualenv <virtualenv>`):
 
     .. code-block:: shell
@@ -61,6 +54,11 @@ installer sous Debian (et sans doutes sous ses dérivées comme Ubuntu) sont :
   - Optionnel pour `patacrep`, nécessaire pour `patadata` : ``texlive-lang-english texlive-lang-french texlive-lang-portuguese texlive-lang-spanish texlive-fonts-extra``
 
 - Lilypond (optionnel) : ``lilypond``
+
+Il est aussi possible, en utilisant `stdeb <http://github.com/astraw/stdeb>`_, de créer un paquet :file:`.deb` à la volée::
+
+    python setup.py --command-packages=stdeb.command bdist_deb
+    sudo dpkg -i deb_dist/python3-patacrep_5.0.0-1_all.deb
 
 CentOS 6.5
 """"""""""
