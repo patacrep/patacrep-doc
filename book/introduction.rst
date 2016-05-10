@@ -27,11 +27,11 @@ Un exemple de fichier :file:`.yaml` est fourni `avec le code source
 
     content:
       - section: "Chants Traditionnels"
-      - "chevaliers_de_la_table_ronde.sg"
-      - "greensleeves.sg"
-      - "vent_frais.sg",
+      - "chevaliers_de_la_table_ronde.csg"
+      - "greensleeves.csg"
+      - "vent_frais.csg",
       - section: "Exemples"
-      - "exemple*.sg"
+      - "exemple*.csg"
       
     book:
       lang: en
