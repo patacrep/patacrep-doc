@@ -6,13 +6,13 @@ Dépendances
 
 `Patacrep` est un projet reposant sur beaucoup de techniques, il a donc un certain nombre de
 dépendances à installer pour le faire fonctionner. Ces dépendances sont les mêmes pour tous
-les systèmes d'exploitation, mais la méthode d'installation diffère. Ces dépendance sont les
+les systèmes d'exploitation, mais la méthode d'installation diffère. Ces dépendances sont les
 suivantes :
 
 - Python 3.3 ou plus récent. **Python 2 n'est pas supporté** ;
 - LaTeX, et en particulier ``lualatex`` ;
 
-`Patacrep` a aussi des dépendances optionelles, qui peuvent ajouter des fonctionnalités,
+`Patacrep` a aussi des dépendances optionnelles, qui peuvent ajouter des fonctionnalités,
 mais ne sont pas obligatoires :
 
 - Lilypond, pour compiler des partitions.
@@ -32,7 +32,7 @@ Debian
 """"""
 
 Il n'existe pas (encore ?) de paquet debian pour `patacrep`. Les paquets à
-installer sous Debian (et sans doutes sous ses dérivées comme Ubuntu) sont :
+installer sous Debian (et ses dérivées comme Ubuntu) sont :
 
 - Python 3.4
 
@@ -63,7 +63,7 @@ Il est aussi possible, en utilisant `stdeb <http://github.com/astraw/stdeb>`_, d
 CentOS 6.5
 """"""""""
 
-Sur CentOS 6.5, un certain nombre de logiciel par défaut sont trop ancien pour faire fonctionner Patacrep correctement. En particulier, vous devriez utiliser une version récente de TeXLive, et installer ghostscript en version 9.
+Sur CentOS 6.5, un certain nombre de logiciels par défaut sont trop anciens pour faire fonctionner Patacrep correctement. En particulier, vous devriez utiliser une version récente de TeXLive, et installer ghostscript en version 9.
 
 
 MacOSX
@@ -72,7 +72,7 @@ MacOSX
 Vous devrez installer les dépendaces suivantes:
  - `Python 3 <https://www.python.org/download/>`_ ;
  - LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus simple à installer. Une installation personnalisée de TeXLive fonctionnera aussi si vous savez ce que vous faites.
- - Lilypond peut être utile si vous souhaitez compiler les partitions dans les chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. Décompressez l'archive, puis placez la dans :file:`/Applications`. Vous devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver en lançant les commandes suivantes dans un Terminal : ::
+ - Lilypond peut être utile si vous souhaitez compiler les partitions dans les chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. Décompressez l'archive, puis placez-la dans :file:`/Applications`. Vous devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver en lançant les commandes suivantes dans un Terminal : ::
 
      sudo ln -s /Applications/LilyPond.app/Contents/Resources/bin/lilypond /usr/local/bin/lilypond
      echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
@@ -151,10 +151,10 @@ Mac OS X
 ^^^^^^^^
 
 Si vous avez des erreurs lors de l'installation, deux cas sont possibles :
-   - erreur ``permission denied`` : vous n'avez pas de droits en écriture dans :file:`/usr/bin`. Ajoutez ``sudo`` devant la commande fautive, et relancez là (``sudo pip3 install patacrep``). Un mot de passe administrateur vous sera demandé.
-   - ``songbook: command not found``, c'est que :file:`/urs/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, exécutez la commande ::
+   - erreur ``permission denied`` : vous n'avez pas de droits en écriture dans :file:`/usr/bin`. Ajoutez ``sudo`` devant la commande fautive, et relancez-la (``sudo pip3 install patacrep``). Un mot de passe administrateur vous sera demandé.
+   - ``songbook: command not found``, c'est que :file:`/usr/local/bin` n'est pas dans votre ``PATH``. Pour l'ajouter, exécutez la commande ::
 
-       echo "export PATH=$PATH:\usr\local\bin" >> ~/.bashrc
+       echo "export PATH=$PATH:/usr/local/bin" >> ~/.bashrc
 
 .. _install_sources:
 
