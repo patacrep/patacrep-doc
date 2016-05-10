@@ -10,7 +10,7 @@ les systèmes d'exploitation, mais la méthode d'installation diffère. Ces dép
 suivantes :
 
 - Python 3.3 ou plus récent. **Python 2 n'est pas supporté** ;
-- LaTeX, et en particulier ``pdflatex`` ;
+- LaTeX, et en particulier ``lualatex`` ;
 
 `Patacrep` a aussi des dépendances optionelles, qui peuvent ajouter des fonctionnalités,
 mais ne sont pas obligatoires :
@@ -95,7 +95,7 @@ Installation depuis PyPi
 Une fois les dépendances installées, vous pouvez vérifier que tout s'est bien passé en lançant les commandes ::
 
    python --version
-   pdflatex --version
+   lualatex --version
 
    # Uniquement si vous avez installé lilypond
    lilypond --version

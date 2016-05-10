@@ -6,9 +6,9 @@ Changer la mise en page des carnets : le système des templates
 Le processus de génération d'un carnet en PDF est le suivant : 
 
 1. Création du fichier .tex
-2. Compilation avec :command:`pdflatex`
+2. Compilation avec :command:`lualatex`
 3. Compilation des index
-4. Compilation avec :command:`pdflatex` prenant en compte les index
+4. Compilation avec :command:`lualatex` prenant en compte les index
 
 Après l'étape 1, l'intégralité du carnet (contenu et mise en page) est défini. 
 Pour modifier un carnet, il faut donc se pencher sur cette étape. La gestion du 
