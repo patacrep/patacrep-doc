@@ -128,8 +128,7 @@ est possible d'en écrire d'autres.
     ========== ===========
     album      Album
     original   Titre original
-    cov        Chemin de l'image de couverture (relative au répertoire du fichier :file:`.csg`)
-    vcov       Chemin de l'image de couverture
+    cov        Chemin de l'image de couverture (relative ou non au répertoire du fichier :file:`.csg`)
     url        URL de la chanson
     ========== ===========
 

@@ -137,8 +137,7 @@ il est possible de `définir de nouveaux paramètres
   ========== ===========
   album      Album
   original   Titre original
-  cov        Chemin de l'image de couverture (relative au répertoire du fichier :file:`.sg`)
-  vcov       Chemin de l'image de couverture
+  cov        Chemin de l'image de couverture (relative ou non au répertoire du fichier :file:`.sg`)
   url        URL de la chanson
   ========== ===========
 
