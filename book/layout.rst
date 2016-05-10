@@ -196,11 +196,12 @@ notation
 Notation des accords.
 
 * Défaut: ``solfedge``
-* Type: Chaîne de charactères
+* Type: Chaîne de charactères, ou liste de sept chaînes de caractères.
 * Valeurs:
 
   - ``alphascale`` : Système internanial ABCDEFG
   - ``solfedge`` :  Système français Do Ré Mi
+  - liste : Liste des noms des notes, en commençant par La. Ainsi, par exemple, ``solfedge`` est équivalent à ``['La', 'Si', 'Do', 'Ré', 'Mi', 'Fa', 'Sol']``.
 
 
 Analyse des auteurs

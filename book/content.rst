@@ -9,7 +9,7 @@ Introduction
 ^^^^^^^^^^^^
 
 Le contenu d'un recueil est défini avec l'option ``content`` du fichier
-:ref:`.sb <sb>`, sous la forme d'une liste. Le type de cette liste dépend du
+:ref:`.yaml <yaml>`, sous la forme d'une liste. Le type de cette liste dépend du
 contenu à inclure. Voici un exemple de contenu.
 
 
@@ -21,7 +21,7 @@ contenu à inclure. Voici un exemple de contenu.
       - "boire/*.csg"
       - section: "Chansons d'amour"
       - sorted:
-          key: ["by", "@title"]
+          key: ["by", "title"]
           content: 
             - "amour/*.csg"
             - "love/*.csg"
@@ -36,12 +36,12 @@ créer une section ayant pour titre *Chansons à boire*, tandis que
 .. code-block:: yaml
 
       - sorted:
-          key: ["by", "@title"]
+          key: ["by", "title"]
           content: 
             - "amour/*.csg"
             - "love/*.csg"
 
-va inclure toutes les chansons des répertoires ``amour/*.csg`` et ``love/*.csg``, triées par auteur (``by``), puis par titre (``@title``).
+va inclure toutes les chansons des répertoires ``amour/*.csg`` et ``love/*.csg``, triées par auteur (``by``), puis par titre (``title``).
 
 Lorsqu'un tableau de type ``content`` n'a pas de contenu, cela va inclure toutes les chansons du répertoire :file:`songs`:
 
@@ -138,8 +138,8 @@ est possible d'en écrire d'autres.
     ========== ===========
     Nom        Description
     ========== ===========
-    @title     Titres
-    @path      Chemin du fichier
+    title      Titres
+    path       Chemin du fichier
     ========== ===========
 
   L'ordre de tri par défaut est : auteurs, album, titre.
@@ -185,7 +185,7 @@ est possible d'en écrire d'autres.
       - "des/repertoires/vers/chanson3.csg"
 
   Cette commande recherche en priorité des chants dans le sous-dossier ``path`` relatif au
-  dossier du fichier :ref:`.sb <sb>`. Si aucun contenu n'est trouvé, alors les chants
+  dossier du fichier :ref:`.yaml <yaml>`. Si aucun contenu n'est trouvé, alors les chants
   sont recherché dans le sous-dossier  ``path`` relatif au répertoire :file:`songs` des :ref:`datadir <datadir>` (dans
   lequel sont cherchées les chansons par défaut).
 

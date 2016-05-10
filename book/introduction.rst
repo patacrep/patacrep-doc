@@ -98,7 +98,7 @@ détaillé dans la partie sur le :ref:`contenu des carnets <content>`.
 .. _build_songbook:
 
 Compiler un fichier :file:`.yaml`
--------------------------------
+---------------------------------
 
 Le fichier :file:`carnet.yaml` peut être compilé (*ie* transformé en fichier PDF)
 en ligne de commande, avec la commande suivante : ::
