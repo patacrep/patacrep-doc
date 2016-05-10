@@ -29,10 +29,10 @@ Un exemple de fichier :file:`.yaml` est fourni `avec le code source
       - section: "Chants Traditionnels"
       - "chevaliers_de_la_table_ronde.csg"
       - "greensleeves.csg"
-      - "vent_frais.csg",
+      - "vent_frais.csg"
       - section: "Exemples"
       - "exemple*.csg"
-      
+
     book:
       lang: en
       encoding: utf-8
@@ -80,7 +80,7 @@ Un exemple de fichier :file:`.yaml` est fourni `avec le code source
 Syntaxe des fichiers :file:`.yaml`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Un fichier :file:`.yaml` est écrit au format `YAML`. Le format YAML est un type de fichier
+Un fichier :file:`.yaml` est écrit au format `YAML <http://yaml.org/>`__. Le format YAML est un type de fichier
 texte dans lequel on représente des information de trois manières différentes :
 
   - les listes sont des listes d'éléments ordonnés : chaque élément commence sur une nouvelle ligne, précédé d'un tiret ``-``. Tous les élements d'une même liste doivent avoir la même indentation (décalage depuis le bord gauche) ;

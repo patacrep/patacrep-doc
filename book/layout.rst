@@ -212,7 +212,7 @@ Ce sont des sous-clés de la clé ``authors``.
 
 separators
 ``````````
-Mots qui séparent les noms d'artistes.
+Mots qui séparent les noms d'artistes. Par exemple, si cette option contient ``et``, une chanson ayant comme artiste ``Georges Brassens et Charles Trenet`` apparaitra dans l'index à la fois à ``Brassens`` et ``Trenet``.
 
 * Défaut: ``- and``
 * Type: Tableau de mots
@@ -220,7 +220,7 @@ Mots qui séparent les noms d'artistes.
 
 ignore
 ``````
-Noms d'artistes à ignorer.
+Noms d'artistes à ignorer. Permet par exemple de spécifier que l'auteur d'une chanson est inconnu, sans pour autant avoir ``Anonyme`` apparaitre dans l'index.
 
 * Défaut: ``- unknown``
 * Type: Tableau de mots
@@ -228,7 +228,7 @@ Noms d'artistes à ignorer.
 
 after
 `````
-Mots introduisant les noms des auteurs.
+Mots introduisant les noms des auteurs. Par exemple, si cette option contient ``de``, une chanson ayant comme artiste ``Musique de Jean Boyer, chantée par Georges Brassens`` apparaitra dans l'index à la fois à ``Jean Boyer`` et ``Georges Brassens``.
 
 * Défaut: ``- by``
 * Type: Tableau de mots

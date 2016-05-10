@@ -67,7 +67,7 @@ est possible d'en écrire d'autres.
 :py:mod:`song` : liste de chansons
   Ce plugin, utilisé par défaut en l'absence de mot-clé, permet d'inclure une liste de chansons, triées
   par ordre alphabétique du nom de fichier. Il est suivi d'une ou plusieurs expressions
-  régulières correspondant aux noms de fichiers à inclure. La syntaxe précise de ces expressions est décrite dans la 
+  rationnelles correspondant aux noms de fichiers à inclure. La syntaxe précise de ces expressions est décrite dans la 
   documentation du module `glob <https://docs.python.org/3.4/library/glob.html>`_ ; le 
   minimum à savoir est que :file:`/` est utilisé pour parcourir les répertoires, :file:`..` 
   correspond au répertoire parent, et :file:`*` à n'importe quelle chaîne de caractères.
@@ -91,7 +91,7 @@ est possible d'en écrire d'autres.
   Les fichiers sont recherchés successivement dans les datadirs associés 
   à un carnet : :py:mod:`song` commence par chercher dans le repertoire
   :file:`songs` du premier datadir et si au moins un fichier correspond 
-  à l'expression régulière, stoppe la recherche et passe à l'expression suivante.
+  à l'expression rationnelle, stoppe la recherche et passe à l'expression suivante.
   Sinon, il cherche dans le datadir suivant, et ainsi de suite jusqu'à la 
   fin de la liste.
 
@@ -144,7 +144,7 @@ est possible d'en écrire d'autres.
   L'ordre de tri par défaut est : auteurs, album, titre.
 
   Il faut remarque la liste de contenu de ``sorted`` n'est pas nécessairement
-  une liste d'expression régulière : c'est n'importe quel élément de contenu
+  une liste d'expression rationnelle : c'est n'importe quel élément de contenu
   qui renvoie une liste de chansons. Ainsi (en utilisant le plugin :py:mod:`cwd`
   décrit ci-après) le ``content`` suivant est parfaitement valide.
 
@@ -189,7 +189,7 @@ est possible d'en écrire d'autres.
   lequel sont cherchées les chansons par défaut).
 
   Enfin, il faut remarquer que, tout comme le plugin :py:mod:`sorted`, la liste de
-  contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions régulières
+  contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions rationnelles
   correspondant à des chansons : elle peut être n'importe quel contenu
   correspondant à une liste de chansons. De plus, la commande
   ``cwd`` utlisée sans préciser de ``path`` permet d'inclure toutes les chansons (récursivement)
