@@ -15,7 +15,7 @@ Utilisation
 
 .. code-block:: none
 
-  songbook [-h] [--version] [--datadir DATADIR [DATADIR ...]] [--verbose] [--steps STEPS] book.yaml
+  songbook [-h] [--version] [--datadir DATADIR [DATADIR ...]] [--verbose] [--steps STEPS] [--cache CACHE] [--error {failonsong,failonbook,fix}] book.yaml
 
 L'argument obligatoire est le nom d'un fichier :file:`.yaml`, qui est compilé en un
 recueil de chansons. Les options optionnelles sont les suivantes.
@@ -53,6 +53,20 @@ recueil de chansons. Les options optionnelles sont les suivantes.
   =========   ===========
 
   Plusieurs étapes (sauf l'étape spéciale) peuvent être combinées en une seule option ``--steps``, séparées par des virgules.
+
+.. option:: --cache <CACHE>, -c <CACHE>
+
+  Spécifie si oui ou non le cache devrait être utilisé (lu et écrit). Par défaut, vaut ``yes`` (le cache est utilisé) ; utiliser ``--cache=no`` pour désactiver son utilisation.
+
+.. option:: --error {failonsong,failonbook,fix}, -e {failonsong,failonbook,fix}
+
+  Par défaut, `songbook` essaye de corriger ou d'ignorer les erreurs (syntaxe, fichiers manquants, etc.) dans les chansons et le carnet. Cette option permet de changer ce comportement.
+
+  - ``failonsong`` : arrête la compilation dés qu'une chanson présentant une erreur a été analysée.
+  - ``failonbook`` : arrête la compilation après que toutes les chansons aient été analysées, si au moins une erreur a été rencontrée.
+  - ``fix`` (valeur par défaut) : essaye de corriger ou d'ignorer les erreurs.
+
+  Il faut remarquer que la compilation peut échouer même avec l'option ``--error=fix``.
 
 Utilisation avec :ref:`patadata`
 --------------------------------

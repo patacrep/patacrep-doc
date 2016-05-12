@@ -39,9 +39,8 @@ argument le `contexte <http://jinja.pocoo.org/docs/api/#the-context>`_ courant,
 et renvoie une chaîne de caractères à inclure dans le fichier :file:`.tex`.
 
 Plus de détails sur cette classe (ainsi que sur les autres méthodes utilisées)
-sont disponibles dans le docstring de `cette classe TODO(remplacer le lien par
-le blob vers la version 4.0.0)
-<https://github.com/patacrep/patacrep/blob/master/patacrep/content/__init__.py#L84>`_.
+sont disponibles dans le docstring de `cette classe
+<https://github.com/patacrep/patacrep/blob/v4.0.0/patacrep/content/__init__.py#L82-121>`_.
 
 Pour notre exemple, nous allons définir une nouvelle classe :py:class:`Foo`,
 héritant de cette classe :py:class:`content.Content`.

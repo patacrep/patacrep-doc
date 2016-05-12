@@ -3,8 +3,6 @@
 LaTeX
 =====
 
-TODO
-
 .. warning::
 
   Afin de détecter les méta-informations de la chanson (titre, auteur, etc.), une analyse syntaxique du préambule du fichier (les arguments de ``\beginsong`` est effectuée. Mais puisque LaTeX est Turing-complet, une vraie analyse syntaxique est très complexe, et dépasse de loin le cadre de ce projet. Patacrep n'est donc capable de lire correctement qu'un sous-ensemble du LaTeX. Il n'y a pas de spécification de ce qui est analysé et ce qui ne l'est pas, mais pour faire simple, si tous les arguments sont entourés d'accolades (``by={Boris Vian}}``) et ne contient aucune commande LaTeX (mis à part les accents), cela devrait fonctionner.
@@ -14,7 +12,9 @@ Une chanson est un fichier texte :file:`chanson.tsg` placé dans le répertoire
 interprété avec le paquet `songs <http://songs.sourceforge.net>`__. Si la
 connaissance de LaTeX peut-être nécessaire pour faire des choses compliquées,
 cette documentation devrait permettre d'écrire des chansons sans connaissance
-préalable de LaTeX.
+préalable de LaTeX. Pour un langage encore plus simple (moins puisant que
+LaTeX, mais qui devrait suffire dans la plupart des cas), il est aussi possible
+d'utiliser :ref:`chordpro`.
 
 Ce fichier commence par la ligne :samp:`\\beginsong{{titres}}` (éventuellement
 précédée des commandes définissant la :ref:`langue <langue>` de la chanson et
