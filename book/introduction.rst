@@ -83,16 +83,13 @@ Syntaxe des fichiers :file:`.yaml`
 Un fichier :file:`.yaml` est écrit au format `YAML <http://yaml.org/>`__. Le format YAML est un type de fichier
 texte dans lequel on représente des information de trois manières différentes :
 
-  - les listes sont des listes d'éléments ordonnés : chaque élément commence sur une nouvelle ligne, précédé d'un tiret ``-``. Tous les élements d'une même liste doivent avoir la même indentation (décalage depuis le bord gauche) ;
-  - les tableaux associatifs composés de multiples *clef/valeur*, les clefs étant la plupart du temps des chaînes, et les valeurs pouvant être n'importe quel type de données accepté par YAML.
-  - les données scalaires : chaînes de charactère (délimitées par des guillemets anglais ``"..."``), nombre, booléen (``yes``/``no``);
+  - les listes d'éléments ordonnés : chaque élément commence sur une nouvelle ligne, précédé d'un tiret ``-``. Tous les élements d'une même liste doivent avoir la même indentation (décalage depuis le bord gauche).
+  - les tableaux associatifs composés de multiples *clef: valeur*, les clefs étant la plupart du temps des chaînes, et les valeurs pouvant être n'importe quel type (une liste, un autre tableau associatif, une donnée scalaire).
+  - les données scalaires : chaînes de charactère (délimitées par des guillemets anglais ``"..."``), nombre, booléen (``yes``/``no``).
 
 
 Le fichier :file:`.yaml` contient un tableau associatif, dont les clefs sont les noms d'options, et les valeurs associées 
-sont les valeurs de ces options. Le type des valeurs dépend de l'option considérée, et est
-détaillé dans la section sur la :ref:`mise en page <layout>`. Une option est un peu spéciale, il 
-s'agit de l'option ``content``, qui traduit le contenu du futur carnet de chants. Sa syntaxe est 
-détaillé dans la partie sur le :ref:`contenu des carnets <content>`.
+sont les valeurs de ces options. Le type des valeurs dépend de l'option considérée. Les sections sur le :ref:`contenu des carnets <content>` et sur la :ref:`mise en page <layout>` contiennent les détails concernant les différentes options.
 
 
 .. _build_songbook:
