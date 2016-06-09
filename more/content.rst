@@ -108,4 +108,4 @@ Notre fonction va donc être la suivante :
 Bilan
 -----
 
-Notre plugin est maintenant fonctionnel, et réagit au mot clé ``foo``.
+Notre plugin est maintenant fonctionnel et réagit au mot clé ``foo``.
