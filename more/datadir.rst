@@ -16,12 +16,18 @@ Les sous-répertoires de ces :file:`datadir` sont les suivants.
   Ce répertoire contient des images qui peuvent être incluses à l'aide de la
   commande :
 
+  .. code-block:: chordpro
+
+    {image: image.png}
+
+  ou en LaTeX :
+
   .. code-block:: latex
 
     \includegraphics{image.png}
 
   Ce répertoire est automatiquement inclus dans la liste des répertoires dans
-  lesquels ``\includegraphics`` va chercher les images : pour les fichiers de
+  lesquels ces commandes vont chercher les images : pour les fichiers de
   ce répertoire, il n'est donc pas nécessaire de préciser leur chemin d'accès
   absolu.
 

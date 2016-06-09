@@ -6,9 +6,9 @@ Changer la mise en page des carnets : le système des templates
 Le processus de génération d'un carnet en PDF est le suivant : 
 
 1. Création du fichier .tex
-2. Compilation avec :command:`pdflatex`
+2. Compilation avec :command:`lualatex`
 3. Compilation des index
-4. Compilation avec :command:`pdflatex` prenant en compte les index
+4. Compilation avec :command:`lualatex` prenant en compte les index
 
 Après l'étape 1, l'intégralité du carnet (contenu et mise en page) est défini. 
 Pour modifier un carnet, il faut donc se pencher sur cette étape. La gestion du 
@@ -180,7 +180,7 @@ Créer son propre template
 
 Pour créer votre propre template et l'utiliser, il vous faudra creer un fichier :file:`mon_template.tex`
 dans un sous-dossier :file:`templates` d'un :ref:`datadir <datadir_templates>`, et ajouter 
-``"template":"mon_template.tex"`` dans votre fichier :file:`.sb`. Le plus simple pour vous est encore 
+``template: mon_template.tex`` dans la section ``book`` de votre fichier :file:`.yaml`. Le plus simple pour vous est encore 
 de faire hériter votre template de l'un des templates par défaut de Patacrep, comme :file:`default.tex` 
 ou :file:`patacrep.tex`. Vous pourrez alors (re)définir les commandes LaTeX de votre choix. 
 
@@ -191,6 +191,11 @@ comment modifier la mise en page des carnets créés, et quelles commandes redé
 
 Les variables
 ^^^^^^^^^^^^^
+
+.. note:: 
+   Ce paragraphe n'a pas encore été mis-à-jour avec la dernière version de patacrep.
+   Il est conseillé de s'inspirer des templates existants (``default.tex``, ``layout.tex``...)
+   et de ne pas hésiter à demander de l'aide sur `github <https://github.com/patacrep/patacrep/issues/new>`_.
 
 Si vous voulez accéder à des variables dans vos templates avec la syntaxe ``(( ma_variable ))``, vous 
 devez définir ces variables au début de votre fichier de template. Ces définitions doivent être placées 

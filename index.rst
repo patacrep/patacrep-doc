@@ -5,9 +5,9 @@ Projet `Patacrep`
 Le projet `Patacrep` fournit des outils pour compiler un carnet de chants en LaTeX (en
 utilisant le `paquet songs <http://songs.sourceforge.net/>`_).
 
-Chaque chanson peut être écrite en n'utilisant qu'un sous-ensemble de commandes
-LaTeX, et des fonctionnalités de haut niveau permettent une manipulation aisée
-du contenu.
+Les chansons sont écrites, au choix, en utilisant le langage `chordpro
+<http://www.chordpro.org/>`_ (auquel cas elles seront converties en LaTeX lors
+de la compilation du carnet), ou en utilisant directement LaTeX.
 
 Documentation
 =============
@@ -35,7 +35,8 @@ patacrep
 --------
 
 Le nom `patacrep` désigne à la fois l'ensemble du projet (un ensemble
-d'outils), et le cœur (l'outil principal, utilisé par les autres outils).
+d'outils), et la bibliothèque au cœur du projet (l'outil principal, utilisé par
+les autres outils).
 
 * `patacrep` regroupe les projets décrits ci-après (`patacrep`, `pataextra`,
   `patadata`, `patanet`, `patagui`) et est un ensemble d'outils de manipulation
@@ -103,17 +104,13 @@ Voici quelques outils que l'utilisateur pourrait avoir à manipuler.
 LaTeX
 -----
 
-L'ensemble d'outils `patacrep` ne fait en réalité que manipuler des fichiers
-LaTeX : un carnet de chants, et les chansons en particulier, sont écrits dans
-ce langage. Même si nous espérons que l'utilisation de `patacrep` diminue
-grandement les connaissances nécessaires pour écrire du LaTeX, il pourra être
-utile de se familiariser avec cet outil, avec par exemple `Une courte (?)
-introduction à LaTeX2e
+L'ensemble d'outils `patacrep` produit un fichier LaTeX, qui est compilé pour
+devenir un carnet de chants au format PDF. Les chansons peuvent êtres écrites
+en :ref:`chordpro <chordpro>`, mais il est possible :ref:`d'utiliser
+directement LaTeX <latex>`, auquel cas il pourra être utile de se familiariser
+avec cet outil, avec par exemple `Une courte (?) introduction à LaTeX2e
 <http://mirrors.ctan.org/info/lshort/french/lshort-fr.pdf>`_ (`original en
 anglais <http://mirrors.ctan.org/info/lshort/english/lshort.pdf>`_).
-
-Pour les cas de base, copier un recueil ou une chanson déjà existante pour
-l'adapter à ses besoins devrait suffire à commencer à travailler.
 
 Songs
 -----
@@ -129,9 +126,9 @@ Lilypond
 --------
 
 Il est possible d'intégrer des partitions aux chansons. Si ces partitions
-peuvent être intégrées comme des images (JPG, PNG, PDF) en utilisant le paquet
-`graphicx` de LaTeX sans utiliser de fonctionnalité particulière de `patacrep`,
-ce dernier permet de manipuler les partitions écrites au format Lilypond.
+peuvent être intégrées comme des images (JPG, PNG, PDF) en utilisant la
+:ref:`directive <directive>` ``image``, `Lilypond` permet de manipuler les
+partitions écrites au format Lilypond.
 
 Plus d'informations dans la section :ref:`partitions`, et sur le `site du
 projet <http://www.lilypond.org/>`_.

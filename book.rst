@@ -1,12 +1,12 @@
 .. _songbook:
 
-Créer un recueil
-================
+Création d'un carnet
+====================
 
-Un recueil ou carnet de chant est décrit par un fichier :file:`.sb` qui doit 
-être écrit par un humain. Les sections suivantes expliquent la :ref:`syntaxe <sb>` de ces
-fichiers, ainsi que les options de :ref:`mises en forme <layout>` des recueils compilés.
-La manière de :ref:`compiler un receuil <build_songbook>` est aussi explicitée.
+Un carnet ou recueil de chant est décrit par un fichier :file:`.yaml` qui peut 
+être écrit manuellement. Les sections suivantes expliquent la :ref:`syntaxe <yaml>` de ces
+fichiers, ainsi que les options de :ref:`mises en page <layout>` des carnets compilés.
+La manière de :ref:`compiler un receuil <build_songbook>` est aussi détaillée.
 
 .. toctree::
   :maxdepth: 2

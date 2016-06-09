@@ -10,7 +10,7 @@ les systèmes d'exploitation, mais la méthode d'installation diffère. Ces dép
 suivantes :
 
 - Python 3.3 ou plus récent. **Python 2 n'est pas supporté** ;
-- LaTeX, et en particulier ``pdflatex`` ;
+- LaTeX, et en particulier ``lualatex`` ;
 
 `Patacrep` a aussi des dépendances optionnelles, qui peuvent ajouter des fonctionnalités,
 mais ne sont pas obligatoires :
@@ -36,13 +36,6 @@ installer sous Debian (et ses dérivées comme Ubuntu) sont :
 
 - Python 3.4
 
-  .. note::
-
-    Malheureusement, Debian Wheezy (stable) ne fourni que
-    Python 3.2, qui est incompatible. Pour utiliser patacrep, il faut installer
-    Python3.4, par exemple en utilisant `apt-pinning
-    <http://jaqque.sbih.org/kplug/apt-pinning.html>`_.
-
   - Installer les paquets nécessaires (pour une installation de `patacrep` sans :ref:`virtualenv <virtualenv>`):
 
     .. code-block:: shell
@@ -61,6 +54,11 @@ installer sous Debian (et ses dérivées comme Ubuntu) sont :
   - Optionnel pour `patacrep`, nécessaire pour `patadata` : ``texlive-lang-english texlive-lang-french texlive-lang-portuguese texlive-lang-spanish texlive-fonts-extra``
 
 - Lilypond (optionnel) : ``lilypond``
+
+Il est aussi possible, en utilisant `stdeb <http://github.com/astraw/stdeb>`_, de créer un paquet :file:`.deb` à la volée::
+
+    python setup.py --command-packages=stdeb.command bdist_deb
+    sudo dpkg -i deb_dist/python3-patacrep_5.0.0-1_all.deb
 
 CentOS 6.5
 """"""""""
@@ -97,7 +95,7 @@ Installation depuis PyPi
 Une fois les dépendances installées, vous pouvez vérifier que tout s'est bien passé en lançant les commandes ::
 
    python --version
-   pdflatex --version
+   lualatex --version
 
    # Uniquement si vous avez installé lilypond
    lilypond --version
@@ -182,7 +180,7 @@ Depuis le dossier :file:`patacrep`
 
 
 Mise à jour
-===========
+-----------
 
 Pour effectuer une mise à jour de `Patacrep`, vérifiez que les dépendances sont à jour, puis lancez la commande ::
 

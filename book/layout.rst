@@ -1,144 +1,423 @@
 .. _layout:
 
-Faire la mise en page d'un carnet
+Mise en page du carnet
 =================================
 
 La mise en page des carnets est gérée par un système d'options : il est possible
 de spécifier la taille et l'orientation du papier, le type de police des accords,
-*etc.* en mettant le bon mot clef dans un fichier :file:`.sb`. Toutes ces options
-ont des valeurs par défaut, définies à plusieurs endroits. La valeur finale d'une
-option peut provenir de plusieurs origines, données ici par ordre de priorité
-croissante :
+*etc.* en mettant le bon mot clef dans un fichier :file:`.yaml`. 
 
-Valeurs par défaut
-------------------
-
-Quelques options ne peuvent pas être laissées vides, et doivent avoir une
-valeur par défaut. Celle-ci est inscrite *en dur* dans le code source de
-:py:mod:`patacrep`, et est donnée dans la liste des options ci-dessous.
+La plupart des options peuvent être omises : elle prendront alors une
+valeur par défaut, documentée ci-dessous.
 
 
-Templates
----------
+Exemple de fichier :file:`.yaml`
+--------------------------------
 
-Les templates permettent de définir des valeurs particulières à certaines
-options. Par exemple, pour réaliser une collection de recueils, il est possible
-d'en définir les caractéristiques générales dans un template particulier. Les
-options prenant des valeurs différentes pour chacun des recueils sont définies
-dans les fichiers :file:`.sb`. Ceci signifie qu'en écrivant le template adéquat,
-il est possible de définir de nouvelles options de mise en page (plus
-d'information dans la :ref:`partie correspondante <templates>`).
+Un fichier :file:`.yaml` contient un dictionnaire YAML, dont les clefs sont les noms
+des options et leur valeur associée pour la mise en page.
+Le mot-clef ``content`` ne gère pas la mise en page, mais le :ref:`contenu du carnet <content>`.
 
-Fichier :file:`.sb`
--------------------
+Voici par exemple le fichier :file:`.yaml` qui fournit les options par défaut :
 
-La majeure partie de la personalisation d'un carnet est effectuée à cet endroit.
-Un fichier :file:`.sb` contient un dictionnaire JSON, dont les clefs sont des options
-et les valeurs les valeurs prisent par ces options. Losrqu'un fichier :file:`.sb`
-est compilé par :py:mod:`patacrep`, tous les mots clefs en dehors de ``"content"``
-sont transmis au gestionnaire de mise en page.
+.. code-block:: yaml
 
-Ces options ne s'appliquent qu'à un carnet de chant particulier.
+  book: # Options générales
+    lang: en
+    encoding: utf-8
+    pictures: yes
+    template: default.tex
+    onesongperpage: no
+
+  chords: # Options musicales
+    show: yes
+    diagramreminder: important
+    diagrampage: yes
+    repeatchords: yes
+    lilypond: no
+    tablatures: no
+    instrument: guitar
+    notation: alphascale
+
+  authors: # Analyse des auteurs
+    separators:
+    - and
+    ignore:
+    - unknown
+    after:
+    - by
+
+  titles: # Analyse des titres
+    prefix:
+    - The
+    - Le
+    - La
+    - "L'"
+    - A
+    - Au
+    - Ces
+    - De
+    - Des
+    - El
+    - Les
+    - Ma
+    - Mon
+    - Un
+  content:
 
 .. _options:
 
 Liste des options
 -----------------
 
-Les valeurs par défaut sont données ici en supposant que la langue principale
-du recueil est le français.
+Les valeurs par défaut sont données ici en supposant que **la langue principale
+du carnet est le français**.
 
-Définies hors des templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Options générales
+^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: |l|L|L|L|
+Ce sont des sous-clés de la clé ``book``.
 
-================= =========================== =================================== =================
-Option            Description                 Type                                Valeur par défaut
-================= =========================== =================================== =================
-content           contenu à inclure dans le   liste, décrite dans la section      ``[]``
-                  recueil                     :ref:`content`
-encoding          encodage des fichiers       chaîne de charactères               ``""``
-                  à lire (chansons,
-                  templates, etc.).
 
-                  Si aucune valeur n'est
-                  renseignée, ``patacrep``
-                  essaye de deviner
-                  l'encodage des fichiers.
+lang
+````
+Langue du carnet (Code ISO 639-1 à 2 lettres).
 
-template          template à utiliser         nom d'un fichier présent dans un    ``"default.tex"``
-                                              dossier :file:`templates`
-titleprefixwords  Mots à ignorer dans le      liste de chaînes de caractères      ``[]``
-                  classement des chansons
-authwords         Options pour traiter les    dictionnaire de listes de chaînes   ``{"after": ["by"], "ignore": ["unknown"], "sep": ["and"]}``
-                  noms d'auteurs (commandes   de caractères, dont les clefs
-                  LaTeX ``authsepword``       sont ``sep``,
-                  (sépatareurs de noms),      ``ignore`` et
-                  ``authignoreword`` (noms à  ``after``
-                  ignorer), ``authbyword``
-                  (mots introduisant les
-                  noms des auteurs)).
-================= =========================== =================================== =================
+* Défaut: ``en``
+* Type: Chaîne de charactères
+* Valeurs: ``fr`` et ``en`` sont actuellement supportés
+
+
+onesongperpage
+``````````````
+Commencer toutes les chansons sur une nouvelle page.
+
+* Défaut: ``no``
+* Type: Booléen
+
+
+pictures
+````````
+Afficher les couvertures des albums.
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+template
+````````
+Template de carnet à utiliser.
+
+* Défaut: ``patacrep.tex``
+* Type: Chaîne de charactères
+* Valeurs: Voir le dossier ``templates`` des datadirs pour les autres fichiers disponibles
+
+
+encoding
+````````
+Encodage des fichiers à lire (chansons, templates, etc.). Peut aider à résoudre des problèmes d'accentuation.
+
+* Défaut: ``utf-8``
+* Type: Chaîne de charactères
+
+
+Options musicales
+^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``chords``.
+
+show
+````
+Afficher les accords au sein des paroles.
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+diagramreminder
+```````````````
+Rappeler en début de chansons certains diagrammes d'accords.
+
+* Défaut: ``important``
+* Type: Chaîne de charactères
+* Valeurs:
+
+  - ``all`` : Rappel de tous les accords présents dans le chant
+  - ``important`` : Rappel des accords peu communs du chant
+  - ``none`` : Aucun rappel d'accords
+
+
+diagrampage
+```````````
+Insérer une page d'accords en début de carnet.
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+repeatchords
+````````````
+Afficher les accords dans tous les couplets (disponible uniquement pour certains chants).
+
+* Défaut: ``yes``
+* Type: Booléen
+
+
+lilypond
+````````
+Inclure les partitions musicales (nécéssite le logiciel libre lilypond).
+
+* Défaut: ``no``
+* Type: Booléen
+
+
+tablatures
+``````````
+Inclure les tablatures.
+
+* Défaut: ``no``
+* Type: Booléen
+
+
+instrument
+``````````
+Instrument pour lequel il faut rappeler les accords.
+
+* Défaut: ``guitar``
+* Type: Chaîne de charactères
+* Valeurs:
+
+  - ``guitar`` : Guitare
+  - ``ukulele`` : Ukulélé
+
+
+notation
+````````
+Notation des accords.
+
+* Défaut: ``solfedge``
+* Type: Chaîne de charactères, ou liste de sept chaînes de caractères.
+* Valeurs:
+
+  - ``alphascale`` : Système internanial ABCDEFG
+  - ``solfedge`` :  Système français Do Ré Mi
+  - liste : Liste des noms des notes, en commençant par La. Ainsi, par exemple, ``solfedge`` est équivalent à ``['La', 'Si', 'Do', 'Ré', 'Mi', 'Fa', 'Sol']``.
+
+
+Analyse des auteurs
+^^^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``authors``.
+
+
+separators
+``````````
+Mots qui séparent les noms d'artistes. Par exemple, si cette option contient ``et``, une chanson ayant comme artiste ``Georges Brassens et Charles Trenet`` apparaitra dans l'index à la fois à ``Brassens`` et ``Trenet``.
+
+* Défaut: ``- and``
+* Type: Tableau de mots
+
+
+ignore
+``````
+Noms d'artistes à ignorer. Permet par exemple de spécifier que l'auteur d'une chanson est inconnu, sans pour autant avoir ``Anonyme`` apparaitre dans l'index.
+
+* Défaut: ``- unknown``
+* Type: Tableau de mots
+
+
+after
+`````
+Mots introduisant les noms des auteurs. Par exemple, si cette option contient ``de``, une chanson ayant comme artiste ``Musique de Jean Boyer, chantée par Georges Brassens`` apparaitra dans l'index à la fois à ``Jean Boyer`` et ``Georges Brassens``.
+
+* Défaut: ``- by``
+* Type: Tableau de mots
+
+
+Analyse des titres
+^^^^^^^^^^^^^^^^^^^
+
+Ce sont des sous-clés de la clé ``titles``.
+
+
+prefix
+``````
+Préfixe à ignorer lors du tri des titres (notamment dans l'index).
+
+* Défaut:
+
+.. code-block:: yaml
+
+  - The
+  - Le
+  - La
+  - "L'"
+  - A
+  - Au
+  - Ces
+  - De
+  - Des
+  - El
+  - Les
+  - Ma
+  - Mon
+  - Un
+
+* Type: Tableau de mots
+
+
+Options des templates
+---------------------
+
+Certains options sont propres aux templates utilisés. Par exemple le template
+:file:`patacrep.tex` (qui inclut notamment :file:`default.tex`) permet de personnaliser
+certaines couleurs et la page de garde.
+
+Les options des templates sont regroupées sous la clé ``template`` avec comme sous-clé le nom
+du fichier de template:
+
+.. code-block:: yaml
+  
+  # options précédentes `book`, `chords`...
+  
+  template:
+    default.tex:
+      title: "Recueil de chansons pour guitare"
+      author: "L'équipe Patacrep"
+    patacrep.tex:
+      color:
+        songlink: FF0000
+        hyperlink: 0000FF
+      bgcolor:
+        note: D1E4AE
+        songnumber: AED1E4
+        index: E4AED1
+
 
 Template :file:`default.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: |l|L|L|L|
 
-================== =========================== ============================================= ===========================
-Option             Description                 Type                                          Valeur par défaut
-================== =========================== ============================================= ===========================
-instruments        instruments à afficher      Liste de chaînes de caractères parmi :        ``["guitar"]``
-                                               ``guitar``, ``ukulele``
-booktype           Type de recueil             Chaîne de caractères, parmi :                 ``"chorded"``
-                                               ``chorded`` (avec accords) ou
-                                               ``lyric`` (paroles uniquement)
-bookoptions        éléments à afficher         Liste de chaînes de caractères parmi :        ``["diagram", "pictures"]``
-                                               ``lilypond`` (partitions lilypond),
-                                               ``diagram`` (diagrammes d'accords),
-                                               ``importantdiagramonly`` (diagrammes
-                                               importants uniquement),
-                                               ``onesongperpage`` (une chanson par page),
-                                               ``pictures`` (couvertures des albums),
-                                               ``repeatchords`` (répéter les accords),
-                                               ``tabs`` (tablatures)
-classoptions       options passées à la        liste de chaînes de caractères                ``[]``
-                   commande ``\documentclass``
-                   du document LaTeX principal
-notenamesout       Nom des notes               chaîne de caractères parmi :                  ``"solfedge"``
-                                               ``solfedge`` (Do, Ré, Mi...) et
-                                               ``alphascale`` (A, B, C...)
-lang               langue du recueil           ``french``, ``english``, etc.                 ``"english"``
-title              titre du recueil            chaîne de caractères                          ``"Recueil de chansons pour guitare"``
-author             auteur du recueil           chaîne de caractères                          ``"L'équipe Patacrep"``
-================== =========================== ============================================= ===========================
+title
+`````
+Titre du carnet de chants.
+
+* Défaut: ``"Recueil de chansons pour guitare"``
+* Type: Chaîne de charactères
+
+
+author
+``````
+Auteur du carnet de chants.
+
+* Défaut: ``"L'équipe Patacrep"``
+* Type: Chaîne de charactères
+
+
+classoptions
+````````````
+Options de la classe LaTeX.
+
+* Défaut: *(vide)*
+* Type: Chaîne de charactères
+
 
 Template :file:`patacrep.tex`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: |l|L|L|L|
 
-================== =========================== =================================== =================
-Option             Description                 Type                                Valeur par défaut
-================== =========================== =================================== =================
-titleprefixwords   *idem*                      *idem*                              ``["The", "Le", "La", "L'", "A", "Au", "Ces", "De", "Des", "El", "Les", "Ma", "Mon", "Un"]}``
-songnumberbgcolor  couleur des numéros des     code hexadécimal                    ``"D1E4AE"``
-                   chansons
-notebgcolor        couleur des notes dans      code hexadécimal                    ``"D1E4AE"``
-                   les chansons
-indexbgcolor       couleur des liens dans      code hexadécimal                    ``"D1E4AE"``
-                   l'index
-subtitle           sous-titre du recueil       chaîne de caractères                           *vide*
-version            version du recueil          chaîne de caractères                          ``"undefined"`` *(la version n'est alors pas indiquée)*
-web                adresse du site web du      chaîne de caractères                          ``"http://www.patacrep.com"``
-                   recueil
-mail               adresse électronique        chaîne de caractères                          ``"crep@team-on-fire.com"``
-                   associée au recueil
+subtitle
+````````
+Sous-titre du carnet (pour la page de garde).
 
-picture            image de la page de garde   chemin vers image, au format                  ``"treble_a.png"``
-                                               ``jpg``, ``png`` ou ``pdf``
-picturecopyright   copyright de l'image        chaîne de caractères                          ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
-footer             pied de page de la page     chaîne de caractères                          ``"Generated using Songbook (\\url{http://www.patacrep.com})"``
-                   de garde
-================== =========================== =================================== =================
+* Défaut: *(vide)*
+* Type: Chaîne de charactères
+
+
+version
+````````
+Version du carnet (pour la page de garde).
+
+* Défaut: *(vide)*
+* Type: Chaîne de charactères
+
+
+url
+```
+Site web de l'auteur (pour la page de garde).
+
+* Défaut: ``"http://www.patacrep.com"``
+* Type: Chaîne de charactères
+
+
+email
+`````
+Courriel de l'auteur (pour la page de garde).
+
+* Défaut: ``"crep@team-on-fire.com"``
+* Type: Chaîne de charactères
+
+
+picture
+```````
+Image pour la page de garde.
+
+* Défaut: ``"img/treble_a"``
+* Type: Chaîne de charactères
+
+
+picturecopyright
+````````````````
+Copyright pour l'image de la page de garde.
+
+* Défaut: ``"Dbolton \\url{http://commons.wikimedia.org/wiki/User:Dbolton}"``
+* Type: Chaîne de charactères
+
+
+footer
+``````
+Pied de page de la page de garde.
+
+* Défaut: ``"Créé avec le programme Songbook (\\url{http://www.patacrep.com})"``
+* Type: Chaîne de charactères
+
+
+color: songlink
+```````````````
+Couleur des liens vers les chants.
+
+* Défaut: ``4e9a06``
+* Type: Couleur en hexadécimal
+
+
+color: hyperlink
+````````````````
+Couleurs des liens hypertextes.
+
+* Défaut: ``204a87``
+* Type: Couleur en hexadécimal
+
+
+bgcolor: songnumber
+```````````````````
+Couleur de fond des numéros de chants.
+
+* Défaut: ``D1E4AE``
+* Type: Couleur en hexadécimal
+
+
+bgcolor: note
+`````````````
+Couleur de fond des indications.
+
+* Défaut: ``D1E4AE``
+* Type: Couleur en hexadécimal
+
+
+bgcolor: index
+``````````````
+Couleur de fond des lettres de l'index.
+
+* Défaut: ``D1E4AE``
+* Type: Couleur en hexadécimal
+

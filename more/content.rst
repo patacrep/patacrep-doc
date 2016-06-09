@@ -4,7 +4,7 @@ Ajouter du contenu aux carnet : écrire un plugin
 ================================================
 
 Dans toute la suite, nous allons créer un plugin :py:mod:`foo`, associé au mot-clef
-``foo``, qui écrit dans le recueil les arguments et contenu associé, quasiment
+``foo``, qui écrit dans le carnet le contenu de l'argument ``bar``, quasiment
 sans traitement. Ce plugin se présente sous la forme d'un fichier :file:`foo.py` (le
 nom de fichier est libre), présent dans un sous répertoire :file:`python/content`
 d'un :file:`datadir`.
@@ -17,7 +17,7 @@ répertoire :file:`python/content` (relativement à un des :file:`datadir`). Ce 
 contenir une variable :py:data:`CONTENT_PLUGIN`, qui est un dictionnaire dont les
 clefs sont des mots-clefs, et les valeurs des fonctions :ref:`parse <parse>`.
 
-Lors de la compilation du recueil, lors de l'analyse de la variable ``content``
+Lors de la compilation du carnet, au moment de l'analyse de la variable ``content``
 du fichier :file:`.sb`, lorsqu'un de ces mots-clefs est rencontré, la fonction
 :py:func:`parse` correspondante est appelée.
 
@@ -39,9 +39,8 @@ argument le `contexte <http://jinja.pocoo.org/docs/api/#the-context>`_ courant,
 et renvoie une chaîne de caractères à inclure dans le fichier :file:`.tex`.
 
 Plus de détails sur cette classe (ainsi que sur les autres méthodes utilisées)
-sont disponibles dans le docstring de `cette classe TODO(remplacer le lien par
-le blob vers la version 4.0.0)
-<https://github.com/patacrep/patacrep/blob/master/patacrep/content/__init__.py#L84>`_.
+sont disponibles dans le docstring de `cette classe
+<https://github.com/patacrep/patacrep/blob/v4.0.0/patacrep/content/__init__.py#L82-121>`_.
 
 Pour notre exemple, nous allons définir une nouvelle classe :py:class:`Foo`,
 héritant de cette classe :py:class:`content.Content`.
@@ -52,17 +51,16 @@ héritant de cette classe :py:class:`content.Content`.
 
   class Foo(Content):
 
-    def __init__(self, arguments, contentlist):
+    def __init__(self, arguments):
       """Fonction d'initialisation
 
       Le moteur de plugin ne va pas appeler cette fonction directement : chaque
       plugin est donc libre de définir cette initialisation comme il l'entend.
       """
       self.arguments = arguments
-      self.contentlist = contentlist
 
     def render(self, __context):
-      return self.arguments + str(self.contentlist)
+      return self.arguments['bar']
 
 
 .. _parse:
@@ -77,19 +75,26 @@ avec comme arguments :
   le mot clef ayant déclenché l'appel à cette fonction ;
 `argument`
   l'argument passé au mot-clef ;
-`contentlist`
-  la suite de la liste du contenu
 `config`
   le dictionnaire contenant la configuration du recueil en cours de
   construction. Le modifier est autorisé.
 
-Ainsi, si le contenu du recueil comprend ``["foo(bar)", "one", "two",
-"three"]``, notre fonction :py:func:`parse` sera appelée avec comme arguments
-:samp:`parse('foo', 'bar', ['one', 'two', 'three'], config)`.
+Ainsi, si le contenu du recueil comprend 
+
+.. code-block:: yaml
+
+  - foo:
+      bar: "something"
+      content:
+        - "one"
+        - "two"
+
+notre fonction :py:func:`parse` sera appelée avec comme arguments
+:samp:`parse('foo', {'bar': "something", 'content': ['one', 'two']}, config)`.
 
 Cette fonction doit retourner une liste (éventuellement vide) d'objets de
 classe :py:class:`content.Content` (ou une de ces sous-classes). Ces objets seront
-intégrés au recueil (en utilisant principalement leur méthode
+intégrés au carnet (en utilisant principalement leur méthode
 :py:meth:`content.Content.render`) dans l'ordre dans lequel ils apparaissent
 dans cette liste.
 
@@ -97,12 +102,10 @@ Notre fonction va donc être la suivante :
 
 .. code-block:: python
 
-  def parse(keyword, argument, contentlist, config):
-    return [Foo(argument, contentlist)]
+  def parse(keyword, argument, config):
+    return [Foo(argument)]
 
 Bilan
 -----
 
-Notre plugin est maintenant fonctionnel. Il va être appelé si la variable
-``content`` du recueil contient par exemple ``["foo(bar)", "one", "two",
-"three"]``.
+Notre plugin est maintenant fonctionnel et réagit au mot clé ``foo``.
