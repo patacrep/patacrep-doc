@@ -8,7 +8,7 @@ d'accords, préface, etc.
 Un carnet est décrit par un fichier :file:`.yaml` (détaillé :ref:`ci-après <yaml>`).
 Il est généré par ``songbook`` en assemblant des fichiers de chansons :file:`.csg` (ou :file:`.tsg`),
 des templates :file:`.tex`, des fichiers LaTeX :file:`.tex`, des images, etc.
-Tout ce contenu est placé dans des dossiers de donnée appelés :ref:`datadir <datadir>`.
+Tout ce contenu provient de dossiers de donnée appelés :ref:`datadir <datadir>`.
 
 Un carnet fini, au format PDF, est l'intégration d'un contenu dans une mise en
 page particulière. Les options qui gouvernent cette mise en page sont
