@@ -3,12 +3,12 @@
 Gestion du contenu
 ==================
 
-Cette partie décrit comment insérer des chansons dans un recueil.
+Cette partie décrit comment choisir les chants à insérer dans un carnet.
 
 Introduction
 ^^^^^^^^^^^^
 
-Le contenu d'un recueil est défini avec l'option ``content`` du fichier
+Le contenu d'un carnet est défini avec l'option ``content`` du fichier
 :ref:`.yaml <yaml>`, sous la forme d'une liste. Le type de cette liste dépend du
 contenu à inclure. Voici un exemple de contenu.
 
@@ -242,7 +242,7 @@ est possible d'en écrire d'autres.
 
 :py:mod:`tex` : inclusion de fichiers LaTeX quelconques
   Il est possible avec ce plugin d'inclure un fichier LaTeX quelconque.
-  L'unique mot-clef ``tex`` prend en argument le ou les fichiers latex à inclure dans le recueil.
+  L'unique mot-clef ``tex`` prend en argument le ou les fichiers latex à inclure dans le carnet.
 
   Exemple : ``tex: "intro.tex"``
 
