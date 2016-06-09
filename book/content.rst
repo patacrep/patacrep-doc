@@ -30,7 +30,7 @@ Comme nous pouvons le voir, la valeur de ``content`` est une liste de tableaux a
 ou de chaînes de caractères.
 Une chaîne de caractères est automatiquement transformé en tableau avec une clé ``song``. Ainsi ``"boire/*.csg"`` et ``song: "boire/*.csg"`` sont équivalents.
 La *clé* d'un tableau associatif (avant le ``:``) est une chaîne indiquant le
-type de contenu considéré : par exemple ``section: "Chansons à boire"`` va
+:ref:`type de contenu <content_types>` considéré : par exemple ``section: "Chansons à boire"`` va
 créer une section ayant pour titre *Chansons à boire*, tandis que
 
 .. code-block:: yaml
@@ -56,6 +56,8 @@ titre (c'est le tri par défaut) :
 
   content:
     sorted:
+
+.. _content_types:
 
 Types de contenus disponibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -160,7 +162,7 @@ est possible d'en écrire d'autres.
   Une conséquence de cela est que ne pas donner de ``content`` à  ``sorted`` permet
   d'inclure toutes les chansons du répertoire :file:`songs`, récursivement.
 
-:py:mod:`cwd` : changement de répertoire
+:py:mod:`cd` : changement de répertoire
   Lorsque plusieurs chansons du même répertoire sont incluses, il peut être
   fastidieux de redonner le chemin complet à chaque fois. Ce plugin permet
   d'éviter ce travail. Les deux valeurs suivantes de la variable ``content``
@@ -169,7 +171,7 @@ est possible d'en écrire d'autres.
   .. code-block:: yaml
   
     content: 
-      - cwd:
+      - cd:
         path: des/repertoires/vers
         content: 
           - "chanson1.csg"
@@ -189,10 +191,10 @@ est possible d'en écrire d'autres.
   lequel sont cherchées les chansons par défaut).
 
   Enfin, il faut remarquer que, tout comme le plugin :py:mod:`sorted`, la liste de
-  contenu de :py:mod:`cwd` n'est pas limitée à une liste d'expressions rationnelles
+  contenu de :py:mod:`cd` n'est pas limitée à une liste d'expressions rationnelles
   correspondant à des chansons : elle peut être n'importe quel contenu
   correspondant à une liste de chansons. De plus, la commande
-  ``cwd`` utlisée sans préciser de ``path`` permet d'inclure toutes les chansons (récursivement)
+  ``cd`` utlisée sans préciser de ``path`` permet d'inclure toutes les chansons (récursivement)
   comprises dans le répertoire :file:`path`.
 
   .. code-block:: yaml
@@ -201,7 +203,7 @@ est possible d'en écrire d'autres.
       - "chants_a_boire/*.csg"
 
   Ne va inclure que les chants situés directement dans le dossier :file:`chants_a_boire`, 
-  alors que la command ``cwd`` suivante va aussi inclure les chants des sous-dossiers 
+  alors que la command ``cd`` suivante va aussi inclure les chants des sous-dossiers 
   :file:`chants_a_boire/de_l_eau/`, :file:`chants_a_boire/du_vin/`...
 
   .. code-block:: yaml
@@ -275,7 +277,29 @@ est possible d'en écrire d'autres.
   
   Les fichiers inclus de cette manière sont recherchés dans tous les :ref:`datadir <datadir>`
   plus le dossier dans lequel se trouve le fichier dans lequel ``"include"`` a été rencontré.
-   
+
+.. _plugin_addsongdir:
+
+:py:mod:`addsongdir` : ajout d'un dossier à la liste des dossiers à parcourir pour trouver des chansons.
+  Le chemin (``path``) est relatif au chemin du fichier ``.yaml``.
+  
+     .. code-block:: yaml
+
+        content:
+          - addsongdir:
+              path: "../sous_dossier/"
+              content:
+
+.. _plugin_setcounter:
+
+:py:mod:`setcounter` : spécifie le numéro de la prochaine chanson.
+  Utile si l'on souhaite qu'une nouvelle section recommence la numérotation à 1
+  ou, au contraire, sauter des numéros pour que la section change de centaine par exemple.
+
+  Usage : ``setcounter: 101``
+  
+
+
 Il est possible d'ajouter son propre type de contenu (images, fichiers abc, ...) à un carnet
 en écrivant son propre plugin. La procédure est décrite dans la section :ref:`plugins_write`.
 
