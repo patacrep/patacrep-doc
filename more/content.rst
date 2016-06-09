@@ -4,7 +4,7 @@ Ajouter du contenu aux carnet : écrire un plugin
 ================================================
 
 Dans toute la suite, nous allons créer un plugin :py:mod:`foo`, associé au mot-clef
-``foo``, qui écrit dans le recueil les arguments et contenu associé, quasiment
+``foo``, qui écrit dans le carnet le contenu de l'argument ``bar``, quasiment
 sans traitement. Ce plugin se présente sous la forme d'un fichier :file:`foo.py` (le
 nom de fichier est libre), présent dans un sous répertoire :file:`python/content`
 d'un :file:`datadir`.
@@ -17,7 +17,7 @@ répertoire :file:`python/content` (relativement à un des :file:`datadir`). Ce 
 contenir une variable :py:data:`CONTENT_PLUGIN`, qui est un dictionnaire dont les
 clefs sont des mots-clefs, et les valeurs des fonctions :ref:`parse <parse>`.
 
-Lors de la compilation du recueil, lors de l'analyse de la variable ``content``
+Lors de la compilation du carnet, au moment de l'analyse de la variable ``content``
 du fichier :file:`.sb`, lorsqu'un de ces mots-clefs est rencontré, la fonction
 :py:func:`parse` correspondante est appelée.
 
@@ -94,7 +94,7 @@ notre fonction :py:func:`parse` sera appelée avec comme arguments
 
 Cette fonction doit retourner une liste (éventuellement vide) d'objets de
 classe :py:class:`content.Content` (ou une de ces sous-classes). Ces objets seront
-intégrés au recueil (en utilisant principalement leur méthode
+intégrés au carnet (en utilisant principalement leur méthode
 :py:meth:`content.Content.render`) dans l'ordre dans lequel ils apparaissent
 dans cette liste.
 
