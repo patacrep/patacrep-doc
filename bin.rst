@@ -4,7 +4,7 @@ Programme :command:`songbook`
 =============================
 
 Le programme :command:`songbook` est une interface minimale à la bibliothèque
-:py:mod:`patacrep` : il permet de compiler un recueil à partir du fichier :file:`.yaml` (pour
+:py:mod:`patacrep` : il permet de compiler un carnet de chants à partir du fichier :file:`.yaml` (pour
 des programmes qui permettent de manipuler ce fichier :file:`.yaml`, ou les chansons,
 voir :ref:`patagui` ou :ref:`patanet`).
 
@@ -18,7 +18,7 @@ Utilisation
   songbook [-h] [--version] [--datadir DATADIR [DATADIR ...]] [--verbose] [--steps STEPS] [--cache CACHE] [--error {failonsong,failonbook,fix}] book.yaml
 
 L'argument obligatoire est le nom d'un fichier :file:`.yaml`, qui est compilé en un
-recueil de chansons. Les options optionnelles sont les suivantes.
+carnet de chants. Les options optionnelles sont les suivantes.
 
 .. option:: -h, --help
 
@@ -76,7 +76,7 @@ Ils sont dans le répertoire `books
 <https://github.com/patacrep/patadata/tree/master/books>`_.
 
 Par exemple, pour compiler l'ensemble des chansons de ce répertoire en un seul
-recueil, il est possible de se placer dans la racine de `patadata` et
+carnet, il est possible de se placer dans la racine de `patadata` et
 d'exécuter ::
 
   songbook books/songbook.yaml
