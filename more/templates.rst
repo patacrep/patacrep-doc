@@ -195,7 +195,7 @@ Les variables
 .. note:: 
    Ce paragraphe n'a pas encore été mis-à-jour avec la dernière version de patacrep.
    Il est conseillé de s'inspirer des templates existants (``default.tex``, ``layout.tex``...)
-   et de ne pas hésiter à demander de l'aide sur `github <https://github.com/patacrep/patacrep/issues/new>`_
+   et de ne pas hésiter à demander de l'aide sur `github <https://github.com/patacrep/patacrep/issues/new>`_.
 
 Si vous voulez accéder à des variables dans vos templates avec la syntaxe ``(( ma_variable ))``, vous 
 devez définir ces variables au début de votre fichier de template. Ces définitions doivent être placées 
