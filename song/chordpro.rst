@@ -69,3 +69,14 @@ Directives
 
 TODO
 
+Tutoriels externes:
+`Qu'est ce qu'une tablature au format Chordpro ? (par oukelelatab) <http://oukelelatab.free.fr/index.php?static3/le-format-chordpro>`_ 
+
+
+Outils externes
+---------------
+
+Il existe différents outils en ligne pour convertir des textes bruts au format chordpro :
+
+- `Song Formater (par UkeGeeks) <http://ukegeeks.com/tools/songformater>`_ 
+
