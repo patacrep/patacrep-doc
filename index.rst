@@ -40,7 +40,7 @@ les autres outils).
 
 * `patacrep` regroupe les projets décrits ci-après (`patacrep`, `pataextra`,
   `patadata`, `patanet`, `patagui`) et est un ensemble d'outils de manipulation
-  de chants et de carnets de chants.
+  de chants et de carnets de chants ;
 * `patacrep/patacrep` est la bibliothèque principale, qui fournit les outils
   principaux nécessaires à cette manipulation, ainsi qu'un outil en ligne de
   commande (:ref:`songbook <songbookbin>`).

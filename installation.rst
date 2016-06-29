@@ -70,7 +70,7 @@ MacOSX
 ^^^^^^
 
 Vous devrez installer les dépendaces suivantes:
- - `Python 3 <https://www.python.org/download/>`_ ;
+ - `Python 3 <https://www.python.org/download/>`_.
  - LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus simple à installer. Une installation personnalisée de TeXLive fonctionnera aussi si vous savez ce que vous faites.
  - Lilypond peut être utile si vous souhaitez compiler les partitions dans les chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. Décompressez l'archive, puis placez-la dans :file:`/Applications`. Vous devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver en lançant les commandes suivantes dans un Terminal : ::
 
@@ -176,7 +176,7 @@ Pour mettre à jour la version de développement, utilisez simplement ::
     pip3 install -r Requirements.txt
     python3 setup.py install
 
-Depuis le dossier :file:`patacrep`
+depuis le dossier :file:`patacrep`
 
 
 Mise à jour
