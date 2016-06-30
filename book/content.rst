@@ -97,7 +97,7 @@ est possible d'en écrire d'autres.
   Sinon, il cherche dans le datadir suivant, et ainsi de suite jusqu'à la 
   fin de la liste.
 
-.. _plugin_sorted:
+.. _plugin_sort:
 
 :py:mod:`sort` : liste triée de chansons
   Ce plugin permet l'inclusion de chansons, triées selon un certain ordre.
