@@ -471,8 +471,8 @@ c'est-à-dire :
   correspondantes en tout début de fichier, avant même ``\begin{intersong}``) ;
 * il est possible de trier les intersong avec les chansons, en utilisant la
   commande :samp:`\\sortassong{{Titre}}[{Paramêtres}]`. Cette commande ne
-  produit rien dans le document final, mais indique au plugin :ref:`sorted
-  <plugin_sorted>` comment trier les chansons.
+  produit rien dans le document final, mais indique au plugin :ref:`sort
+  <plugin_sort>` comment trier les chansons.
 
 Par exemple, pour introduire une biographie de Georges Brassens avant
 l'ensemble de ses chansons (dans un recueil trié par auteur, album puis titre),
