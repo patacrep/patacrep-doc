@@ -20,7 +20,7 @@ contenu à inclure. Voici un exemple de contenu.
       - section: "Chansons à boire"
       - "boire/*.csg"
       - section: "Chansons d'amour"
-      - sorted:
+      - sort:
           key: ["by", "title"]
           content: 
             - "amour/*.csg"
@@ -35,7 +35,7 @@ créer une section ayant pour titre *Chansons à boire*, tandis que
 
 .. code-block:: yaml
 
-      - sorted:
+      - sort:
           key: ["by", "title"]
           content: 
             - "amour/*.csg"
@@ -55,7 +55,7 @@ titre (c'est le tri par défaut) :
 .. code-block:: yaml
 
   content:
-    sorted:
+    sort:
 
 .. _content_types:
 
@@ -99,7 +99,7 @@ est possible d'en écrire d'autres.
 
 .. _plugin_sorted:
 
-:py:mod:`sorted` : liste triée de chansons
+:py:mod:`sort` : liste triée de chansons
   Ce plugin permet l'inclusion de chansons, triées selon un certain ordre.
   Il prend deux arguments (facultatifs): ``key`` pour la liste
   des champs selon lesquels les chansons de l'argument ``content`` doivent être triées. 
@@ -145,7 +145,7 @@ est possible d'en écrire d'autres.
 
   L'ordre de tri par défaut est : auteurs, album, titre.
 
-  Il faut remarque la liste de contenu de ``sorted`` n'est pas nécessairement
+  Il faut remarque la liste de contenu de ``sort`` n'est pas nécessairement
   une liste d'expression rationnelle : c'est n'importe quel élément de contenu
   qui renvoie une liste de chansons. Ainsi (en utilisant le plugin :py:mod:`cwd`
   décrit ci-après) le ``content`` suivant est parfaitement valide.
@@ -153,13 +153,13 @@ est possible d'en écrire d'autres.
   .. code-block:: yaml
   
     content:
-      sorted:
+      sort:
         content: 
           - cwd:
             path: repertoire
             content: "*.csg"
 
-  Une conséquence de cela est que ne pas donner de ``content`` à  ``sorted`` permet
+  Une conséquence de cela est que ne pas donner de ``content`` à  ``sort`` permet
   d'inclure toutes les chansons du répertoire :file:`songs`, récursivement.
 
 :py:mod:`cd` : changement de répertoire
@@ -190,7 +190,7 @@ est possible d'en écrire d'autres.
   sont recherché dans le sous-dossier  ``path`` relatif au répertoire :file:`songs` des :ref:`datadir <datadir>` (dans
   lequel sont cherchées les chansons par défaut).
 
-  Enfin, il faut remarquer que, tout comme le plugin :py:mod:`sorted`, la liste de
+  Enfin, il faut remarquer que, tout comme le plugin :py:mod:`sort`, la liste de
   contenu de :py:mod:`cd` n'est pas limitée à une liste d'expressions rationnelles
   correspondant à des chansons : elle peut être n'importe quel contenu
   correspondant à une liste de chansons. De plus, la commande
@@ -266,7 +266,7 @@ est possible d'en écrire d'autres.
      .. code-block:: yaml
 
         content:
-          - sorted:
+          - sort:
               content:
                 include: "amour.sbc"
   
