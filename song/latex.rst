@@ -321,9 +321,9 @@ mineur` est noté :samp:`[A&m]`.
 
 .. note::
 
-  Pour des raisons techniques, le symbole :samp:`#` ne peut pas
+  Pour des raisons techniques, le symbole :samp:`#` (tout comme :samp:`&`) ne peut pas
   être utilisé dans les environnements :samp:`nolyrics`. Dans ce
-  cas là, il faut utiliser :samp:`shrp`.
+  cas là, il faut utiliser :samp:`shrp` (respectivement :samp:`flt`).
 
 
 Répétition
