@@ -32,7 +32,7 @@ Voici par exemple le fichier :file:`.yaml` qui fournit les options par défaut :
   chords: # Options musicales
     show: yes
     diagramreminder: important
-    diagrampage: yes
+    diagrampage: all
     repeatchords: yes
     lilypond: no
     tablatures: no
@@ -151,8 +151,13 @@ diagrampage
 ```````````
 Insérer une page d'accords en début de carnet.
 
-* Défaut: ``yes``
-* Type: Booléen
+* Défaut: ``all``
+* Type: Chaîne de charactères
+* Valeurs:
+
+  - ``all`` : Inclusion de tous les accords (communs et peu communs)
+  - ``important`` : Inclusion des accords peu communs
+  - ``none`` : Aucune page d'accords en début de carnet
 
 
 repeatchords
