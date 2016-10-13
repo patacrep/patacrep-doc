@@ -324,7 +324,7 @@ classoptions
 Options de la classe LaTeX.
 
 * Défaut: *(vide)*
-* Type: Chaîne de charactères
+* Type: Tableau de mots
 
 
 Template :file:`patacrep.tex`
