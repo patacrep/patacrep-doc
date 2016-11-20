@@ -69,7 +69,7 @@ Sur CentOS 6.5, un certain nombre de logiciels par défaut sont trop anciens pou
 MacOSX
 ^^^^^^
 
-Vous devrez installer les dépendaces suivantes:
+Vous devrez installer les dépendaces suivantes :
  - `Python 3 <https://www.python.org/download/>`_.
  - LaTeX. La distribution `MacTeX <https://tug.org/mactex/>`_ est la plus simple à installer. Une installation personnalisée de TeXLive fonctionnera aussi si vous savez ce que vous faites.
  - Lilypond peut être utile si vous souhaitez compiler les partitions dans les chansons. Ce n'est toutefois pas une dépendance obligatoire. Vous pouvez le télécharger à `cette adresse <http://www.lilypond.org/download.fr.html>`_. Décompressez l'archive, puis placez-la dans :file:`/Applications`. Vous devrez ajouter un lien vers lilypond pour que `songbook` puisse le trouver en lançant les commandes suivantes dans un Terminal : ::
@@ -120,7 +120,7 @@ Puis pour tester si tout a bien fonctionné ::
 Avec :ref:`virtualenv <virtualenv>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pour éviter de mélanger les installation système (par `apt`, `yum` ou autre) et
+Pour éviter de mélanger les installations système (par `apt`, `yum` ou autre) et
 les installations de `pip`, il est recommandé d'installer l'application
 localement dans un `virtualenv`:
 
