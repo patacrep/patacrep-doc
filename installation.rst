@@ -51,7 +51,7 @@ installer sous Debian (et ses dérivées comme Ubuntu) sont :
 - LaTeX :
 
   - Nécessaires : ``texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra``
-  - Optionnel pour `patacrep`, nécessaire pour `patadata` : ``texlive-lang-english texlive-lang-french texlive-lang-portuguese texlive-lang-spanish texlive-fonts-extra``
+  - Optionnel pour `patacrep`, nécessaire pour `patadata` : ``texlive-lang-english texlive-lang-french texlive-lang-portuguese texlive-lang-spanish texlive-lang-italian texlive-fonts-extra``
 
 - Lilypond (optionnel) : ``lilypond``
 
@@ -59,6 +59,15 @@ Il est aussi possible, en utilisant `stdeb <http://github.com/astraw/stdeb>`_, d
 
     python setup.py --command-packages=stdeb.command bdist_deb
     sudo dpkg -i deb_dist/python3-patacrep_5.0.0-1_all.deb
+
+Ubuntu 16.04
+""""""""""
+
+En plus des paquets précédent, il est nécessaire pour que LaTeX fonctionne bien d'installer les deux paquets suivants :
+
+    .. code-block:: shell
+
+        apt-get install texlive-luatex  texlive-xetex
 
 CentOS 6.5
 """"""""""
