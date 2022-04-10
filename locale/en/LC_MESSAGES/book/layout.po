@@ -343,7 +343,7 @@ msgid "adresse du site web du recueil"
 msgstr ""
 
 #: ../../book/layout.rst:114
-msgid "``\"http://www.patacrep.com\"``"
+msgid "``\"http://www.patacrep.fr\"``"
 msgstr ""
 
 #: ../../book/layout.rst:116
@@ -395,7 +395,7 @@ msgid "pied de page de la page de garde"
 msgstr ""
 
 #: ../../book/layout.rst:122
-msgid "``\"Generated using Songbook (\\\\url{http://www.patacrep.com})\"``"
+msgid "``\"Generated using Songbook (\\\\url{http://www.patacrep.fr})\"``"
 msgstr ""
 
 #: ../../book/layout.rst:127

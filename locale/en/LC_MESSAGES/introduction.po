@@ -24,11 +24,11 @@ msgid "Projet `patacrep` :"
 msgstr ""
 
 #: ../../introduction.rst:9
-msgid "Page officielle : http://patacrep.com"
+msgid "Page officielle : http://patacrep.fr"
 msgstr ""
 
 #: ../../introduction.rst:10
-msgid "Forum : http://www.patacrep.com/forum"
+msgid "Forum : http://www.patacrep.fr/forum"
 msgstr ""
 
 #: ../../introduction.rst:11

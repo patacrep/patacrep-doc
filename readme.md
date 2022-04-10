@@ -34,4 +34,4 @@ When the French documentation is updated, restart at step 3.
 
 # Compiled version
 
-A compiled PDF version should be available, someday, here : http://www.patacrep.com/data/documents/doc_fr.pdf
+A compiled PDF version should be available, someday, here : http://www.patacrep.fr/data/documents/doc_fr.pdf
