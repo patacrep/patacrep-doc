@@ -351,7 +351,7 @@ url
 ```
 Site web de l'auteur (pour la page de garde).
 
-* Défaut: ``"http://www.patacrep.com"``
+* Défaut: ``"http://www.patacrep.fr"``
 * Type: Chaîne de charactères
 
 
@@ -383,7 +383,7 @@ footer
 ``````
 Pied de page de la page de garde.
 
-* Défaut: ``"Créé avec le programme Songbook (\\url{http://www.patacrep.com})"``
+* Défaut: ``"Créé avec le programme Songbook (\\url{http://www.patacrep.fr})"``
 * Type: Chaîne de charactères
 
 

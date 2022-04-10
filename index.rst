@@ -24,8 +24,8 @@ Documentation
 Liens externes
 ==============
 
-* Page officielle : http://patacrep.com
-* Forum : http://www.patacrep.com/forum
+* Page officielle : http://patacrep.fr
+* Forum : http://www.patacrep.fr/forum
 * Page développement : http://github.com/patacrep/patacrep
 
 Projets liés
